@@ -31,10 +31,6 @@ module "example" {
 }
 ```
 
-## Examples ##
-
-* [Deploying into the default VPC](https://github.com/cisagov/cool-terraform-account/tree/develop/examples/default_vpc)
-
 ## Inputs ##
 
 | Name | Description | Type | Default | Required |
