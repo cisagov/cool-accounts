@@ -1,24 +1,19 @@
-output "id" {
-  value       = aws_instance.example.id
-  description = "The EC2 instance ID"
+output "bucket_id" {
+  value       = aws_s3_bucket.the_bucket.id
+  description = "The ID of the S3 bucket where Terraform state information will be stored."
 }
 
-output "arn" {
-  value       = aws_instance.example.arn
-  description = "The EC2 instance ARN"
+output "bucket_arn" {
+  value       = aws_s3_bucket.the_bucket.arn
+  description = "The ARN of the S3 bucket where Terraform state information will be stored."
 }
 
-output "availability_zone" {
-  value       = aws_instance.example.availability_zone
-  description = "The AZ where the EC2 instance is deployed"
+output "table_id" {
+  value       = aws_dynamodb_table.the_table.id
+  description = "The ID of the DynamoDB table that to be used for Terraform state locking."
 }
 
-output "private_ip" {
-  value       = aws_instance.example.private_ip
-  description = "The private IP of the EC2 instance"
-}
-
-output "subnet_id" {
-  value       = aws_instance.example.subnet_id
-  description = "The ID of the subnet where the EC2 instance is deployed"
+output "table_arn" {
+  value       = aws_dynamodb_table.the_table.arn
+  description = "The ARN of the DynamoDB table that to be used for Terraform state locking."
 }
