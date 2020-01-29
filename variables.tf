@@ -5,15 +5,11 @@
 # ------------------------------------------------------------------------------
 
 variable "aws_region" {
-  description = "The AWS region to deploy into (e.g. us-east-1)"
+  description = "The AWS region to deploy into (e.g. us-east-1)."
 }
 
-variable "aws_availability_zone" {
-  description = "The AWS availability zone to deploy into (e.g. a, b, c, etc.)"
-}
-
-variable "subnet_id" {
-  description = "The ID of the AWS subnet to deploy into (e.g. subnet-0123456789abcdef0)"
+variable "bucket_name" {
+  description = "The name to use for the S3 bucket that will store the Terraform state."
 }
 
 # ------------------------------------------------------------------------------
@@ -24,6 +20,6 @@ variable "subnet_id" {
 
 variable "tags" {
   type        = map(string)
-  description = "Tags to apply to all AWS resources created"
+  description = "Tags to apply to all AWS resources created."
   default     = {}
 }
