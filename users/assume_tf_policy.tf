@@ -18,6 +18,7 @@ resource "aws_iam_policy" "assume_access_terraform_backend_role" {
   policy      = data.aws_iam_policy_document.assume_role_doc.json
 }
 
+# Attach the policy to the terraform backend users group
 resource "aws_iam_group_policy_attachment" "access_terraform_backend" {
   group      = aws_iam_group.terraform_backend_users
   policy_arn = aws_iam_policy.assume_access_terraform_backend_role.arn

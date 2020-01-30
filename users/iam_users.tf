@@ -6,18 +6,6 @@ resource "aws_iam_user" "user" {
   tags = var.tags
 }
 
-# Put the users in the IAM group that gives them permission to access the
-# terraform backend
-resource "aws_iam_user_group_membership" "user" {
-  count = length(var.terraform_backend_users)
-
-  user = aws_iam_user.user[count.index].name
-
-  groups = [
-    aws_iam_group.terraform_backend_users.name,
-  ]
-}
-
 # IAM policy that allows the users to administer their own user
 # accounts.  This policy is pretty much copied from here:
 # https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_examples_aws_my-sec-creds-self-manage.html
