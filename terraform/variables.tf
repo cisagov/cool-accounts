@@ -14,6 +14,16 @@ variable "user_account_id" {
 # These parameters have reasonable defaults.
 # ------------------------------------------------------------------------------
 
+variable "backend_role_description" {
+  description = "The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient access to the Terraform S3 bucket and DynamoDB table to use those resources as a Terraform backend."
+  default     = "Allows sufficient access to the Terraform S3 bucket and DynamoDB table to use those resources as a Terraform backend."
+}
+
+variable "backend_role_name" {
+  description = "The name to assign the IAM role (as well as the corresponding policy) that allows sufficient access to the Terraform S3 bucket and DynamoDB table to use those resources as a Terraform backend."
+  default     = "AccessTerraformBackend"
+}
+
 variable "bucket_name" {
   description = "The name to use for the S3 bucket that will store the Terraform state."
   default     = "cisa-cool-terraform-state"

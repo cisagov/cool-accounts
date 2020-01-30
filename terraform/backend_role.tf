@@ -5,8 +5,8 @@
 
 resource "aws_iam_role" "backend_role" {
   assume_role_policy = data.aws_iam_policy_document.assume_role_doc.json
-  description        = "Allows sufficient access to the Terraform S3 bucket and DynamoDB table to use those resources as a Terraform backend."
-  name               = "UseTerraformBackendResources"
+  description        = var.backend_role_description
+  name               = var.backend_role_name
   tags               = var.tags
 }
 
