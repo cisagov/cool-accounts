@@ -10,8 +10,13 @@ resource "aws_iam_role" "create_role" {
   tags               = var.tags
 }
 
-# Attach the IAM policy to the role
+# Attach the desired IAM policies to the role
 resource "aws_iam_role_policy_attachment" "create_policy_attachment" {
   policy_arn = aws_iam_policy.create_policy.arn
+  role       = aws_iam_role.create_role.name
+}
+
+resource "aws_iam_role_policy_attachment" "iamfullaccess_policy_attachment" {
+  policy_arn = "arn:aws:iam::${var.this_account_id}:policy/IAMFullAccess"
   role       = aws_iam_role.create_role.name
 }
