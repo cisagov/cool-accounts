@@ -27,13 +27,13 @@ variable "table_name" {
 variable "table_read_capacity" {
   type        = number
   description = "The number of read units for the DynamoDB table that will be used for Terraform state locking."
-  default     = 5
+  default     = 20
 }
 
 variable "table_write_capacity" {
   type        = number
   description = "The number of write units for the DynamoDB table that will be used for Terraform state locking."
-  default     = 5
+  default     = 20
 }
 
 variable "tags" {
