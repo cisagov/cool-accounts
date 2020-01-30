@@ -12,7 +12,7 @@ data "aws_iam_policy_document" "create_doc" {
       "s3:CreateBucket"
     ]
     resources = [
-      aws_s3_bucket.state_bucket.arn
+      "arn:aws:s3:::${var.bucket_name}"
     ]
   }
 
@@ -22,7 +22,7 @@ data "aws_iam_policy_document" "create_doc" {
       "dynamodb:CreateTable",
     ]
     resources = [
-      "${aws_dynamodb_table.state_lock_table.arn}/*"
+      "arn:aws:dynamodb:${var.aws_region}:${var.this_account_id}:table/${var.table_name}"
     ]
   }
 
@@ -32,11 +32,8 @@ data "aws_iam_policy_document" "create_doc" {
       "iam:CreatePolicy",
     ]
     resources = [
-      aws_iam_policy.backend_access_policy.arn,
-      # Referencing the aws_iam_policy.create_policy resource defined
-      # below creates a circular dependency, but we can construct what
-      # the ARN looks like.
-      "arn:aws:iam::*:policy/${var.create_role_name}"
+      "arn:aws:iam::${var.this_account_id}:policy/${var.backend_role_name}",
+      "arn:aws:iam::${var.this_account_id}:policy/${var.create_role_name}",
     ]
   }
 
@@ -46,8 +43,8 @@ data "aws_iam_policy_document" "create_doc" {
       "iam:CreateRole",
     ]
     resources = [
-      aws_iam_role.backend_role.arn,
-      aws_iam_role.create_role.arn,
+      "arn:aws:iam::${var.this_account_id}:role/${var.backend_role_name}",
+      "arn:aws:iam::${var.this_account_id}:role/${var.create_role_name}",
     ]
   }
 }
