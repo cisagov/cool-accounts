@@ -1,12 +1,7 @@
-# cool-users-account #
+# Users account #
 
-[![GitHub Build Status](https://github.com/cisagov/cool-users-account/workflows/build/badge.svg)](https://github.com/cisagov/cool-users-account/actions)
-
-This is a project that can be used to configure a Users account in the COOL
-environment.
-
-See [here](https://www.terraform.io/docs/modules/index.html) for more
-details on Terraform modules and the standard module structure.
+This directory contains Terraform code that can be used to configure the Users
+account in the COOL environment.
 
 ## Usage ##
 
@@ -16,8 +11,11 @@ Coming soon!
 
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-------:|:--------:|
-| access_backend_terraform_role_arn | The ARN of the delegated role that allows access to the terraform backend | string | | yes |
-| backend_terraform_users | The usernames associated with the accounts to be created and allowed to access the terraform backend.  The format first.last is recommended. | string | | yes |
+| access_backend_terraform_role_arn | The ARN of the role that allows access to the Terraform backend | string | | yes |
+| assume_access_terraform_backend_policy_description | The description to associate with the IAM policy that allows assumption of the role with access to the Terraform backend | string | Allow assumption of the AccessTerraformBackend role in the Terraform account. | no |
+| assume_access_terraform_backend_policy_name | The name to assign the IAM policy that allows assumption of the role with access to the Terraform backend | string | Terraform-AssumeAccessTerraformBackend | no |
+| terraform_backend_users | The usernames associated with the accounts to be created and allowed to access the terraform backend.  The format `first.last` is recommended. | string | | yes |
+| terraform_backend_users_group | The name of the group to be created for users allowed to access the terraform backend | string | terraform_backend_users | no |
 | tags | Tags to apply to all AWS resources created | map(string) | `{}` | no |
 
 ## Outputs ##
