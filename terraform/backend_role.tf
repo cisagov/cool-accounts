@@ -13,5 +13,5 @@ resource "aws_iam_role" "backend_role" {
 # Attach the IAM policy to the role
 resource "aws_iam_role_policy_attachment" "backend_access_policy_attachment" {
   policy_arn = aws_iam_policy.backend_access_policy.arn
-  role       = aws_iam_role.the_role.name
+  role       = aws_iam_role.backend_role.name
 }
