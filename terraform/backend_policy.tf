@@ -43,5 +43,4 @@ resource "aws_iam_policy" "backend_access_policy" {
   description = "Allows sufficient access to the state bucket and state locking table to use those resources as a Terraform backend."
   name        = "AccessTerraformBackend"
   policy      = data.aws_iam_policy_document.backend_access_doc.json
-  tags        = var.tags
 }
