@@ -12,7 +12,7 @@ data "aws_iam_policy_document" "create_doc" {
       "s3:CreateBucket"
     ]
     resources = [
-      "arn:aws:s3:::${var.bucket_name}",
+      "arn:aws:s3:::${var.state_bucket_name}",
     ]
   }
 
@@ -22,7 +22,7 @@ data "aws_iam_policy_document" "create_doc" {
       "dynamodb:CreateTable",
     ]
     resources = [
-      "arn:aws:dynamodb:${var.aws_region}:${var.this_account_id}:table/${var.table_name}",
+      "arn:aws:dynamodb:${var.aws_region}:${var.this_account_id}:table/${var.state_table_name}",
     ]
   }
 
