@@ -6,13 +6,13 @@
 # IAM policy document that allows sufficient access to the state
 # bucket and state locking table to use those resources as a Terraform
 # backend.
-data "aws_iam_policy_document" "state_access_doc" {
+data "aws_iam_policy_document" "backend_access_doc" {
   statement {
     actions = [
       "s3:ListBucket"
     ]
     resources = [
-      aws_s3_bucket.the_bucket.arn
+      aws_s3_bucket.state_bucket.arn
     ]
   }
 
@@ -22,7 +22,7 @@ data "aws_iam_policy_document" "state_access_doc" {
       "s3:PutObject",
     ]
     resources = [
-      "${aws_s3_bucket.the_bucket.arn}/*"
+      "${aws_s3_bucket.state_bucket.arn}/*"
     ]
   }
 
@@ -33,15 +33,15 @@ data "aws_iam_policy_document" "state_access_doc" {
       "dynamodb:PutItem",
     ]
     resources = [
-      "${aws_dynamodb_table.the_table.arn}/*"
+      "${aws_dynamodb_table.state_lock_table.arn}/*"
     ]
   }
 }
 
 # The IAM policy
-resource "aws_iam_policy" "state_access_policy" {
+resource "aws_iam_policy" "backend_access_policy" {
   description = "Allows sufficient access to the state bucket and state locking table to use those resources as a Terraform backend."
   name        = "AccessTerraformBackend"
-  policy      = data.aws_iam_policy_document.state_access_doc.json
+  policy      = data.aws_iam_policy_document.backend_access_doc.json
   tags        = var.tags
 }
