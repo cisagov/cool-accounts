@@ -41,7 +41,7 @@ variable "create_role_name" {
 
 variable "table_name" {
   description = "The name to use for the DynamoDB table that will be used for Terraform state locking."
-  default     = "cisa-cool-terraform-state-lock"
+  default     = "terraform-state-lock"
 }
 
 variable "table_read_capacity" {
