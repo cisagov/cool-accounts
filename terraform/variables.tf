@@ -29,6 +29,16 @@ variable "bucket_name" {
   default     = "cisa-cool-terraform-state"
 }
 
+variable "create_role_description" {
+  description = "The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient permissions to create all AWS resources in this account."
+  default     = "Allows sufficient permissions to create all AWS resources in this account."
+}
+
+variable "create_role_name" {
+  description = "The name to assign the IAM role (as well as the corresponding policy) that allows sufficient permissions to create all AWS resources in the terraform account."
+  default     = "CreateAccount"
+}
+
 variable "table_name" {
   description = "The name to use for the DynamoDB table that will be used for Terraform state locking."
   default     = "cisa-cool-terraform-state-lock"
