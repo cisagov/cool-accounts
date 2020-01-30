@@ -4,10 +4,6 @@
 # You must provide a value for each of these parameters.
 # ------------------------------------------------------------------------------
 
-variable "create_role_arn" {
-  description = "The ARN of the role to assume when creating the AWS resources for this account (e.g. \"arn:aws:iam::123456789012:role/MyRole\")."
-}
-
 variable "this_account_id" {
   description = "The ID of the account being configured."
 }
@@ -37,11 +33,6 @@ variable "backend_role_name" {
   default     = "AccessTerraformBackend"
 }
 
-variable "bucket_name" {
-  description = "The name to use for the S3 bucket that will store the Terraform state."
-  default     = "cisa-cool-terraform-state"
-}
-
 variable "create_role_description" {
   description = "The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient permissions to create all AWS resources in this account."
   default     = "Allows sufficient permissions to create all AWS resources in this account."
@@ -52,18 +43,23 @@ variable "create_role_name" {
   default     = "CreateAccount"
 }
 
-variable "table_name" {
+variable "state_bucket_name" {
+  description = "The name to use for the S3 bucket that will store the Terraform state."
+  default     = "cisa-cool-terraform-state"
+}
+
+variable "state_table_name" {
   description = "The name to use for the DynamoDB table that will be used for Terraform state locking."
   default     = "terraform-state-lock"
 }
 
-variable "table_read_capacity" {
+variable "state_table_read_capacity" {
   type        = number
   description = "The number of read units for the DynamoDB table that will be used for Terraform state locking."
   default     = 20
 }
 
-variable "table_write_capacity" {
+variable "state_table_write_capacity" {
   type        = number
   description = "The number of write units for the DynamoDB table that will be used for Terraform state locking."
   default     = 20
