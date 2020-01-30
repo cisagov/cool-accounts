@@ -2,53 +2,45 @@
 
 [![GitHub Build Status](https://github.com/cisagov/cool-terraform-account/workflows/build/badge.svg)](https://github.com/cisagov/cool-terraform-account/actions)
 
-This is a generic skeleton project that can be used to quickly get a
-new [cisagov](https://github.com/cisagov) [Terraform
-module](https://www.terraform.io/docs/modules/index.html) GitHub
-repository started.  This skeleton project contains [licensing
-information](LICENSE), as well as [pre-commit
-hooks](https://pre-commit.com) and
-[GitHub Actions](https://github.com/features/actions) configurations
-appropriate for the major languages that we use.
+This project contains several directories of Terraform code to perform
+the initial configuration of the COOL accounts, such as the
+"terraform", "users", and "shared-services" accounts.  This Terraform
+code creates and configures the most basic resources needed to build
+out services and environments in the COOL organization, such as:
 
-See [here](https://www.terraform.io/docs/modules/index.html) for more
-details on Terraform modules and the standard module structure.
+* An S3 bucket and a DynamoDB table for Terraform remote shared state.
+* Roles that can be assumed by IAM user accounts to Terraform further
+  environments and services.
+* An initial set of user accounts so that developers can get started.
 
-## Usage ##
+## Bootstrapping accounts ##
 
-```hcl
-module "example" {
-  source = "github.com/cisagov/cool-terraform-account"
+Note that all accounts must be bootstrapped.  This is because
+initially there is no IAM role that can be assumed to build out these
+resources.  Therefore for each account you must first apply the
+Terraform code in the corresponding directory with:
 
-  aws_region            = "us-west-1"
-  aws_availability_zone = "b"
-  subnet_id             = "subnet-0123456789abcdef0"
+* Using programmatic credentials for AWSAdministratorAccess as
+  obtained for the COOL account from the AWS SSO page.
 
-  tags = {
-    Key1 = "Value1"
-    Key2 = "Value2"
-  }
-}
-```
+After this initial apply your desired IAM role will exist, and it will
+be assumable from your IAM user that exists in the "users"
+account. Therefore you can apply future changes using your IAM user
+credentials.
 
-## Inputs ##
+The "terraform" and "users" accounts require even more special
+attention.  The "terraform" account must contain an S3 bucket and a
+DynamoDB table to support Terraform remote shared state, and the
+"users" account must contain some IAM user accounts before the other
+accounts can be bootstrapped.  Therefore, in addition to using the
+programmatic credentials as described above, these two accounts must
+use local state for the first apply.  Then the local state can be
+migrated to the remote backend hosted in the "terraform" account and
+future applies can proceed normally.
 
-| Name | Description | Type | Default | Required |
-|------|-------------|:----:|:-------:|:--------:|
-| aws_region | The AWS region to deploy into (e.g. us-east-1) | string | | yes |
-| aws_availability_zone | The AWS availability zone to deploy into (e.g. a, b, c, etc.) | string | | yes |
-| subnet_id | The ID of the AWS subnet to deploy into (e.g. subnet-0123456789abcdef0) | string | | yes |
-| tags | Tags to apply to all AWS resources created | map(string) | `{}` | no |
-
-## Outputs ##
-
-| Name | Description |
-|------|-------------|
-| id | The EC2 instance ID |
-| arn | The EC2 instance ARN |
-| availability_zone | The AZ where the EC2 instance is deployed |
-| private_ip | The private IP of the EC2 instance |
-| subnet_id | The ID of the subnet where the EC2 instance is deployed |
+Note that step-by-step bootstrapping instructions are given in the
+account-specific `README.md` files found in the account
+subdirectories.
 
 ## Contributing ##
 
