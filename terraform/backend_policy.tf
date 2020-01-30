@@ -9,10 +9,10 @@
 data "aws_iam_policy_document" "backend_access_doc" {
   statement {
     actions = [
-      "s3:ListBucket"
+      "s3:ListBucket",
     ]
     resources = [
-      aws_s3_bucket.state_bucket.arn
+      aws_s3_bucket.state_bucket.arn,
     ]
   }
 
@@ -22,7 +22,7 @@ data "aws_iam_policy_document" "backend_access_doc" {
       "s3:PutObject",
     ]
     resources = [
-      "${aws_s3_bucket.state_bucket.arn}/*"
+      "${aws_s3_bucket.state_bucket.arn}/*",
     ]
   }
 
@@ -33,7 +33,7 @@ data "aws_iam_policy_document" "backend_access_doc" {
       "dynamodb:PutItem",
     ]
     resources = [
-      "${aws_dynamodb_table.state_lock_table.arn}/*"
+      "${aws_dynamodb_table.state_lock_table.arn}/*",
     ]
   }
 }

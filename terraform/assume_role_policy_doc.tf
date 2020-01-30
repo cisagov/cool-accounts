@@ -6,13 +6,13 @@
 data "aws_iam_policy_document" "assume_role_doc" {
   statement {
     actions = [
-      "sts:AssumeRole"
+      "sts:AssumeRole",
     ]
 
     principals {
       type = "AWS"
       identifiers = [
-        "arn:aws:iam::${var.user_account_id}:root"
+        "arn:aws:iam::${var.user_account_id}:root",
       ]
     }
   }
