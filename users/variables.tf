@@ -19,7 +19,7 @@ variable "assume_access_terraform_backend_policy_name" {
   default     = "Terraform-AssumeAccessTerraformBackend"
 }
 
-variable "backend_terraform_users" {
+variable "terraform_backend_users" {
   type        = list(string)
   description = "The usernames associated with the accounts to be created and allowed to access the terraform backend.  The format first.last is recommended."
 }
