@@ -6,6 +6,6 @@
 resource "aws_dynamodb_table" "state_lock_table" {
   name           = var.table_name
   read_capacity  = var.table_read_capacity
-  write_capacity = var.table_write_capacityle
+  write_capacity = var.table_write_capacity
   tags           = var.tags
 }
