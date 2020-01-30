@@ -15,11 +15,15 @@ This subdirectory contains Terraform code to create the COOL
 ## Bootstrapping this account ##
 
 Note that this account must be bootstrapped along with the "users"
-account.  You must first apply this Terraform code with:
+account.  This is because initially there are no resources in this
+account that can be used to host remote shared Terrafrom state, and
+also because there is no IAM role that can be assumed to build out
+these resources.  Therefore you must first apply this Terraform code
+with:
 
-* No backend configuration, so that the state is created locally
+* No backend configuration, so that the state is created locally.
 * Using programmatic credentials for AWSAdministratorAccess as
-  obtained from the COOL terraform account
+  obtained for the COOL terraform account from the AWS SSO page.
 
 To do this, follow these steps:
 
