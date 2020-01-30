@@ -13,8 +13,8 @@ data "aws_iam_policy_document" "assume_role_doc" {
 }
 
 resource "aws_iam_policy" "assume_access_terraform_backend_role" {
-  description = "Allow assumption of the AccessTerraformBackend role in the Terraform account."
-  name        = "Terraform-AssumeAccessTerraformBackend"
+  description = var.assume_access_terraform_backend_policy_description
+  name        = var.assume_access_terraform_backend_policy_name
   policy      = data.aws_iam_policy_document.assume_role_doc.json
 }
 
