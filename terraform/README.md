@@ -1,54 +1,50 @@
-# cool-terraform-account #
+# cool-terraform-account - terraform subdirectory #
 
-[![GitHub Build Status](https://github.com/cisagov/cool-terraform-account/workflows/build/badge.svg)](https://github.com/cisagov/cool-terraform-account/actions)
+This subdirectory contains Terraform code to create the COOL terraform
+account.  It creates:
 
-This is a generic skeleton project that can be used to quickly get a
-new [cisagov](https://github.com/cisagov) [Terraform
-module](https://www.terraform.io/docs/modules/index.html) GitHub
-repository started.  This skeleton project contains [licensing
-information](LICENSE), as well as [pre-commit
-hooks](https://pre-commit.com) and
-[GitHub Actions](https://github.com/features/actions) configurations
-appropriate for the major languages that we use.
-
-See [here](https://www.terraform.io/docs/modules/index.html) for more
-details on Terraform modules and the standard module structure.
+* The S3 bucket used to store Terraform state.
+* The DynamoDB table used for Terraform state locking.
+* An IAM role that allows sufficient access to the Terraform S3 bucket
+  and DynamoDB table to use those resources as a Terraform backend.
+  This role also has a trust relationship with the users account.
+* An IAM role that allows sufficient sufficient permissions to create
+  all AWS resources in this account.  This role has a trust
+  relationship with the users account.
 
 ## Usage ##
 
-```hcl
-module "example" {
-  source = "github.com/cisagov/cool-terraform-account"
-
-  aws_region            = "us-west-1"
-  aws_availability_zone = "b"
-  subnet_id             = "subnet-0123456789abcdef0"
-
-  tags = {
-    Key1 = "Value1"
-    Key2 = "Value2"
-  }
-}
+```console
+terraform apply -var-file=workspace.tfvars
 ```
 
 ## Inputs ##
 
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-------:|:--------:|
-| aws_region | The AWS region to deploy into (e.g. us-east-1) | string | | yes |
-| aws_availability_zone | The AWS availability zone to deploy into (e.g. a, b, c, etc.) | string | | yes |
-| subnet_id | The ID of the AWS subnet to deploy into (e.g. subnet-0123456789abcdef0) | string | | yes |
-| tags | Tags to apply to all AWS resources created | map(string) | `{}` | no |
+| aws_region | The AWS region where the non-global resources for this account are to be created (e.g. us-east-1). | string | `us-east-1` | no |
+| backend_role_description | The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient access to the Terraform S3 bucket and DynamoDB table to use those resources as a Terraform backend. | string | `Allows sufficient access to the Terraform S3 bucket and DynamoDB table to use those resources as a Terraform backend.` | no |
+| backend_role_name | The name to assign the IAM role (as well as the corresponding policy) that allows sufficient access to the Terraform S3 bucket and DynamoDB table to use those resources as a Terraform backend. | string | `AccessTerraformBackend` | no |
+| create_role_description | The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient access to create all AWS resources in this account. | string | `Allows sufficient access to create all AWS resources in this account` | no |
+| create_role_name | The name to assign the IAM role (as well as the corresponding policy) that allows sufficient permissions to create all AWS resources in the terraform account. | string | `CreateAccount` | no |
+| state_bucket_name | The name to use for the S3 bucket that will store the Terraform state. | string | `cisa-cool-terraform-state` | no |
+| state_table_name | The name to use for the DynamoDB table that will be used for Terraform state locking. | string | `terraform-state-lock` | no |
+| state_table_read_capacity | The number of read units for the DynamoDB table that will be used for Terraform state locking. | number | `20` | no |
+| state_table_write_capacity | The number of write units for the DynamoDB table that will be used for Terraform state locking. | number | `20` | no |
+| tags | Tags to apply to all AWS resources created. | map(string) | `{}` | no |
+| this_account_id | The ID of the account being configured. | string | | yes |
+| user_account_id | The ID of the users account.  This account will be allowed to assume the role that allows sufficient access to the Terraform S3 bucket and DynamoDB table to use those resources as a Terraform backend. | string | | yes |
 
 ## Outputs ##
 
 | Name | Description |
 |------|-------------|
-| id | The EC2 instance ID |
-| arn | The EC2 instance ARN |
-| availability_zone | The AZ where the EC2 instance is deployed |
-| private_ip | The private IP of the EC2 instance |
-| subnet_id | The ID of the subnet where the EC2 instance is deployed |
+| backend_role_arn | The ARN of the IAM role that allows sufficient access to the Terraform S3 bucket and DynamoDB table to use those resources as a Terraform backend. |
+| create_role_arn | The ARN of the IAM role that allows sufficient sufficient permissions to create all AWS resources in this account. |
+| state_bucket_arn | The ARN of the S3 bucket where Terraform state information will be stored. |
+| state_bucket_id | The ID of the S3 bucket where Terraform state information will be stored. |
+| state_lock_table_arn | The ARN of the DynamoDB table that to be used for Terraform state locking. |
+| state_lock_table_id | The ID of the DynamoDB table that to be used for Terraform state locking. |
 
 ## Contributing ##
 
