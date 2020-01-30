@@ -1,4 +1,4 @@
-# cool-terraform-account - terraform subdirectory #
+# cool-accounts - terraform subdirectory #
 
 This subdirectory contains Terraform code to create the COOL
 "terraform" account.  It creates:

@@ -1,4 +1,4 @@
-# cool-terraform-account #
+# cool-accounts #
 
 [![GitHub Build Status](https://github.com/cisagov/cool-terraform-account/workflows/build/badge.svg)](https://github.com/cisagov/cool-terraform-account/actions)
 
