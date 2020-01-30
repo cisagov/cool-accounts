@@ -3,7 +3,7 @@
 # ------------------------------------------------------------------------------
 
 resource "aws_s3_bucket" "state_bucket" {
-  bucket = var.bucket_name
+  bucket = var.state_bucket_name
   server_side_encryption_configuration {
     rule {
       apply_server_side_encryption_by_default {

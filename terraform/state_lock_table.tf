@@ -9,8 +9,8 @@ resource "aws_dynamodb_table" "state_lock_table" {
     type = "S"
   }
   hash_key       = "LockID"
-  name           = var.table_name
-  read_capacity  = var.table_read_capacity
-  write_capacity = var.table_write_capacity
+  name           = var.state_table_name
+  read_capacity  = var.state_table_read_capacity
+  write_capacity = var.state_table_write_capacity
   tags           = var.tags
 }
