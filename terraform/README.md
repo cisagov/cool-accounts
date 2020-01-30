@@ -1,7 +1,7 @@
 # cool-terraform-account - terraform subdirectory #
 
-This subdirectory contains Terraform code to create the COOL terraform
-account.  It creates:
+This subdirectory contains Terraform code to create the COOL
+"terraform" account.  It creates:
 
 * The S3 bucket used to store Terraform state.
 * The DynamoDB table used for Terraform state locking.
@@ -12,11 +12,38 @@ account.  It creates:
   all AWS resources in this account.  This role has a trust
   relationship with the users account.
 
-## Usage ##
+## Bootstrapping this account ##
 
-```console
-terraform apply -var-file=workspace.tfvars
-```
+Note that this account must be bootstrapped along with the "users"
+account.  You must first apply this Terraform code with:
+
+* No backend configuration, so that the state is created locally
+* Using programmatic credentials for AWSAdministratorAccess as
+  obtained from the COOL terraform account
+
+To do this, follow these steps:
+
+1. Comment out all the content in the `backend.tf` file.
+2. Comment out the `assume_role` block in `provider.tf` and directly
+   below that add the line `profile = "cool-terraform-account-admin"`.
+3. Create a new AWS profile called `cool-terraform-account-admin` in
+   your Boto3 configuration using the "AWSAdministratorAccess"
+   credentials (access key ID, secret access key, and session token)
+   as obtained from the COOL terraform account.
+4. Run the command `terraform init`.
+5. Run the command `terraform apply
+   -var-file=<workspace_name>.tfvars`.
+6. Make sure that the analogs of steps 1-5 have been done with the
+   users account.
+7. Revert the changes you made to `backend.tf` in step 1.
+8. Revert the changes you made to `provider.tf` in step 2.
+9. Run the command `terraform init`.
+10. Run the command `terraform apply
+    -var-file=<workspace_name>.tfvars`.
+
+At this point the account has been bootstrapped, and you can apply
+future changes by simply running `terraform apply
+-var-file=production.tfvars`.
 
 ## Inputs ##
 
