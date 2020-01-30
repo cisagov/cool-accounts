@@ -1,8 +1,8 @@
 # The users being created
 resource "aws_iam_user" "user" {
-  count = length(var.terraform_backend_users)
+  count = length(var.usernames)
 
-  name = var.terraform_backend_users[count.index]
+  name = var.usernames[count.index]
   tags = var.tags
 }
 
@@ -10,7 +10,7 @@ resource "aws_iam_user" "user" {
 # accounts.  This policy is pretty much copied from here:
 # https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_examples_aws_my-sec-creds-self-manage.html
 data "aws_iam_policy_document" "iam_self_admin_doc" {
-  count = length(var.terraform_backend_users)
+  count = length(var.usernames)
 
   # Allow users to view their own account information
   statement {
@@ -171,7 +171,7 @@ data "aws_iam_policy_document" "iam_self_admin_doc" {
 
 # The IAM self-administration policy for our IAM users
 resource "aws_iam_user_policy" "user" {
-  count = length(var.terraform_backend_users)
+  count = length(var.usernames)
 
   user   = aws_iam_user.user[count.index].name
   policy = data.aws_iam_policy_document.iam_self_admin_doc[count.index].json

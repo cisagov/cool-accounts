@@ -19,14 +19,15 @@ variable "assume_access_terraform_backend_policy_name" {
   default     = "Terraform-AssumeAccessTerraformBackend"
 }
 
-variable "terraform_backend_users" {
-  type        = list(string)
-  description = "The usernames associated with the accounts to be created and allowed to access the terraform backend.  The format first.last is recommended."
-}
 
 variable "terraform_backend_users_group" {
   description = "The name of the group to be created for users allowed to access the terraform backend."
   default     = "terraform_backend_users"
+}
+
+variable "usernames" {
+  type        = list(string)
+  description = "The usernames associated with the accounts to be created and allowed to access the terraform backend, as well as be IAM administrators.  The format first.last is recommended."
 }
 
 # ------------------------------------------------------------------------------

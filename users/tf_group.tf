@@ -5,7 +5,7 @@ resource "aws_iam_group" "terraform_backend_users" {
 
 # Put our IAM users in the group to allow them to access the terraform backend
 resource "aws_iam_user_group_membership" "user" {
-  count = length(var.terraform_backend_users)
+  count = length(var.usernames)
 
   user = aws_iam_user.user[count.index].name
 
