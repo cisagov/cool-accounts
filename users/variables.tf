@@ -4,9 +4,9 @@
 # You must provide a value for each of these parameters.
 # ------------------------------------------------------------------------------
 
-variable "access_backend_terraform_role_arn" {
+variable "access_terraform_backend_role_arn" {
   type        = string
-  description = "The ARN of the delegated role that allows access to the terraform backend."
+  description = "The ARN of the role that allows access to the Terraform backend."
 }
 
 variable "backend_terraform_users" {
