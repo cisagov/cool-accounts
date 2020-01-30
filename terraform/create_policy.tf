@@ -29,7 +29,7 @@ data "aws_iam_policy_document" "create_doc" {
   # Permissions necessary to create the IAM policies
   statement {
     actions = [
-      "dynamodb:CreatePolicy",
+      "iam:CreatePolicy",
     ]
     resources = [
       aws_iam_policy.backend_access_policy.arn,
@@ -43,7 +43,7 @@ data "aws_iam_policy_document" "create_doc" {
   # Permissions necessary to create the IAM roles
   statement {
     actions = [
-      "dynamodb:CreateRole",
+      "iam:CreateRole",
     ]
     resources = [
       aws_iam_role.backend_role.arn,
