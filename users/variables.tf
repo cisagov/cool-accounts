@@ -24,6 +24,11 @@ variable "terraform_backend_users" {
   description = "The usernames associated with the accounts to be created and allowed to access the terraform backend.  The format first.last is recommended."
 }
 
+variable "terraform_backend_users_group" {
+  description = "The name of the group to be created for users allowed to access the terraform backend."
+  default     = "terraform_backend_users"
+}
+
 # ------------------------------------------------------------------------------
 # OPTIONAL PARAMETERS
 #
