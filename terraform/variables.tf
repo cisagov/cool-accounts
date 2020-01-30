@@ -8,6 +8,10 @@ variable "create_role_arn" {
   description = "The ARN of the role to assume when creating the AWS resources for this account (e.g. \"arn:aws:iam::123456789012:role/MyRole\")."
 }
 
+variable "this_account_id" {
+  description = "The ID of the account being configured."
+}
+
 variable "user_account_id" {
   description = "The ID of the users account.  This account will be allowed to assume the role that allows sufficient access to the Terraform S3 bucket and DynamoDB table to use those resources as a Terraform backend."
 }
