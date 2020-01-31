@@ -40,18 +40,18 @@ To do this, follow these steps:
    ```
 
 1. Create a `<workspace_name>.tfvars` file with all of the required
-  variables (see [Inputs](#Inputs) below for details).  Note that
-  `access_backend_terraform_role_arn` is the `backend_role_arn` output
-  from the bootstrapping the terraform subdirectory:
+   variables (see [Inputs](#Inputs) below for details).  Note that
+   `access_backend_terraform_role_arn` is the `backend_role_arn` output
+   from the bootstrapping the terraform subdirectory:
 
-  ```console
-  access_terraform_backend_role_arn = "arn:aws:iam::111111111111:role/AccessTerraformBackend"
-  this_account_id = "222222222222"
-  usernames = [
-    "user.one",
-    "user.two"
-  ]
-  ```
+   ```console
+   access_terraform_backend_role_arn = "arn:aws:iam::111111111111:role/AccessTerraformBackend"
+   this_account_id = "222222222222"
+   usernames = [
+      "user.one",
+      "user.two"
+   ]
+   ```
 
 1. Run the command `terraform init`.
 1. Run the command `terraform apply
