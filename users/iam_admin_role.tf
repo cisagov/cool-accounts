@@ -3,8 +3,23 @@
 # AWS resources in the users account.
 # ------------------------------------------------------------------------------
 
+data "aws_iam_policy_document" "iam_admin_role_assume_role_doc" {
+  statement {
+    actions = [
+      "sts:AssumeRole",
+    ]
+
+    principals {
+      type = "AWS"
+      identifiers = [
+        "arn:aws:iam::${var.this_account_id}:root",
+      ]
+    }
+  }
+}
+
 resource "aws_iam_role" "iam_admin_role" {
-  assume_role_policy = data.aws_iam_policy_document.assume_iam_admin_role_doc.json
+  assume_role_policy = data.aws_iam_policy_document.iam_admin_role_assume_role_doc.json
   description        = var.iam_admin_role_description
   name               = var.iam_admin_role_name
   tags               = var.tags

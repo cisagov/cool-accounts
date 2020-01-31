@@ -1,6 +1,6 @@
 # IAM assume role policy document that allows assumption of the IAM role that
 # can terraform the terraform remote backend
-data "aws_iam_policy_document" "assume_role_doc" {
+data "aws_iam_policy_document" "assume_access_terraform_backend_doc" {
   statement {
     effect = "Allow"
 
