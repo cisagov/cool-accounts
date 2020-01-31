@@ -29,7 +29,8 @@ To do this, follow these steps:
 
 1. Comment out all the content in the `backend.tf` file.
 2. Comment out the `assume_role` block in `provider.tf` and directly
-   below that add the line `profile = "cool-terraform-account-admin"`.
+   below that uncomment the line `profile =
+   "cool-terraform-account-admin"`.
 3. Create a new AWS profile called `cool-terraform-account-admin` in
    your Boto3 configuration using the "AWSAdministratorAccess"
    credentials (access key ID, secret access key, and session token)
