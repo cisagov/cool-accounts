@@ -28,27 +28,43 @@ with:
 To do this, follow these steps:
 
 1. Comment out all the content in the `backend.tf` file.
-2. Comment out the `assume_role` block in `provider.tf` and directly
+1. Comment out the `assume_role` block in `provider.tf` and directly
    below that uncomment the line `profile =
    "cool-terraform-account-admin"`.
-3. Create a new AWS profile called `cool-terraform-account-admin` in
+1. Create a new AWS profile called `cool-terraform-account-admin` in
    your Boto3 configuration using the "AWSAdministratorAccess"
    credentials (access key ID, secret access key, and session token)
-   as obtained from the COOL terraform account.
-4. Run the command `terraform init`.
-5. Run the command `terraform apply
+   as obtained from the COOL terraform account:
+
+   ```console
+   [cool-terraform-account-admin]
+   aws_access_key_id = <ACCESS_KEY_ID>
+   aws_secret_access_key = <SECRET_ACCESS_KEY>
+   aws_session_token = <SESSION_TOKEN>
+   ```
+
+1. Create a `<workspace_name>.tfvars` file with all of the required
+ variables (see [Inputs](#Inputs) below for details):
+
+ ```console
+ this_account_id = "111111111111"
+ user_account_id = "222222222222"
+ ```
+
+1. Run the command `terraform init`.
+1. Run the command `terraform apply
    -var-file=<workspace_name>.tfvars`.
-6. Make sure that the analogs of steps 1-5 have been done with the
+1. Make sure that the analogs of steps 1-6 have been done with the
    users account.
-7. Revert the changes you made to `backend.tf` in step 1.
-8. Revert the changes you made to `provider.tf` in step 2.
-9. Run the command `terraform init`.
-10. Run the command `terraform apply
+1. Revert the changes you made to `backend.tf` in step 1.
+1. Revert the changes you made to `provider.tf` in step 2.
+1. Run the command `terraform init`.
+1. Run the command `terraform apply
     -var-file=<workspace_name>.tfvars`.
 
 At this point the account has been bootstrapped, and you can apply
 future changes by simply running `terraform apply
--var-file=production.tfvars`.
+-var-file=<workspace_name>.tfvars`.
 
 ## Inputs ##
 
