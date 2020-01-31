@@ -49,12 +49,12 @@ variable "assume_iam_admin_policy_name" {
   default     = "AssumeIamAdministrator"
 }
 
-variable "iam_admin_role_description"  {
+variable "iam_admin_role_description" {
   description = "The description to associate with the IAM role that allows full IAM administrator access in this account."
   default     = "Allows full IAM administrator access in this account."
 }
 
-variable "iam_admin_role_name"  {
+variable "iam_admin_role_name" {
   description = "The name to assign the IAM role that allows full IAM administrator access in this account."
   default     = "IamAdministrator"
 }
