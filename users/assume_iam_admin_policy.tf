@@ -7,7 +7,7 @@ data "aws_iam_policy_document" "assume_iam_admin_role_doc" {
     actions = ["sts:AssumeRole"]
 
     resources = [
-      aws_iam_role.iam_admin_role.arn
+      "arn:aws:iam::${var.this_account_id}:role/${var.iam_admin_role_name}",
     ]
   }
 }

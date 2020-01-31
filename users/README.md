@@ -81,6 +81,7 @@ future changes by simply running `terraform apply
 | iam_admin_role_name | The name to assign the IAM role that allows full IAM administrator access in this account | string | `IamAdministrator` | no |
 | terraform_backend_users_group | The name of the group to be created for users allowed to access the terraform backend | string | `terraform_backend_users` | no |
 | tags | Tags to apply to all AWS resources created | map(string) | `{}` | no |
+| this_account_id | The ID of the account being configured. | string | | yes |
 | usernames | The usernames associated with the accounts to be created and allowed to access the terraform backend, as well as become IAM administrators.  The format first.last is recommended. | string | | yes |
 
 ## Outputs ##
