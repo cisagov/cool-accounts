@@ -33,7 +33,7 @@ data "aws_iam_policy_document" "backend_access_doc" {
       "dynamodb:PutItem",
     ]
     resources = [
-      "${aws_dynamodb_table.state_lock_table.arn}/*",
+      "${aws_dynamodb_table.state_lock_table.arn}",
     ]
   }
 }
