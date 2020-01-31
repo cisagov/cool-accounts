@@ -44,12 +44,12 @@ To do this, follow these steps:
    ```
 
 1. Create a `<workspace_name>.tfvars` file with all of the required
- variables (see [Inputs](#Inputs) below for details):
+   variables (see [Inputs](#Inputs) below for details):
 
- ```console
- this_account_id = "111111111111"
- user_account_id = "222222222222"
- ```
+   ```console
+   this_account_id = "111111111111"
+   user_account_id = "222222222222"
+   ```
 
 1. Run the command `terraform init`.
 1. Run the command `terraform apply
