@@ -39,6 +39,8 @@ To do this, follow these steps:
    aws_session_token = <MY_SESSION_TOKEN>
    ```
 
+1. Create a Terraform workspace (if you haven't already done so) by running
+   `terraform workspace new <workspace_name>`
 1. Create a `<workspace_name>.tfvars` file with all of the required
    variables (see [Inputs](#Inputs) below for details).  Note that
    `access_backend_terraform_role_arn` is the `backend_role_arn` output
@@ -55,7 +57,7 @@ To do this, follow these steps:
 1. Run the command `terraform init`.
 1. Run the command `terraform apply
    -var-file=<workspace_name>.tfvars`.
-1. Make sure that the analogs of steps 1-6 have been done with the
+1. Make sure that the analogs of steps 1-7 have been done with the
    "terraform" account.
 1. Revert the changes you made to `backend.tf` in step 1.
 1. Revert the changes you made to `provider.tf` in step 2.
