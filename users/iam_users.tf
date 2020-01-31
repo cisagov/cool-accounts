@@ -138,41 +138,13 @@ data "aws_iam_policy_document" "iam_self_admin_doc" {
       aws_iam_user.user[count.index].arn,
     ]
   }
-
-  # Deny all actions but the following if no MFA device is configured
-  statement {
-    effect = "Deny"
-
-    not_actions = [
-      "iam:ChangePassword",
-      "iam:CreateVirtualMFADevice",
-      "iam:EnableMFADevice",
-      "iam:GetUser",
-      "iam:ListMFADevices",
-      "iam:ListVirtualMFADevices",
-      "iam:ResyncMFADevice",
-      "sts:GetSessionToken",
-    ]
-
-    resources = [
-      "*",
-    ]
-
-    condition {
-      test     = "BoolIfExists"
-      variable = "aws:MultiFactorAuthPresent"
-
-      values = [
-        false,
-      ]
-    }
-  }
 }
 
 # The IAM self-administration policy for our IAM users
 resource "aws_iam_user_policy" "user" {
   count = length(var.usernames)
 
+  name   = "SelfManagedCredsWithoutMFA"
   user   = aws_iam_user.user[count.index].name
   policy = data.aws_iam_policy_document.iam_self_admin_doc[count.index].json
 }
