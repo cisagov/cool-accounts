@@ -17,6 +17,6 @@ resource "aws_iam_role_policy_attachment" "create_policy_attachment" {
 }
 
 resource "aws_iam_role_policy_attachment" "iamfullaccess_policy_attachment" {
-  policy_arn = "arn:aws:iam::${var.this_account_id}:policy/IAMFullAccess"
+  policy_arn = "arn:aws:iam::aws:policy/IAMFullAccess"
   role       = aws_iam_role.create_role.name
 }
