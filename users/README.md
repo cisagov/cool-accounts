@@ -34,9 +34,9 @@ To do this, follow these steps:
 
    ```console
    [cool-users-account-admin]
-   aws_access_key_id = <ACCESS_KEY_ID>
-   aws_secret_access_key = <SECRET_ACCESS_KEY>
-   aws_session_token = <SESSION_TOKEN>
+   aws_access_key_id = <MY_ACCESS_KEY_ID>
+   aws_secret_access_key = <MY_SECRET_ACCESS_KEY>
+   aws_session_token = <MY_SESSION_TOKEN>
    ```
 
 1. Create a `<workspace_name>.tfvars` file with all of the required
@@ -46,7 +46,6 @@ To do this, follow these steps:
 
    ```console
    access_terraform_backend_role_arn = "arn:aws:iam::111111111111:role/AccessTerraformBackend"
-   this_account_id = "222222222222"
    usernames = [
       "user.one",
       "user.two"
@@ -80,9 +79,9 @@ future changes by simply running `terraform apply
 | aws_region | The AWS region where the non-global resources for this account are to be created (e.g. us-east-1) | string | `us-east-1` | no |
 | iam_admin_role_description | The description to associate with the IAM role that allows full IAM administrator access in this account | string | `Allows full IAM administrator access in this account.` | no |
 | iam_admin_role_name | The name to assign the IAM role that allows full IAM administrator access in this account | string | `IamAdministrator` | no |
-| usernames | The usernames associated with the accounts to be created and allowed to access the terraform backend, as well as become IAM administrators.  The format first.last is recommended. | string | | yes |
 | terraform_backend_users_group | The name of the group to be created for users allowed to access the terraform backend | string | `terraform_backend_users` | no |
 | tags | Tags to apply to all AWS resources created | map(string) | `{}` | no |
+| usernames | The usernames associated with the accounts to be created and allowed to access the terraform backend, as well as become IAM administrators.  The format first.last is recommended. | string | | yes |
 
 ## Outputs ##
 

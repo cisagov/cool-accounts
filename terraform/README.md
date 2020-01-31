@@ -38,9 +38,9 @@ To do this, follow these steps:
 
    ```console
    [cool-terraform-account-admin]
-   aws_access_key_id = <ACCESS_KEY_ID>
-   aws_secret_access_key = <SECRET_ACCESS_KEY>
-   aws_session_token = <SESSION_TOKEN>
+   aws_access_key_id = <MY_ACCESS_KEY_ID>
+   aws_secret_access_key = <MY_SECRET_ACCESS_KEY>
+   aws_session_token = <MY_SESSION_TOKEN>
    ```
 
 1. Create a `<workspace_name>.tfvars` file with all of the required
