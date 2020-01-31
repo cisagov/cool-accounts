@@ -12,6 +12,6 @@ resource "aws_iam_role" "iam_admin_role" {
 
 # Attach IAMFullAccess policy to the role
 resource "aws_iam_role_policy_attachment" "iamfullaccess_policy_attachment" {
-  policy_arn = "arn:aws:iam::${var.this_account_id}:policy/IAMFullAccess"
+  policy_arn = "arn:aws:iam::aws:policy/IAMFullAccess"
   role       = aws_iam_role.iam_admin_role.name
 }
