@@ -1,6 +1,6 @@
 # cool-accounts #
 
-[![GitHub Build Status](https://github.com/cisagov/cool-terraform-account/workflows/build/badge.svg)](https://github.com/cisagov/cool-terraform-account/actions)
+[![GitHub Build Status](https://github.com/cisagov/cool-accounts/workflows/build/badge.svg)](https://github.com/cisagov/cool-accounts/actions)
 
 This project contains several directories of Terraform code to perform
 the initial configuration of the COOL accounts, such as the
