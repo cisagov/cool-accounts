@@ -24,23 +24,9 @@ with:
 
 To do this, follow these steps:
 
-1. Create a `<workspace_name>.tfvars` file with all of the required
-   variables (see [Inputs](#Inputs) below for details).  Note that
-   `access_backend_terraform_role_arn` is the `backend_role_arn` output
-   from the bootstrapping the terraform subdirectory:
-
-   ```console
-   access_terraform_backend_role_arn = "arn:aws:iam::111111111111:role/AccessTerraformBackend"
-   this_account_id = "222222222222"
-   usernames = [
-     "user.one",
-     "user.two"
-   ]
-   ```
-
 1. Comment out all the content in the `backend.tf` file.
 1. Comment out the `assume_role` block in `provider.tf` and directly
-   below that add the line `profile = "cool-users-account-admin"`.
+   below that uncomment the line `profile = "cool-users-account-admin"`.
 1. Create a new AWS profile called `cool-users-account-admin` in
    your Boto3 configuration using the "AWSAdministratorAccess"
    credentials (access key ID, secret access key, and session token)
@@ -53,10 +39,24 @@ To do this, follow these steps:
    aws_session_token = <SESSION_TOKEN>
    ```
 
+1. Create a `<workspace_name>.tfvars` file with all of the required
+  variables (see [Inputs](#Inputs) below for details).  Note that
+  `access_backend_terraform_role_arn` is the `backend_role_arn` output
+  from the bootstrapping the terraform subdirectory:
+
+  ```console
+  access_terraform_backend_role_arn = "arn:aws:iam::111111111111:role/AccessTerraformBackend"
+  this_account_id = "222222222222"
+  usernames = [
+    "user.one",
+    "user.two"
+  ]
+  ```
+
 1. Run the command `terraform init`.
 1. Run the command `terraform apply
    -var-file=<workspace_name>.tfvars`.
-1. Make sure that the analogs of steps 1-5 have been done with the
+1. Make sure that the analogs of steps 1-6 have been done with the
    "terraform" account.
 1. Revert the changes you made to `backend.tf` in step 1.
 1. Revert the changes you made to `provider.tf` in step 2.
@@ -66,7 +66,7 @@ To do this, follow these steps:
 
 At this point the account has been bootstrapped, and you can apply
 future changes by simply running `terraform apply
--var-file=production.tfvars`.
+-var-file=<workspace_name>.tfvars`.
 
 ## Inputs ##
 
