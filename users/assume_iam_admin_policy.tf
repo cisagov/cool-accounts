@@ -20,6 +20,6 @@ resource "aws_iam_policy" "assume_iam_admin_role" {
 
 # Attach the policy to the IAM admins group
 resource "aws_iam_group_policy_attachment" "iam_admin" {
-  group      = aws_iam_group.iam_admins
+  group      = aws_iam_group.iam_admins.name
   policy_arn = aws_iam_policy.assume_iam_admin_role.arn
 }
