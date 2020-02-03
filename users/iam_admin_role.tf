@@ -1,5 +1,5 @@
 # ------------------------------------------------------------------------------
-# Create the IAM role that allows sufficient permissions to create all
+# Create the IAM role that allows sufficient permissions to provision all
 # AWS resources in the users account.
 # ------------------------------------------------------------------------------
 

@@ -1,6 +1,6 @@
 # cool-accounts - users subdirectory #
 
-This subdirectory contains Terraform code to create the COOL
+This subdirectory contains Terraform code to provision the COOL
 "users" account.  It creates:
 
 * IAM user(s) with the ability to administer their own credentials (including
