@@ -83,7 +83,7 @@ future changes by simply running `terraform apply
 | state_table_write_capacity | The number of write units for the DynamoDB table that will be used for Terraform state locking. | number | `20` | no |
 | tags | Tags to apply to all AWS resources created. | map(string) | `{}` | no |
 | this_account_id | The ID of the account being configured. | string | | yes |
-| user_account_id | The ID of the users account.  This account will be allowed to assume the role that allows sufficient access to the Terraform S3 bucket and DynamoDB table to use those resources as a Terraform backend. | string | | yes |
+| user_account_id | The ID of the users account.  This account will be allowed to assume the role that allows sufficient access to the Terraform S3 bucket and DynamoDB table to use those resources as a Terraform backend, as well as the role that allows sufficient permissions to provision all AWS resources in this account. | string | | yes |
 
 ## Outputs ##
 
