@@ -83,11 +83,11 @@ future changes by simply running `terraform apply
 | aws_region | The AWS region where the non-global resources for this account are to be provisioned (e.g. us-east-1) | string | `us-east-1` | no |
 | iam_admin_role_description | The description to associate with the IAM role that allows full IAM administrator access in this account | string | `Allows full IAM administrator access in this account.` | no |
 | iam_admin_role_name | The name to assign the IAM role that allows full IAM administrator access in this account | string | `IamAdministrator` | no |
-| iam_admins_group | The name of the group to be created for users allowed to be IAM administrators | string | `iam_admins` | no |
+| iam_admins_group_name | The name of the group to be created for users allowed to be IAM administrators | string | `iam_admins` | no |
 | tags | Tags to apply to all AWS resources created | map(string) | `{}` | no |
 | terraform_account_id | The ID of the Terraform account, which contains roles that can be assumed to access the Terraform backend and to provision AWS resouces in that account. | string | | yes |
 | terraform_account_provisioners_group_name | The name of the group to be created for users allowed to provision the Terraform account | string | `terraform_account_provisioners` | no |
-| terraform_backend_users_group | The name of the group to be created for users allowed to access the Terraform backend | string | `terraform_backend_users` | no |
+| terraform_backend_users_group_name | The name of the group to be created for users allowed to access the Terraform backend | string | `terraform_backend_users` | no |
 | this_account_id | The ID of the account being configured. | string | | yes |
 
 ## Outputs ##

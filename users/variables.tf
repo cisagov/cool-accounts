@@ -68,7 +68,7 @@ variable "iam_admin_role_name" {
   default     = "IamAdministrator"
 }
 
-variable "iam_admins_group" {
+variable "iam_admins_group_name" {
   description = "The name of the group to be created for users allowed to be IAM administrators."
   default     = "iam_admins"
 }
@@ -84,7 +84,7 @@ variable "terraform_account_provisioners_group_name" {
   default     = "terraform_account_provisioners"
 }
 
-variable "terraform_backend_users_group" {
+variable "terraform_backend_users_group_name" {
   description = "The name of the group to be created for users allowed to access the Terraform backend."
   default     = "terraform_backend_users"
 }
