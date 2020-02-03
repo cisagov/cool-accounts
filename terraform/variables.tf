@@ -18,29 +18,29 @@ variable "user_account_id" {
 # These parameters have reasonable defaults.
 # ------------------------------------------------------------------------------
 
-variable "aws_region" {
-  description = "The AWS region where the non-global resources for this account are to be created (e.g. \"us-east-1\")."
-  default     = "us-east-1"
-}
-
-variable "backend_role_description" {
+variable "access_terraform_backend_role_description" {
   description = "The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient access to the Terraform S3 bucket and DynamoDB table to use those resources as a Terraform backend."
   default     = "Allows sufficient access to the Terraform S3 bucket and DynamoDB table to use those resources as a Terraform backend."
 }
 
-variable "backend_role_name" {
+variable "access_terraform_backend_role_name" {
   description = "The name to assign the IAM role (as well as the corresponding policy) that allows sufficient access to the Terraform S3 bucket and DynamoDB table to use those resources as a Terraform backend."
   default     = "AccessTerraformBackend"
 }
 
-variable "create_role_description" {
-  description = "The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient permissions to create all AWS resources in this account."
-  default     = "Allows sufficient permissions to create all AWS resources in this account."
+variable "aws_region" {
+  description = "The AWS region where the non-global resources for this account are to be provisioned (e.g. \"us-east-1\")."
+  default     = "us-east-1"
 }
 
-variable "create_role_name" {
-  description = "The name to assign the IAM role (as well as the corresponding policy) that allows sufficient permissions to create all AWS resources in the terraform account."
-  default     = "CreateAccount"
+variable "provision_account_role_description" {
+  description = "The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient permissions to provision all AWS resources in this account."
+  default     = "Allows sufficient permissions to provision all AWS resources in this account."
+}
+
+variable "provision_account_role_name" {
+  description = "The name to assign the IAM role (as well as the corresponding policy) that allows sufficient permissions to provision all AWS resources in the terraform account."
+  default     = "ProvisionAccount"
 }
 
 variable "state_bucket_name" {
@@ -67,6 +67,6 @@ variable "state_table_write_capacity" {
 
 variable "tags" {
   type        = map(string)
-  description = "Tags to apply to all AWS resources created."
+  description = "Tags to apply to all AWS resources provisioned."
   default     = {}
 }
