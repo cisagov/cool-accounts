@@ -1,16 +1,19 @@
-# The users being created
-resource "aws_iam_user" "user" {
-  count = length(var.usernames)
+# The admin users being created
+resource "aws_iam_user" "admin_user" {
+  count = length(var.admin_usernames)
 
-  name = var.usernames[count.index]
+  name = var.admin_usernames[count.index]
   tags = var.tags
 }
 
-# IAM policy that allows the users to administer their own user
+# IAM policy that allows admin users to administer their own user
 # accounts.  This policy is pretty much copied from here:
 # https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_examples_aws_my-sec-creds-self-manage.html
-data "aws_iam_policy_document" "iam_self_admin_doc" {
-  count = length(var.usernames)
+# The main difference is that we don't require our admins to be authenticated
+# with MFA, since these accounts will only be accessed programatically
+# (i.e. not via the AWS web console) where MFA is not an option.
+data "aws_iam_policy_document" "admin_iam_self_admin_doc" {
+  count = length(var.admin_usernames)
 
   # Allow users to view their own account information
   statement {
@@ -37,7 +40,7 @@ data "aws_iam_policy_document" "iam_self_admin_doc" {
     ]
 
     resources = [
-      aws_iam_user.user[count.index].arn,
+      aws_iam_user.admin_user[count.index].arn,
     ]
   }
 
@@ -53,7 +56,7 @@ data "aws_iam_policy_document" "iam_self_admin_doc" {
     ]
 
     resources = [
-      aws_iam_user.user[count.index].arn,
+      aws_iam_user.admin_user[count.index].arn,
     ]
   }
 
@@ -69,7 +72,7 @@ data "aws_iam_policy_document" "iam_self_admin_doc" {
     ]
 
     resources = [
-      aws_iam_user.user[count.index].arn,
+      aws_iam_user.admin_user[count.index].arn,
     ]
   }
 
@@ -86,7 +89,7 @@ data "aws_iam_policy_document" "iam_self_admin_doc" {
     ]
 
     resources = [
-      aws_iam_user.user[count.index].arn,
+      aws_iam_user.admin_user[count.index].arn,
     ]
   }
 
@@ -103,7 +106,7 @@ data "aws_iam_policy_document" "iam_self_admin_doc" {
     ]
 
     resources = [
-      aws_iam_user.user[count.index].arn,
+      aws_iam_user.admin_user[count.index].arn,
     ]
   }
 
@@ -119,7 +122,7 @@ data "aws_iam_policy_document" "iam_self_admin_doc" {
     resources = [
       # The MFA ARN is identical to that of the user, except that the
       # text "user" is replaced by "mfa"
-      replace(aws_iam_user.user[count.index].arn, "user", "mfa"),
+      replace(aws_iam_user.admin_user[count.index].arn, "user", "mfa"),
     ]
   }
 
@@ -135,16 +138,16 @@ data "aws_iam_policy_document" "iam_self_admin_doc" {
     ]
 
     resources = [
-      aws_iam_user.user[count.index].arn,
+      aws_iam_user.admin_user[count.index].arn,
     ]
   }
 }
 
 # The IAM self-administration policy for our IAM users
-resource "aws_iam_user_policy" "user" {
-  count = length(var.usernames)
+resource "aws_iam_user_policy" "admin_user" {
+  count = length(var.admin_usernames)
 
   name   = "SelfManagedCredsWithoutMFA"
-  user   = aws_iam_user.user[count.index].name
-  policy = data.aws_iam_policy_document.iam_self_admin_doc[count.index].json
+  user   = aws_iam_user.admin_user[count.index].name
+  policy = data.aws_iam_policy_document.admin_iam_self_admin_doc[count.index].json
 }
