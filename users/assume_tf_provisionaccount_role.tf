@@ -1,5 +1,5 @@
 # IAM assume role policy document that allows assumption of the IAM
-# role that can provision the terraform account.
+# role that can provision the Terraform account.
 data "aws_iam_policy_document" "assume_tf_provisionaccount_role_doc" {
   statement {
     effect = "Allow"
@@ -18,8 +18,8 @@ resource "aws_iam_policy" "assume_tf_provisionaccount_role" {
   policy      = data.aws_iam_policy_document.assume_tf_provisionaccount_role_doc.json
 }
 
-# Attach the policy to the terraform admin users group
+# Attach the policy to the Terraform account provisioners group
 resource "aws_iam_group_policy_attachment" "assume_tf_provisionaccount_role_attachment" {
-  group      = aws_iam_group.terraform_account_terraformers.name
+  group      = aws_iam_group.terraform_account_provisioners.name
   policy_arn = aws_iam_policy.assume_tf_provisionaccount_role.arn
 }

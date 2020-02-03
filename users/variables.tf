@@ -24,7 +24,7 @@ variable "this_account_id" {
 # ------------------------------------------------------------------------------
 
 variable "aws_region" {
-  description = "The AWS region where the non-global resources for this account are to be created (e.g. \"us-east-1\")."
+  description = "The AWS region where the non-global resources for this account are to be provisioned (e.g. \"us-east-1\")."
   default     = "us-east-1"
 }
 
@@ -73,13 +73,13 @@ variable "iam_admins_group" {
   default     = "iam_admins"
 }
 
-variable "terraform_account_terraformers_group_name" {
-  description = "The name of the group to be created for users allowed to Terraform the Terraform account."
-  default     = "terraform_account_terraformers"
+variable "terraform_account_provisioners_group_name" {
+  description = "The name of the group to be created for users allowed to provision the Terraform account."
+  default     = "terraform_account_provisioners"
 }
 
 variable "terraform_backend_users_group" {
-  description = "The name of the group to be created for users allowed to access the terraform backend."
+  description = "The name of the group to be created for users allowed to access the Terraform backend."
   default     = "terraform_backend_users"
 }
 
