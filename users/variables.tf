@@ -33,14 +33,14 @@ variable "assume_access_terraform_backend_policy_name" {
   default     = "Terraform-AssumeAccessTerraformBackend"
 }
 
-variable "assume_iam_admin_policy_description" {
-  description = "The description to associate with the IAM policy that allows assumption of the role to become an IAM admininistrator."
-  default     = "Allow assumption of the IamAdministrator role."
+variable "assume_provision_account_policy_description" {
+  description = "The description to associate with the IAM policy that allows assumption of the role to provision all AWS resources in this account."
+  default     = "Allow assumption of the ProvisionAccount role."
 }
 
-variable "assume_iam_admin_policy_name" {
-  description = "The name to assign the IAM policy that allows assumption of the role to become an IAM admininistrator."
-  default     = "AssumeIamAdministrator"
+variable "assume_provision_account_policy_name" {
+  description = "The name to assign the IAM policy that allows assumption of the role to provision all AWS resources in this account."
+  default     = "AssumeProvisionAccount"
 }
 
 variable "assume_tf_provisionaccount_policy_description" {
@@ -58,19 +58,19 @@ variable "aws_region" {
   default     = "us-east-1"
 }
 
-variable "iam_admin_role_description" {
-  description = "The description to associate with the IAM role that allows full IAM administrator access in this account."
-  default     = "Allows full IAM administrator access in this account."
+variable "provision_account_role_description" {
+  description = "The description to associate with the IAM role that allows access to provision all AWS resources in this account."
+  default     = "Allows sufficient access to provision all AWS resources in this account."
 }
 
-variable "iam_admin_role_name" {
-  description = "The name to assign the IAM role that allows full IAM administrator access in this account."
-  default     = "IamAdministrator"
+variable "provision_account_role_name" {
+  description = "The name to assign the IAM role that allows sufficient permissions to provision all AWS resources in the users account."
+  default     = "ProvisionAccount"
 }
 
-variable "iam_admins_group_name" {
-  description = "The name of the group to be created for users allowed to be IAM administrators."
-  default     = "iam_admins"
+variable "users_account_provisioners_group_name" {
+  description = "The name of the group to be created for users allowed to provision the users account."
+  default     = "users_account_provisioners"
 }
 
 variable "tags" {
