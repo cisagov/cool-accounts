@@ -9,17 +9,17 @@ variable "access_terraform_backend_role_arn" {
   description = "The ARN of the role that allows access to the Terraform backend."
 }
 
+variable "admin_usernames" {
+  type        = list(string)
+  description = "The usernames associated with the admin accounts to be created, which are allowed to access the terraform backend and are IAM administrators.  The format first.last is recommended."
+}
+
 variable "terraform_createaccount_role_arn" {
   description = "The ARN of the role that allows Terraforming of the Terraform account."
 }
 
 variable "this_account_id" {
   description = "The ID of the account being configured."
-}
-
-variable "usernames" {
-  type        = list(string)
-  description = "The usernames associated with the accounts to be created and allowed to access the terraform backend, as well as become IAM administrators.  The format first.last is recommended."
 }
 
 # ------------------------------------------------------------------------------
@@ -90,6 +90,6 @@ variable "terraform_backend_users_group" {
 
 variable "tags" {
   type        = map(string)
-  description = "Tags to apply to all AWS resources created"
+  description = "Tags to apply to all AWS resources provisioned."
   default     = {}
 }
