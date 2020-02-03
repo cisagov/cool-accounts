@@ -7,7 +7,7 @@ data "aws_iam_policy_document" "assume_access_terraform_backend_doc" {
     actions = ["sts:AssumeRole"]
 
     resources = [
-      var.access_terraform_backend_role_arn
+      "arn:aws:iam::${var.terraform_account_id}:role/AccessTerraformBackend"
     ]
   }
 }

@@ -1,5 +1,5 @@
-# Put our admin IAM users in the terraform backend access, IAM admin, and
-# Terraform account Terraformers groups.
+# Put our admin IAM users in the Terraform backend access, IAM admin, and
+# Terraform account provisioners groups.
 resource "aws_iam_user_group_membership" "admin_user" {
   count = length(var.admin_usernames)
 
@@ -8,6 +8,6 @@ resource "aws_iam_user_group_membership" "admin_user" {
   groups = [
     aws_iam_group.terraform_backend_users.name,
     aws_iam_group.iam_admins.name,
-    aws_iam_group.terraform_account_terraformers.name
+    aws_iam_group.terraform_account_provisioners.name
   ]
 }
