@@ -74,7 +74,7 @@ future changes by simply running `terraform apply
 |------|-------------|:----:|:-------:|:--------:|
 | access_terraform_backend_role_description | The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient access to the Terraform S3 bucket and DynamoDB table to use those resources as a Terraform backend. | string | `Allows sufficient access to the Terraform S3 bucket and DynamoDB table to use those resources as a Terraform backend.` | no |
 | access_terraform_backend_role_name | The name to assign the IAM role (as well as the corresponding policy) that allows sufficient access to the Terraform S3 bucket and DynamoDB table to use those resources as a Terraform backend. | string | `AccessTerraformBackend` | no |
-| aws_region | The AWS region where the non-global resources for this account are to be created (e.g. us-east-1). | string | `us-east-1` | no |
+| aws_region | The AWS region where the non-global resources for this account are to be provisioned (e.g. us-east-1). | string | `us-east-1` | no |
 | provision_account_role_description | The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient access to provision all AWS resources in this account. | string | `Allows sufficient access to provision all AWS resources in this account.` | no |
 | provision_account_role_name | The name to assign the IAM role (as well as the corresponding policy) that allows sufficient permissions to provision all AWS resources in the terraform account. | string | `ProvisionAccount` | no |
 | state_bucket_name | The name to use for the S3 bucket that will store the Terraform state. | string | `cisa-cool-terraform-state` | no |
