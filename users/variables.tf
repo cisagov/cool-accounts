@@ -14,7 +14,7 @@ variable "sharedservices_account_id" {
 }
 
 variable "terraform_account_id" {
-  description = "The ID of the Terraform account, which contains roles that can be assumed to access the Terraform backend and to provision AWS resouces in that account."
+  description = "The ID of the Terraform account, which contains roles that can be assumed to access the Terraform backend and to provision AWS resources in that account."
 }
 
 variable "this_account_id" {
