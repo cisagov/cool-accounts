@@ -48,14 +48,14 @@ variable "assume_iam_admin_policy_name" {
   default     = "AssumeIamAdministrator"
 }
 
-variable "assume_tf_createaccount_policy_description" {
-  description = "The description to associate with the IAM policy that allows assumption of the role with sufficient permissions to Terraform the Terraform account."
-  default     = "Allow assumption of the CreateAccount role in the Terraform account."
+variable "assume_tf_provisionaccount_policy_description" {
+  description = "The description to associate with the IAM policy that allows assumption of the role with sufficient permissions to provision all AWS resources in the Terraform account."
+  default     = "Allow assumption of the ProvisionAccount role in the Terraform account."
 }
 
-variable "assume_tf_createaccount_policy_name" {
-  description = "The name to associate with the IAM policy that allows assumption of the role with sufficient permissions to Terraform the Terraform account."
-  default     = "Terraform-AssumeCreateAccount"
+variable "assume_tf_provisionaccount_policy_name" {
+  description = "The name to associate with the IAM policy that allows assumption of the role with sufficient permissions to provision all AWS resources in the Terraform account."
+  default     = "Terraform-AssumeProvisionAccount"
 }
 
 variable "iam_admin_role_description" {
