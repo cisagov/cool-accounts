@@ -14,6 +14,10 @@ variable "admin_usernames" {
   description = "The usernames associated with the admin accounts to be created, which are allowed to access the terraform backend and are IAM administrators.  The format first.last is recommended."
 }
 
+variable "sharedservices_account_id" {
+  description = "The ID of the Shared Services account.."
+}
+
 variable "terraform_createaccount_role_arn" {
   description = "The ARN of the role that allows Terraforming of the Terraform account."
 }
@@ -53,6 +57,16 @@ variable "assume_iam_admin_policy_name" {
   default     = "AssumeIamAdministrator"
 }
 
+variable "assume_sharedservices_provisionaccount_policy_description" {
+  description = "The description to associate with the IAM policy that allows assumption of the role with sufficient permissions to provision the Shared Services account."
+  default     = "Allow assumption of the ProvisionAccount role in the Shared Services account."
+}
+
+variable "assume_sharedservices_provisionaccount_policy_name" {
+  description = "The name to associate with the IAM policy that allows assumption of the role with sufficient permissions to provision the Shared Services account."
+  default     = "SharedServices-AssumeProvisionAccount"
+}
+
 variable "assume_tf_createaccount_policy_description" {
   description = "The description to associate with the IAM policy that allows assumption of the role with sufficient permissions to Terraform the Terraform account."
   default     = "Allow assumption of the CreateAccount role in the Terraform account."
@@ -76,6 +90,16 @@ variable "iam_admin_role_name" {
 variable "iam_admins_group" {
   description = "The name of the group to be created for users allowed to be IAM administrators."
   default     = "iam_admins"
+}
+
+variable "provision_account_role_name" {
+  description = "The name of the IAM role that allows sufficient permissions to provision the particular account in which it resides."
+  default     = "ProvisionAccount"
+}
+
+variable "sharedservices_account_provisioners_group_name" {
+  description = "The name to associate with the IAM group allowed to assume the role with sufficient permissions to provision the Shared Services account."
+  default     = "SharedServices-AccountProvisioners"
 }
 
 variable "terraform_account_terraformers_group_name" {
