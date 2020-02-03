@@ -48,7 +48,7 @@ To do this, follow these steps:
 
    ```console
    access_terraform_backend_role_arn = "arn:aws:iam::111111111111:role/AccessTerraformBackend"
-   usernames = [
+   admin_usernames = [
       "user.one",
       "user.two"
    ]
@@ -74,6 +74,7 @@ future changes by simply running `terraform apply
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-------:|:--------:|
 | access_backend_terraform_role_arn | The ARN of the role that allows access to the Terraform backend | string | | yes |
+| admin_usernames | The usernames associated with the admin accounts to be created, which are allowed to access the terraform backend and are IAM administrators.  The format first.last is recommended. | string | | yes |
 | assume_access_terraform_backend_policy_description | The description to associate with the IAM policy that allows assumption of the role with access to the Terraform backend | string | `Allow assumption of the AccessTerraformBackend role in the Terraform account.` | no |
 | assume_access_terraform_backend_policy_name | The name to assign the IAM policy that allows assumption of the role with access to the Terraform backend | string | `Terraform-AssumeAccessTerraformBackend` | no |
 | assume_iam_admin_policy_description | The description to associate with the IAM policy that allows assumption of the role to become an IAM admininistrator | string | `Allow assumption of the IamAdministrator role.` | no |
@@ -84,7 +85,6 @@ future changes by simply running `terraform apply
 | terraform_backend_users_group | The name of the group to be created for users allowed to access the terraform backend | string | `terraform_backend_users` | no |
 | tags | Tags to apply to all AWS resources created | map(string) | `{}` | no |
 | this_account_id | The ID of the account being configured. | string | | yes |
-| usernames | The usernames associated with the accounts to be created and allowed to access the terraform backend, as well as become IAM administrators.  The format first.last is recommended. | string | | yes |
 
 ## Outputs ##
 
