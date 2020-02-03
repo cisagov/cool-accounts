@@ -1,6 +1,6 @@
 # cool-accounts - terraform subdirectory #
 
-This subdirectory contains Terraform code to create the COOL
+This subdirectory contains Terraform code to provision the COOL
 "terraform" account.  It creates:
 
 * The S3 bucket used to store Terraform state.
@@ -8,9 +8,9 @@ This subdirectory contains Terraform code to create the COOL
 * An IAM role that allows sufficient access to the Terraform S3 bucket
   and DynamoDB table to use those resources as a Terraform backend.
   This role also has a trust relationship with the users account.
-* An IAM role that allows sufficient sufficient permissions to create
-  all AWS resources in this account.  This role has a trust
-  relationship with the users account.
+* An IAM role that allows sufficient permissions to provision all AWS
+  resources in this account.  This role has a trust relationship with
+  the users account.
 
 ## Bootstrapping this account ##
 
@@ -72,11 +72,11 @@ future changes by simply running `terraform apply
 
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-------:|:--------:|
+| access_terraform_backend_role_description | The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient access to the Terraform S3 bucket and DynamoDB table to use those resources as a Terraform backend. | string | `Allows sufficient access to the Terraform S3 bucket and DynamoDB table to use those resources as a Terraform backend.` | no |
+| access_terraform_backend_role_name | The name to assign the IAM role (as well as the corresponding policy) that allows sufficient access to the Terraform S3 bucket and DynamoDB table to use those resources as a Terraform backend. | string | `AccessTerraformBackend` | no |
 | aws_region | The AWS region where the non-global resources for this account are to be created (e.g. us-east-1). | string | `us-east-1` | no |
-| backend_role_description | The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient access to the Terraform S3 bucket and DynamoDB table to use those resources as a Terraform backend. | string | `Allows sufficient access to the Terraform S3 bucket and DynamoDB table to use those resources as a Terraform backend.` | no |
-| backend_role_name | The name to assign the IAM role (as well as the corresponding policy) that allows sufficient access to the Terraform S3 bucket and DynamoDB table to use those resources as a Terraform backend. | string | `AccessTerraformBackend` | no |
-| create_role_description | The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient access to create all AWS resources in this account. | string | `Allows sufficient access to create all AWS resources in this account.` | no |
-| create_role_name | The name to assign the IAM role (as well as the corresponding policy) that allows sufficient permissions to create all AWS resources in the terraform account. | string | `CreateAccount` | no |
+| provision_account_role_description | The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient access to provision all AWS resources in this account. | string | `Allows sufficient access to provision all AWS resources in this account.` | no |
+| provision_account_role_name | The name to assign the IAM role (as well as the corresponding policy) that allows sufficient permissions to provision all AWS resources in the terraform account. | string | `ProvisionAccount` | no |
 | state_bucket_name | The name to use for the S3 bucket that will store the Terraform state. | string | `cisa-cool-terraform-state` | no |
 | state_table_name | The name to use for the DynamoDB table that will be used for Terraform state locking. | string | `terraform-state-lock` | no |
 | state_table_read_capacity | The number of read units for the DynamoDB table that will be used for Terraform state locking. | number | `20` | no |
@@ -90,7 +90,7 @@ future changes by simply running `terraform apply
 | Name | Description |
 |------|-------------|
 | backend_role_arn | The ARN of the IAM role that allows sufficient access to the Terraform S3 bucket and DynamoDB table to use those resources as a Terraform backend. |
-| create_role_arn | The ARN of the IAM role that allows sufficient sufficient permissions to create all AWS resources in this account. |
+| create_role_arn | The ARN of the IAM role that allows sufficient permissions to create all AWS resources in this account. |
 | state_bucket_arn | The ARN of the S3 bucket where Terraform state information will be stored. |
 | state_bucket_id | The ID of the S3 bucket where Terraform state information will be stored. |
 | state_lock_table_arn | The ARN of the DynamoDB table that to be used for Terraform state locking. |

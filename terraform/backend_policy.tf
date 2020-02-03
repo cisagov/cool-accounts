@@ -6,7 +6,7 @@
 # IAM policy document that allows sufficient access to the state
 # bucket and state locking table to use those resources as a Terraform
 # backend.
-data "aws_iam_policy_document" "backend_access_doc" {
+data "aws_iam_policy_document" "access_terraform_backend_access_doc" {
   statement {
     actions = [
       "s3:ListBucket",
@@ -39,8 +39,8 @@ data "aws_iam_policy_document" "backend_access_doc" {
 }
 
 # The IAM policy
-resource "aws_iam_policy" "backend_access_policy" {
-  description = var.backend_role_description
-  name        = var.backend_role_name
-  policy      = data.aws_iam_policy_document.backend_access_doc.json
+resource "aws_iam_policy" "access_terraform_backend_access_policy" {
+  description = var.access_terraform_backend_role_description
+  name        = var.access_terraform_backend_role_name
+  policy      = data.aws_iam_policy_document.access_terraform_backend_access_doc.json
 }
