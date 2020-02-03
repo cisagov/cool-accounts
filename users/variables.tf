@@ -68,11 +68,6 @@ variable "provision_account_role_name" {
   default     = "ProvisionAccount"
 }
 
-variable "users_account_provisioners_group_name" {
-  description = "The name of the group to be created for users allowed to provision the users account."
-  default     = "users_account_provisioners"
-}
-
 variable "tags" {
   type        = map(string)
   description = "Tags to apply to all AWS resources provisioned."
@@ -87,4 +82,9 @@ variable "terraform_account_provisioners_group_name" {
 variable "terraform_backend_users_group_name" {
   description = "The name of the group to be created for users allowed to access the Terraform backend."
   default     = "terraform_backend_users"
+}
+
+variable "users_account_provisioners_group_name" {
+  description = "The name of the group to be created for users allowed to provision the users account."
+  default     = "users_account_provisioners"
 }
