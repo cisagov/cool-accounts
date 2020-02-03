@@ -1,6 +1,6 @@
 # cool-accounts - users subdirectory #
 
-This subdirectory contains Terraform code to create the COOL
+This subdirectory contains Terraform code to provision the COOL
 "users" account.  It creates:
 
 * IAM user(s) with the ability to administer their own credentials (including
@@ -73,17 +73,21 @@ future changes by simply running `terraform apply
 
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-------:|:--------:|
-| access_backend_terraform_role_arn | The ARN of the role that allows access to the Terraform backend | string | | yes |
 | admin_usernames | The usernames associated with the admin accounts to be created, which are allowed to access the terraform backend and are IAM administrators.  The format first.last is recommended. | string | | yes |
 | assume_access_terraform_backend_policy_description | The description to associate with the IAM policy that allows assumption of the role with access to the Terraform backend | string | `Allow assumption of the AccessTerraformBackend role in the Terraform account.` | no |
 | assume_access_terraform_backend_policy_name | The name to assign the IAM policy that allows assumption of the role with access to the Terraform backend | string | `Terraform-AssumeAccessTerraformBackend` | no |
 | assume_iam_admin_policy_description | The description to associate with the IAM policy that allows assumption of the role to become an IAM admininistrator | string | `Allow assumption of the IamAdministrator role.` | no |
 | assume_iam_admin_policy_name | The name to assign the IAM policy that allows assumption of the role to become an IAM admininistrator | string | `AssumeIamAdministrator` | no |
-| aws_region | The AWS region where the non-global resources for this account are to be created (e.g. us-east-1) | string | `us-east-1` | no |
+| assume_tf_provisionaccount_policy_description | The description to associate with the IAM policy that allows assumption of the role with sufficient permissions to provision all AWS resources in the Terraform account | string | `Allow assumption of the ProvisionAccount role in the Terraform account.` | no |
+| assume_tf_provisionaccount_policy_name | The name to associate with the IAM policy that allows assumption of the role with sufficient permissions to provision all AWS resources in the Terraform account | string | `Terraform-AssumeProvisionAccount` | no |
+| aws_region | The AWS region where the non-global resources for this account are to be provisioned (e.g. us-east-1) | string | `us-east-1` | no |
 | iam_admin_role_description | The description to associate with the IAM role that allows full IAM administrator access in this account | string | `Allows full IAM administrator access in this account.` | no |
 | iam_admin_role_name | The name to assign the IAM role that allows full IAM administrator access in this account | string | `IamAdministrator` | no |
-| terraform_backend_users_group | The name of the group to be created for users allowed to access the terraform backend | string | `terraform_backend_users` | no |
+| iam_admins_group_name | The name of the group to be created for users allowed to be IAM administrators | string | `iam_admins` | no |
 | tags | Tags to apply to all AWS resources created | map(string) | `{}` | no |
+| terraform_account_id | The ID of the Terraform account, which contains roles that can be assumed to access the Terraform backend and to provision AWS resouces in that account. | string | | yes |
+| terraform_account_provisioners_group_name | The name of the group to be created for users allowed to provision the Terraform account | string | `terraform_account_provisioners` | no |
+| terraform_backend_users_group_name | The name of the group to be created for users allowed to access the Terraform backend | string | `terraform_backend_users` | no |
 | this_account_id | The ID of the account being configured. | string | | yes |
 
 ## Outputs ##
