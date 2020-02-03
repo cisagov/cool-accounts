@@ -1,11 +1,11 @@
-output "backend_role_arn" {
-  value       = aws_iam_role.backend_role.arn
+output "access_terraform_backend_role_arn" {
+  value       = aws_iam_role.access_terraform_backend_role.arn
   description = "The ARN of the IAM role that allows sufficient access to the Terraform S3 bucket and DynamoDB table to use those resources as a Terraform backend."
 }
 
-output "create_role_arn" {
-  value       = aws_iam_role.create_role.arn
-  description = "The ARN of the IAM role that allows sufficient sufficient permissions to create all AWS resources in this account."
+output "provision_role_arn" {
+  value       = aws_iam_role.provision_account_role.arn
+  description = "The ARN of the IAM role that allows sufficient sufficient permissions to provision all AWS resources in this account."
 }
 
 output "state_bucket_arn" {
