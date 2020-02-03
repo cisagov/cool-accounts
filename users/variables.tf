@@ -10,7 +10,7 @@ variable "admin_usernames" {
 }
 
 variable "sharedservices_account_id" {
-  description = "The ID of the Shared Services account.."
+  description = "The ID of the Shared Services account, which contains a role that can be assumed to access the Terraform backend and to provision AWS resouces in that account."
 }
 
 variable "terraform_account_id" {
@@ -48,12 +48,12 @@ variable "assume_iam_admin_policy_name" {
 }
 
 variable "assume_sharedservices_provisionaccount_policy_description" {
-  description = "The description to associate with the IAM policy that allows assumption of the role with sufficient permissions to provision the Shared Services account."
+  description = "The description to associate with the IAM policy that allows assumption of the role with sufficient permissions to provision all AWS resources in the Shared Services account."
   default     = "Allow assumption of the ProvisionAccount role in the Shared Services account."
 }
 
 variable "assume_sharedservices_provisionaccount_policy_name" {
-  description = "The name to associate with the IAM policy that allows assumption of the role with sufficient permissions to provision the Shared Services account."
+  description = "The name to associate with the IAM policy that allows assumption of the role with sufficient permissions to provision all AWS resources in the Shared Services account."
   default     = "SharedServices-AssumeProvisionAccount"
 }
 
