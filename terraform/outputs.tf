@@ -5,7 +5,7 @@ output "access_terraform_backend_role_arn" {
 
 output "provision_role_arn" {
   value       = aws_iam_role.provision_account_role.arn
-  description = "The ARN of the IAM role that allows sufficient sufficient permissions to provision all AWS resources in this account."
+  description = "The ARN of the IAM role that allows sufficient permissions to provision all AWS resources in this account."
 }
 
 output "state_bucket_arn" {
