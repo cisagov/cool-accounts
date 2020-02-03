@@ -92,14 +92,9 @@ variable "iam_admins_group" {
   default     = "iam_admins"
 }
 
-variable "provision_account_role_name" {
-  description = "The name of the IAM role that allows sufficient permissions to provision the particular account in which it resides."
-  default     = "ProvisionAccount"
-}
-
 variable "sharedservices_account_provisioners_group_name" {
   description = "The name to associate with the IAM group allowed to assume the role with sufficient permissions to provision the Shared Services account."
-  default     = "SharedServices-AccountProvisioners"
+  default     = "sharedservices_account_provisioners"
 }
 
 variable "terraform_account_terraformers_group_name" {

@@ -7,7 +7,7 @@ data "aws_iam_policy_document" "assume_sharedservices_provisionaccount_role_doc"
     actions = ["sts:AssumeRole"]
 
     resources = [
-      "arn:aws:iam::${var.sharedservices_account_id}:role/${var.provision_account_role_name}"
+      "arn:aws:iam::${var.sharedservices_account_id}:role/ProvisionAccount"
     ]
   }
 }
