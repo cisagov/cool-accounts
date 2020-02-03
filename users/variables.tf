@@ -4,18 +4,13 @@
 # You must provide a value for each of these parameters.
 # ------------------------------------------------------------------------------
 
-variable "access_terraform_backend_role_arn" {
-  type        = string
-  description = "The ARN of the role that allows access to the Terraform backend."
-}
-
 variable "admin_usernames" {
   type        = list(string)
   description = "The usernames associated with the admin accounts to be created, which are allowed to access the terraform backend and are IAM administrators.  The format first.last is recommended."
 }
 
-variable "terraform_createaccount_role_arn" {
-  description = "The ARN of the role that allows Terraforming of the Terraform account."
+variable "terraform_account_id" {
+  description = "The ID of the Terraform account, which contains roles that can be assumed to access the Terraform backend and to provision AWS resouces in that account."
 }
 
 variable "this_account_id" {

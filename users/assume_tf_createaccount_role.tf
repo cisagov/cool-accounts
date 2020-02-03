@@ -7,7 +7,7 @@ data "aws_iam_policy_document" "assume_tf_createaccount_role_doc" {
     actions = ["sts:AssumeRole"]
 
     resources = [
-      var.terraform_createaccount_role_arn
+      "arn:aws:iam::${var.terraform_account_id}:role/ProvisionAccount"
     ]
   }
 }
