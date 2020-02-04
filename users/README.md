@@ -87,7 +87,7 @@ future changes by simply running `terraform apply
 | iam_admin_role_name | The name to assign the IAM role that allows full IAM administrator access in this account | string | `IamAdministrator` | no |
 | iam_admins_group_name | The name of the group to be created for users allowed to be IAM administrators | string | `iam_admins` | no |
 | sharedservices_account_id | The ID of the Shared Services account, which contains a role that can be assumed to provision AWS resources in that account. | string | | yes |
-| sharedservices_account_provisioners_group_name | The name to associate with the IAM group allowed to assume the role with sufficient permissions to provision the Shared Services account. | string | `terraform_account_provisioners` | no |
+| sharedservices_account_provisioners_group_name | The name to associate with the IAM group allowed to assume the role with sufficient permissions to provision the Shared Services account. | string | `sharedservices_account_provisioners` | no |
 | tags | Tags to apply to all AWS resources created | map(string) | `{}` | no |
 | terraform_account_id | The ID of the Terraform account, which contains roles that can be assumed to access the Terraform backend and to provision AWS resources in that account. | string | | yes |
 | terraform_account_provisioners_group_name | The name of the group to be created for users allowed to provision the Terraform account | string | `terraform_account_provisioners` | no |
