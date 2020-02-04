@@ -23,12 +23,12 @@ variable "aws_region" {
   default     = "us-east-1"
 }
 
-variable "provision_account_role_description" {
+variable "provisionaccount_role_description" {
   description = "The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient permissions to provision all AWS resources in this account."
   default     = "Allows sufficient permissions to provision all AWS resources in this account."
 }
 
-variable "provision_account_role_name" {
+variable "provisionaccount_role_name" {
   description = "The name to assign the IAM role (as well as the corresponding policy) that allows sufficient permissions to provision all AWS resources in the terraform account."
   default     = "ProvisionAccount"
 }
