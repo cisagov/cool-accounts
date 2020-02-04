@@ -9,7 +9,7 @@ variable "this_account_id" {
 }
 
 variable "user_account_id" {
-  description = "The ID of the users account.  This account will be allowed to assume the role that allows sufficient access to the Terraform S3 bucket and DynamoDB table to use those resources as a Terraform backend."
+  description = "The ID of the users account.  This account will be allowed to assume the role that allows sufficient access to the Terraform S3 bucket and DynamoDB table to use those resources as a Terraform backend, as well as the role that allows sufficient permissions to provision all AWS resources in this account."
 }
 
 # ------------------------------------------------------------------------------
