@@ -6,7 +6,7 @@
 # We will also attach the IAMFullAccess policy to the role that uses
 # this policy, so it will have all necessary permissions to provision
 # all AWS resources in the terraform account.
-data "aws_iam_policy_document" "provision_account_doc" {
+data "aws_iam_policy_document" "provisionaccount_doc" {
   # Permissions necessary to manipulate the state bucket
   statement {
     actions = [
@@ -29,8 +29,8 @@ data "aws_iam_policy_document" "provision_account_doc" {
 }
 
 # The IAM policy
-resource "aws_iam_policy" "provision_account_policy" {
-  description = var.provision_account_role_description
-  name        = var.provision_account_role_name
-  policy      = data.aws_iam_policy_document.provision_account_doc.json
+resource "aws_iam_policy" "provisionaccount_policy" {
+  description = var.provisionaccount_role_description
+  name        = var.provisionaccount_role_name
+  policy      = data.aws_iam_policy_document.provisionaccount_doc.json
 }

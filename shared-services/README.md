@@ -59,8 +59,8 @@ future changes by simply running `terraform apply
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-------:|:--------:|
 | aws_region | The AWS region where the non-global resources for this account are to be created (e.g. us-east-1). | string | `us-east-1` | no |
-| provision_account_role_description | The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient access to provision all AWS resources in this account. | string | `Allows sufficient access to provision all AWS resources in this account.` | no |
-| provision_account_role_name | The name to assign the IAM role (as well as the corresponding policy) that allows sufficient permissions to provision all AWS resources in the terraform account. | string | `ProvisionAccount` | no |
+| provisionaccount_role_description | The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient access to provision all AWS resources in this account. | string | `Allows sufficient access to provision all AWS resources in this account.` | no |
+| provisionaccount_role_name | The name to assign the IAM role (as well as the corresponding policy) that allows sufficient permissions to provision all AWS resources in the terraform account. | string | `ProvisionAccount` | no |
 | tags | Tags to apply to all AWS resources created. | map(string) | `{}` | no |
 | this_account_id | The ID of the account being configured. | string | | yes |
 | user_account_id | The ID of the users account.  This account will be allowed to assume the role that allows sufficient access to the Terraform S3 bucket and DynamoDB table to use those resources as a Terraform backend. | string | | yes |
@@ -69,7 +69,7 @@ future changes by simply running `terraform apply
 
 | Name | Description |
 |------|-------------|
-| provision_account_role_arn | The ARN of the IAM role that allows sufficient permissions to create all AWS resources in this account. |
+| provisionaccount_role_arn | The ARN of the IAM role that allows sufficient permissions to create all AWS resources in this account. |
 
 ## Contributing ##
 
