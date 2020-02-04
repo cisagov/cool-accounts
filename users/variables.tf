@@ -10,7 +10,7 @@ variable "admin_usernames" {
 }
 
 variable "sharedservices_account_id" {
-  description = "The ID of the Shared Services account, which contains a role that can be assumed to access the Terraform backend and to provision AWS resouces in that account."
+  description = "The ID of the Shared Services account, which contains a role that can be assumed to access the Terraform backend and to provision AWS resources in that account."
 }
 
 variable "terraform_account_id" {
