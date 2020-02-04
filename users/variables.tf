@@ -37,12 +37,12 @@ variable "assume_access_terraform_backend_policy_name" {
   default     = "Terraform-AssumeAccessTerraformBackend"
 }
 
-variable "assume_provision_account_policy_description" {
+variable "assume_provisionaccount_policy_description" {
   description = "The description to associate with the IAM policy that allows assumption of the role to provision all AWS resources in this account."
   default     = "Allow assumption of the ProvisionAccount role."
 }
 
-variable "assume_provision_account_policy_name" {
+variable "assume_provisionaccount_policy_name" {
   description = "The name to assign the IAM policy that allows assumption of the role to provision all AWS resources in this account."
   default     = "AssumeProvisionAccount"
 }
@@ -72,12 +72,12 @@ variable "aws_region" {
   default     = "us-east-1"
 }
 
-variable "provision_account_role_description" {
+variable "provisionaccount_role_description" {
   description = "The description to associate with the IAM role that allows access to provision all AWS resources in this account."
   default     = "Allows sufficient access to provision all AWS resources in this account."
 }
 
-variable "provision_account_role_name" {
+variable "provisionaccount_role_name" {
   description = "The name to assign the IAM role that allows sufficient permissions to provision all AWS resources in the users account."
   default     = "ProvisionAccount"
 }
