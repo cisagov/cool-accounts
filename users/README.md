@@ -13,18 +13,17 @@ This subdirectory contains Terraform code to provision the COOL
 
 Note that this account must be bootstrapped after the "terraform"
 account.  This is because initially there are no resources in this
-account that can access the remote shared Terraform state, and
-also because there is no IAM role that can be assumed to build out
-those resources.  Therefore you must first apply this Terraform code
-with:
-
-* No backend configuration, so that the state is created locally.
-* Using programmatic credentials for AWSAdministratorAccess as
-  obtained for the COOL "users" account from the AWS SSO page.
+account that can access the remote shared Terraform state, and also
+because there is no IAM role that can be assumed to build out those
+resources.  Therefore you must first apply this Terraform code using
+programmatic credentials for AWSAdministratorAccess as obtained for
+the COOL "terraform" and "users" accounts from the AWS SSO page.
 
 To do this, follow these steps:
 
-1. Comment out all the content in the `backend.tf` file.
+1. Comment out the `profile = "cool-terraform-backend"` line in the
+   `backend.tf` file.  Directly below that, uncomment the `profile =
+   "cool-terraform-account-admin"` line.
 1. Comment out the `assume_role` block in `provider.tf` and directly
    below that uncomment the line `profile = "cool-users-account-admin"`.
 1. Create a new AWS profile called `cool-users-account-admin` in
@@ -62,8 +61,9 @@ To do this, follow these steps:
 1. Revert the changes you made to `backend.tf` in step 1.
 1. Revert the changes you made to `provider.tf` in step 2.
 1. Run the command `terraform init`.
-1. Run the command `terraform apply
-    -var-file=<workspace_name>.tfvars`.
+1. Run the command `terraform apply -var-file=<workspace_name>.tfvars`
+   and verify that Terraform does not want to add, remove, or modify
+   any resources.
 
 At this point the account has been bootstrapped, and you can apply
 future changes by simply running `terraform apply
