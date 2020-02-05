@@ -7,7 +7,7 @@ resource "aws_iam_user_group_membership" "admin_user" {
 
   groups = [
     aws_iam_group.terraform_backend_users.name,
-    aws_iam_group.iam_admins.name,
+    aws_iam_group.users_account_provisioners.name,
     aws_iam_group.terraform_account_provisioners.name
   ]
 }
