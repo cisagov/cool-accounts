@@ -61,8 +61,9 @@ To do this, follow these steps:
 1. Revert the changes you made to `backend.tf` in step 1.
 1. Revert the changes you made to `provider.tf` in step 2.
 1. Run the command `terraform init`.
-1. Run the command `terraform apply
-    -var-file=<workspace_name>.tfvars`.
+1. Run the command `terraform apply -var-file=<workspace_name>.tfvars`
+   and verify that Terraform does not want to add, remove, or modify
+   any resources.
 
 At this point the account has been bootstrapped, and you can apply
 future changes by simply running `terraform apply
