@@ -1,5 +1,3 @@
-# Comment out the contents of this file when bootstrapping this
-# account.
 terraform {
   backend "s3" {
     encrypt        = true
