@@ -9,6 +9,7 @@ resource "aws_iam_user_group_membership" "admin_user" {
     aws_iam_group.audit_account_provisioners.name,
     aws_iam_group.dns_account_provisioners.name,
     aws_iam_group.images_account_provisioners.name,
+    aws_iam_group.logarchive_account_provisioners.name,
     aws_iam_group.master_account_provisioners.name,
     aws_iam_group.sharedservices_account_provisioners.name,
     aws_iam_group.terraform_account_provisioners.name,
