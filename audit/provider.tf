@@ -5,7 +5,7 @@ provider "aws" {
     role_arn = "arn:aws:iam::${var.this_account_id}:role/${var.provisionaccount_role_name}"
   }
   # Use this profile, defined using programmatic credentials for
-  # AWSAdministratorAccess as obtained for the COOL Images account
+  # AWSAdministratorAccess as obtained for the COOL Audit account
   # from the AWS SSO page, to bootstrap the account.
   # profile = "cool-audit-account-admin"
 }
