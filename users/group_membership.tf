@@ -1,5 +1,5 @@
 # Put our admin IAM users in the Terraform backend access, IAM admin, and
-# Terraform account provisioners groups.
+# other COOL account provisioners groups.
 resource "aws_iam_user_group_membership" "admin_user" {
   count = length(var.admin_usernames)
 
@@ -8,6 +8,7 @@ resource "aws_iam_user_group_membership" "admin_user" {
   groups = [
     aws_iam_group.dns_account_provisioners.name,
     aws_iam_group.images_account_provisioners.name,
+    aws_iam_group.master_account_provisioners.name,
     aws_iam_group.sharedservices_account_provisioners.name,
     aws_iam_group.terraform_account_provisioners.name,
     aws_iam_group.terraform_backend_users.name,

@@ -17,6 +17,10 @@ variable "images_account_id" {
   description = "The ID of the Images account, which contains a role that can be assumed to provision AWS resources in that account."
 }
 
+variable "master_account_id" {
+  description = "The ID of the Master account, which contains a role that can be assumed to provision AWS resources in that account."
+}
+
 variable "sharedservices_account_id" {
   description = "The ID of the Shared Services account, which contains a role that can be assumed to provision AWS resources in that account."
 }
@@ -75,6 +79,16 @@ variable "assume_images_provisionaccount_policy_name" {
   default     = "Images-AssumeProvisionAccount"
 }
 
+variable "assume_master_provisionaccount_policy_description" {
+  description = "The description to associate with the IAM policy that allows assumption of the role with sufficient permissions to provision all AWS resources in the Master account."
+  default     = "Allow assumption of the ProvisionAccount role in the Master account."
+}
+
+variable "assume_master_provisionaccount_policy_name" {
+  description = "The name to associate with the IAM policy that allows assumption of the role with sufficient permissions to provision all AWS resources in the Master account."
+  default     = "Master-AssumeProvisionAccount"
+}
+
 variable "assume_sharedservices_provisionaccount_policy_description" {
   description = "The description to associate with the IAM policy that allows assumption of the role with sufficient permissions to provision all AWS resources in the Shared Services account."
   default     = "Allow assumption of the ProvisionAccount role in the Shared Services account."
@@ -108,6 +122,11 @@ variable "dns_account_provisioners_group_name" {
 variable "images_account_provisioners_group_name" {
   description = "The name to associate with the IAM group allowed to assume the role with sufficient permissions to provision the Images account."
   default     = "images_account_provisioners"
+}
+
+variable "master_account_provisioners_group_name" {
+  description = "The name to associate with the IAM group allowed to assume the role with sufficient permissions to provision the Master account."
+  default     = "master_account_provisioners"
 }
 
 variable "provisionaccount_role_description" {
