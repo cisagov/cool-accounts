@@ -10,6 +10,11 @@ resource "aws_iam_role" "provisionaccount_role" {
   tags               = var.tags
 }
 
+resource "aws_iam_role_policy_attachment" "provisionaccount_policy_attachment" {
+  policy_arn = aws_iam_policy.provisionaccount_policy.arn
+  role       = aws_iam_role.provisionaccount_role.name
+}
+
 resource "aws_iam_role_policy_attachment" "iamfullaccess_policy_attachment" {
   policy_arn = "arn:aws:iam::aws:policy/IAMFullAccess"
   role       = aws_iam_role.provisionaccount_role.name
