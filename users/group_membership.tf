@@ -6,8 +6,9 @@ resource "aws_iam_user_group_membership" "admin_user" {
   user = aws_iam_user.admin_user[count.index].name
 
   groups = [
+    aws_iam_group.sharedservices_account_provisioners.name,
+    aws_iam_group.terraform_account_provisioners.name,
     aws_iam_group.terraform_backend_users.name,
-    aws_iam_group.users_account_provisioners.name,
-    aws_iam_group.terraform_account_provisioners.name
+    aws_iam_group.users_account_provisioners.name
   ]
 }
