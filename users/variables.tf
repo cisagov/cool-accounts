@@ -9,8 +9,12 @@ variable "admin_usernames" {
   description = "The usernames associated with the admin accounts to be created, which are allowed to access the terraform backend and are IAM administrators.  The format first.last is recommended."
 }
 
+variable "dns_account_id" {
+  description = "The ID of the DNS account, which contains a role that can be assumed to provision AWS resources in that account."
+}
+
 variable "sharedservices_account_id" {
-  description = "The ID of the Shared Services account, which contains a role that can be assumed to access the Terraform backend and to provision AWS resources in that account."
+  description = "The ID of the Shared Services account, which contains a role that can be assumed to provision AWS resources in that account."
 }
 
 variable "terraform_account_id" {
@@ -47,6 +51,16 @@ variable "assume_provisionaccount_policy_name" {
   default     = "AssumeProvisionAccount"
 }
 
+variable "assume_dns_provisionaccount_policy_description" {
+  description = "The description to associate with the IAM policy that allows assumption of the role with sufficient permissions to provision all AWS resources in the DNS account."
+  default     = "Allow assumption of the ProvisionAccount role in the DNS account."
+}
+
+variable "assume_dns_provisionaccount_policy_name" {
+  description = "The name to associate with the IAM policy that allows assumption of the role with sufficient permissions to provision all AWS resources in the DNS account."
+  default     = "DNS-AssumeProvisionAccount"
+}
+
 variable "assume_sharedservices_provisionaccount_policy_description" {
   description = "The description to associate with the IAM policy that allows assumption of the role with sufficient permissions to provision all AWS resources in the Shared Services account."
   default     = "Allow assumption of the ProvisionAccount role in the Shared Services account."
@@ -70,6 +84,11 @@ variable "assume_tf_provisionaccount_policy_name" {
 variable "aws_region" {
   description = "The AWS region where the non-global resources for this account are to be provisioned (e.g. \"us-east-1\")."
   default     = "us-east-1"
+}
+
+variable "dns_account_provisioners_group_name" {
+  description = "The name to associate with the IAM group allowed to assume the role with sufficient permissions to provision the DNS account."
+  default     = "dns_account_provisioners"
 }
 
 variable "provisionaccount_role_description" {
