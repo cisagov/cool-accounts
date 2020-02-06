@@ -46,7 +46,6 @@ To do this, follow these steps:
 1. Run the command `terraform apply
    -var-file=<workspace_name>.tfvars`.
 1. Revert the changes you made to `provider.tf` in step 1.
-1. Run the command `terraform init`.
 1. Run the command `terraform apply
     -var-file=<workspace_name>.tfvars`.
 
