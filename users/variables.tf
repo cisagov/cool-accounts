@@ -9,6 +9,10 @@ variable "admin_usernames" {
   description = "The usernames associated with the admin accounts to be created, which are allowed to access the terraform backend and are IAM administrators.  The format first.last is recommended."
 }
 
+variable "audit_account_id" {
+  description = "The ID of the Audit account, which contains a role that can be assumed to provision AWS resources in that account."
+}
+
 variable "dns_account_id" {
   description = "The ID of the DNS account, which contains a role that can be assumed to provision AWS resources in that account."
 }
@@ -59,6 +63,16 @@ variable "assume_provisionaccount_policy_name" {
   default     = "AssumeProvisionAccount"
 }
 
+variable "assume_audit_provisionaccount_policy_description" {
+  description = "The description to associate with the IAM policy that allows assumption of the role with sufficient permissions to provision all AWS resources in the Audit account."
+  default     = "Allow assumption of the ProvisionAccount role in the Audit account."
+}
+
+variable "assume_audit_provisionaccount_policy_name" {
+  description = "The name to associate with the IAM policy that allows assumption of the role with sufficient permissions to provision all AWS resources in the Audit account."
+  default     = "Audit-AssumeProvisionAccount"
+}
+
 variable "assume_dns_provisionaccount_policy_description" {
   description = "The description to associate with the IAM policy that allows assumption of the role with sufficient permissions to provision all AWS resources in the DNS account."
   default     = "Allow assumption of the ProvisionAccount role in the DNS account."
@@ -107,6 +121,11 @@ variable "assume_tf_provisionaccount_policy_description" {
 variable "assume_tf_provisionaccount_policy_name" {
   description = "The name to associate with the IAM policy that allows assumption of the role with sufficient permissions to provision all AWS resources in the Terraform account."
   default     = "Terraform-AssumeProvisionAccount"
+}
+
+variable "audit_account_provisioners_group_name" {
+  description = "The name to associate with the IAM group allowed to assume the role with sufficient permissions to provision the Audit account."
+  default     = "audit_account_provisioners"
 }
 
 variable "aws_region" {
