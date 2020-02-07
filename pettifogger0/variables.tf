@@ -14,7 +14,7 @@ variable "this_account_id" {
 }
 
 variable "users_account_id" {
-  description = "The ID of the users account.  This account will be allowed to assume the role that allows sufficient permissions to provision all AWS resources in this account."
+  description = "The ID of the users account.  This account will be allowed to assume the role that allows sufficient permissions to provision all AWS resources in the Pettifogger0 account."
 }
 
 # ------------------------------------------------------------------------------
@@ -44,7 +44,7 @@ variable "assume_provisionaccount_policy_name" {
 }
 
 variable "aws_region" {
-  description = "The AWS region where the non-global resources for this account are to be provisioned (e.g. \"us-east-1\")."
+  description = "The AWS region where the non-global resources for the Pettifogger0 account are to be provisioned (e.g. \"us-east-1\")."
   default     = "us-east-1"
 }
 

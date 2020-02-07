@@ -14,10 +14,6 @@ module "provisionaccount" {
   new_account_id                             = var.this_account_id
   provisionaccount_role_description          = var.provisionaccount_role_description
   provisionaccount_role_name                 = var.provisionaccount_role_name
-  tags = {
-    Team        = "VM Fusion - Development"
-    Application = "COOL - Pettifogger0 Account"
-    Workspace   = "production"
-  }
-  users_account_id = var.users_account_id
+  tags                                       = var.tags
+  users_account_id                           = var.users_account_id
 }

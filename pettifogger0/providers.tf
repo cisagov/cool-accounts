@@ -1,5 +1,5 @@
 # This is the "default" provider that is used to create resources
-# inside the new account
+# inside the Pettifogger0 account
 provider "aws" {
   region = var.aws_region
   # Use this role once the account has been bootstrapped.

@@ -67,19 +67,19 @@ future changes by simply running `terraform apply
 | admin_usernames | The usernames associated with the admin IAM user accounts. | list(string) | | yes |
 | assume_provisionaccount_policy_description | The description to associate with the IAM policy that allows assumption of the role with sufficient permissions to provision all AWS resources in the Pettifogger0 account. | string | `Allow assumption of the ProvisionAccount role in the Pettifogger0 account.` | no |
 | assume_provisionaccount_policy_name | The name to associate with the IAM policy that allows assumption of the role with sufficient permissions to provision all AWS resources in the Pettifogger0 account. | string | `Pettifogger0-AssumeProvisionAccount` | no |
-| aws_region | The AWS region where the non-global resources for this account are to be created (e.g. us-east-1). | string | `us-east-1` | no |
+| aws_region | The AWS region where the non-global resources for the Pettifogger0 account are to be created (e.g. us-east-1). | string | `us-east-1` | no |
 | provisionaccount_role_description | The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient access to provision all AWS resources in the Pettifogger0 account. | string | `Allows sufficient access to provision all AWS resources in the Pettifogger0 account.` | no |
-| provisionaccount_role_name | The name to assign the IAM role (as well as the corresponding policy) that allows sufficient permissions to provision all AWS resources in the the Pettifogger0 account. | string | `ProvisionAccount` | no |
+| provisionaccount_role_name | The name to assign the IAM role (as well as the corresponding policy) that allows sufficient permissions to provision all AWS resources in Pettifogger0 account. | string | `ProvisionAccount` | no |
 | tags | Tags to apply to all AWS resources created. | map(string) | `{}` | no |
 | this_account_id | The ID of the account being configured. | string | | yes |
-| users_account_id | The ID of the users account.  This account will be allowed to assume the role that allows sufficient access to provision all AWS resources in this account. | string | | yes |
+| users_account_id | The ID of the users account.  This account will be allowed to assume the role that allows sufficient access to provision all AWS resources in the Pettifogger0 account. | string | | yes |
 
 ## Outputs ##
 
 | Name | Description |
 |------|-------------|
-| account_provisioners_group_arn | The ARN of the IAM group that is allowed sufficient permissions to provision all AWS resources in the new account. |
-| provisionaccount_role_arn | The ARN of the IAM role that allows sufficient permissions to create all AWS resources in this account. |
+| account_provisioners_group_arn | The ARN of the IAM group that is allowed sufficient permissions to provision all AWS resources in the Pettifogger0 account. |
+| provisionaccount_role_arn | The ARN of the IAM role that allows sufficient permissions to create all AWS resources in the Pettifogger0 account. |
 
 ## Contributing ##
 
