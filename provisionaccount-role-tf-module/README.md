@@ -2,7 +2,7 @@
 
 This subdirectory contains Terraform code to perform the initial
 provisioning of a COOL AWS account and get it in a state where it can
-be furthered provisioned using IAM user credentials from the users
+be further provisioned using IAM user credentials from the users
 account.
 
 This module creates an IAM role that allows sufficient permissions to
