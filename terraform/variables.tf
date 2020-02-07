@@ -9,6 +9,10 @@ variable "admin_usernames" {
   description = "The usernames associated with the admin IAM user accounts."
 }
 
+variable "state_bucket_name" {
+  description = "The name to use for the S3 bucket that will store the Terraform state."
+}
+
 variable "this_account_id" {
   description = "The ID of the account being configured."
 }
@@ -76,11 +80,6 @@ variable "provisionaccount_role_description" {
 variable "provisionaccount_role_name" {
   description = "The name to assign the IAM role (as well as the corresponding policy) that allows sufficient permissions to provision all AWS resources in the terraform account."
   default     = "ProvisionAccount"
-}
-
-variable "state_bucket_name" {
-  description = "The name to use for the S3 bucket that will store the Terraform state."
-  default     = "cisa-cool-terraform-state"
 }
 
 variable "state_table_name" {

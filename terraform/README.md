@@ -102,7 +102,7 @@ future changes by simply running `terraform apply
 | aws_region | The AWS region where the non-global resources for this account are to be provisioned (e.g. us-east-1). | string | `us-east-1` | no |
 | provisionaccount_role_description | The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient access to provision all AWS resources in the Terraform account. | string | `Allows sufficient access to provision all AWS resources in the Terraform account.` | no |
 | provisionaccount_role_name | The name to assign the IAM role (as well as the corresponding policy) that allows sufficient permissions to provision all AWS resources in the terraform account. | string | `ProvisionAccount` | no |
-| state_bucket_name | The name to use for the S3 bucket that will store the Terraform state. | string | `cisa-cool-terraform-state` | no |
+| state_bucket_name | The name to use for the S3 bucket that will store the Terraform state. | string | | yes |
 | state_table_name | The name to use for the DynamoDB table that will be used for Terraform state locking. | string | `terraform-state-lock` | no |
 | state_table_read_capacity | The number of read units for the DynamoDB table that will be used for Terraform state locking. | number | `20` | no |
 | state_table_write_capacity | The number of write units for the DynamoDB table that will be used for Terraform state locking. | number | `20` | no |
