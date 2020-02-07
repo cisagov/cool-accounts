@@ -44,7 +44,7 @@ module "provisionaccount" {
 |------|-------------|:----:|:-------:|:--------:|
 | account_provisioners_group_membership_name | The name to associate with the membership of the IAM group allowed to assume the role with sufficient permissions to provision the new account (e.g. "dns_account_provisioners_membership"). | string | | yes |
 | account_provisioners_group_name | The name to associate with the IAM group allowed to assume the role with sufficient permissions to provision the new account (e.g. "dns_account_provisioners"). | string | | yes |
-| admin_usernames | The usernames associated with the admin IAM user accounts (e.g. ["first.last", "first2.last2"]). | list(string) | | yes |
+| admin_usernames | The usernames associated with the admin IAM user accounts (e.g. ["first.last", "first2.last2"]).  Note that these user accounts will not be created and must exist. | list(string) | | yes |
 | assume_provisionaccount_policy_description | The description to associate with the IAM policy that allows assumption of the role with sufficient permissions to provision all AWS resources in the new account (e.g. "Allow assumption of the ProvisionAccount role in the DNS account"). | string | | yes |
 | assume_provisionaccount_policy_name | The name to associate with the IAM policy that allows assumption of the role with sufficient permissions to provision all AWS resources in the new account (e.g. "DNS-AssumeProvisionAccount"). | string | | yes |
 | aws_region | The AWS region where the non-global resources for this account are to be created (e.g. us-east-1). | string | `us-east-1` | no |

@@ -14,7 +14,7 @@ variable "account_provisioners_group_name" {
 
 variable "admin_usernames" {
   type        = list(string)
-  description = "The usernames associated with the admin IAM user accounts (e.g. [\"first.last\", \"first2.last2\"])."
+  description = "The usernames associated with the admin IAM user accounts (e.g. [\"first.last\", \"first2.last2\"]).  Note that these user accounts will not be created and must exist."
 }
 
 variable "assume_provisionaccount_policy_description" {
