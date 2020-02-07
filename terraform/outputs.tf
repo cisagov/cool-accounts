@@ -32,3 +32,8 @@ output "state_lock_table_id" {
   value       = aws_dynamodb_table.state_lock_table.id
   description = "The ID of the DynamoDB table that to be used for Terraform state locking."
 }
+
+output "terraform_backend_users_group_arn" {
+  value       = aws_iam_group.terraform_backend_users.arn
+  description = "The ARN of the IAM group allowed sufficient access to the Terraform S3 bucket and DynamoDB table to use those resources as a Terraform backend."
+}

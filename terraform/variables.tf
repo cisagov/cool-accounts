@@ -43,6 +43,16 @@ variable "account_provisioners_group_name" {
   default     = "terraform_account_provisioners"
 }
 
+variable "assume_access_terraform_backend_policy_description" {
+  description = "The description to associate with the IAM policy that allows assumption of the role with access to the Terraform backend."
+  default     = "Allow assumption of the AccessTerraformBackend role in the Terraform account."
+}
+
+variable "assume_access_terraform_backend_policy_name" {
+  description = "The name to assign the IAM policy that allows assumption of the role with access to the Terraform backend."
+  default     = "Terraform-AssumeAccessTerraformBackend"
+}
+
 variable "assume_provisionaccount_policy_description" {
   description = "The description to associate with the IAM policy that allows assumption of the role with sufficient permissions to provision all AWS resources in the Terraform account."
   default     = "Allow assumption of the ProvisionAccount role in the Terraform account."
@@ -94,4 +104,14 @@ variable "tags" {
   type        = map(string)
   description = "Tags to apply to all AWS resources provisioned."
   default     = {}
+}
+
+variable "terraform_backend_users_group_membership_name" {
+  description = "The name to associate with the membership of the IAM group allowed to access the Terraform backend."
+  default     = "terraform_backend_users_membership"
+}
+
+variable "terraform_backend_users_group_name" {
+  description = "The name of the group to be created for users allowed to access the Terraform backend."
+  default     = "terraform_backend_users"
 }
