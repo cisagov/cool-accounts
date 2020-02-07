@@ -12,8 +12,8 @@ This subdirectory contains Terraform code to provision the COOL
 Note that this account must be bootstrapped.  This is because there is
 no IAM role that can be assumed to build out these resources.
 Therefore you must first apply this Terraform code with programmatic
-credentials for AWSAdministratorAccess as obtained for the COOL images
-account from the AWS SSO page.
+credentials for AWSAdministratorAccess as obtained for the COOL
+Pettifogger0 account from the AWS SSO page.
 
 To do this, follow these steps:
 
