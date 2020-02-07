@@ -14,16 +14,16 @@ This subdirectory contains Terraform code to provision the COOL
 
 ## Bootstrapping this account ##
 
-Note that this account must be bootstrapped along with the "users"
-account.  This is because initially there are no resources in this
-account that can be used to host remote shared Terrafrom state, and
-also because there is no IAM role that can be assumed to build out
-these resources.  Therefore you must first apply this Terraform code
-with:
+Note that this account must be bootstrapped.  This is because
+initially there are no resources in this account that can be used to
+host remote shared Terrafrom state, and also because there is no IAM
+role that can be assumed to build out these resources.  Therefore you
+must first apply this Terraform code with:
 
 * No backend configuration, so that the state is created locally.
 * Using programmatic credentials for AWSAdministratorAccess as
-  obtained for the COOL terraform account from the AWS SSO page.
+  obtained for the COOL terraform and users accounts from the AWS SSO
+  page.
 
 To do this, follow these steps:
 
@@ -31,6 +31,9 @@ To do this, follow these steps:
 1. Comment out the `assume_role` block for the "default" provider in
    `providers.tf` and directly below that uncomment the line `profile
    = "cool-terraform-account-admin"`.
+1. Comment out the `assume_role` block for the "users" provider in
+   `providers.tf` and directly below that uncomment the line `profile
+   = "cool-users-account-admin"`.
 1. Create a new AWS profile called `cool-terraform-account-admin` in
    your Boto3 configuration using the "AWSAdministratorAccess"
    credentials (access key ID, secret access key, and session token)
@@ -38,6 +41,18 @@ To do this, follow these steps:
 
    ```console
    [cool-terraform-account-admin]
+   aws_access_key_id = <MY_ACCESS_KEY_ID>
+   aws_secret_access_key = <MY_SECRET_ACCESS_KEY>
+   aws_session_token = <MY_SESSION_TOKEN>
+   ```
+
+1. Create a new AWS profile called `cool-users-account-admin` in your
+   Boto3 configuration using the "AWSAdministratorAccess" credentials
+   (access key ID, secret access key, and session token) as obtained
+   from the COOL users account:
+
+   ```console
+   [cool-users-account-admin]
    aws_access_key_id = <MY_ACCESS_KEY_ID>
    aws_secret_access_key = <MY_SECRET_ACCESS_KEY>
    aws_session_token = <MY_SESSION_TOKEN>
@@ -61,8 +76,6 @@ To do this, follow these steps:
 1. Run the command `terraform init`.
 1. Run the command `terraform apply
    -var-file=<workspace_name>.tfvars`.
-1. Make sure that the analogs of steps 1-7 have been done with the
-   users account.
 1. Revert the changes you made to `backend.tf` in step 1.
 1. Revert the changes you made to `provider.tf` in step 2.
 1. Run the command `terraform init`.
