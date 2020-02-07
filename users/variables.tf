@@ -9,10 +9,6 @@ variable "admin_usernames" {
   description = "The usernames associated with the admin accounts to be created, which are allowed to access the terraform backend and are IAM administrators.  The format first.last is recommended."
 }
 
-variable "sharedservices_account_id" {
-  description = "The ID of the Shared Services account, which contains a role that can be assumed to provision AWS resources in that account."
-}
-
 variable "terraform_account_id" {
   description = "The ID of the Terraform account, which contains roles that can be assumed to access the Terraform backend and to provision AWS resources in that account."
 }
@@ -47,16 +43,6 @@ variable "assume_provisionaccount_policy_name" {
   default     = "AssumeProvisionAccount"
 }
 
-variable "assume_sharedservices_provisionaccount_policy_description" {
-  description = "The description to associate with the IAM policy that allows assumption of the role with sufficient permissions to provision all AWS resources in the Shared Services account."
-  default     = "Allow assumption of the ProvisionAccount role in the Shared Services account."
-}
-
-variable "assume_sharedservices_provisionaccount_policy_name" {
-  description = "The name to associate with the IAM policy that allows assumption of the role with sufficient permissions to provision all AWS resources in the Shared Services account."
-  default     = "SharedServices-AssumeProvisionAccount"
-}
-
 variable "assume_tf_provisionaccount_policy_description" {
   description = "The description to associate with the IAM policy that allows assumption of the role with sufficient permissions to provision all AWS resources in the Terraform account."
   default     = "Allow assumption of the ProvisionAccount role in the Terraform account."
@@ -80,11 +66,6 @@ variable "provisionaccount_role_description" {
 variable "provisionaccount_role_name" {
   description = "The name to assign the IAM role that allows sufficient permissions to provision all AWS resources in the users account."
   default     = "ProvisionAccount"
-}
-
-variable "sharedservices_account_provisioners_group_name" {
-  description = "The name to associate with the IAM group allowed to assume the role with sufficient permissions to provision the Shared Services account."
-  default     = "sharedservices_account_provisioners"
 }
 
 variable "tags" {
