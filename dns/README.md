@@ -57,7 +57,6 @@ future changes by simply running `terraform apply
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-------:|:--------:|
 | aws_region | The AWS region where the non-global resources for this account are to be created (e.g. us-east-1). | string | `us-east-1` | no |
-| certificate_bucket_name | The name to use for the S3 bucket that will store the Certboto certificates. | string | `cisa-cool-certificates` | no |
 | provisionaccount_role_description | The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient access to provision all AWS resources in this account. | string | `Allows sufficient access to provision all AWS resources in this account.` | no |
 | provisionaccount_role_name | The name to assign the IAM role (as well as the corresponding policy) that allows sufficient permissions to provision all AWS resources in the this account. | string | `ProvisionAccount` | no |
 | tags | Tags to apply to all AWS resources created. | map(string) | `{}` | no |
@@ -68,8 +67,6 @@ future changes by simply running `terraform apply
 
 | Name | Description |
 |------|-------------|
-| certificate_bucket_arn | The ARN of the S3 bucket where Certboto certificates will be stored. |
-| certificate_bucket_id | The ID of the S3 bucket where Certboto certificates will be stored. |
 | provisionaccount_role_arn | The ARN of the IAM role that allows sufficient permissions to create all AWS resources in this account. |
 
 ## Contributing ##

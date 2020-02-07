@@ -23,11 +23,6 @@ variable "aws_region" {
   default     = "us-east-1"
 }
 
-variable "certificate_bucket_name" {
-  description = "The name to use for the S3 bucket that will store the Certboto certificates."
-  default     = "cisa-cool-certificates"
-}
-
 variable "provisionaccount_role_description" {
   description = "The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient permissions to provision all AWS resources in this account."
   default     = "Allows sufficient permissions to provision all AWS resources in this account."
