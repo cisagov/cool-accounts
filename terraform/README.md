@@ -49,8 +49,8 @@ To do this, follow these steps:
    variables (see [Inputs](#Inputs) below for details):
 
    ```console
-   this_account_id = "111111111111"
-   user_account_id = "222222222222"
+   this_account_id  = "111111111111"
+   users_account_id = "222222222222"
 
    admin_usernames = [
      "first.last",
