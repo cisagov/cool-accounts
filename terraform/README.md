@@ -28,9 +28,9 @@ with:
 To do this, follow these steps:
 
 1. Comment out all the content in the `backend.tf` file.
-1. Comment out the `assume_role` block in `provider.tf` and directly
-   below that uncomment the line `profile =
-   "cool-terraform-account-admin"`.
+1. Comment out the `assume_role` block for the "default" provider in
+   `providers.tf` and directly below that uncomment the line `profile
+   = "cool-terraform-account-admin"`.
 1. Create a new AWS profile called `cool-terraform-account-admin` in
    your Boto3 configuration using the "AWSAdministratorAccess"
    credentials (access key ID, secret access key, and session token)
@@ -51,6 +51,11 @@ To do this, follow these steps:
    ```console
    this_account_id = "111111111111"
    user_account_id = "222222222222"
+
+   admin_usernames = [
+     "first.last",
+     "first2.last2"
+   ]
    ```
 
 1. Run the command `terraform init`.
@@ -74,8 +79,13 @@ future changes by simply running `terraform apply
 |------|-------------|:----:|:-------:|:--------:|
 | access_terraform_backend_role_description | The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient access to the Terraform S3 bucket and DynamoDB table to use those resources as a Terraform backend. | string | `Allows sufficient access to the Terraform S3 bucket and DynamoDB table to use those resources as a Terraform backend.` | no |
 | access_terraform_backend_role_name | The name to assign the IAM role (as well as the corresponding policy) that allows sufficient access to the Terraform S3 bucket and DynamoDB table to use those resources as a Terraform backend. | string | `AccessTerraformBackend` | no |
+| account_provisioners_group_membership_name | The name to associate with the membership of the IAM group allowed to assume the role with sufficient permissions to provision the Terraform account. | string | `terraform_account_provisioners_membership` | no |
+| account_provisioners_group_name | The name to associate with the IAM group allowed to assume the role with sufficient permissions to provision the Terraform account. | string | `terraform_account_provisioners` | no |
+| admin_usernames | The usernames associated with the admin IAM user accounts. | list(string) | | yes |
+| assume_provisionaccount_policy_description | The description to associate with the IAM policy that allows assumption of the role with sufficient permissions to provision all AWS resources in the Terraform account. | string | `Allow assumption of the ProvisionAccount role in the Terraform account.` | no |
+| assume_provisionaccount_policy_name | The name to associate with the IAM policy that allows assumption of the role with sufficient permissions to provision all AWS resources in the Terraform account. | string | `Terraform-AssumeProvisionAccount` | no |
 | aws_region | The AWS region where the non-global resources for this account are to be provisioned (e.g. us-east-1). | string | `us-east-1` | no |
-| provisionaccount_role_description | The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient access to provision all AWS resources in this account. | string | `Allows sufficient access to provision all AWS resources in this account.` | no |
+| provisionaccount_role_description | The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient access to provision all AWS resources in the Terraform account. | string | `Allows sufficient access to provision all AWS resources in the Terraform account.` | no |
 | provisionaccount_role_name | The name to assign the IAM role (as well as the corresponding policy) that allows sufficient permissions to provision all AWS resources in the terraform account. | string | `ProvisionAccount` | no |
 | state_bucket_name | The name to use for the S3 bucket that will store the Terraform state. | string | `cisa-cool-terraform-state` | no |
 | state_table_name | The name to use for the DynamoDB table that will be used for Terraform state locking. | string | `terraform-state-lock` | no |
@@ -83,14 +93,15 @@ future changes by simply running `terraform apply
 | state_table_write_capacity | The number of write units for the DynamoDB table that will be used for Terraform state locking. | number | `20` | no |
 | tags | Tags to apply to all AWS resources created. | map(string) | `{}` | no |
 | this_account_id | The ID of the account being configured. | string | | yes |
-| user_account_id | The ID of the users account.  This account will be allowed to assume the role that allows sufficient access to the Terraform S3 bucket and DynamoDB table to use those resources as a Terraform backend, as well as the role that allows sufficient permissions to provision all AWS resources in this account. | string | | yes |
+| user_account_id | The ID of the users account.  This account will be allowed to assume the role that allows sufficient access to the Terraform S3 bucket and DynamoDB table to use those resources as a Terraform backend, as well as the role that allows sufficient permissions to provision all AWS resources in the Terraform account. | string | | yes |
 
 ## Outputs ##
 
 | Name | Description |
 |------|-------------|
 | access_terraform_backend_role_arn | The ARN of the IAM role that allows sufficient access to the Terraform S3 bucket and DynamoDB table to use those resources as a Terraform backend. |
-| provisionaccount_role_arn | The ARN of the IAM role that allows sufficient permissions to provision all AWS resources in this account. |
+| account_provisioners_group_arn | The ARN of the IAM group that is allowed sufficient permissions to provision all AWS resources in the Terraform account. |
+| provisionaccount_role_arn | The ARN of the IAM role that allows sufficient permissions to provision all AWS resources in the Terraform account. |
 | state_bucket_arn | The ARN of the S3 bucket where Terraform state information will be stored. |
 | state_bucket_id | The ID of the S3 bucket where Terraform state information will be stored. |
 | state_lock_table_arn | The ARN of the DynamoDB table that to be used for Terraform state locking. |

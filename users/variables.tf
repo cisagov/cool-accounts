@@ -43,16 +43,6 @@ variable "assume_provisionaccount_policy_name" {
   default     = "AssumeProvisionAccount"
 }
 
-variable "assume_tf_provisionaccount_policy_description" {
-  description = "The description to associate with the IAM policy that allows assumption of the role with sufficient permissions to provision all AWS resources in the Terraform account."
-  default     = "Allow assumption of the ProvisionAccount role in the Terraform account."
-}
-
-variable "assume_tf_provisionaccount_policy_name" {
-  description = "The name to associate with the IAM policy that allows assumption of the role with sufficient permissions to provision all AWS resources in the Terraform account."
-  default     = "Terraform-AssumeProvisionAccount"
-}
-
 variable "aws_region" {
   description = "The AWS region where the non-global resources for this account are to be provisioned (e.g. \"us-east-1\")."
   default     = "us-east-1"
@@ -72,11 +62,6 @@ variable "tags" {
   type        = map(string)
   description = "Tags to apply to all AWS resources provisioned."
   default     = {}
-}
-
-variable "terraform_account_provisioners_group_name" {
-  description = "The name of the group to be created for users allowed to provision the Terraform account."
-  default     = "terraform_account_provisioners"
 }
 
 variable "terraform_backend_users_group_name" {
