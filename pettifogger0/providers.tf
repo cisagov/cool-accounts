@@ -4,7 +4,7 @@ provider "aws" {
   region = var.aws_region
   # Use this role once the account has been bootstrapped.
   assume_role {
-    role_arn = "arn:aws:iam::${var.this_account_id}:role/ProvisionAccount"
+    role_arn = "arn:aws:iam::${var.this_account_id}:role/${var.provisionaccount_role_name}"
   }
   # Use this profile, defined using programmatic credentials for
   # AWSAdministratorAccess as obtained for the COOL Images account
@@ -17,8 +17,7 @@ provider "aws" {
 provider "aws" {
   alias  = "users"
   region = var.aws_region
-  # Use this role once the account has been bootstrapped.
   assume_role {
-    role_arn = "arn:aws:iam::${var.users_account_id}:role/ProvisionAccount"
+    role_arn = "arn:aws:iam::${var.users_account_id}:role/${var.provisionaccount_role_name}"
   }
 }
