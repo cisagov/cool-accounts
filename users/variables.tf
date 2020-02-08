@@ -5,8 +5,8 @@
 # ------------------------------------------------------------------------------
 
 variable "admin_usernames" {
-  type        = list(string)
-  description = "The usernames associated with the admin accounts to be created, which are allowed to access the terraform backend and are IAM administrators.  The format first.last is recommended."
+  type        = map(string)
+  description = "The usernames associated with the admin accounts to be created, which are allowed to access the terraform backend and are IAM administrators.  The format first.last is recommended.  The keys are the usernames and the values are empty strings (since they are not presently used). Example: { \"firstname1.lastname1\" = \"\",  \"firstname2.lastname2\" = \"\" }"
 }
 
 variable "sharedservices_account_id" {
