@@ -41,7 +41,7 @@ To do this, follow these steps:
    from the bootstrapping the terraform subdirectory:
 
    ```console
-   this_account_id = "236526679726"
+   this_account_id = "111111111111"
 
    admin_usernames = [
      "user.one",
