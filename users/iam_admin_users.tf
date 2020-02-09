@@ -1,8 +1,8 @@
 # The admin users being created
 resource "aws_iam_user" "admin_user" {
-  count = length(var.admin_usernames)
+  for_each = var.admin_usernames
 
-  name = var.admin_usernames[count.index]
+  name = each.key
   tags = var.tags
 }
 
@@ -13,7 +13,7 @@ resource "aws_iam_user" "admin_user" {
 # with MFA, since these accounts will only be accessed programatically
 # (i.e. not via the AWS web console) where MFA is not an option.
 data "aws_iam_policy_document" "admin_iam_self_admin_doc" {
-  count = length(var.admin_usernames)
+  for_each = var.admin_usernames
 
   # Allow users to view their own account information
   statement {
@@ -40,7 +40,7 @@ data "aws_iam_policy_document" "admin_iam_self_admin_doc" {
     ]
 
     resources = [
-      aws_iam_user.admin_user[count.index].arn,
+      aws_iam_user.admin_user[each.key].arn,
     ]
   }
 
@@ -56,7 +56,7 @@ data "aws_iam_policy_document" "admin_iam_self_admin_doc" {
     ]
 
     resources = [
-      aws_iam_user.admin_user[count.index].arn,
+      aws_iam_user.admin_user[each.key].arn,
     ]
   }
 
@@ -72,7 +72,7 @@ data "aws_iam_policy_document" "admin_iam_self_admin_doc" {
     ]
 
     resources = [
-      aws_iam_user.admin_user[count.index].arn,
+      aws_iam_user.admin_user[each.key].arn,
     ]
   }
 
@@ -89,7 +89,7 @@ data "aws_iam_policy_document" "admin_iam_self_admin_doc" {
     ]
 
     resources = [
-      aws_iam_user.admin_user[count.index].arn,
+      aws_iam_user.admin_user[each.key].arn,
     ]
   }
 
@@ -106,7 +106,7 @@ data "aws_iam_policy_document" "admin_iam_self_admin_doc" {
     ]
 
     resources = [
-      aws_iam_user.admin_user[count.index].arn,
+      aws_iam_user.admin_user[each.key].arn,
     ]
   }
 
@@ -122,7 +122,7 @@ data "aws_iam_policy_document" "admin_iam_self_admin_doc" {
     resources = [
       # The MFA ARN is identical to that of the user, except that the
       # text "user" is replaced by "mfa"
-      replace(aws_iam_user.admin_user[count.index].arn, "user", "mfa"),
+      replace(aws_iam_user.admin_user[each.key].arn, "user", "mfa"),
     ]
   }
 
@@ -138,16 +138,16 @@ data "aws_iam_policy_document" "admin_iam_self_admin_doc" {
     ]
 
     resources = [
-      aws_iam_user.admin_user[count.index].arn,
+      aws_iam_user.admin_user[each.key].arn,
     ]
   }
 }
 
 # The IAM self-administration policy for our IAM users
 resource "aws_iam_user_policy" "admin_user" {
-  count = length(var.admin_usernames)
+  for_each = var.admin_usernames
 
   name   = "SelfManagedCredsWithoutMFA"
-  user   = aws_iam_user.admin_user[count.index].name
-  policy = data.aws_iam_policy_document.admin_iam_self_admin_doc[count.index].json
+  user   = each.key
+  policy = data.aws_iam_policy_document.admin_iam_self_admin_doc[each.key].json
 }

@@ -64,7 +64,7 @@ future changes by simply running `terraform apply
 
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-------:|:--------:|
-| admin_usernames | The usernames associated with the admin accounts to be created, which are allowed to access the terraform backend and are IAM administrators.  The format first.last is recommended. | string | | yes |
+| admin_usernames | The usernames associated with the admin accounts to be created, which are allowed to access the terraform backend and are IAM administrators.  The format first.last is recommended.  The keys are the usernames and the values are empty strings (since they are not presently used). Example: { \"firstname1.lastname1\" = \"\",  \"firstname2.lastname2\" = \"\" } | map(string) | | yes |
 | assume_provisionaccount_policy_description | The description to associate with the IAM policy that allows assumption of the role to provision all AWS resources in this account | string | `Allow assumption of the ProvisionAccount role.` | no |
 | assume_provisionaccount_policy_name | The name to assign the IAM policy that allows assumption of the role to provision all AWS resources in this account | string | `AssumeProvisionAccount` | no |
 | aws_region | The AWS region where the non-global resources for this account are to be provisioned (e.g. us-east-1) | string | `us-east-1` | no |
