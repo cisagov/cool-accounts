@@ -5,6 +5,6 @@ terraform {
     dynamodb_table = "terraform-state-lock"
     profile        = "cool-terraform-backend"
     region         = "us-east-1"
-    key            = "cool-accounts/shared_services.tfstate"
+    key            = "cool-accounts/logarchive.tfstate"
   }
 }

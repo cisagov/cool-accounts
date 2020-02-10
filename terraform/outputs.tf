@@ -3,9 +3,14 @@ output "access_terraform_backend_role_arn" {
   description = "The ARN of the IAM role that allows sufficient access to the Terraform S3 bucket and DynamoDB table to use those resources as a Terraform backend."
 }
 
+output "account_provisioners_group_arn" {
+  value       = module.provisionaccount.account_provisioners_group_arn
+  description = "The ARN of the IAM group that is allowed sufficient permissions to provision all AWS resources in the Terraform account."
+}
+
 output "provisionaccount_role_arn" {
-  value       = aws_iam_role.provisionaccount_role.arn
-  description = "The ARN of the IAM role that allows sufficient permissions to provision all AWS resources in this account."
+  value       = module.provisionaccount.provisionaccount_role_arn
+  description = "The ARN of the IAM role that allows sufficient permissions to provision all AWS resources in the Terraform account."
 }
 
 output "state_bucket_arn" {
@@ -26,4 +31,9 @@ output "state_lock_table_arn" {
 output "state_lock_table_id" {
   value       = aws_dynamodb_table.state_lock_table.id
   description = "The ID of the DynamoDB table that to be used for Terraform state locking."
+}
+
+output "terraform_backend_users_group_arn" {
+  value       = aws_iam_group.terraform_backend_users.arn
+  description = "The ARN of the IAM group allowed sufficient access to the Terraform S3 bucket and DynamoDB table to use those resources as a Terraform backend."
 }

@@ -1,6 +1,6 @@
 # ------------------------------------------------------------------------------
 # Create the IAM role that allows sufficient permissions to provision
-# all AWS resources in the terraform account.
+# all AWS resources in the new account.
 # ------------------------------------------------------------------------------
 
 resource "aws_iam_role" "provisionaccount_role" {

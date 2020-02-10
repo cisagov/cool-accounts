@@ -4,12 +4,17 @@
 # You must provide a value for each of these parameters.
 # ------------------------------------------------------------------------------
 
+variable "admin_usernames" {
+  type        = list(string)
+  description = "The usernames associated with the admin IAM user accounts."
+}
+
 variable "this_account_id" {
   description = "The ID of the account being configured."
 }
 
-variable "user_account_id" {
-  description = "The ID of the users account.  This account will be allowed to assume the role that allows sufficient permissions to provision all AWS resources in this account."
+variable "users_account_id" {
+  description = "The ID of the users account.  This account will be allowed to assume the role that allows sufficient permissions to provision all AWS resources in the Shared Services account."
 }
 
 # ------------------------------------------------------------------------------
@@ -18,18 +23,38 @@ variable "user_account_id" {
 # These parameters have reasonable defaults.
 # ------------------------------------------------------------------------------
 
+variable "account_provisioners_group_membership_name" {
+  description = "The name to associate with the membership of the IAM group allowed to assume the role with sufficient permissions to provision the Shared Services account."
+  default     = "sharedservices_account_provisioners_membership"
+}
+
+variable "account_provisioners_group_name" {
+  description = "The name to associate with the IAM group allowed to assume the role with sufficient permissions to provision the Shared Services account."
+  default     = "sharedservices_account_provisioners"
+}
+
+variable "assume_provisionaccount_policy_description" {
+  description = "The description to associate with the IAM policy that allows assumption of the role with sufficient permissions to provision all AWS resources in the Shared Services account."
+  default     = "Allow assumption of the ProvisionAccount role in the Shared Services account."
+}
+
+variable "assume_provisionaccount_policy_name" {
+  description = "The name to associate with the IAM policy that allows assumption of the role with sufficient permissions to provision all AWS resources in the Shared Services account."
+  default     = "SharedServices-AssumeProvisionAccount"
+}
+
 variable "aws_region" {
-  description = "The AWS region where the non-global resources for this account are to be provisioned (e.g. \"us-east-1\")."
+  description = "The AWS region where the non-global resources for the Shared Services account are to be provisioned (e.g. \"us-east-1\")."
   default     = "us-east-1"
 }
 
 variable "provisionaccount_role_description" {
-  description = "The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient permissions to provision all AWS resources in this account."
-  default     = "Allows sufficient permissions to provision all AWS resources in this account."
+  description = "The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient permissions to provision all AWS resources in the Shared Services account."
+  default     = "Allows sufficient permissions to provision all AWS resources in the Shared Services account."
 }
 
 variable "provisionaccount_role_name" {
-  description = "The name to assign the IAM role (as well as the corresponding policy) that allows sufficient permissions to provision all AWS resources in the terraform account."
+  description = "The name to assign the IAM role (as well as the corresponding policy) that allows sufficient permissions to provision all AWS resources in the Shared Services account."
   default     = "ProvisionAccount"
 }
 

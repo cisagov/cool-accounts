@@ -1,7 +1,7 @@
-# cool-accounts - shared-services subdirectory #
+# cool-accounts - images subdirectory #
 
 This subdirectory contains Terraform code to provision the COOL
-"shared services" account.  It creates:
+"images" account.  It creates:
 
 * An IAM role that allows sufficient permissions to provision all AWS
   resources in this account.  This role has a trust relationship with
@@ -12,21 +12,21 @@ This subdirectory contains Terraform code to provision the COOL
 Note that this account must be bootstrapped.  This is because there is
 no IAM role that can be assumed to build out these resources.
 Therefore you must first apply this Terraform code with programmatic
-credentials for AWSAdministratorAccess as obtained for the COOL Shared
-Services account from the AWS SSO page.
+credentials for AWSAdministratorAccess as obtained for the COOL Images
+account from the AWS SSO page.
 
 To do this, follow these steps:
 
 1. Comment out the `assume_role` block for the "default" provider in
    `providers.tf` and directly below that uncomment the line `profile
-   = "cool-sharedservices-account-admin"`.
-1. Create a new AWS profile called `cool-sharedservices-account-admin`
+   = "cool-images-account-admin"`.
+1. Create a new AWS profile called `cool-images-account-admin`
    in your Boto3 configuration using the "AWSAdministratorAccess"
    credentials (access key ID, secret access key, and session token)
-   as obtained from the COOL Shared Services account:
+   as obtained from the COOL images account:
 
    ```console
-   [cool-sharedservices-account-admin]
+   [cool-images-account-admin]
    aws_access_key_id = <MY_ACCESS_KEY_ID>
    aws_secret_access_key = <MY_SECRET_ACCESS_KEY>
    aws_session_token = <MY_SESSION_TOKEN>
@@ -62,24 +62,24 @@ future changes by simply running `terraform apply
 
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-------:|:--------:|
-| account_provisioners_group_membership_name | The name to associate with the membership of the IAM group allowed to assume the role with sufficient permissions to provision the Shared Services account. | string | `sharedservices_account_provisioners_membership` | no |
-| account_provisioners_group_name | The name to associate with the IAM group allowed to assume the role with sufficient permissions to provision the Shared Services account. | string | `sharedservices_account_provisioners` | no |
+| account_provisioners_group_membership_name | The name to associate with the membership of the IAM group allowed to assume the role with sufficient permissions to provision the Images account. | string | `images_account_provisioners_membership` | no |
+| account_provisioners_group_name | The name to associate with the IAM group allowed to assume the role with sufficient permissions to provision the Images account. | string | `images_account_provisioners` | no |
 | admin_usernames | The usernames associated with the admin IAM user accounts. | list(string) | | yes |
-| assume_provisionaccount_policy_description | The description to associate with the IAM policy that allows assumption of the role with sufficient permissions to provision all AWS resources in the Shared Services account. | string | `Allow assumption of the ProvisionAccount role in the Shared Services account.` | no |
-| assume_provisionaccount_policy_name | The name to associate with the IAM policy that allows assumption of the role with sufficient permissions to provision all AWS resources in the Shared Services account. | string | `SharedServices-AssumeProvisionAccount` | no |
-| aws_region | The AWS region where the non-global resources for the Shared Services account are to be created (e.g. us-east-1). | string | `us-east-1` | no |
-| provisionaccount_role_description | The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient access to provision all AWS resources in the Shared Services account. | string | `Allows sufficient access to provision all AWS resources in the Shared Services account.` | no |
-| provisionaccount_role_name | The name to assign the IAM role (as well as the corresponding policy) that allows sufficient permissions to provision all AWS resources in the Shared Services account. | string | `ProvisionAccount` | no |
+| assume_provisionaccount_policy_description | The description to associate with the IAM policy that allows assumption of the role with sufficient permissions to provision all AWS resources in the Images account. | string | `Allow assumption of the ProvisionAccount role in the Images account.` | no |
+| assume_provisionaccount_policy_name | The name to associate with the IAM policy that allows assumption of the role with sufficient permissions to provision all AWS resources in the Images account. | string | `Images-AssumeProvisionAccount` | no |
+| aws_region | The AWS region where the non-global resources for the Images account are to be created (e.g. us-east-1). | string | `us-east-1` | no |
+| provisionaccount_role_description | The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient access to provision all AWS resources in the Images account. | string | `Allows sufficient access to provision all AWS resources in the Images account.` | no |
+| provisionaccount_role_name | The name to assign the IAM role (as well as the corresponding policy) that allows sufficient permissions to provision all AWS resources in the Images account. | string | `ProvisionAccount` | no |
 | tags | Tags to apply to all AWS resources created. | map(string) | `{}` | no |
 | this_account_id | The ID of the account being configured. | string | | yes |
-| users_account_id | The ID of the users account.  This account will be allowed to assume the role that allows sufficient access to provision all AWS resources in the Shared Services account. | string | | yes |
+| users_account_id | The ID of the users account.  This account will be allowed to assume the role that allows sufficient access to provision all AWS resources in the Images account. | string | | yes |
 
 ## Outputs ##
 
 | Name | Description |
 |------|-------------|
-| account_provisioners_group_arn | The ARN of the IAM group that is allowed sufficient permissions to provision all AWS resources in the Shared Services account. |
-| provisionaccount_role_arn | The ARN of the IAM role that allows sufficient permissions to create all AWS resources in the Shared Services account. |
+| account_provisioners_group_arn | The ARN of the IAM group that is allowed sufficient permissions to provision all AWS resources in the Images account. |
+| provisionaccount_role_arn | The ARN of the IAM role that allows sufficient permissions to create all AWS resources in the Images account. |
 
 ## Contributing ##
 
