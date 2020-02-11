@@ -28,12 +28,12 @@ must first apply this Terraform code with:
 To do this, follow these steps:
 
 1. Comment out all the content in the `backend.tf` file.
-1. Comment out the `assume_role` block for the "default" provider in
-   `providers.tf` and directly below that uncomment the line `profile
-   = "cool-terraform-account-admin"`.
-1. Comment out the `assume_role` block for the "users" provider in
-   `providers.tf` and directly below that uncomment the line `profile
-   = "cool-users-account-admin"`.
+1. Comment out the `profile = "cool-terraform-provisionaccount"` line
+   for the "default" provider in `providers.tf` and directly below
+   that uncomment the line `profile = "cool-terraform-account-admin"`.
+1. Comment out the `profile = "cool-users-provisionaccount"` line for
+   the "default" provider in `providers.tf` and directly below that
+   uncomment the line `profile = "cool-users-account-admin"`.
 1. Create a new AWS profile called `cool-terraform-account-admin` in
    your Boto3 configuration using the "AWSAdministratorAccess"
    credentials (access key ID, secret access key, and session token)

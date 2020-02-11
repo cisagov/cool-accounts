@@ -2,10 +2,8 @@
 # inside the Images account
 provider "aws" {
   region = var.aws_region
-  # Use this role once the account has been bootstrapped.
-  assume_role {
-    role_arn = "arn:aws:iam::${var.this_account_id}:role/${var.provisionaccount_role_name}"
-  }
+  # Use this profile once the account has been bootstrapped.
+  profile = "cool-images-provisionaccount"
   # Use this profile, defined using programmatic credentials for
   # AWSAdministratorAccess as obtained for the COOL Images account
   # from the AWS SSO page, to bootstrap the account.
@@ -15,9 +13,7 @@ provider "aws" {
 # This is the "users" provider that is used to create resources inside
 # the users account
 provider "aws" {
-  alias  = "users"
-  region = var.aws_region
-  assume_role {
-    role_arn = "arn:aws:iam::${var.users_account_id}:role/${var.provisionaccount_role_name}"
-  }
+  alias   = "users"
+  region  = var.aws_region
+  profile = "cool-users-provisionaccount"
 }

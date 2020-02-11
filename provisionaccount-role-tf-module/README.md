@@ -38,6 +38,10 @@ module "provisionaccount" {
 }
 ```
 
+## Examples ##
+
+* [Basic usage](https://github.com/cisagov/cool-accounts/tree/develop/provisionaccount-role-tf-module/examples/basic_usage)
+
 ## Inputs ##
 
 | Name | Description | Type | Default | Required |
