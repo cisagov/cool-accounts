@@ -19,8 +19,9 @@ credentials for AWSAdministratorAccess as obtained for the COOL
 
 To do this, follow these steps:
 
-1. Comment out the `assume_role` block in `provider.tf` and directly
-   below that uncomment the line `profile = "cool-users-account-admin"`.
+1. Comment out the `profile = "cool-users-provisionaccount"` line for
+   the "default" provider in `providers.tf` and directly below that
+   uncomment the line `profile = "cool-users-account-admin"`.
 1. Create a new AWS profile called `cool-users-account-admin` in
    your Boto3 configuration using the "AWSAdministratorAccess"
    credentials (access key ID, secret access key, and session token)

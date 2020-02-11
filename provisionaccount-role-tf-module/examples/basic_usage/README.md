@@ -17,9 +17,10 @@ Pettifogger0 account from the AWS SSO page.
 
 To do this, follow these steps:
 
-1. Comment out the `assume_role` block for the "default" provider in
-   `providers.tf` and directly below that uncomment the line `profile
-   = "cool-pettifogger0-account-admin"`.
+1. Comment out the `profile = "cool-pettifogger0-provisionaccount"`
+   line for the "default" provider in `providers.tf` and directly
+   below that uncomment the line `profile =
+   "cool-pettifogger0-account-admin"`.
 1. Create a new AWS profile called `cool-pettifogger0-account-admin`
    in your Boto3 configuration using the "AWSAdministratorAccess"
    credentials (access key ID, secret access key, and session token)
