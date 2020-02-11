@@ -1,4 +1,4 @@
-# cool-accounts - pettifogger0 subdirectory #
+# cool-accounts - Basic usage of provisionaccount-role-tf-module #
 
 This subdirectory contains Terraform code to provision the COOL
 "pettifogger0" account.  It creates:
