@@ -20,8 +20,8 @@ variable "this_account_id" {
 # ------------------------------------------------------------------------------
 
 variable "assume_provisionaccount_policy_description" {
-  description = "The description to associate with the IAM policy that allows assumption of the role to provision all AWS resources in this account."
-  default     = "Allow assumption of the ProvisionAccount role."
+  description = "The description to associate with the IAM policy that allows assumption of the role with sufficient permissions to provision all AWS resources in this account."
+  default     = "Allow sufficient permissions to provision all AWS resources in this account."
 }
 
 variable "assume_provisionaccount_policy_name" {

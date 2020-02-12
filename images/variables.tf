@@ -33,9 +33,19 @@ variable "account_provisioners_group_name" {
   default     = "images_account_provisioners"
 }
 
+variable "assume_ec2amicreate_policy_description" {
+  description = "The description to associate with the IAM policy that allows sufficient permissions to create AMIs in the Images account."
+  default     = "Allow sufficient permissions to create AMIs in the Images account."
+}
+
+variable "assume_ec2amicreate_policy_name" {
+  description = "The name to associate with the IAM policy that allows sufficient permissions to create AMIs in the Images account."
+  default     = "Images-AssumeEC2AMICreate"
+}
+
 variable "assume_provisionaccount_policy_description" {
   description = "The description to associate with the IAM policy that allows assumption of the role with sufficient permissions to provision all AWS resources in the Images account."
-  default     = "Allow assumption of the ProvisionAccount role in the Images account."
+  default     = "Allow sufficient permissions to provision all AWS resources in the Images account."
 }
 
 variable "assume_provisionaccount_policy_name" {
@@ -46,6 +56,16 @@ variable "assume_provisionaccount_policy_name" {
 variable "aws_region" {
   description = "The AWS region where the non-global resources for the Images account are to be provisioned (e.g. \"us-east-1\")."
   default     = "us-east-1"
+}
+
+variable "ec2amicreate_role_description" {
+  description = "The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient permissions to create AMIs in the Images account."
+  default     = "Allows sufficient permissions to create AMIs in the Images account."
+}
+
+variable "ec2amicreate_role_name" {
+  description = "The name to assign the IAM role (as well as the corresponding policy) that allows sufficient permissions to create AMIs in the Images account."
+  default     = "EC2AMICreate"
 }
 
 variable "provisionaccount_role_description" {
