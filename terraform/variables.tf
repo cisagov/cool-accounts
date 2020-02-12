@@ -49,7 +49,7 @@ variable "account_provisioners_group_name" {
 
 variable "assume_access_terraform_backend_policy_description" {
   description = "The description to associate with the IAM policy that allows assumption of the role with access to the Terraform backend."
-  default     = "Allow assumption of the AccessTerraformBackend role in the Terraform account."
+  default     = "Allow access to the Terraform backend."
 }
 
 variable "assume_access_terraform_backend_policy_name" {
@@ -59,7 +59,7 @@ variable "assume_access_terraform_backend_policy_name" {
 
 variable "assume_provisionaccount_policy_description" {
   description = "The description to associate with the IAM policy that allows assumption of the role with sufficient permissions to provision all AWS resources in the Terraform account."
-  default     = "Allow assumption of the ProvisionAccount role in the Terraform account."
+  default     = "Allow sufficient permissions to provision all AWS resources in the Terraform account."
 }
 
 variable "assume_provisionaccount_policy_name" {

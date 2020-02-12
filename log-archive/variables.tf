@@ -35,7 +35,7 @@ variable "account_provisioners_group_name" {
 
 variable "assume_provisionaccount_policy_description" {
   description = "The description to associate with the IAM policy that allows assumption of the role with sufficient permissions to provision all AWS resources in the Log Archive account."
-  default     = "Allow assumption of the ProvisionAccount role in the Log Archive account."
+  default     = "Allow sufficient permissions to provision all AWS resources in the Log Archive account."
 }
 
 variable "assume_provisionaccount_policy_name" {
