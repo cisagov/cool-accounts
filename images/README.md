@@ -83,7 +83,8 @@ future changes by simply running `terraform apply
 | Name | Description |
 |------|-------------|
 | account_provisioners_group_arn | The ARN of the IAM group that is allowed sufficient permissions to provision all AWS resources in the Images account. |
-| provisionaccount_role_arn | The ARN of the IAM role that allows sufficient permissions to create all AWS resources in the Images account. |
+| ec2amicreate_role_arn | The ARN of the IAM role that allows sufficient permissions to create AMIs in the Images account. |
+| provisionaccount_role_arn | The ARN of the IAM role that allows sufficient permissions to provision all AWS resources in the Images account. |
 
 ## Contributing ##
 
