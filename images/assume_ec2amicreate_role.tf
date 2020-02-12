@@ -17,7 +17,7 @@ data "aws_iam_policy_document" "assume_ec2amicreate_role_doc" {
 resource "aws_iam_policy" "assume_ec2amicreate_role" {
   provider = aws.users
 
-  description = var.ec2amicreate_role_description
-  name        = var.ec2amicreate_role_name
+  description = var.assume_ec2amicreate_policy_description
+  name        = var.assume_ec2amicreate_policy_name
   policy      = data.aws_iam_policy_document.assume_ec2amicreate_role_doc.json
 }
