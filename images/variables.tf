@@ -23,16 +23,6 @@ variable "users_account_id" {
 # These parameters have reasonable defaults.
 # ------------------------------------------------------------------------------
 
-variable "assume_ec2amicreate_policy_description" {
-  description = "The description to associate with the IAM policy that allows sufficient permissions to create AMIs in the Images account."
-  default     = "Allow sufficient permissions to create AMIs in the Images account."
-}
-
-variable "assume_ec2amicreate_policy_name" {
-  description = "The name to associate with the IAM policy that allows sufficient permissions to create AMIs in the Images account."
-  default     = "Images-AssumeEC2AMICreate"
-}
-
 variable "account_provisioners_group_membership_name" {
   description = "The name to associate with the membership of the IAM group allowed to assume the role with sufficient permissions to provision the Images account."
   default     = "images_account_provisioners_membership"
@@ -41,6 +31,16 @@ variable "account_provisioners_group_membership_name" {
 variable "account_provisioners_group_name" {
   description = "The name to associate with the IAM group allowed to assume the role with sufficient permissions to provision the Images account."
   default     = "images_account_provisioners"
+}
+
+variable "assume_ec2amicreate_policy_description" {
+  description = "The description to associate with the IAM policy that allows sufficient permissions to create AMIs in the Images account."
+  default     = "Allow sufficient permissions to create AMIs in the Images account."
+}
+
+variable "assume_ec2amicreate_policy_name" {
+  description = "The name to associate with the IAM policy that allows sufficient permissions to create AMIs in the Images account."
+  default     = "Images-AssumeEC2AMICreate"
 }
 
 variable "assume_provisionaccount_policy_description" {
