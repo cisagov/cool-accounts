@@ -24,12 +24,12 @@ variable "users_account_id" {
 # ------------------------------------------------------------------------------
 
 variable "assume_ec2amicreate_policy_description" {
-  description = "The description to associate with the IAM policy that allows sufficient permissions to create AMIs via Packer in the Images account."
-  default     = "Allow sufficient permissions to create AMIs via Packer in the Images account."
+  description = "The description to associate with the IAM policy that allows sufficient permissions to create AMIs in the Images account."
+  default     = "Allow sufficient permissions to create AMIs in the Images account."
 }
 
 variable "assume_ec2amicreate_policy_name" {
-  description = "The name to associate with the IAM policy that allows sufficient permissions to create AMIs via Packer in the Images account."
+  description = "The name to associate with the IAM policy that allows sufficient permissions to create AMIs in the Images account."
   default     = "Images-AssumeEC2AMICreate"
 }
 
@@ -59,12 +59,12 @@ variable "aws_region" {
 }
 
 variable "ec2amicreate_role_description" {
-  description = "The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient permissions to create AMIs via Packer."
-  default     = "Allows sufficient permissions to create AMIs via Packer."
+  description = "The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient permissions to create AMIs in the Images account."
+  default     = "Allows sufficient permissions to create AMIs in the Images account."
 }
 
 variable "ec2amicreate_role_name" {
-  description = "The name to assign the IAM role (as well as the corresponding policy) that allows sufficient permissions to create AMIs via Packer."
+  description = "The name to assign the IAM role (as well as the corresponding policy) that allows sufficient permissions to create AMIs in the Images account."
   default     = "EC2AMICreate"
 }
 
