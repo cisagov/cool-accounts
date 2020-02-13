@@ -92,13 +92,6 @@ future changes by simply running `terraform apply
 |------|-------------|:----:|:-------:|:--------:|
 | access_terraform_backend_role_description | The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient access to the Terraform S3 bucket and DynamoDB table to use those resources as a Terraform backend. | string | `Allows sufficient access to the Terraform S3 bucket and DynamoDB table to use those resources as a Terraform backend.` | no |
 | access_terraform_backend_role_name | The name to assign the IAM role (as well as the corresponding policy) that allows sufficient access to the Terraform S3 bucket and DynamoDB table to use those resources as a Terraform backend. | string | `AccessTerraformBackend` | no |
-| account_provisioners_group_membership_name | The name to associate with the membership of the IAM group allowed to assume the role with sufficient permissions to provision the Terraform account. | string | `terraform_account_provisioners_membership` | no |
-| account_provisioners_group_name | The name to associate with the IAM group allowed to assume the role with sufficient permissions to provision the Terraform account. | string | `terraform_account_provisioners` | no |
-| admin_usernames | The usernames associated with the admin IAM user accounts. | list(string) | | yes |
-| assume_access_terraform_backend_policy_description | The description to associate with the IAM policy that allows assumption of the role with access to the Terraform backend | string | `Allow access to the Terraform backend.` | no |
-| assume_access_terraform_backend_policy_name | The name to assign the IAM policy that allows assumption of the role with access to the Terraform backend. | string | `Terraform-AssumeAccessTerraformBackend` | no |
-| assume_provisionaccount_policy_description | The description to associate with the IAM policy that allows assumption of the role with sufficient permissions to provision all AWS resources in the Terraform account. | string | `Allow sufficient permissions to provision all AWS resources in the Terraform account.` | no |
-| assume_provisionaccount_policy_name | The name to associate with the IAM policy that allows assumption of the role with sufficient permissions to provision all AWS resources in the Terraform account. | string | `Terraform-AssumeProvisionAccount` | no |
 | aws_region | The AWS region where the non-global resources for this account are to be provisioned (e.g. us-east-1). | string | `us-east-1` | no |
 | provisionaccount_role_description | The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient access to provision all AWS resources in the Terraform account. | string | `Allows sufficient access to provision all AWS resources in the Terraform account.` | no |
 | provisionaccount_role_name | The name to assign the IAM role (as well as the corresponding policy) that allows sufficient permissions to provision all AWS resources in the terraform account. | string | `ProvisionAccount` | no |
@@ -107,8 +100,6 @@ future changes by simply running `terraform apply
 | state_table_read_capacity | The number of read units for the DynamoDB table that will be used for Terraform state locking. | number | `20` | no |
 | state_table_write_capacity | The number of write units for the DynamoDB table that will be used for Terraform state locking. | number | `20` | no |
 | tags | Tags to apply to all AWS resources created. | map(string) | `{}` | no |
-| account_provisioners_group_membership_name | The name to associate with the membership of the IAM group allowed to access the Terraform backend. | string | `terraform_backend_users_membership` | no |
-| terraform_backend_users_group_name | The name of the group to be created for users allowed to access the Terraform backend | string | `terraform_backend_users` | no |
 | this_account_id | The ID of the account being configured. | string | | yes |
 | user_account_id | The ID of the users account.  This account will be allowed to assume the role that allows sufficient access to the Terraform S3 bucket and DynamoDB table to use those resources as a Terraform backend, as well as the role that allows sufficient permissions to provision all AWS resources in the Terraform account. | string | | yes |
 
@@ -117,13 +108,11 @@ future changes by simply running `terraform apply
 | Name | Description |
 |------|-------------|
 | access_terraform_backend_role_arn | The ARN of the IAM role that allows sufficient access to the Terraform S3 bucket and DynamoDB table to use those resources as a Terraform backend. |
-| account_provisioners_group_arn | The ARN of the IAM group that is allowed sufficient permissions to provision all AWS resources in the Terraform account. |
 | provisionaccount_role_arn | The ARN of the IAM role that allows sufficient permissions to provision all AWS resources in the Terraform account. |
 | state_bucket_arn | The ARN of the S3 bucket where Terraform state information will be stored. |
 | state_bucket_id | The ID of the S3 bucket where Terraform state information will be stored. |
 | state_lock_table_arn | The ARN of the DynamoDB table that to be used for Terraform state locking. |
 | state_lock_table_id | The ID of the DynamoDB table that to be used for Terraform state locking. |
-| terraform_backend_users_group_arn | The ARN of the IAM group allowed sufficient access to the Terraform S3 bucket and DynamoDB table to use those resources as a Terraform backend. |
 
 ## Contributing ##
 

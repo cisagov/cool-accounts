@@ -4,11 +4,6 @@
 # You must provide a value for each of these parameters.
 # ------------------------------------------------------------------------------
 
-variable "admin_usernames" {
-  type        = list(string)
-  description = "The usernames associated with the admin IAM user accounts."
-}
-
 variable "this_account_id" {
   description = "The ID of the account being configured."
 }
@@ -22,26 +17,6 @@ variable "users_account_id" {
 #
 # These parameters have reasonable defaults.
 # ------------------------------------------------------------------------------
-
-variable "account_provisioners_group_membership_name" {
-  description = "The name to associate with the membership of the IAM group allowed to assume the role with sufficient permissions to provision the Audit account."
-  default     = "audit_account_provisioners_membership"
-}
-
-variable "account_provisioners_group_name" {
-  description = "The name to associate with the IAM group allowed to assume the role with sufficient permissions to provision the Audit account."
-  default     = "audit_account_provisioners"
-}
-
-variable "assume_provisionaccount_policy_description" {
-  description = "The description to associate with the IAM policy that allows assumption of the role with sufficient permissions to provision all AWS resources in the Audit account."
-  default     = "Allow sufficient permissions to provision all AWS resources in the Audit account."
-}
-
-variable "assume_provisionaccount_policy_name" {
-  description = "The name to associate with the IAM policy that allows assumption of the role with sufficient permissions to provision all AWS resources in the Audit account."
-  default     = "Audit-AssumeProvisionAccount"
-}
 
 variable "aws_region" {
   description = "The AWS region where the non-global resources for the Audit account are to be provisioned (e.g. \"us-east-1\")."

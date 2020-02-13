@@ -4,27 +4,6 @@
 # You must provide a value for each of these parameters.
 # ------------------------------------------------------------------------------
 
-variable "account_provisioners_group_membership_name" {
-  description = "The name to associate with the membership of the IAM group allowed to assume the role with sufficient permissions to provision the new account (e.g. \"dns_account_provisioners_membership\")."
-}
-
-variable "account_provisioners_group_name" {
-  description = "The name to associate with the IAM group allowed to assume the role with sufficient permissions to provision the new account (e.g. \"dns_account_provisioners\")."
-}
-
-variable "admin_usernames" {
-  type        = list(string)
-  description = "The usernames associated with the admin IAM user accounts (e.g. [\"first.last\", \"first2.last2\"]).  Note that these user accounts will not be created and must exist."
-}
-
-variable "assume_provisionaccount_policy_description" {
-  description = "The description to associate with the IAM policy that allows assumption of the role with sufficient permissions to provision all AWS resources in the new account (e.g. \"Allow assumption of the ProvisionAccount role in the DNS account\")."
-}
-
-variable "assume_provisionaccount_policy_name" {
-  description = "The name to associate with the IAM policy that allows assumption of the role with sufficient permissions to provision all AWS resources in the new account (e.g. \"DNS-AssumeProvisionAccount\")."
-}
-
 variable "new_account_id" {
   description = "The ID of the account being configured."
 }

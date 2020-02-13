@@ -9,11 +9,3 @@ provider "aws" {
   # from the AWS SSO page, to bootstrap the account.
   # profile = "cool-audit-account-admin"
 }
-
-# This is the "users" provider that is used to create resources inside
-# the users account
-provider "aws" {
-  alias   = "users"
-  region  = var.aws_region
-  profile = "cool-users-provisionaccount"
-}

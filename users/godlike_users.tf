@@ -1,19 +1,21 @@
-# The admin users being created
-resource "aws_iam_user" "admin_user" {
-  for_each = var.admin_usernames
+# The god-like users being created
+resource "aws_iam_user" "gods" {
+  for_each = var.godlike_usernames
 
   name = each.key
   tags = var.tags
 }
 
-# IAM policy that allows admin users to administer their own user
+# IAM policy that allows these users to administer their own user
 # accounts.  This policy is pretty much copied from here:
 # https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_examples_aws_my-sec-creds-self-manage.html
-# The main difference is that we don't require our admins to be authenticated
-# with MFA, since these accounts will only be accessed programatically
-# (i.e. not via the AWS web console) where MFA is not an option.
-data "aws_iam_policy_document" "admin_iam_self_admin_doc" {
-  for_each = var.admin_usernames
+#
+# The main difference is that we don't require these users to be
+# authenticated with MFA, since these accounts will only be accessed
+# programatically (i.e. not via the AWS web console) where MFA is not
+# an option.
+data "aws_iam_policy_document" "iam_self_admin_docs" {
+  for_each = var.godlike_usernames
 
   # Allow users to view their own account information
   statement {
@@ -40,7 +42,7 @@ data "aws_iam_policy_document" "admin_iam_self_admin_doc" {
     ]
 
     resources = [
-      aws_iam_user.admin_user[each.key].arn,
+      aws_iam_user.gods[each.key].arn,
     ]
   }
 
@@ -56,7 +58,7 @@ data "aws_iam_policy_document" "admin_iam_self_admin_doc" {
     ]
 
     resources = [
-      aws_iam_user.admin_user[each.key].arn,
+      aws_iam_user.gods[each.key].arn,
     ]
   }
 
@@ -72,7 +74,7 @@ data "aws_iam_policy_document" "admin_iam_self_admin_doc" {
     ]
 
     resources = [
-      aws_iam_user.admin_user[each.key].arn,
+      aws_iam_user.gods[each.key].arn,
     ]
   }
 
@@ -89,7 +91,7 @@ data "aws_iam_policy_document" "admin_iam_self_admin_doc" {
     ]
 
     resources = [
-      aws_iam_user.admin_user[each.key].arn,
+      aws_iam_user.gods[each.key].arn,
     ]
   }
 
@@ -106,7 +108,7 @@ data "aws_iam_policy_document" "admin_iam_self_admin_doc" {
     ]
 
     resources = [
-      aws_iam_user.admin_user[each.key].arn,
+      aws_iam_user.gods[each.key].arn,
     ]
   }
 
@@ -122,7 +124,7 @@ data "aws_iam_policy_document" "admin_iam_self_admin_doc" {
     resources = [
       # The MFA ARN is identical to that of the user, except that the
       # text "user" is replaced by "mfa"
-      replace(aws_iam_user.admin_user[each.key].arn, "user", "mfa"),
+      replace(aws_iam_user.gods[each.key].arn, "user", "mfa"),
     ]
   }
 
@@ -138,16 +140,16 @@ data "aws_iam_policy_document" "admin_iam_self_admin_doc" {
     ]
 
     resources = [
-      aws_iam_user.admin_user[each.key].arn,
+      aws_iam_user.gods[each.key].arn,
     ]
   }
 }
 
-# The IAM self-administration policy for our IAM users
-resource "aws_iam_user_policy" "admin_user" {
-  for_each = var.admin_usernames
+# The IAM self-administration policy for our gods
+resource "aws_iam_user_policy" "gods" {
+  for_each = var.godlike_usernames
 
   name   = "SelfManagedCredsWithoutMFA"
   user   = each.key
-  policy = data.aws_iam_policy_document.admin_iam_self_admin_doc[each.key].json
+  policy = data.aws_iam_policy_document.iam_self_admin_docs[each.key].json
 }

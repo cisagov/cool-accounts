@@ -1,11 +1,9 @@
 # cool-accounts - Basic usage of provisionaccount-role-tf-module #
 
 This subdirectory contains Terraform code to provision the COOL
-"pettifogger0" account.  It creates:
-
-* An IAM role that allows sufficient permissions to provision all AWS
-  resources in this account.  This role has a trust relationship with
-  the users account.
+"pettifogger0" account.  It creates an IAM role that allows sufficient
+permissions to provision all AWS resources in this account.  This role
+has a trust relationship with the users account.
 
 ## Bootstrapping this account ##
 
@@ -63,11 +61,6 @@ future changes by simply running `terraform apply
 
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-------:|:--------:|
-| account_provisioners_group_membership_name | The name to associate with the membership of the IAM group allowed to assume the role with sufficient permissions to provision the Pettifogger0 account. | string | `pettifogger0_account_provisioners_membership` | no |
-| account_provisioners_group_name | The name to associate with the IAM group allowed to assume the role with sufficient permissions to provision the Pettifogger0 account. | string | `pettifogger0_account_provisioners` | no |
-| admin_usernames | The usernames associated with the admin IAM user accounts. | list(string) | | yes |
-| assume_provisionaccount_policy_description | The description to associate with the IAM policy that allows assumption of the role with sufficient permissions to provision all AWS resources in the Pettifogger0 account. | string | `Allow assumption of the ProvisionAccount role in the Pettifogger0 account.` | no |
-| assume_provisionaccount_policy_name | The name to associate with the IAM policy that allows assumption of the role with sufficient permissions to provision all AWS resources in the Pettifogger0 account. | string | `Pettifogger0-AssumeProvisionAccount` | no |
 | aws_region | The AWS region where the non-global resources for the Pettifogger0 account are to be created (e.g. us-east-1). | string | `us-east-1` | no |
 | provisionaccount_role_description | The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient access to provision all AWS resources in the Pettifogger0 account. | string | `Allows sufficient access to provision all AWS resources in the Pettifogger0 account.` | no |
 | provisionaccount_role_name | The name to assign the IAM role (as well as the corresponding policy) that allows sufficient permissions to provision all AWS resources in Pettifogger0 account. | string | `ProvisionAccount` | no |
@@ -79,7 +72,6 @@ future changes by simply running `terraform apply
 
 | Name | Description |
 |------|-------------|
-| account_provisioners_group_arn | The ARN of the IAM group that is allowed sufficient permissions to provision all AWS resources in the Pettifogger0 account. |
 | provisionaccount_role_arn | The ARN of the IAM role that allows sufficient permissions to create all AWS resources in the Pettifogger0 account. |
 
 ## Contributing ##
