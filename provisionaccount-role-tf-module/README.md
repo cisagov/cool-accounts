@@ -24,6 +24,7 @@ module "provisionaccount" {
     Application = "Sweet Application"
     Workspace   = "production"
   }
+  users_account_id                           = "111111111111"
 }
 ```
 
@@ -40,6 +41,7 @@ module "provisionaccount" {
 | provisionaccount_role_description | The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient access to provision all AWS resources in the new account (e.g. "Allows sufficient permissions to provision all AWS resources in the DNS account."). | string | | yes |
 | provisionaccount_role_name | The name to assign the IAM role (as well as the corresponding policy) that allows sufficient permissions to provision all AWS resources in the new account (e.g. "ProvisionAccount"). | string | | yes |
 | tags | Tags to apply to all AWS resources created. | map(string) | `{}` | no |
+| users_account_id | The ID of the users account.  This account will be allowed to assume the role that allows sufficient permissions to provision all AWS resources in the new account. | string | | yes |
 
 ## Outputs ##
 
