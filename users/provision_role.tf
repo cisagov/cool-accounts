@@ -12,7 +12,7 @@ data "aws_iam_policy_document" "provisionaccount_role_assume_role_doc" {
     principals {
       type = "AWS"
       identifiers = [
-        "arn:aws:iam::${var.this_account_id}:root",
+        "arn:aws:iam::${var.this_account_id}:root"
       ]
     }
   }
