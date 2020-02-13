@@ -5,9 +5,10 @@ This subdirectory contains Terraform code to provision the COOL
 
 * IAM user(s) with the ability to administer their own credentials (including
   multi-factor authentication).
-* An IAM group containing the user(s) above and an IAM policy that allows
-  them to assume a role that can access the Terraform backend (set up via
-  the terraform subdirectory of this project).
+* An IAM group containing the user(s) above.  This group is allowed to
+  access the terraform backend, be an IAM administrator for the Users
+  account, and is allowed to assume any role that has a trust
+  relationship with the Users account.
 
 ## Bootstrapping this account ##
 
@@ -65,21 +66,23 @@ future changes by simply running `terraform apply
 
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-------:|:--------:|
-| admin_usernames | The usernames associated with the admin accounts to be created, which are allowed to access the terraform backend and are IAM administrators.  The format first.last is recommended.  The keys are the usernames and the values are empty strings (since they are not presently used). Example: { \"firstname1.lastname1\" = \"\",  \"firstname2.lastname2\" = \"\" } | map(string) | | yes |
+| assume_any_role_anywhere_policy_description | The description to associate with the IAM policy that allows assumption of any role in any account, so long as it has a trust relationship with the Users account. | string | `Allow assumption of any role in any account, so long as it has a trust relationship with the Users account.` | no |
+| assume_any_role_anywhere_policy_name | The name to assign the IAM policy that allows assumption of any role in any account, so long as it has a trust relationship with the Users account. | string | `AssumeAnyRoleAnywhere` | no |
 | assume_provisionaccount_policy_description | The description to associate with the IAM policy that allows assumption of the role with sufficient permissions to provision all AWS resources in the Users account. | string | `Allow sufficient permissions to provision all AWS resources in the Users account.` | no |
-| assume_provisionaccount_policy_name | The name to assign the IAM policy that allows assumption of the role to provision all AWS resources in this account | string | `AssumeProvisionAccount` | no |
+| assume_provisionaccount_policy_name | The name to assign the IAM policy that allows assumption of the role to provision all AWS resources in the Users account. | string | `AssumeProvisionAccount` | no |
 | aws_region | The AWS region where the non-global resources for this account are to be provisioned (e.g. us-east-1) | string | `us-east-1` | no |
-| provisionaccount_role_description | The description to associate with the IAM role that allows access to provision all AWS resources in this account | string | `Allows sufficient access to provision all AWS resources in this account.` | no |
-| provisionaccount_role_name | The name to assign the IAM role that allows sufficient permissions to provision all AWS resources in the users account | string | `ProvisionAccount` | no |
-| tags | Tags to apply to all AWS resources created | map(string) | `{}` | no |
+| godlike_usernames | The usernames associated with the god-like accounts to be created, which are allowed to access the terraform backend, are IAM administrators for the Users account, and are allowed to assume any role that has a trust relationship with the Users account.  The format first.last is recommended.  The keys are the usernames and the values are empty strings (since they are not presently used). Example: { \"firstname1.lastname1\" = \"\",  \"firstname2.lastname2\" = \"\" } | map(string) | | yes |
+| gods_group_name | The name of the group to be created for the god-like users that are allowed to access the terraform backend, are IAM administrators for the Users account, and are allowed to assume any role that has a trust relationship with the Users account. | string | `gods` | no |
+| provisionaccount_role_description | The description to associate with the IAM role that allows access to provision all AWS resources in the Users account | string | `Allows sufficient access to provision all AWS resources in the Users account.` | no |
+| provisionaccount_role_name | The name to assign the IAM role that allows sufficient permissions to provision all AWS resources in the Users account. | string | `ProvisionAccount` | no |
+| tags | Tags to apply to all AWS resources provisioned. | map(string) | `{}` | no |
 | this_account_id | The ID of the account being configured. | string | | yes |
-| users_account_provisioners_group_name | The name of the group to be created for users allowed to provision the users account | string | `users_account_provisioners` | no |
 
 ## Outputs ##
 
 | Name | Description |
 |------|-------------|
-| provisionaccount_role_arn | The ARN of the IAM role that allows sufficient permissions to provision all AWS resources in this account |
+| provisionaccount_role_arn | The ARN of the IAM role that allows sufficient permissions to provision all AWS resources in this account. |
 
 ## Contributing ##
 

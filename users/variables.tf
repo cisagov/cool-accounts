@@ -30,12 +30,12 @@ variable "assume_any_role_anywhere_policy_name" {
 }
 
 variable "assume_provisionaccount_policy_description" {
-  description = "The description to associate with the IAM policy that allows assumption of the role with sufficient permissions to provision all AWS resources in this account."
-  default     = "Allow sufficient permissions to provision all AWS resources in this account."
+  description = "The description to associate with the IAM policy that allows assumption of the role with sufficient permissions to provision all AWS resources in the Users account."
+  default     = "Allow sufficient permissions to provision all AWS resources in the Users account."
 }
 
 variable "assume_provisionaccount_policy_name" {
-  description = "The name to assign the IAM policy that allows assumption of the role to provision all AWS resources in this account."
+  description = "The name to assign the IAM policy that allows assumption of the role to provision all AWS resources in the Users account."
   default     = "AssumeProvisionAccount"
 }
 
@@ -50,12 +50,12 @@ variable "gods_group_name" {
 }
 
 variable "provisionaccount_role_description" {
-  description = "The description to associate with the IAM role that allows access to provision all AWS resources in this account."
-  default     = "Allows sufficient access to provision all AWS resources in this account."
+  description = "The description to associate with the IAM role that allows access to provision all AWS resources in the Users account."
+  default     = "Allows sufficient access to provision all AWS resources in the Users account."
 }
 
 variable "provisionaccount_role_name" {
-  description = "The name to assign the IAM role that allows sufficient permissions to provision all AWS resources in the users account."
+  description = "The name to assign the IAM role that allows sufficient permissions to provision all AWS resources in the Users account."
   default     = "ProvisionAccount"
 }
 
