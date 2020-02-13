@@ -29,16 +29,6 @@ variable "assume_any_role_anywhere_policy_name" {
   default     = "AssumeAnyRoleAnywhere"
 }
 
-variable "assume_provisionaccount_policy_description" {
-  description = "The description to associate with the IAM policy that allows assumption of the role with sufficient permissions to provision all AWS resources in the Users account."
-  default     = "Allow sufficient permissions to provision all AWS resources in the Users account."
-}
-
-variable "assume_provisionaccount_policy_name" {
-  description = "The name to assign the IAM policy that allows assumption of the role to provision all AWS resources in the Users account."
-  default     = "AssumeProvisionAccount"
-}
-
 variable "aws_region" {
   description = "The AWS region where the non-global resources for this account are to be provisioned (e.g. \"us-east-1\")."
   default     = "us-east-1"
