@@ -17,9 +17,3 @@ resource "aws_iam_policy" "assume_provisionaccount_role" {
   name        = var.assume_provisionaccount_policy_name
   policy      = data.aws_iam_policy_document.assume_provisionaccount_role_doc.json
 }
-
-# Attach the policy to the users_account_provisioners group
-resource "aws_iam_group_policy_attachment" "users_account_provisioners" {
-  group      = aws_iam_group.gods.name
-  policy_arn = aws_iam_policy.assume_provisionaccount_role.arn
-}
