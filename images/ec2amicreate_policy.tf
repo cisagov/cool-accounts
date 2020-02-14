@@ -1,5 +1,5 @@
 # ------------------------------------------------------------------------------
-# Create the IAM policy that allows all of the EC2 actions necessary
+# Create the IAM policy that allows all of the EC2 and KMS actions necessary
 # to create an AMI in the Images account.
 # ------------------------------------------------------------------------------
 
@@ -42,6 +42,18 @@ data "aws_iam_policy_document" "ec2amicreate_doc" {
     ]
 
     resources = ["*"]
+  }
+
+  statement {
+    actions = [
+      "kms:Decrypt",
+      "kms:DescribeKey",
+      "kms:Encrypt",
+      "kms:GenerateDataKey*",
+      "kms:ReEncrypt*",
+    ]
+
+    resources = ["${aws_kms_key.amis.arn}"]
   }
 }
 
