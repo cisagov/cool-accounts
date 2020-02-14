@@ -16,7 +16,6 @@ user credentials.
 module "provisionaccount" {
   source = "../provisionaccount-role-tf-module"
 
-  new_account_id                             = var.this_account_id
   provisionaccount_role_description          = "Allows sufficient permissions to provision all AWS resources in the DNS account."
   provisionaccount_role_name                 = "ProvisionAccount"
   tags                                       = {
@@ -37,7 +36,6 @@ module "provisionaccount" {
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-------:|:--------:|
 | aws_region | The AWS region where the non-global resources for this account are to be created (e.g. us-east-1). | string | `us-east-1` | no |
-| new_account_id | The ID of the account being configured. | string | | yes |
 | provisionaccount_role_description | The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient access to provision all AWS resources in the new account (e.g. "Allows sufficient permissions to provision all AWS resources in the DNS account."). | string | | yes |
 | provisionaccount_role_name | The name to assign the IAM role (as well as the corresponding policy) that allows sufficient permissions to provision all AWS resources in the new account (e.g. "ProvisionAccount"). | string | | yes |
 | tags | Tags to apply to all AWS resources created. | map(string) | `{}` | no |
