@@ -8,10 +8,6 @@ variable "state_bucket_name" {
   description = "The name to use for the S3 bucket that will store the Terraform state."
 }
 
-variable "this_account_id" {
-  description = "The ID of the account being configured."
-}
-
 variable "users_account_id" {
   description = "The ID of the users account.  This account will be allowed to assume the role that allows sufficient access to the Terraform S3 bucket and DynamoDB table to use those resources as a Terraform backend, as well as the role that allows sufficient permissions to provision all AWS resources in the Terraform account."
 }
