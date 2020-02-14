@@ -1,3 +1,13 @@
+output "administeramikmskeys_role_arn" {
+  value       = aws_iam_role.administeramikmskeys_role.arn
+  description = "The ARN of the IAM role that allows sufficient permissions to administer KMS keys for AMIs in the Images account."
+}
+
+output "ami_kms_key_arn" {
+  value       = aws_kms_key.amis.arn
+  description = "The ARN of the KMS key for encrypting AMIs in the Images account."
+}
+
 output "ec2amicreate_role_arn" {
   value       = aws_iam_role.ec2amicreate_role.arn
   description = "The ARN of the IAM role that allows sufficient permissions to create AMIs in the Images account."
