@@ -9,10 +9,6 @@ variable "godlike_usernames" {
   description = "The usernames associated with the god-like accounts to be created, which are allowed to access the terraform backend, are IAM administrators for the Users account, and are allowed to assume any role that has a trust relationship with the Users account.  The format first.last is recommended.  The keys are the usernames and the values are empty strings (since they are not presently used). Example: { \"firstname1.lastname1\" = \"\",  \"firstname2.lastname2\" = \"\" }"
 }
 
-variable "this_account_id" {
-  description = "The ID of the account being configured."
-}
-
 # ------------------------------------------------------------------------------
 # OPTIONAL PARAMETERS
 #
