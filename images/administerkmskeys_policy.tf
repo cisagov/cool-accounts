@@ -1,9 +1,9 @@
 # ------------------------------------------------------------------------------
 # Create the IAM policy that allows all of the KMS actions necessary to
-# administer KMS keys for AMIs in the Images account
+# administer KMS keys in the Images account
 # ------------------------------------------------------------------------------
 
-data "aws_iam_policy_document" "administeramikmskeys_doc" {
+data "aws_iam_policy_document" "administerkmskeys_doc" {
   statement {
     actions = [
       "kms:CancelKeyDeletion",
@@ -26,8 +26,8 @@ data "aws_iam_policy_document" "administeramikmskeys_doc" {
   }
 }
 
-resource "aws_iam_policy" "administeramikmskeys_policy" {
-  description = var.administeramikmskeys_role_description
-  name        = var.administeramikmskeys_role_name
-  policy      = data.aws_iam_policy_document.administeramikmskeys_doc.json
+resource "aws_iam_policy" "administerkmskeys_policy" {
+  description = var.administerkmskeys_role_description
+  name        = var.administerkmskeys_role_name
+  policy      = data.aws_iam_policy_document.administerkmskeys_doc.json
 }

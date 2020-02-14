@@ -14,14 +14,14 @@ variable "users_account_id" {
 # These parameters have reasonable defaults.
 # ------------------------------------------------------------------------------
 
-variable "administeramikmskeys_role_description" {
-  description = "The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient permissions to administer KMS keys for AMIs in the Images account."
+variable "administerkmskeys_role_description" {
+  description = "The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient permissions to administer KMS keys in the Images account."
   default     = "Allows sufficient permissions to administer KMS keys for AMIs in the Images account."
 }
 
-variable "administeramikmskeys_role_name" {
-  description = "The name to assign the IAM role (as well as the corresponding policy) that allows sufficient permissions to administer KMS keys for AMIs in the Images account."
-  default     = "AdministerAMIKMSKeys"
+variable "administerkmskeys_role_name" {
+  description = "The name to assign the IAM role (as well as the corresponding policy) that allows sufficient permissions to administer KMS keys in the Images account."
+  default     = "AdministerKMSKeys"
 }
 
 variable "ami_kms_key_alias" {

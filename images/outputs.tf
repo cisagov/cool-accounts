@@ -1,6 +1,6 @@
-output "administeramikmskeys_role_arn" {
-  value       = aws_iam_role.administeramikmskeys_role.arn
-  description = "The ARN of the IAM role that allows sufficient permissions to administer KMS keys for AMIs in the Images account."
+output "administerkmskeys_role_arn" {
+  value       = aws_iam_role.administerkmskeys_role.arn
+  description = "The ARN of the IAM role that allows sufficient permissions to administer KMS keys in the Images account."
 }
 
 output "ami_kms_key_arn" {
