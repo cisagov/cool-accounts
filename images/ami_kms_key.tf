@@ -22,8 +22,10 @@ data "aws_iam_policy_document" "ami_kms_doc" {
     sid = "Allow access for Key Administrators"
 
     principals {
-      type        = "AWS"
-      identifiers = ["${aws_iam_role.administeramikmskeys_role.arn}"]
+      type = "AWS"
+      # This role needs to be created before the key is provisioned,
+      # so we can't use aws_iam_role.administerkmskeys_role.arn here.
+      identifiers = ["arn:aws:iam::${data.aws_caller_identity.images.account_id}:role/${var.administerkmskeys_role_name}"]
     }
 
     actions = [
