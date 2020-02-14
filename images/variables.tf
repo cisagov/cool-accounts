@@ -24,6 +24,11 @@ variable "administeramikmskeys_role_name" {
   default     = "AdministerAMIKMSKeys"
 }
 
+variable "ami_kms_key_alias" {
+  description = "The alias to assign to the KMS key used to encrypt AMIs in the Images account."
+  default     = "cool-amis"
+}
+
 variable "aws_region" {
   description = "The AWS region where the non-global resources for the Images account are to be provisioned (e.g. \"us-east-1\")."
   default     = "us-east-1"
