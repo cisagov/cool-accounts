@@ -29,6 +29,11 @@ variable "ami_kms_key_alias" {
   default     = "cool-amis"
 }
 
+variable "ami_kms_key_description" {
+  description = "The description to assign to the KMS key used to encrypt AMIs in the Images account."
+  default     = "The key used to encrypt AMIs in this account."
+}
+
 variable "aws_region" {
   description = "The AWS region where the non-global resources for the Images account are to be provisioned (e.g. \"us-east-1\")."
   default     = "us-east-1"
