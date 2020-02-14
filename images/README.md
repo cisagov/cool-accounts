@@ -64,6 +64,9 @@ future changes by simply running `terraform apply
 
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-------:|:--------:|
+| administeramikmskeys_role_description | The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient permissions to administer KMS keys for AMIs in the Images account. | string | `Allows sufficient permissions to administer KMS keys for AMIs in the Images account.` | no |
+| administeramikmskeys_role_name | The name to assign the IAM role (as well as the corresponding policy) that allows sufficient permissions to administer KMS keys for AMIs in the Images account. | string | `AdministerAMIKMSKeys` | no |
+| ami_kms_key_alias | The alias to assign to the KMS key used to encrypt AMIs in the Images account. | string | `cool-amis` | no |
 | aws_region | The AWS region where the non-global resources for the Images account are to be created (e.g. us-east-1). | string | `us-east-1` | no |
 | ec2amicreate_role_description | The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient permissions to create AMIs. | string | `Allows sufficient permissions to create AMIs.` | no |
 | ec2amicreate_role_name | The name to assign the IAM role (as well as the corresponding policy) that allows sufficient permissions to create AMIs. | string | `EC2AMICreate` | no |
@@ -76,6 +79,8 @@ future changes by simply running `terraform apply
 
 | Name | Description |
 |------|-------------|
+|administeramikmskeys_role_arn | The ARN of the IAM role that allows sufficient permissions to administer KMS keys for AMIs in the Images account. |
+|ami_kms_key_arn | The ARN of the KMS key for encrypting AMIs in the Images account. |
 | ec2amicreate_role_arn | The ARN of the IAM role that allows sufficient permissions to create AMIs in the Images account. |
 | provisionaccount_role_arn | The ARN of the IAM role that allows sufficient permissions to provision all AWS resources in the Images account. |
 
