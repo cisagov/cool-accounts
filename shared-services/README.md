@@ -37,7 +37,6 @@ To do this, follow these steps:
    variables (see [Inputs](#Inputs) below for details):
 
    ```console
-   this_account_id  = "111111111111"
    users_account_id = "222222222222"
 
    admin_usernames = [
@@ -65,7 +64,6 @@ future changes by simply running `terraform apply
 | provisionaccount_role_description | The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient access to provision all AWS resources in the Shared Services account. | string | `Allows sufficient access to provision all AWS resources in the Shared Services account.` | no |
 | provisionaccount_role_name | The name to assign the IAM role (as well as the corresponding policy) that allows sufficient permissions to provision all AWS resources in the Shared Services account. | string | `ProvisionAccount` | no |
 | tags | Tags to apply to all AWS resources created. | map(string) | `{}` | no |
-| this_account_id | The ID of the account being configured. | string | | yes |
 | users_account_id | The ID of the users account.  This account will be allowed to assume the role that allows sufficient access to provision all AWS resources in the Shared Services account. | string | | yes |
 
 ## Outputs ##
