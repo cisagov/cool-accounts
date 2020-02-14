@@ -8,7 +8,7 @@ data "aws_iam_policy_document" "ami_kms_doc" {
 
     principals {
       type        = "AWS"
-      identifiers = ["arn:aws:iam:${data.aws_caller_identity.images.account_id}:root"]
+      identifiers = ["arn:aws:iam::${data.aws_caller_identity.images.account_id}:root"]
     }
 
     actions = [
