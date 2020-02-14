@@ -4,10 +4,6 @@
 # You must provide a value for each of these parameters.
 # ------------------------------------------------------------------------------
 
-variable "new_account_id" {
-  description = "The ID of the account being configured."
-}
-
 variable "provisionaccount_role_description" {
   description = "The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient permissions to provision all AWS resources in the new account (e.g. \"Allows sufficient permissions to provision all AWS resources in the DNS account.\")."
 }

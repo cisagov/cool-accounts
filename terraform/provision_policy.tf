@@ -23,7 +23,7 @@ data "aws_iam_policy_document" "provisionaccount_doc" {
       "dynamodb:*",
     ]
     resources = [
-      "arn:aws:dynamodb:${var.aws_region}:${var.this_account_id}:table/${var.state_table_name}",
+      "arn:aws:dynamodb:${var.aws_region}:${data.aws_caller_identity.terraform.account_id}:table/${var.state_table_name}",
     ]
   }
 }

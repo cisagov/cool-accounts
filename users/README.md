@@ -43,8 +43,6 @@ To do this, follow these steps:
    from the bootstrapping the terraform subdirectory:
 
    ```console
-   this_account_id = "111111111111"
-
    admin_usernames = [
      "user.one",
      "user.two"
@@ -74,7 +72,6 @@ future changes by simply running `terraform apply
 | provisionaccount_role_description | The description to associate with the IAM role that allows access to provision all AWS resources in the Users account | string | `Allows sufficient access to provision all AWS resources in the Users account.` | no |
 | provisionaccount_role_name | The name to assign the IAM role that allows sufficient permissions to provision all AWS resources in the Users account. | string | `ProvisionAccount` | no |
 | tags | Tags to apply to all AWS resources provisioned. | map(string) | `{}` | no |
-| this_account_id | The ID of the account being configured. | string | | yes |
 
 ## Outputs ##
 
