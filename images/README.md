@@ -67,8 +67,8 @@ future changes by simply running `terraform apply
 | aws_region | The AWS region where the non-global resources for the Images account are to be created (e.g. us-east-1). | string | `us-east-1` | no |
 | ec2amicreate_role_description | The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient permissions to create AMIs. | string | `Allows sufficient permissions to create AMIs.` | no |
 | ec2amicreate_role_name | The name to assign the IAM role (as well as the corresponding policy) that allows sufficient permissions to create AMIs. | string | `EC2AMICreate` | no |
-| provisionaccount_role_description | The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient access to provision all AWS resources in the Images account. | string | `Allows sufficient access to provision all AWS resources in the Images account.` | no |
-| provisionaccount_role_name | The name to assign the IAM role (as well as the corresponding policy) that allows sufficient permissions to provision all AWS resources in the Images account. | string | `ProvisionAccount` | no |
+| provisionaccount_role_description | The description to associate with the IAM role that allows sufficient access to provision all AWS resources in the Images account. | string | `Allows sufficient access to provision all AWS resources in the Images account.` | no |
+| provisionaccount_role_name | The name to assign the IAM role that allows sufficient permissions to provision all AWS resources in the Images account. | string | `ProvisionAccount` | no |
 | tags | Tags to apply to all AWS resources created. | map(string) | `{}` | no |
 | users_account_id | The ID of the users account.  This account will be allowed to assume the role that allows sufficient access to provision all AWS resources in the Images account, as well as the role that allows sufficient permissions to create AWS EC2 AMIs in the Images account. | string | | yes |
 
