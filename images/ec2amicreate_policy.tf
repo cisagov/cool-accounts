@@ -53,7 +53,7 @@ data "aws_iam_policy_document" "ec2amicreate_doc" {
       "kms:ReEncrypt*",
     ]
 
-    resources = ["${aws_kms_key.amis.arn}"]
+    resources = [aws_kms_key.amis.arn]
   }
 }
 
