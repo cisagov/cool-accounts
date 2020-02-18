@@ -20,12 +20,12 @@ variable "aws_region" {
 }
 
 variable "provisionaccount_role_description" {
-  description = "The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient permissions to provision all AWS resources in the DNS account."
+  description = "The description to associate with the IAM role that allows sufficient permissions to provision all AWS resources in the DNS account."
   default     = "Allows sufficient permissions to provision all AWS resources in the DNS account."
 }
 
 variable "provisionaccount_role_name" {
-  description = "The name to assign the IAM role (as well as the corresponding policy) that allows sufficient permissions to provision all AWS resources in the DNS account."
+  description = "The name to assign the IAM role that allows sufficient permissions to provision all AWS resources in the DNS account."
   default     = "ProvisionAccount"
 }
 

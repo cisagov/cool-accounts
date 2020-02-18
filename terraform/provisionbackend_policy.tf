@@ -1,12 +1,10 @@
 # ------------------------------------------------------------------------------
 # Create the IAM policy that allows sufficient permissions to
-# provision all AWS resources in the terraform account.
+# provision the S3 bucket and DynamoDB table resources for the
+# Terraform backend in the terraform account.
 # ------------------------------------------------------------------------------
 
-# We will also attach the IAMFullAccess policy to the role that uses
-# this policy, so it will have all necessary permissions to provision
-# all AWS resources in the terraform account.
-data "aws_iam_policy_document" "provisionaccount_doc" {
+data "aws_iam_policy_document" "provisionbackend_doc" {
   # Permissions necessary to manipulate the state bucket
   statement {
     actions = [
@@ -29,8 +27,8 @@ data "aws_iam_policy_document" "provisionaccount_doc" {
 }
 
 # The IAM policy
-resource "aws_iam_policy" "provisionaccount_policy" {
-  description = var.provisionaccount_role_description
-  name        = var.provisionaccount_role_name
-  policy      = data.aws_iam_policy_document.provisionaccount_doc.json
+resource "aws_iam_policy" "provisionbackend_policy" {
+  description = var.provisionbackend_policy_description
+  name        = var.provisionbackend_policy_name
+  policy      = data.aws_iam_policy_document.provisionbackend_doc.json
 }

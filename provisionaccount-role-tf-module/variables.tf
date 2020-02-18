@@ -5,11 +5,11 @@
 # ------------------------------------------------------------------------------
 
 variable "provisionaccount_role_description" {
-  description = "The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient permissions to provision all AWS resources in the new account (e.g. \"Allows sufficient permissions to provision all AWS resources in the DNS account.\")."
+  description = "The description to associate with the IAM role that allows sufficient permissions to provision all AWS resources in the new account (e.g. \"Allows sufficient permissions to provision all AWS resources in the DNS account.\")."
 }
 
 variable "provisionaccount_role_name" {
-  description = "The name to assign the IAM role (as well as the corresponding policy) that allows sufficient permissions to provision all AWS resources in the new account (e.g. \"ProvisionAccount\")."
+  description = "The name to assign the IAM role that allows sufficient permissions to provision all AWS resources in the new account (e.g. \"ProvisionAccount\")."
 }
 
 variable "users_account_id" {
