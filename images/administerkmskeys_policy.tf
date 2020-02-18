@@ -1,6 +1,10 @@
 # ------------------------------------------------------------------------------
 # Create the IAM policy that allows all of the KMS actions necessary to
 # administer all KMS keys in the Images account
+#
+# NOTE: There may be a future need to create a policy that only allows
+# administration of the KMS key used to encrpyt AMIs, but at this time,
+# such a policy is not required.
 # ------------------------------------------------------------------------------
 
 data "aws_iam_policy_document" "administerkmskeys_doc" {
