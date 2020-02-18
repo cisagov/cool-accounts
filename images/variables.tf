@@ -59,6 +59,16 @@ variable "provisionaccount_role_name" {
   default     = "ProvisionAccount"
 }
 
+variable "provisionkmskeys_role_description" {
+  description = "The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient permissions to provision KMS keys in the Images account."
+  default     = "Allows sufficient permissions to provision KMS keys in the Images account."
+}
+
+variable "provisionkmskeys_role_name" {
+  description = "The name to assign the IAM role (as well as the corresponding policy) that allows sufficient permissions to provision KMS keys in the Images account."
+  default     = "ProvisionKMSKeys"
+}
+
 variable "tags" {
   type        = map(string)
   description = "Tags to apply to all AWS resources provisioned."
