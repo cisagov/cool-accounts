@@ -1,6 +1,6 @@
 # ------------------------------------------------------------------------------
 # Create the IAM role that allows all of the KMS actions necessary to
-# administer KMS keys in the Images account.
+# administer all KMS keys in the Images account.
 # ------------------------------------------------------------------------------
 
 resource "aws_iam_role" "administerkmskeys_role" {
