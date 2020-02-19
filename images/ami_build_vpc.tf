@@ -1,0 +1,73 @@
+# The VPC where new AMIs will be built
+resource "aws_vpc" "ami_build" {
+  cidr_block = "192.168.100.0/24"
+
+  tags = merge(
+    var.tags,
+    {
+      Name = "AMI Build"
+    },
+  )
+}
+
+# Public (only) subnet of the AMI build VPC
+resource "aws_subnet" "ami_build_public" {
+  cidr_block = "192.168.100.0/24"
+  vpc_id     = aws_vpc.ami_build.id
+
+  depends_on = [aws_internet_gateway.ami_build]
+
+  tags = merge(
+    var.tags,
+    {
+      Name = "AMI Build"
+    },
+  )
+}
+
+# The internet gateway for the AMI build VPC
+resource "aws_internet_gateway" "ami_build" {
+  vpc_id = aws_vpc.ami_build.id
+
+  tags = merge(
+    var.tags,
+    {
+      Name = "AMI Build"
+    },
+  )
+}
+
+# Default route table for AMI build VPC, which routes all
+# external traffic through the internet gateway
+resource "aws_default_route_table" "ami_build" {
+  default_route_table_id = aws_vpc.ami_build.default_route_table_id
+
+  tags = merge(
+    var.tags,
+    {
+      Name = "AMI Build"
+    },
+  )
+}
+
+# Default route: Route all external traffic through the internet gateway
+resource "aws_route" "external_traffic_through_internet_gateway" {
+  route_table_id         = aws_default_route_table.ami_build.id
+  destination_cidr_block = "0.0.0.0/0"
+  gateway_id             = aws_internet_gateway.ami_build.id
+}
+
+# ACL for the public subnet of the AMI build VPC
+resource "aws_network_acl" "ami_build" {
+  vpc_id = aws_vpc.ami_build.id
+  subnet_ids = [
+    aws_subnet.ami_build_public.id,
+  ]
+
+  tags = merge(
+    var.tags,
+    {
+      Name = "AMI Build"
+    },
+  )
+}
