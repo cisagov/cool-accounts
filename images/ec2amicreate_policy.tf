@@ -30,6 +30,7 @@ data "aws_iam_policy_document" "ec2amicreate_doc" {
       "ec2:DescribeSubnets",
       "ec2:DescribeTags",
       "ec2:DescribeVolumes",
+      "ec2:DescribeVpcs",
       "ec2:DetachVolume",
       "ec2:GetPasswordData",
       "ec2:ModifyImageAttribute",
