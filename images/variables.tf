@@ -39,6 +39,16 @@ variable "provisionaccount_role_name" {
   default     = "ProvisionAccount"
 }
 
+variable "provisionvpcs_policy_description" {
+  description = "The description to associate with the IAM policy that allows sufficient permissions to provision VPCs (and related resources) in the Images account."
+  default     = "Allows sufficient permissions to provision VPCs (and related resources) in the Images account."
+}
+
+variable "provisionvpcs_policy_name" {
+  description = "The name to assign the IAM policy that allows sufficient permissions to provision VPCs (and related resources) in the Images account."
+  default     = "ProvisionVPCs"
+}
+
 variable "tags" {
   type        = map(string)
   description = "Tags to apply to all AWS resources provisioned."
