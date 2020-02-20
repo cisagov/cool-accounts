@@ -51,9 +51,13 @@ data "aws_iam_policy_document" "ami_kms_doc" {
   statement {
     sid = "Allow use of the key"
 
+    # Wildcards (other than the global "*") are not allowed when specifying
+    # a principal (e.g. "${aws_iam_role.ec2amicreate_role.arn}*"), so instead
+    # we set the principal to "*" and restrict access via the condition
+    # below (which does allow for a wildcard pattern match on the role ARN)
     principals {
       type        = "AWS"
-      identifiers = ["${aws_iam_role.ec2amicreate_role.arn}"]
+      identifiers = ["*"]
     }
 
     actions = [
@@ -65,6 +69,14 @@ data "aws_iam_policy_document" "ami_kms_doc" {
     ]
 
     resources = ["*"]
+
+    condition {
+      test     = "StringLike"
+      variable = "aws:PrincipalArn"
+      values = [
+        "${aws_iam_role.ec2amicreate_role.arn}*"
+      ]
+    }
   }
 }
 
