@@ -61,11 +61,13 @@ data "aws_iam_policy_document" "ami_kms_doc" {
     }
 
     actions = [
+      "kms:CreateGrant",
       "kms:Decrypt",
       "kms:DescribeKey",
       "kms:Encrypt",
       "kms:GenerateDataKey*",
       "kms:ReEncrypt*",
+      "kms:RetireGrant",
     ]
 
     resources = ["*"]
