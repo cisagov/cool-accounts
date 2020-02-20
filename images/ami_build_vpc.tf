@@ -58,7 +58,7 @@ resource "aws_route" "external_traffic_through_internet_gateway" {
 }
 
 # ACL for the public subnet of the AMI build VPC
-resource "aws_network_acl" "ami_build" {
+resource "aws_network_acl" "ami_build_public" {
   vpc_id = aws_vpc.ami_build.id
   subnet_ids = [
     aws_subnet.ami_build_public.id,
@@ -71,3 +71,7 @@ resource "aws_network_acl" "ami_build" {
     },
   )
 }
+
+# NOTE: No security group is needed for the AMI build instance,
+# since packer creates a temporary security group that only allows inbound
+# port 22 and anything outbound.
