@@ -14,6 +14,26 @@ variable "users_account_id" {
 # These parameters have reasonable defaults.
 # ------------------------------------------------------------------------------
 
+variable "administerkmskeys_role_description" {
+  description = "The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient permissions to administer all KMS keys in the Images account."
+  default     = "Allows sufficient permissions to administer all KMS keys in the Images account."
+}
+
+variable "administerkmskeys_role_name" {
+  description = "The name to assign the IAM role (as well as the corresponding policy) that allows sufficient permissions to administer all KMS keys in the Images account."
+  default     = "AdministerKMSKeys"
+}
+
+variable "ami_kms_key_alias" {
+  description = "The alias to assign to the KMS key used to encrypt AMIs in the Images account."
+  default     = "cool-amis"
+}
+
+variable "ami_kms_key_description" {
+  description = "The description to assign to the KMS key used to encrypt AMIs in the Images account."
+  default     = "The key used to encrypt AMIs in this account."
+}
+
 variable "aws_region" {
   description = "The AWS region where the non-global resources for the Images account are to be provisioned (e.g. \"us-east-1\")."
   default     = "us-east-1"
@@ -37,6 +57,16 @@ variable "provisionaccount_role_description" {
 variable "provisionaccount_role_name" {
   description = "The name to assign the IAM role that allows sufficient permissions to provision all AWS resources in the Images account."
   default     = "ProvisionAccount"
+}
+
+variable "provisionkmskeys_role_description" {
+  description = "The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient permissions to provision KMS keys in the Images account."
+  default     = "Allows sufficient permissions to provision KMS keys in the Images account."
+}
+
+variable "provisionkmskeys_role_name" {
+  description = "The name to assign the IAM role (as well as the corresponding policy) that allows sufficient permissions to provision KMS keys in the Images account."
+  default     = "ProvisionKMSKeys"
 }
 
 variable "provisionvpcs_policy_description" {

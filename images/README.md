@@ -64,11 +64,17 @@ future changes by simply running `terraform apply
 
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-------:|:--------:|
+| administerkmskeys_role_description | The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient permissions to administer all KMS keys in the Images account. | string | `Allows sufficient permissions to administer all KMS keys in the Images account.` | no |
+| administerkmskeys_role_name | The name to assign the IAM role (as well as the corresponding policy) that allows sufficient permissions to administer all KMS keys in the Images account. | string | `AdministerKMSKeys` | no |
+| ami_kms_key_alias | The alias to assign to the KMS key used to encrypt AMIs in the Images account. | string | `cool-amis` | no |
+| ami_kms_key_description | The description to assign to the KMS key used to encrypt AMIs in the Images account. | string | `The key used to encrypt AMIs in this account.` | no |
 | aws_region | The AWS region where the non-global resources for the Images account are to be created (e.g. us-east-1). | string | `us-east-1` | no |
 | ec2amicreate_role_description | The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient permissions to create AMIs. | string | `Allows sufficient permissions to create AMIs.` | no |
 | ec2amicreate_role_name | The name to assign the IAM role (as well as the corresponding policy) that allows sufficient permissions to create AMIs. | string | `EC2AMICreate` | no |
 | provisionaccount_role_description | The description to associate with the IAM role that allows sufficient access to provision all AWS resources in the Images account. | string | `Allows sufficient access to provision all AWS resources in the Images account.` | no |
 | provisionaccount_role_name | The name to assign the IAM role that allows sufficient permissions to provision all AWS resources in the Images account. | string | `ProvisionAccount` | no |
+| provisionkmskeys_role_description | The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient permissions to provision KMS keys in the Images account. | string | `Allows sufficient permissions to provision KMS keys in the Images account.` | no |
+| provisionkmskeys_role_name | The name to assign the IAM role (as well as the corresponding policy) that allows sufficient permissions to provision KMS keys in the Images account. | string | `ProvisionKMSKeys` | no |
 | provisionvpcs_policy_description | The description to associate with the IAM policy that allows sufficient permissions to provision VPCs (and related resources) in the Images account. | string | `Allows sufficient permissions to provision VPCs (and related resources) in the Images account` | no |
 | provisionvpcs_policy_name | The name to assign the IAM policy that allows sufficient permissions to provision VPCs (and related resources) in the Images account. | string | `ProvisionVPCs` | no |
 | tags | Tags to apply to all AWS resources created. | map(string) | `{}` | no |
@@ -78,6 +84,8 @@ future changes by simply running `terraform apply
 
 | Name | Description |
 |------|-------------|
+| administerkmskeys_role_arn | The ARN of the IAM role that allows sufficient permissions to administer KMS keys in the Images account. |
+| ami_kms_key_arn | The ARN of the KMS key for encrypting AMIs in the Images account. |
 | ec2amicreate_role_arn | The ARN of the IAM role that allows sufficient permissions to create AMIs in the Images account. |
 | provisionaccount_role_arn | The ARN of the IAM role that allows sufficient permissions to provision all AWS resources in the Images account. |
 
