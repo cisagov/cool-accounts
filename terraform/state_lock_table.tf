@@ -4,6 +4,11 @@
 # ------------------------------------------------------------------------------
 
 resource "aws_dynamodb_table" "state_lock_table" {
+  # We can't perform this action until our policy is in place.
+  depends_on = [
+    aws_iam_role_policy_attachment.provisionbackend_policy_attachment,
+  ]
+
   attribute {
     name = "LockID"
     type = "S"
