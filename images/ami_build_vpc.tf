@@ -1,5 +1,10 @@
 # The VPC where new AMIs will be built
 resource "aws_vpc" "ami_build" {
+  # We can't perform this action until our policy is in place.
+  depends_on = [
+    aws_iam_role_policy_attachment.provisionvpcs_policy_attachment
+  ]
+
   cidr_block = "192.168.100.0/24"
 
   tags = merge(
@@ -12,10 +17,12 @@ resource "aws_vpc" "ami_build" {
 
 # Public (only) subnet of the AMI build VPC
 resource "aws_subnet" "ami_build_public" {
+  depends_on = [
+    aws_internet_gateway.ami_build
+  ]
+
   cidr_block = "192.168.100.0/24"
   vpc_id     = aws_vpc.ami_build.id
-
-  depends_on = [aws_internet_gateway.ami_build]
 
   tags = merge(
     var.tags,
@@ -72,6 +79,6 @@ resource "aws_network_acl" "ami_build_public" {
   )
 }
 
-# NOTE: No security group is needed for the AMI build instance,
-# since packer creates a temporary security group that only allows inbound
+# NOTE: No security group is needed for the AMI build instance, since
+# packer creates a temporary security group that only allows inbound
 # port 22 and anything outbound.
