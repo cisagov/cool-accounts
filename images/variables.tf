@@ -59,6 +59,16 @@ variable "provisionaccount_role_name" {
   default     = "ProvisionAccount"
 }
 
+variable "provisionec2amicreateroles_role_description" {
+  description = "The description to associate with the IAM role (as well as the corresponding policy) with the ability to create IAM roles that can create AMIs in the Images account."
+  default     = "Allows creation of IAM roles that can create AMIs in the Images account."
+}
+
+variable "provisionec2amicreateroles_role_name" {
+  description = "The name to assign the IAM role (as well as the corresponding policy) with the ability to create IAM roles that can create AMIs in the Images account."
+  default     = "ProvisionEC2AMICreateRoles"
+}
+
 variable "provisionkmskeys_role_description" {
   description = "The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient permissions to provision KMS keys in the Images account."
   default     = "Allows sufficient permissions to provision KMS keys in the Images account."

@@ -47,11 +47,13 @@ data "aws_iam_policy_document" "ec2amicreate_doc" {
 
   statement {
     actions = [
+      "kms:CreateGrant",
       "kms:Decrypt",
       "kms:DescribeKey",
       "kms:Encrypt",
       "kms:GenerateDataKey*",
       "kms:ReEncrypt*",
+      "kms:RetireGrant",
     ]
 
     resources = [aws_kms_key.amis.arn]
