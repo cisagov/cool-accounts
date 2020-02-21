@@ -1,8 +1,13 @@
 # ------------------------------------------------------------------------------
-# Create the S3 bucket where the Terraform state will be stored.
+# Provision the S3 bucket where the Terraform state will be stored.
 # ------------------------------------------------------------------------------
 
 resource "aws_s3_bucket" "state_bucket" {
+  # We can't perform this action until our policy is in place.
+  depends_on = [
+    aws_iam_role_policy_attachment.provisionbackend_policy_attachment,
+  ]
+
   bucket = var.state_bucket_name
   server_side_encryption_configuration {
     rule {
