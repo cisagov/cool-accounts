@@ -45,8 +45,7 @@ module "provisionaccount" {
 
 | Name | Description |
 |------|-------------|
-| provisionaccount_role_arn | The ARN of the IAM role that allows sufficient permissions to provision all AWS resources in the new account. |
-| provisionaccount_role_name | The name of the IAM role that allows sufficient permissions to provision all AWS resources in the new account. |
+| provisionaccount_role | The IAM role that allows sufficient permissions to provision all AWS resources in the new account. |
 
 ## Contributing ##
 

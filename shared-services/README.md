@@ -70,7 +70,7 @@ future changes by simply running `terraform apply
 
 | Name | Description |
 |------|-------------|
-| provisionaccount_role_arn | The ARN of the IAM role that allows sufficient permissions to create all AWS resources in the Shared Services account. |
+| provisionaccount_role | The IAM role that allows sufficient permissions to create all AWS resources in the Shared Services account. |
 
 ## Contributing ##
 

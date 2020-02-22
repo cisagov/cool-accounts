@@ -5,5 +5,5 @@
 
 resource "aws_iam_role_policy_attachment" "provisionbackend_policy_attachment" {
   policy_arn = aws_iam_policy.provisionbackend_policy.arn
-  role       = module.provisionaccount.provisionaccount_role_name
+  role       = module.provisionaccount.provisionaccount_role.name
 }

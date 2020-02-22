@@ -77,10 +77,10 @@ future changes by simply running `terraform apply
 
 | Name | Description |
 |------|-------------|
-| assume_any_role_anywhere_policy_arn | The ARN of the IAM role that allows assumption of any role in any account, so long as it has a trust relationship with the Users account. |
-| godlike_users | A map whose keys are the usernames of, and whose values are the ARNs of, the IAM users that are allowed to access the terraform backend, are IAM administrators for the Users account, and are allowed to assume any role that has a trust relationship with the Users account. |
-| gods_group_arn | The ARN of the IAM group containing the god-like users that are allowed to access the terraform backend, are IAM administrators for the Users account, and are allowed to assume any role that has a trust relationship with the Users account. |
-| provisionaccount_role_arn | The ARN of the IAM role that allows sufficient permissions to provision all AWS resources in this account. |
+| assume_any_role_anywhere_policy | The IAM role that allows assumption of any role in any account, so long as it has a trust relationship with the Users account. |
+| godlike_users | The IAM users that are allowed to access the terraform backend, are IAM administrators for the Users account, and are allowed to assume any role that has a trust relationship with the Users account. |
+| gods_group | The IAM group containing the god-like users that are allowed to access the terraform backend, are IAM administrators for the Users account, and are allowed to assume any role that has a trust relationship with the Users account. |
+| provisionaccount_role | The IAM role that allows sufficient permissions to provision all AWS resources in this account. |
 
 ## Contributing ##
 

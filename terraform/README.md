@@ -107,12 +107,10 @@ future changes by simply running `terraform apply
 
 | Name | Description |
 |------|-------------|
-| access_terraform_backend_role_arn | The ARN of the IAM role that allows sufficient access to the Terraform S3 bucket and DynamoDB table to use those resources as a Terraform backend. |
-| provisionaccount_role_arn | The ARN of the IAM role that allows sufficient permissions to provision all AWS resources in the Terraform account. |
-| state_bucket_arn | The ARN of the S3 bucket where Terraform state information will be stored. |
-| state_bucket_id | The ID of the S3 bucket where Terraform state information will be stored. |
-| state_lock_table_arn | The ARN of the DynamoDB table that to be used for Terraform state locking. |
-| state_lock_table_id | The ID of the DynamoDB table that to be used for Terraform state locking. |
+| access_terraform_backend_role | The IAM role that allows sufficient access to the Terraform S3 bucket and DynamoDB table to use those resources as a Terraform backend. |
+| provisionaccount_role | The IAM role that allows sufficient permissions to provision all AWS resources in the Terraform account. |
+| state_bucket | The S3 bucket where Terraform state information will be stored. |
+| state_lock_table | The DynamoDB table that to be used for Terraform state locking. |
 
 ## Contributing ##
 
