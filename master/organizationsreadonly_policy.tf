@@ -10,8 +10,7 @@ data "aws_iam_policy_document" "organizationsreadonly_doc" {
       "organizations:List*",
     ]
     resources = [
-      "arn:aws:organizations::${data.aws_caller_identity.master.account_id}:*",
-      "arn:aws:organizations::aws:policy/*",
+      "*",
     ]
   }
 }
