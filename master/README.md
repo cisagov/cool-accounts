@@ -71,6 +71,7 @@ future changes by simply running `terraform apply
 
 | Name | Description |
 |------|-------------|
+| organizationsreadonly_role | The IAM role that allows read-only access to all AWS Organizations information in the Master account. |
 | provisionaccount_role | The IAM role that allows sufficient permissions to create all AWS resources in the Master account. |
 
 ## Contributing ##
