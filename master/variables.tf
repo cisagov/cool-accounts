@@ -19,6 +19,16 @@ variable "aws_region" {
   default     = "us-east-1"
 }
 
+variable "organizationsreadonly_role_description" {
+  description = "The description to associate with the IAM role that allows read-only access to all AWS Organizations information in the Master account."
+  default     = "Allows read-only access to all AWS Organizations information in the Master account."
+}
+
+variable "organizationsreadonly_role_name" {
+  description = "The name to assign the IAM role that allows read-only access to all AWS Organizations information in the Master account."
+  default     = "OrganizationsReadOnly"
+}
+
 variable "provisionaccount_role_description" {
   description = "The description to associate with the IAM role that allows sufficient permissions to provision all AWS resources in the Master account."
   default     = "Allows sufficient permissions to provision all AWS resources in the Master account."
