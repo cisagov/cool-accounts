@@ -12,6 +12,6 @@ resource "aws_iam_role" "organizationsreadonly_role" {
 
 # Attach the IAM policy to the role
 resource "aws_iam_role_policy_attachment" "organizationsreadonly_policy_attachment" {
-  policy_arn = aws_iam_policy.organizationsreadonly_policy.arn
+  policy_arn = "arn:aws:iam::aws:policy/AWSOrganizationsReadOnlyAccess"
   role       = aws_iam_role.organizationsreadonly_role.name
 }
