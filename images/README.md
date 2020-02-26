@@ -66,6 +66,7 @@ future changes by simply running `terraform apply
 |------|-------------|:----:|:-------:|:--------:|
 | administerkmskeys_role_description | The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient permissions to administer all KMS keys in the Images account. | string | `Allows sufficient permissions to administer all KMS keys in the Images account.` | no |
 | administerkmskeys_role_name | The name to assign the IAM role (as well as the corresponding policy) that allows sufficient permissions to administer all KMS keys in the Images account. | string | `AdministerKMSKeys` | no |
+| ami_build_cidr | The CIDR block to assign to the VPC and subnet used to build AMIs. | string | `192.168.100.0/24` | no |
 | ami_kms_key_alias | The alias to assign to the KMS key used to encrypt AMIs in the Images account. | string | `cool-amis` | no |
 | ami_kms_key_description | The description to assign to the KMS key used to encrypt AMIs in the Images account. | string | `The key used to encrypt AMIs in this account.` | no |
 | aws_region | The AWS region where the non-global resources for the Images account are to be created (e.g. us-east-1). | string | `us-east-1` | no |

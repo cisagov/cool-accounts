@@ -24,6 +24,11 @@ variable "administerkmskeys_role_name" {
   default     = "AdministerKMSKeys"
 }
 
+variable "ami_build_cidr" {
+  description = "The CIDR block to assign to the VPC and subnet used to build AMIs."
+  default     = "192.168.100.0/24"
+}
+
 variable "ami_kms_key_alias" {
   description = "The alias to assign to the KMS key used to encrypt AMIs in the Images account."
   default     = "cool-amis"
