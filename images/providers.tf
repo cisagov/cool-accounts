@@ -9,3 +9,9 @@ provider "aws" {
   # from the AWS SSO page, to bootstrap the account.
   # profile = "cool-images-account-admin"
 }
+
+provider "aws" {
+  alias   = "organizationsreadonly"
+  profile = "cool-master-organizationsreadonly"
+  region  = var.aws_region
+}
