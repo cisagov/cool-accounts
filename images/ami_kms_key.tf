@@ -14,8 +14,10 @@ data "aws_iam_policy_document" "ami_kms_doc" {
     sid = "Enable IAM User Permissions"
 
     principals {
-      type        = "AWS"
-      identifiers = ["arn:aws:iam::${data.aws_caller_identity.images.account_id}:root"]
+      type = "AWS"
+      identifiers = [
+        "arn:aws:iam::${data.aws_caller_identity.images.account_id}:root",
+      ]
     }
 
     actions = [
@@ -32,7 +34,9 @@ data "aws_iam_policy_document" "ami_kms_doc" {
       type = "AWS"
       # This role needs to be created before the key is provisioned,
       # so we can't use aws_iam_role.administerkmskeys_role.arn here.
-      identifiers = ["arn:aws:iam::${data.aws_caller_identity.images.account_id}:role/${var.administerkmskeys_role_name}"]
+      identifiers = [
+        "arn:aws:iam::${data.aws_caller_identity.images.account_id}:role/${var.administerkmskeys_role_name}",
+      ]
     }
 
     actions = [
@@ -58,10 +62,12 @@ data "aws_iam_policy_document" "ami_kms_doc" {
   statement {
     sid = "Allow use of the key"
 
-    # Wildcards (other than the global "*") are not allowed when specifying
-    # a principal (e.g. "${aws_iam_role.ec2amicreate_role.arn}*"), so instead
-    # we set the principal to "*" and restrict access via the condition
-    # below (which does allow for a wildcard pattern match on the role ARN)
+    # Wildcards (other than the global "*") are not allowed when
+    # specifying a principal
+    # (e.g. "${aws_iam_role.ec2amicreate_role.arn}*"), so instead we
+    # set the principal to "*" and restrict access via the condition
+    # below (which does allow for a wildcard pattern match on the role
+    # ARN).
     principals {
       type        = "AWS"
       identifiers = ["*"]
