@@ -2,6 +2,13 @@
 # Create the KMS key for encrypting AMIs in the Images account
 # ------------------------------------------------------------------------------
 
+# We can extract the IDs of all organization accounts from this data
+# resource.  It is used toward the end of the aws_iam_policy_document
+# data resource that follows.
+data "aws_organizations_organization" "cool" {
+  provider = aws.organizationsreadonly
+}
+
 data "aws_iam_policy_document" "ami_kms_doc" {
   statement {
     sid = "Enable IAM User Permissions"
@@ -76,7 +83,39 @@ data "aws_iam_policy_document" "ami_kms_doc" {
       test     = "StringLike"
       variable = "aws:PrincipalArn"
       values = [
-        "${aws_iam_role.ec2amicreate_role.arn}*"
+        "${aws_iam_role.ec2amicreate_role.arn}*",
+      ]
+    }
+  }
+
+  statement {
+    sid = "Allow use of the key for launching EC2 instances"
+
+    principals {
+      type        = "AWS"
+      identifiers = ["*"]
+    }
+
+    actions = [
+      "kms:Decrypt",
+      "kms:ReEncryptFrom",
+    ]
+
+    resources = ["*"]
+
+    condition {
+      test     = "StringLike"
+      variable = "aws:PrincipalArn"
+      # The ProvisionAccount role ARNs for the env* accounts, the
+      # playground, and the Shared Services account.  Any accounts
+      # that need to launch EC2 instances from AMIs encrypted using
+      # our key should be listed here.
+      values = [
+        for account in data.aws_organizations_organization.cool.accounts :
+        "arn:aws:iam::${account.id}:role/ProvisionAccount"
+        if length(regexall("^env.*", account.name)) != 0 ||
+        account.name == "Playground Legacy" ||
+        account.name == "Shared Services"
       ]
     }
   }
