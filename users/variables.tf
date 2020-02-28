@@ -6,7 +6,7 @@
 
 variable "godlike_usernames" {
   type        = list(string)
-  description = "The usernames associated with the god-like accounts to be created, which are allowed to access the terraform backend, are IAM administrators for the Users account, and are allowed to assume any role that has a trust relationship with the Users account.  The format first.last is recommended.  Example: [ \"firstname1.lastname1\",  \"firstname2.lastname2\"]"
+  description = "The usernames associated with the god-like accounts to be created, which are allowed to access the terraform backend, are IAM administrators for the Users account, and are allowed to assume any role that has a trust relationship with the Users account.  The format first.last is recommended.  Example: [\"firstname1.lastname1\",  \"firstname2.lastname2\"]"
 }
 
 # ------------------------------------------------------------------------------
