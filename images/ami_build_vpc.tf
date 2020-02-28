@@ -5,7 +5,7 @@ resource "aws_vpc" "ami_build" {
     aws_iam_role_policy_attachment.provisionvpcs_policy_attachment
   ]
 
-  cidr_block = "192.168.100.0/24"
+  cidr_block = var.ami_build_cidr
 
   tags = merge(
     var.tags,
@@ -21,7 +21,7 @@ resource "aws_subnet" "ami_build_public" {
     aws_internet_gateway.ami_build
   ]
 
-  cidr_block = "192.168.100.0/24"
+  cidr_block = var.ami_build_cidr
   vpc_id     = aws_vpc.ami_build.id
 
   tags = merge(
