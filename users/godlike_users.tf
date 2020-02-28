@@ -1,6 +1,6 @@
 # The god-like users being created
 resource "aws_iam_user" "gods" {
-  for_each = var.godlike_usernames
+  for_each = toset(var.godlike_usernames)
 
   name = each.key
   tags = var.tags
@@ -15,7 +15,7 @@ resource "aws_iam_user" "gods" {
 # programatically (i.e. not via the AWS web console) where MFA is not
 # an option.
 data "aws_iam_policy_document" "iam_self_admin_docs" {
-  for_each = var.godlike_usernames
+  for_each = toset(var.godlike_usernames)
 
   # Allow users to view their own account information
   statement {
@@ -147,7 +147,7 @@ data "aws_iam_policy_document" "iam_self_admin_docs" {
 
 # The IAM self-administration policy for our gods
 resource "aws_iam_user_policy" "gods" {
-  for_each = var.godlike_usernames
+  for_each = toset(var.godlike_usernames)
 
   name   = "SelfManagedCredsWithoutMFA"
   user   = each.key
