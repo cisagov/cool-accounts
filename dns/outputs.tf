@@ -4,6 +4,6 @@ output "provisionaccount_role" {
 }
 
 output "primary_delegation_set" {
-  value       = aws_route53_delegation_set.main
+  value       = aws_route53_delegation_set.primary
   description = "The primary reusable delegation set that contains the authoritative name servers for all public DNS zones."
 }
