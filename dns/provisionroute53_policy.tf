@@ -10,6 +10,9 @@ data "aws_iam_policy_document" "provisionroute53_doc" {
       "route53:GetReusableDelegationSet",
       "route53:ListReusableDelegationSets"
     ]
+    # route53:DeleteReusableDelegationSet is omitted to add an additional
+    # layer of protection against the delegation set being inadvertently
+    # deleted.
 
     resources = ["*"]
   }
