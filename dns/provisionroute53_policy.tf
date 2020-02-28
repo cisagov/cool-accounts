@@ -12,7 +12,7 @@ data "aws_iam_policy_document" "provisionroute53_doc" {
     ]
     # route53:DeleteReusableDelegationSet is omitted to add an additional
     # layer of protection against the delegation set being inadvertently
-    # deleted.
+    # deleted.  This can happen if the resource is renamed.
 
     resources = ["*"]
   }
