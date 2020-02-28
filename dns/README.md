@@ -69,7 +69,8 @@ future changes by simply running `terraform apply
 
 | Name | Description |
 |------|-------------|
-| provisionaccount_role | The IAM role that allows sufficient permissions to create all AWS resources in the DNS account. |
+| primary_delegation_set | The primary reusable delegation set that contains the authoritative name servers for all public DNS zones. |
+| provisionaccount_role | The IAM role that allows sufficient permissions to provision all AWS resources in the DNS account. |
 
 ## Contributing ##
 
