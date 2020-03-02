@@ -58,18 +58,21 @@ future changes by simply running `terraform apply
 ## Inputs ##
 
 | Name | Description | Type | Default | Required |
-|------|-------------|:----:|:-------:|:--------:|
-| aws_region | The AWS region where the non-global resources for the DNS account are to be created (e.g. us-east-1). | string | `us-east-1` | no |
-| provisionaccount_role_description | The description to associate with the IAM role that allows sufficient access to provision all AWS resources in the DNS account. | string | `Allows sufficient access to provision all AWS resources in the DNS account.` | no |
-| provisionaccount_role_name | The name to assign the IAM role that allows sufficient permissions to provision all AWS resources in the DNS account. | string | `ProvisionAccount` | no |
-| tags | Tags to apply to all AWS resources created. | map(string) | `{}` | no |
-| users_account_id | The ID of the users account.  This account will be allowed to assume the role that allows sufficient access to provision all AWS resources in the DNS account. | string | | yes |
+|------|-------------|------|---------|:-----:|
+| aws_region | The AWS region where the non-global resources for the DNS account are to be provisioned (e.g. "us-east-1"). | `string` | `us-east-1` | no |
+| provisionaccount_role_description | The description to associate with the IAM role that allows sufficient permissions to provision all AWS resources in the DNS account. | `string` | `Allows sufficient permissions to provision all AWS resources in the DNS account.` | no |
+| provisionaccount_role_name | The name to assign the IAM role that allows sufficient permissions to provision all AWS resources in the DNS account. | `string` | `ProvisionAccount` | no |
+| provisionroute53_role_description | The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient permissions to provision Route 53 in the DNS account. | `string` | `Allows sufficient permissions to provision Route 53 in the DNS account.` | no |
+| provisionroute53_role_name | The name to assign the IAM role (as well as the corresponding policy) that allows sufficient permissions to provision Route 53 in the DNS account. | `string` | `ProvisionRoute53` | no |
+| tags | Tags to apply to all AWS resources provisioned. | `map(string)` | `{}` | no |
+| users_account_id | The ID of the users account.  This account will be allowed to assume the role that allows sufficient permissions to provision all AWS resources in the DNS account. | `any` | n/a | yes |
 
 ## Outputs ##
 
 | Name | Description |
 |------|-------------|
-| provisionaccount_role | The IAM role that allows sufficient permissions to create all AWS resources in the DNS account. |
+| primary_delegation_set | The primary reusable delegation set that contains the authoritative name servers for all public DNS zones. |
+| provisionaccount_role | The IAM role that allows sufficient permissions to provision all AWS resources in the DNS account. |
 
 ## Contributing ##
 
