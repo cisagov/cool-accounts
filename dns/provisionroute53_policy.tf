@@ -1,6 +1,6 @@
 # ------------------------------------------------------------------------------
 # Create the IAM policy that allows all of the Route 53 actions necessary to
-# provision Delegation Sets in the DNS account
+# provision delegation sets and create public hosted zones in the DNS account.
 # ------------------------------------------------------------------------------
 data "aws_iam_policy_document" "provisionroute53_doc" {
   statement {
