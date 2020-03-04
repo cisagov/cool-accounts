@@ -2,7 +2,6 @@
 # Create the IAM policy that allows all of the Route 53 actions necessary to
 # provision Delegation Sets in the DNS account
 # ------------------------------------------------------------------------------
-
 data "aws_iam_policy_document" "provisionroute53_doc" {
   statement {
     actions = [
@@ -13,6 +12,18 @@ data "aws_iam_policy_document" "provisionroute53_doc" {
     # route53:DeleteReusableDelegationSet is omitted to add an additional
     # layer of protection against the delegation set being inadvertently
     # deleted.  This can happen if the resource is renamed.
+
+    resources = ["*"]
+  }
+
+  statement {
+    actions = [
+      "route53:CreateHostedZone",
+      "route53:GetChange",
+      "route53:GetHostedZone",
+      "route53:ListTagsForResource",
+      "route53:UpdateHostedZoneComment",
+    ]
 
     resources = ["*"]
   }
