@@ -18,6 +18,7 @@ data "aws_iam_policy_document" "provisionroute53_doc" {
 
   statement {
     actions = [
+      "route53:ChangeTagsForResource",
       "route53:CreateHostedZone",
       "route53:GetChange",
       "route53:GetHostedZone",
