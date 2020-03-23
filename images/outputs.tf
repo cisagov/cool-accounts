@@ -17,3 +17,8 @@ output "provisionaccount_role" {
   value       = module.provisionaccount.provisionaccount_role
   description = "The IAM role that allows sufficient permissions to provision all AWS resources in the Images account."
 }
+
+output "provisionec2amicreateroles_role" {
+  value       = aws_iam_role.provisionec2amicreateroles_role
+  description = "The IAM role that allows sufficient permissions to provision IAM roles that can create AMIs in the Images account."
+}

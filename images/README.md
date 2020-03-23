@@ -91,6 +91,7 @@ future changes by simply running `terraform apply
 | ami_kms_key | The KMS key for encrypting AMIs in the Images account. |
 | ec2amicreate_role | The IAM role that allows sufficient permissions to create AMIs in the Images account. |
 | provisionaccount_role | The IAM role that allows sufficient permissions to provision all AWS resources in the Images account. |
+| provisionec2amicreateroles_role | The IAM role that allows sufficient permissions to provision IAM roles that can create AMIs in the Images account. |
 
 ## Contributing ##
 
