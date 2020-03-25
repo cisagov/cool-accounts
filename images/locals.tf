@@ -18,5 +18,5 @@ locals {
   # Determine Images account type based on AWS account name
   # Account name format:  "ACCOUNT_NAME (ACCOUNT_TYPE)"
   #         For example:  "Images (Production)"
-  this_account_type = length(regexall("\\((.*?)\\)", local.this_account_name)) == 1 ? regex("\\((.*?)\\)", local.this_account_name)[0] : "Unknown"
+  this_account_type = length(regexall("\\(([^()]*)\\)", local.this_account_name)) == 1 ? regex("\\(([^()]*)\\)", local.this_account_name)[0] : "Unknown"
 }
