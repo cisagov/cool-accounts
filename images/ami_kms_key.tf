@@ -119,7 +119,7 @@ data "aws_iam_policy_document" "ami_kms_doc" {
       values = [
         for account in data.aws_organizations_organization.cool.accounts :
         "arn:aws:iam::${account.id}:role/ProvisionAccount"
-        if length(regexall("^env.*\\(${local.this_account_type}\\)$|^Playground Legacy \\(${local.this_account_type}\\)$|^Shared Services \\(${local.this_account_type}\\)$", account.name)) > 0
+        if length(regexall("^env[0-9]* \\(${local.this_account_type}\\)$|^Playground Legacy \\(${local.this_account_type}\\)$|^Shared Services \\(${local.this_account_type}\\)$", account.name)) > 0
       ]
     }
   }
