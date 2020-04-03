@@ -111,6 +111,7 @@ future changes by simply running `terraform apply
 |------|-------------|
 | access_terraform_backend_role | The IAM role that allows sufficient access to the Terraform S3 bucket and DynamoDB table to use those resources as a Terraform backend. |
 | provisionaccount_role | The IAM role that allows sufficient permissions to provision all AWS resources in the Terraform account. |
+| read_terraform_state_role | The IAM role that allows read-only access to the S3 bucket where Terraform state is stored. |
 | state_bucket | The S3 bucket where Terraform state information will be stored. |
 | state_lock_table | The DynamoDB table that to be used for Terraform state locking. |
 
