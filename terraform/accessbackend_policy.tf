@@ -18,6 +18,7 @@ data "aws_iam_policy_document" "access_terraform_backend_access_doc" {
 
   statement {
     actions = [
+      "s3:DeleteObject",
       "s3:GetObject",
       "s3:PutObject",
     ]

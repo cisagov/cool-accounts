@@ -8,6 +8,11 @@ output "provisionaccount_role" {
   description = "The IAM role that allows sufficient permissions to provision all AWS resources in the Terraform account."
 }
 
+output "read_terraform_state_role" {
+  value       = aws_iam_role.read_terraform_state_role
+  description = "The IAM role that allows read-only access to the S3 bucket where Terraform state is stored."
+}
+
 output "state_bucket" {
   value       = aws_s3_bucket.state_bucket
   description = "The S3 bucket where Terraform state information will be stored."
