@@ -62,6 +62,18 @@ variable "provisionbackend_policy_name" {
   default     = "ProvisionBackend"
 }
 
+variable "read_terraform_state_role_description" {
+  type        = string
+  description = "The description to associate with the IAM role (as well as the corresponding policy) that allows read-only access to the S3 bucket where Terraform state is stored."
+  default     = "Allows read-only access to the S3 bucket where Terraform state is stored."
+}
+
+variable "read_terraform_state_role_name" {
+  type        = string
+  description = "The name to assign the IAM role (as well as the corresponding policy) that allows read-only access to the S3 bucket where Terraform state is stored."
+  default     = "ReadTerraformState"
+}
+
 variable "state_table_name" {
   type        = string
   description = "The name to use for the DynamoDB table that will be used for Terraform state locking."
