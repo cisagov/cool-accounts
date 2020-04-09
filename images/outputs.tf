@@ -22,3 +22,8 @@ output "provisionec2amicreateroles_role" {
   value       = aws_iam_role.provisionec2amicreateroles_role
   description = "The IAM role that allows sufficient permissions to provision IAM roles that can create AMIs in the Images account."
 }
+
+output "third_party_bucket" {
+  value       = aws_s3_bucket.third_party
+  description = "The S3 bucket for storing third-party files."
+}
