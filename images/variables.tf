@@ -116,3 +116,9 @@ variable "tags" {
   description = "Tags to apply to all AWS resources provisioned."
   default     = {}
 }
+
+variable "third_party_bucket_name_prefix" {
+  type        = string
+  description = "The prefix to use to name the S3 bucket for storing third-party files.  The bucket will be named with this prefix plus the account type (e.g. production or staging)."
+  default     = "cisa-cool-third-party"
+}
