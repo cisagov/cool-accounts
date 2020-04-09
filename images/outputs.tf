@@ -27,3 +27,13 @@ output "third_party_bucket" {
   value       = aws_s3_bucket.third_party
   description = "The S3 bucket for storing third-party files."
 }
+
+output "thirdpartybucketread_policy" {
+  value       = aws_iam_policy.thirdpartybucketread_policy
+  description = "The IAM policy that allows sufficient permissions to read objects in the third-party file storage S3 bucket in the Images account."
+}
+
+output "thirdpartybucketread_role" {
+  value       = aws_iam_role.thirdpartybucketread_role
+  description = "The IAM role that allows sufficient permissions to read objects in the third-party file storage S3 bucket in the Images account."
+}
