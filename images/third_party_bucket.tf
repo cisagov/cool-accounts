@@ -5,7 +5,7 @@
 
 resource "aws_s3_bucket" "third_party" {
   acl    = "private"
-  bucket = format("%s-%s", var.third_party_bucket_name_prefix, lower(local.this_account_type))
+  bucket = local.third_party_bucket_name
 
   server_side_encryption_configuration {
     rule {

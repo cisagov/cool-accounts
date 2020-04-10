@@ -5,6 +5,9 @@ locals {
     "udp",
   ]
 
+  # Build the name of the third-party file storage bucket
+  third_party_bucket_name = format("%s-%s", var.third_party_bucket_name_prefix, lower(local.this_account_type))
+
   # Get current Images account ID from Images provider
   this_account_id = data.aws_caller_identity.images.account_id
 
