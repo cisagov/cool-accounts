@@ -122,15 +122,3 @@ variable "third_party_bucket_name_prefix" {
   description = "The prefix to use to name the S3 bucket for storing third-party files.  The bucket will be named with this prefix plus the account type (e.g. production or staging)."
   default     = "cisa-cool-third-party"
 }
-
-variable "thirdpartybucketread_role_description" {
-  type        = string
-  description = "The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient permissions to read objects in the third-party file storage S3 bucket in the Images account."
-  default     = "Allows sufficient permissions to read objects in the third-party file storage S3 bucket in the Images account."
-}
-
-variable "thirdpartybucketread_role_name" {
-  type        = string
-  description = "The name to assign the IAM role (as well as the corresponding policy) that allows sufficient permissions to read objects in the third-party file storage S3 bucket in the Images account."
-  default     = "ThirdPartyBucketRead"
-}
