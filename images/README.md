@@ -78,9 +78,14 @@ future changes by simply running `terraform apply
 | provisionec2amicreateroles_role_name | The name to assign the IAM role (as well as the corresponding policy) with the ability to create IAM roles that can create AMIs in the Images account. | string | `ProvisionEC2AMICreateRoles` | no |
 | provisionkmskeys_role_description | The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient permissions to provision KMS keys in the Images account. | string | `Allows sufficient permissions to provision KMS keys in the Images account.` | no |
 | provisionkmskeys_role_name | The name to assign the IAM role (as well as the corresponding policy) that allows sufficient permissions to provision KMS keys in the Images account. | string | `ProvisionKMSKeys` | no |
+| provisionthirdpartybucket_policy_description | The description to associate with the IAM policy that allows sufficient permissions to provision the third-party file storage S3 bucket in the Images account. | string | `Allows sufficient permissions to provision the third-party file storage S3 bucket in the Images account.` | no |
+| provisionthirdpartybucket_policy_name | The name to assign the IAM policy that allows sufficient permissions to provision the third-party file storage S3 bucket in the Images account. | string | `ProvisionThirdPartyBucket` | no |
+| provisionthirdpartybucketreadroles_role_description | The description to associate with the IAM role (as well as the corresponding policy) with the ability to create IAM roles that can read objects in the third-party file storage S3 bucket in the Images account. | string | `Allows creation of IAM roles that can read objects in the third-party file storage S3 bucket in the Images account.` | no |
+| provisionthirdpartybucketreadroles_role_name | The name to assign the IAM role (as well as the corresponding policy) with the ability to create IAM roles that can read objects in the third-party file storage S3 bucket in the Images account. | string | `ProvisionThirdPartyBucketReadRoles` | no |
 | provisionvpcs_policy_description | The description to associate with the IAM policy that allows sufficient permissions to provision VPCs (and related resources) in the Images account. | string | `Allows sufficient permissions to provision VPCs (and related resources) in the Images account` | no |
 | provisionvpcs_policy_name | The name to assign the IAM policy that allows sufficient permissions to provision VPCs (and related resources) in the Images account. | string | `ProvisionVPCs` | no |
 | tags | Tags to apply to all AWS resources created. | map(string) | `{}` | no |
+| third_party_bucket_name_prefix | The prefix to use to name the S3 bucket for storing third-party files.  The bucket will be named with this prefix plus the account type (e.g. production or staging). | string | `cisa-cool-third-party` | no |
 | users_account_id | The ID of the users account.  This account will be allowed to assume the role that allows sufficient access to provision all AWS resources in the Images account, as well as the role that allows sufficient permissions to create AWS EC2 AMIs in the Images account. | string | | yes |
 
 ## Outputs ##
@@ -92,6 +97,8 @@ future changes by simply running `terraform apply
 | ec2amicreate_role | The IAM role that allows sufficient permissions to create AMIs in the Images account. |
 | provisionaccount_role | The IAM role that allows sufficient permissions to provision all AWS resources in the Images account. |
 | provisionec2amicreateroles_role | The IAM role that allows sufficient permissions to provision IAM roles that can create AMIs in the Images account. |
+| provisionthirdpartybucketreadroles_role | The IAM role that allows sufficient permissions to provision IAM roles that can read objects in the third-party file storage S3 bucket in the Images account. |
+| third_party_bucket | The S3 bucket for storing third-party files. |
 
 ## Contributing ##
 

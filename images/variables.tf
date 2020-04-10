@@ -99,6 +99,30 @@ variable "provisionkmskeys_role_name" {
   default     = "ProvisionKMSKeys"
 }
 
+variable "provisionthirdpartybucket_policy_description" {
+  type        = string
+  description = "The description to associate with the IAM policy that allows sufficient permissions to provision the third-party file storage S3 bucket in the Images account."
+  default     = "Allows sufficient permissions to provision the third-party file storage S3 bucket in the Images account."
+}
+
+variable "provisionthirdpartybucket_policy_name" {
+  type        = string
+  description = "The name to assign the IAM policy that allows sufficient permissions to provision the third-party file storage S3 bucket in the Images account."
+  default     = "ProvisionThirdPartyBucket"
+}
+
+variable "provisionthirdpartybucketreadroles_role_description" {
+  type        = string
+  description = "The description to associate with the IAM role (as well as the corresponding policy) with the ability to create IAM roles that can read objects in the third-party file storage S3 bucket in the Images account."
+  default     = "Allows creation of IAM roles that can read objects in the third-party file storage S3 bucket in the Images account."
+}
+
+variable "provisionthirdpartybucketreadroles_role_name" {
+  type        = string
+  description = "The name to assign the IAM role (as well as the corresponding policy) with the ability to create IAM roles that can read objects in the third-party file storage S3 bucket in the Images account."
+  default     = "ProvisionThirdPartyBucketReadRoles"
+}
+
 variable "provisionvpcs_policy_description" {
   type        = string
   description = "The description to associate with the IAM policy that allows sufficient permissions to provision VPCs (and related resources) in the Images account."
@@ -115,4 +139,10 @@ variable "tags" {
   type        = map(string)
   description = "Tags to apply to all AWS resources provisioned."
   default     = {}
+}
+
+variable "third_party_bucket_name_prefix" {
+  type        = string
+  description = "The prefix to use to name the S3 bucket for storing third-party files.  The bucket will be named with this prefix plus the account type (e.g. production or staging)."
+  default     = "cisa-cool-third-party"
 }
