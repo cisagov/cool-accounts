@@ -99,6 +99,18 @@ variable "provisionkmskeys_role_name" {
   default     = "ProvisionKMSKeys"
 }
 
+variable "provisionthirdpartybucketreadroles_role_description" {
+  type        = string
+  description = "The description to associate with the IAM role (as well as the corresponding policy) with the ability to create IAM roles that can read objects in the third-party file storage S3 bucket in the Images account."
+  default     = "Allows creation of IAM roles that can read objects in the third-party file storage S3 bucket in the Images account."
+}
+
+variable "provisionthirdpartybucketreadroles_role_name" {
+  type        = string
+  description = "The name to assign the IAM role (as well as the corresponding policy) with the ability to create IAM roles that can read objects in the third-party file storage S3 bucket in the Images account."
+  default     = "ProvisionThirdPartyBucketReadRoles"
+}
+
 variable "provisionvpcs_policy_description" {
   type        = string
   description = "The description to associate with the IAM policy that allows sufficient permissions to provision VPCs (and related resources) in the Images account."
