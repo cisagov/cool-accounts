@@ -56,21 +56,31 @@ At this point the account has been bootstrapped, and you can apply
 future changes by simply running `terraform apply
 -var-file=<workspace_name>.tfvars`.
 
+## Requirements ##
+
+| Name | Version |
+|------|---------|
+| terraform | >= 0.12 |
+
+## Providers ##
+
+No provider.
+
 ## Inputs ##
 
 | Name | Description | Type | Default | Required |
-|------|-------------|:----:|:-------:|:--------:|
-| aws_region | The AWS region where the non-global resources for the Log Archive account are to be created (e.g. us-east-1). | string | `us-east-1` | no |
-| provisionaccount_role_description | The description to associate with the IAM role that allows sufficient access to provision all AWS resources in the Log Archive account. | string | `Allows sufficient access to provision all AWS resources in the Log Archive account.` | no |
-| provisionaccount_role_name | The name to assign the IAM role that allows sufficient permissions to provision all AWS resources in the Log Archive account. | string | `ProvisionAccount` | no |
-| tags | Tags to apply to all AWS resources created. | map(string) | `{}` | no |
-| users_account_id | The ID of the users account.  This account will be allowed to assume the role that allows sufficient access to provision all AWS resources in the Log Archive account. | string | | yes |
+|------|-------------|------|---------|:--------:|
+| aws_region | The AWS region where the non-global resources for the Log Archive account are to be provisioned (e.g. "us-east-1"). | `string` | `us-east-1` | no |
+| provisionaccount_role_description | The description to associate with the IAM role that allows sufficient permissions to provision all AWS resources in the Log Archive account. | `string` | `Allows sufficient permissions to provision all AWS resources in the Log Archive account.` | no |
+| provisionaccount_role_name | The name to assign the IAM role that allows sufficient permissions to provision all AWS resources in the Log Archive account. | `string` | `ProvisionAccount` | no |
+| tags | Tags to apply to all AWS resources provisioned. | `map(string)` | `{}` | no |
+| users_account_id | The ID of the users account.  This account will be allowed to assume the role that allows sufficient permissions to provision all AWS resources in the Log Archive account. | `string` | n/a | yes |
 
 ## Outputs ##
 
 | Name | Description |
 |------|-------------|
-| provisionaccount_role | The IAM role that allows sufficient permissions to create all AWS resources in the Log Archive account. |
+| provisionaccount_role | The IAM role that allows sufficient permissions to provision all AWS resources in the Log Archive account. |
 
 ## Contributing ##
 

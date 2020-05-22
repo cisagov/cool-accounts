@@ -60,33 +60,46 @@ At this point the account has been bootstrapped, and you can apply
 future changes by simply running `terraform apply
 -var-file=<workspace_name>.tfvars`.
 
+## Requirements ##
+
+| Name | Version |
+|------|---------|
+| terraform | >= 0.12 |
+
+## Providers ##
+
+| Name | Version |
+|------|---------|
+| aws | n/a |
+| aws.organizationsreadonly | n/a |
+
 ## Inputs ##
 
 | Name | Description | Type | Default | Required |
-|------|-------------|:----:|:-------:|:--------:|
-| administerkmskeys_role_description | The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient permissions to administer all KMS keys in the Images account. | string | `Allows sufficient permissions to administer all KMS keys in the Images account.` | no |
-| administerkmskeys_role_name | The name to assign the IAM role (as well as the corresponding policy) that allows sufficient permissions to administer all KMS keys in the Images account. | string | `AdministerKMSKeys` | no |
-| ami_build_cidr | The CIDR block to assign to the VPC and subnet used to build AMIs. | string | `192.168.100.0/24` | no |
-| ami_kms_key_alias | The alias to assign to the KMS key used to encrypt AMIs in the Images account. | string | `cool-amis` | no |
-| ami_kms_key_description | The description to assign to the KMS key used to encrypt AMIs in the Images account. | string | `The key used to encrypt AMIs in this account.` | no |
-| aws_region | The AWS region where the non-global resources for the Images account are to be created (e.g. us-east-1). | string | `us-east-1` | no |
-| ec2amicreate_role_description | The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient permissions to create AMIs. | string | `Allows sufficient permissions to create AMIs.` | no |
-| ec2amicreate_role_name | The name to assign the IAM role (as well as the corresponding policy) that allows sufficient permissions to create AMIs. | string | `EC2AMICreate` | no |
-| provisionaccount_role_description | The description to associate with the IAM role that allows sufficient access to provision all AWS resources in the Images account. | string | `Allows sufficient access to provision all AWS resources in the Images account.` | no |
-| provisionaccount_role_name | The name to assign the IAM role that allows sufficient permissions to provision all AWS resources in the Images account. | string | `ProvisionAccount` | no |
-| provisionec2amicreateroles_role_description | The description to associate with the IAM role (as well as the corresponding policy) with the ability to create IAM roles that can create AMIs in the Images account. | string | `Allows creation of IAM roles that can create AMIs in the Images account` | no |
-| provisionec2amicreateroles_role_name | The name to assign the IAM role (as well as the corresponding policy) with the ability to create IAM roles that can create AMIs in the Images account. | string | `ProvisionEC2AMICreateRoles` | no |
-| provisionkmskeys_role_description | The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient permissions to provision KMS keys in the Images account. | string | `Allows sufficient permissions to provision KMS keys in the Images account.` | no |
-| provisionkmskeys_role_name | The name to assign the IAM role (as well as the corresponding policy) that allows sufficient permissions to provision KMS keys in the Images account. | string | `ProvisionKMSKeys` | no |
-| provisionthirdpartybucket_policy_description | The description to associate with the IAM policy that allows sufficient permissions to provision the third-party file storage S3 bucket in the Images account. | string | `Allows sufficient permissions to provision the third-party file storage S3 bucket in the Images account.` | no |
-| provisionthirdpartybucket_policy_name | The name to assign the IAM policy that allows sufficient permissions to provision the third-party file storage S3 bucket in the Images account. | string | `ProvisionThirdPartyBucket` | no |
-| provisionthirdpartybucketreadroles_role_description | The description to associate with the IAM role (as well as the corresponding policy) with the ability to create IAM roles that can read objects in the third-party file storage S3 bucket in the Images account. | string | `Allows creation of IAM roles that can read objects in the third-party file storage S3 bucket in the Images account.` | no |
-| provisionthirdpartybucketreadroles_role_name | The name to assign the IAM role (as well as the corresponding policy) with the ability to create IAM roles that can read objects in the third-party file storage S3 bucket in the Images account. | string | `ProvisionThirdPartyBucketReadRoles` | no |
-| provisionvpcs_policy_description | The description to associate with the IAM policy that allows sufficient permissions to provision VPCs (and related resources) in the Images account. | string | `Allows sufficient permissions to provision VPCs (and related resources) in the Images account` | no |
-| provisionvpcs_policy_name | The name to assign the IAM policy that allows sufficient permissions to provision VPCs (and related resources) in the Images account. | string | `ProvisionVPCs` | no |
-| tags | Tags to apply to all AWS resources created. | map(string) | `{}` | no |
-| third_party_bucket_name_prefix | The prefix to use to name the S3 bucket for storing third-party files.  The bucket will be named with this prefix plus the account type (e.g. production or staging). | string | `cisa-cool-third-party` | no |
-| users_account_id | The ID of the users account.  This account will be allowed to assume the role that allows sufficient access to provision all AWS resources in the Images account, as well as the role that allows sufficient permissions to create AWS EC2 AMIs in the Images account. | string | | yes |
+|------|-------------|------|---------|:--------:|
+| administerkmskeys_role_description | The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient permissions to administer all KMS keys in the Images account. | `string` | `Allows sufficient permissions to administer all KMS keys in the Images account.` | no |
+| administerkmskeys_role_name | The name to assign the IAM role (as well as the corresponding policy) that allows sufficient permissions to administer all KMS keys in the Images account. | `string` | `AdministerKMSKeys` | no |
+| ami_build_cidr | The CIDR block to assign to the VPC and subnet used to build AMIs. | `string` | `192.168.100.0/24` | no |
+| ami_kms_key_alias | The alias to assign to the KMS key used to encrypt AMIs in the Images account. | `string` | `cool-amis` | no |
+| ami_kms_key_description | The description to assign to the KMS key used to encrypt AMIs in the Images account. | `string` | `The key used to encrypt AMIs in this account.` | no |
+| aws_region | The AWS region where the non-global resources for the Images account are to be provisioned (e.g. "us-east-1"). | `string` | `us-east-1` | no |
+| ec2amicreate_role_description | The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient permissions to create AMIs in the Images account. | `string` | `Allows sufficient permissions to create AMIs in the Images account.` | no |
+| ec2amicreate_role_name | The name to assign the IAM role (as well as the corresponding policy) that allows sufficient permissions to create AMIs in the Images account. | `string` | `EC2AMICreate` | no |
+| provisionaccount_role_description | The description to associate with the IAM role that allows sufficient permissions to provision all AWS resources in the Images account. | `string` | `Allows sufficient permissions to provision all AWS resources in the Images account.` | no |
+| provisionaccount_role_name | The name to assign the IAM role that allows sufficient permissions to provision all AWS resources in the Images account. | `string` | `ProvisionAccount` | no |
+| provisionec2amicreateroles_role_description | The description to associate with the IAM role (as well as the corresponding policy) with the ability to create IAM roles that can create AMIs in the Images account. | `string` | `Allows creation of IAM roles that can create AMIs in the Images account.` | no |
+| provisionec2amicreateroles_role_name | The name to assign the IAM role (as well as the corresponding policy) with the ability to create IAM roles that can create AMIs in the Images account. | `string` | `ProvisionEC2AMICreateRoles` | no |
+| provisionkmskeys_role_description | The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient permissions to provision KMS keys in the Images account. | `string` | `Allows sufficient permissions to provision KMS keys in the Images account.` | no |
+| provisionkmskeys_role_name | The name to assign the IAM role (as well as the corresponding policy) that allows sufficient permissions to provision KMS keys in the Images account. | `string` | `ProvisionKMSKeys` | no |
+| provisionthirdpartybucket_policy_description | The description to associate with the IAM policy that allows sufficient permissions to provision the third-party file storage S3 bucket in the Images account. | `string` | `Allows sufficient permissions to provision the third-party file storage S3 bucket in the Images account.` | no |
+| provisionthirdpartybucket_policy_name | The name to assign the IAM policy that allows sufficient permissions to provision the third-party file storage S3 bucket in the Images account. | `string` | `ProvisionThirdPartyBucket` | no |
+| provisionthirdpartybucketreadroles_role_description | The description to associate with the IAM role (as well as the corresponding policy) with the ability to create IAM roles that can read objects in the third-party file storage S3 bucket in the Images account. | `string` | `Allows creation of IAM roles that can read objects in the third-party file storage S3 bucket in the Images account.` | no |
+| provisionthirdpartybucketreadroles_role_name | The name to assign the IAM role (as well as the corresponding policy) with the ability to create IAM roles that can read objects in the third-party file storage S3 bucket in the Images account. | `string` | `ProvisionThirdPartyBucketReadRoles` | no |
+| provisionvpcs_policy_description | The description to associate with the IAM policy that allows sufficient permissions to provision VPCs (and related resources) in the Images account. | `string` | `Allows sufficient permissions to provision VPCs (and related resources) in the Images account.` | no |
+| provisionvpcs_policy_name | The name to assign the IAM policy that allows sufficient permissions to provision VPCs (and related resources) in the Images account. | `string` | `ProvisionVPCs` | no |
+| tags | Tags to apply to all AWS resources provisioned. | `map(string)` | `{}` | no |
+| third_party_bucket_name_prefix | The prefix to use to name the S3 bucket for storing third-party files.  The bucket will be named with this prefix plus the account type (e.g. production or staging). | `string` | `cisa-cool-third-party` | no |
+| users_account_id | The ID of the users account.  This account will be allowed to assume the role that allows sufficient permissions to provision all AWS resources in the Images account. | `string` | n/a | yes |
 
 ## Outputs ##
 
