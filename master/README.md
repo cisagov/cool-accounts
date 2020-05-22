@@ -55,24 +55,36 @@ At this point the account has been bootstrapped, and you can apply
 future changes by simply running `terraform apply
 -var-file=<workspace_name>.tfvars`.
 
+## Requirements ##
+
+| Name | Version |
+|------|---------|
+| terraform | >= 0.12 |
+
+## Providers ##
+
+| Name | Version |
+|------|---------|
+| aws | n/a |
+
 ## Inputs ##
 
 | Name | Description | Type | Default | Required |
-|------|-------------|:----:|:-------:|:--------:|
-| aws_region | The AWS region where the non-global resources for the Master account are to be created (e.g. us-east-1). | string | `us-east-1` | no |
-| organizationsreadonly_role_description | The description to associate with the IAM role that allows read-only access to all AWS Organizations information in the Master account. | string | `Allows read-only access to all AWS Organizations information in the Master account.` | no |
-| organizationsreadonly_role_name | The name to assign the IAM role that allows read-only access to all AWS Organizations information in the Master account. | string | `OrganizationsReadOnly` | no |
-| provisionaccount_role_description | The description to associate with the IAM role that allows sufficient access to provision all AWS resources in the Master account. | string | `Allows sufficient access to provision all AWS resources in the Master account.` | no |
-| provisionaccount_role_name | The name to assign the IAM role that allows sufficient permissions to provision all AWS resources in the Master account. | string | `ProvisionAccount` | no |
-| tags | Tags to apply to all AWS resources created. | map(string) | `{}` | no |
-| users_account_id | The ID of the users account.  This account will be allowed to assume the role that allows sufficient access to provision all AWS resources in the Master account. | string | | yes |
+|------|-------------|------|---------|:--------:|
+| aws_region | The AWS region where the non-global resources for the Master account are to be provisioned (e.g. "us-east-1"). | `string` | `us-east-1` | no |
+| organizationsreadonly_role_description | The description to associate with the IAM role that allows read-only access to all AWS Organizations information in the Master account. | `string` | `Allows read-only access to all AWS Organizations information in the Master account.` | no |
+| organizationsreadonly_role_name | The name to assign the IAM role that allows read-only access to all AWS Organizations information in the Master account. | `string` | `OrganizationsReadOnly` | no |
+| provisionaccount_role_description | The description to associate with the IAM role that allows sufficient permissions to provision all AWS resources in the Master account. | `string` | `Allows sufficient permissions to provision all AWS resources in the Master account.` | no |
+| provisionaccount_role_name | The name to assign the IAM role that allows sufficient permissions to provision all AWS resources in the Master account. | `string` | `ProvisionAccount` | no |
+| tags | Tags to apply to all AWS resources provisioned. | `map(string)` | `{}` | no |
+| users_account_id | The ID of the users account.  This account will be allowed to assume the role that allows sufficient permissions to provision all AWS resources in the Master account. | `string` | n/a | yes |
 
 ## Outputs ##
 
 | Name | Description |
 |------|-------------|
 | organizationsreadonly_role | The IAM role that allows read-only access to all AWS Organizations information in the Master account. |
-| provisionaccount_role | The IAM role that allows sufficient permissions to create all AWS resources in the Master account. |
+| provisionaccount_role | The IAM role that allows sufficient permissions to provision all AWS resources in the Master account. |
 
 ## Contributing ##
 

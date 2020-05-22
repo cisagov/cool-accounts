@@ -54,16 +54,26 @@ At this point the account has been bootstrapped, and you can apply
 future changes by simply running `terraform apply
 -var-file=<workspace_name>.tfvars`.
 
+## Requirements ##
+
+| Name | Version |
+|------|---------|
+| terraform | >= 0.12 |
+
+## Providers ##
+
+No provider.
+
 ## Inputs ##
 
 | Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:-----:|
-| aws_region | The AWS region where the non-global resources for the dynamic account are to be provisioned (e.g. "us-east-1"). | string | `us-east-1` | no |
-| dynamic_account_name |  The name of the dynamic account to be provisioned. | string | | yes |
-| provisionaccount_role_description | The description to associate with the IAM role that allows sufficient permissions to provision all AWS resources in the dynamic account. | string | `Allows sufficient permissions to provision all AWS resources in the dynamic account.` | no |
-| provisionaccount_role_name | The name to assign the IAM role that allows sufficient permissions to provision all AWS resources in the dynamic account. | string | `ProvisionAccount` | no |
-| tags | Tags to apply to all AWS resources provisioned. | map(string) | `{}` | no |
-| users_account_id | The ID of the users account.  This account will be allowed to assume the role that allows sufficient permissions to provision all AWS resources in the dynamic account. | string | | yes |
+|------|-------------|------|---------|:--------:|
+| aws_region | The AWS region where the non-global resources for the dynamic account are to be provisioned (e.g. "us-east-1"). | `string` | `us-east-1` | no |
+| dynamic_account_name | The name of the dynamic account to be provisioned. | `string` | n/a | yes |
+| provisionaccount_role_description | The description to associate with the IAM role that allows sufficient permissions to provision all AWS resources in the dynamic account. | `string` | `Allows sufficient permissions to provision all AWS resources in the dynamic account.` | no |
+| provisionaccount_role_name | The name to assign the IAM role that allows sufficient permissions to provision all AWS resources in the dynamic account. | `string` | `ProvisionAccount` | no |
+| tags | Tags to apply to all AWS resources provisioned. | `map(string)` | `{}` | no |
+| users_account_id | The ID of the users account.  This account will be allowed to assume the role that allows sufficient permissions to provision all AWS resources in the dynamic account. | `string` | n/a | yes |
 
 ## Outputs ##
 
