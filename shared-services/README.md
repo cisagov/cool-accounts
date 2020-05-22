@@ -75,6 +75,7 @@ future changes by simply running `terraform apply
 | Name | Description |
 |------|-------------|
 | provisionaccount_role | The IAM role that allows sufficient permissions to create all AWS resources in the Shared Services account. |
+| ssmsession_role | The IAM role that allows creation of SSM SessionManager sessions to any EC2 instance in this account. |
 
 ## Contributing ##
 
