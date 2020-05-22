@@ -44,9 +44,11 @@ subdirectories.
 
 ## Notes ##
 
-Running `pre-commit` requires running `terraform init` in every directory that
-contains Terraform code. In this repository, these are the main directory and
-every directory under `examples/`.
+Running `pre-commit` requires running `terraform init` in every
+directory that contains Terraform code. In this repository, this
+includes each account directory (e.g. `audit/`, `dns/`, `dynamic/`,
+etc.), as well as `provisionaccount-role-tf-module` and every
+directory under its `examples/` directory.
 
 ## Contributing ##
 
