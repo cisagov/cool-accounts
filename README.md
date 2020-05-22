@@ -42,6 +42,12 @@ Note that step-by-step bootstrapping instructions are given in the
 account-specific `README.md` files found in the account
 subdirectories.
 
+## Notes ##
+
+Running `pre-commit` requires running `terraform init` in every directory that
+contains Terraform code. In this repository, these are the main directory and
+every directory under `examples/`.
+
 ## Contributing ##
 
 We welcome contributions!  Please see [here](CONTRIBUTING.md) for
