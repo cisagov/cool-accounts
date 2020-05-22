@@ -63,6 +63,10 @@ future changes by simply running `terraform apply
 | aws_region | The AWS region where the non-global resources for the Shared Services account are to be created (e.g. us-east-1). | string | `us-east-1` | no |
 | provisionaccount_role_description | The description to associate with the IAM role that allows sufficient access to provision all AWS resources in the Shared Services account. | string | `Allows sufficient access to provision all AWS resources in the Shared Services account.` | no |
 | provisionaccount_role_name | The name to assign the IAM role that allows sufficient permissions to provision all AWS resources in the Shared Services account. | string | `ProvisionAccount` | no |
+| provisionssmdocument_policy_description | The description to associate with the IAM policy that allows sufficient permissions to provision the SSM Document resource in the Shared Services account. | `string` | `Allows sufficient permissions to provision the SSM Document resource in the Shared Services account.` | no |
+| provisionssmdocument_policy_name | The name to assign the IAM policy that allows sufficient permissions to provision the SSM Document resource in the Shared Services account. | `string` | `ProvisionSSMDocument` | no |
+| ssmsession_role_description | The description to associate with the IAM role (and policy) that allows creation of SSM SessionManager sessions to any EC2 instance in this account. | `string` | `Allows creation of SSM SessionManager sessions to any EC2 instance in this account.` | no |
+| ssmsession_role_name | The name to assign the IAM role (and policy) that allows creation of SSM SessionManager sessions to any EC2 instance in this account. | `string` | `StartStopSSMSession` | no |
 | tags | Tags to apply to all AWS resources created. | map(string) | `{}` | no |
 | users_account_id | The ID of the users account.  This account will be allowed to assume the role that allows sufficient access to provision all AWS resources in the Shared Services account. | string | | yes |
 
