@@ -63,7 +63,9 @@ future changes by simply running `terraform apply
 
 ## Providers ##
 
-No provider.
+| Name | Version |
+|------|---------|
+| aws | ~> 2.0 |
 
 ## Inputs ##
 
