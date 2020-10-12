@@ -43,7 +43,7 @@ To do this, follow these steps:
    users_account_id     = "222222222222"
    ```
 
-1. Run the command `terraform init`.
+1. Run the command `terraform init -upgrade=true`.
 1. Run the command `terraform apply
    -var-file=<workspace_name>.tfvars`.
 1. Revert the changes you made to `providers.tf` in step 1.
