@@ -7,22 +7,23 @@ This role has a trust relationship with the users account.
 
 ## Bootstrapping this account ##
 
-Note that the dynamic account must be bootstrapped.  This is because there
-is no IAM role that can be assumed to build out these resources.
+Note that the dynamic account must be bootstrapped.  This is because
+there is no IAM role that can be assumed to build out these resources.
 Therefore you must first apply this Terraform code with programmatic
-credentials for AWSAdministratorAccess as obtained for the dynamic COOL
-account from the AWS SSO page.
+credentials for AWSAdministratorAccess as obtained for the dynamic
+COOL account from the AWS SSO page.
 
 To do this, follow these steps:
 
-1. Comment out the
-   `profile = "cool-${var.dynamic_account_name}-provisionaccount"` line for
-   the "default" provider in `providers.tf` and directly below that
-   uncomment the line
-   `profile = "cool-${var.dynamic_account_name}-account-admin"`.
-1. Create a new AWS profile called `cool-<DYNAMIC_ACCOUNT_NAME>-account-admin`
-   (replacing `<DYNAMIC_ACCOUNT_NAME>` with the actual name of the account)
-   in your Boto3 configuration using the "AWSAdministratorAccess"
+1. Comment out the `profile =
+   "cool-${var.dynamic_account_name}-provisionaccount"` line for the
+   "default" provider in `providers.tf` and directly below that
+   uncomment the line `profile =
+   "cool-${var.dynamic_account_name}-account-admin"`.
+1. Create a new AWS profile called
+   `cool-<DYNAMIC_ACCOUNT_NAME>-account-admin` (replacing
+   `<DYNAMIC_ACCOUNT_NAME>` with the actual name of the account) in
+   your Boto3 configuration using the "AWSAdministratorAccess"
    credentials (access key ID, secret access key, and session token)
    as obtained from the COOL dynamic account:
 
@@ -33,8 +34,8 @@ To do this, follow these steps:
    aws_session_token = <MY_SESSION_TOKEN>
    ```
 
-1. Create a Terraform workspace (if you haven't already done so) by running
-   `terraform workspace new <workspace_name>`
+1. Create a Terraform workspace (if you haven't already done so) by
+   running `terraform workspace new <workspace_name>`
 1. Create a `<workspace_name>.tfvars` file in
    [cisagov/cool-tf-vars](https://github.com/cisagov/cool-tf-vars)
    with all of the required variables (see [Inputs](#Inputs) below for
