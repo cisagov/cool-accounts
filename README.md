@@ -50,9 +50,16 @@ includes each account directory (e.g. `audit/`, `dns/`, `dynamic/`,
 etc.), as well as `provisionaccount-role-tf-module` and every
 directory under its `examples/` directory.
 
+## New Repositories from a Skeleton ##
+
+Please see our [Project Setup guide](https://github.com/cisagov/development-guide/tree/develop/project_setup)
+for step-by-step instructions on how to start a new repository from
+a skeleton. This will save you time and effort when configuring a
+new repository!
+
 ## Contributing ##
 
-We welcome contributions!  Please see [here](CONTRIBUTING.md) for
+We welcome contributions!  Please see [`CONTRIBUTING.md`](CONTRIBUTING.md) for
 details.
 
 ## License ##
