@@ -130,8 +130,8 @@ future changes by simply running `terraform apply
 
 ## Contributing ##
 
-We welcome contributions!  Please see [here](CONTRIBUTING.md) for
-details.
+We welcome contributions!  Please see
+[`CONTRIBUTING.md`](../CONTRIBUTING.md) for details.
 
 ## License ##
 
