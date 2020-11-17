@@ -63,13 +63,9 @@ To do this, follow these steps:
 1. Create a `<workspace_name>.tfvars` file with all of the required
    variables (see [Inputs](#Inputs) below for details):
 
-   ```console
+   ```hcl
+   state_bucket_name = "my-terraform-state-bucket"
    users_account_id = "222222222222"
-
-   admin_usernames = [
-     "first.last",
-     "first2.last2"
-   ]
    ```
 
 1. Run the command `terraform init`.
