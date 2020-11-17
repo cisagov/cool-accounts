@@ -102,9 +102,12 @@ future changes by simply running `terraform apply
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| access_pca_terraform_backend_role_description | The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient access to the PCA-related items in the Terraform S3 bucket and DynamoDB table to use those resources as a Terraform backend. | `string` | `Allows sufficient access to the PCA-related items in the Terraform S3 bucket and DynamoDB table to use those resources as a Terraform backend.` | no |
+| access_pca_terraform_backend_role_name | The name to assign the IAM role (as well as the corresponding policy) that allows sufficient access to the PCA-related items in the Terraform S3 bucket and DynamoDB table to use those resources as a Terraform backend. | `string` | `AccessPCATerraformBackend` | no |
 | access_terraform_backend_role_description | The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient access to the Terraform S3 bucket and DynamoDB table to use those resources as a Terraform backend. | `string` | `Allows sufficient access to the Terraform S3 bucket and DynamoDB table to use those resources as a Terraform backend.` | no |
 | access_terraform_backend_role_name | The name to assign the IAM role (as well as the corresponding policy) that allows sufficient access to the Terraform S3 bucket and DynamoDB table to use those resources as a Terraform backend. | `string` | `AccessTerraformBackend` | no |
 | aws_region | The AWS region where the non-global resources for this account are to be provisioned (e.g. "us-east-1"). | `string` | `us-east-1` | no |
+| pca_terraform_projects | The list of project names that contain PCA-related Terraform code (e.g. ["my-pca-project"]). | `list(string)` | `[]` | no |
 | provisionaccount_role_description | The description to associate with the IAM role that allows sufficient permissions to provision all AWS resources in the Terraform account. | `string` | `Allows sufficient permissions to provision all AWS resources in the Terraform account.` | no |
 | provisionaccount_role_name | The name to assign the IAM role that allows sufficient permissions to provision all AWS resources in the Terraform account. | `string` | `ProvisionAccount` | no |
 | provisionbackend_policy_description | The description to associate with the IAM policy that allows sufficient permissions to provision the Terraform backend resources in the Terraform account. | `string` | `Allows sufficient permissions to provision the Terraform backend resources in the Terraform account.` | no |
@@ -122,6 +125,7 @@ future changes by simply running `terraform apply
 
 | Name | Description |
 |------|-------------|
+| access_pca_terraform_backend_role | The IAM role that allows sufficient access to the the PCA-related items in the Terraform S3 bucket and DynamoDB table to use those resources as a Terraform backend. |
 | access_terraform_backend_role | The IAM role that allows sufficient access to the Terraform S3 bucket and DynamoDB table to use those resources as a Terraform backend. |
 | provisionaccount_role | The IAM role that allows sufficient permissions to provision all AWS resources in the Terraform account. |
 | read_terraform_state_role | The IAM role that allows read-only access to the S3 bucket where Terraform state is stored. |
