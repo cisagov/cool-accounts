@@ -33,8 +33,9 @@ data "aws_iam_policy_document" "access_pca_terraform_backend_access_doc" {
       "dynamodb:GetItem",
       "dynamodb:PutItem",
     ]
-    # Any workspace of any project in var.pca_terraform_projects
-    resources = [for tf_project in var.pca_terraform_projects : format("%s/env:/*/%s/*", aws_dynamodb_table.state_lock_table.arn, tf_project)]
+    resources = [
+      "${aws_dynamodb_table.state_lock_table.arn}",
+    ]
   }
 }
 
