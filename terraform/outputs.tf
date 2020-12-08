@@ -3,6 +3,11 @@ output "access_terraform_backend_role" {
   description = "The IAM role that allows sufficient access to the Terraform S3 bucket and DynamoDB table to use those resources as a Terraform backend."
 }
 
+output "access_pca_terraform_backend_role" {
+  value       = aws_iam_role.access_pca_terraform_backend_role
+  description = "The IAM role that allows sufficient access to the the PCA-related items in the Terraform S3 bucket and DynamoDB table to use those resources as a Terraform backend."
+}
+
 output "provisionaccount_role" {
   value       = module.provisionaccount.provisionaccount_role
   description = "The IAM role that allows sufficient permissions to provision all AWS resources in the Terraform account."
