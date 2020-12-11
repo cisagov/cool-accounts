@@ -80,6 +80,18 @@ variable "provisionbackend_policy_name" {
   default     = "ProvisionBackend"
 }
 
+variable "read_sharedservices_networking_terraform_state_policy_description" {
+  type        = string
+  description = "The description to associate with the IAM policy that allows read-only access to the Shared Services networking state in the S3 bucket where Terraform state is stored."
+  default     = "Allows read-only access to the Shared Services networking state in the S3 bucket where Terraform state is stored."
+}
+
+variable "read_sharedservices_networking_terraform_state_policy_name" {
+  type        = string
+  description = "The name to assign the IAM policy that allows read-only access to the Shared Services networking state in the S3 bucket where Terraform state is stored."
+  default     = "ReadSharedServicesNetworkingTerraformState"
+}
+
 variable "read_terraform_state_role_description" {
   type        = string
   description = "The description to associate with the IAM role (as well as the corresponding policy) that allows read-only access to the S3 bucket where Terraform state is stored."
