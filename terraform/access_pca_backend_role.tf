@@ -11,8 +11,15 @@ resource "aws_iam_role" "access_pca_terraform_backend_role" {
   tags               = var.tags
 }
 
-# Attach the IAM policy to the role
+# Attach the "access PCA backend" IAM policy to the role
 resource "aws_iam_role_policy_attachment" "access_pca_terraform_backend_policy_attachment" {
   policy_arn = aws_iam_policy.access_pca_terraform_backend_access_policy.arn
+  role       = aws_iam_role.access_pca_terraform_backend_role.name
+}
+
+# Attach the "read Shared Services networking Terraform state"
+# IAM policy to the role
+resource "aws_iam_role_policy_attachment" "read_sharedservices_networking_terraform_state_policy_attachment" {
+  policy_arn = aws_iam_policy.read_sharedservices_networking_terraform_state_policy.arn
   role       = aws_iam_role.access_pca_terraform_backend_role.name
 }
