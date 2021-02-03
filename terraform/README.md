@@ -124,6 +124,7 @@ future changes by simply running `terraform apply
 
 | Name | Description |
 |------|-------------|
+| access_domainmanager_terraform_backend_role | The IAM role that allows sufficient access to the the Domain Manager-related items in the Terraform S3 bucket and DynamoDB table to use those resources as a Terraform backend. |
 | access_pca_terraform_backend_role | The IAM role that allows sufficient access to the the PCA-related items in the Terraform S3 bucket and DynamoDB table to use those resources as a Terraform backend. |
 | access_terraform_backend_role | The IAM role that allows sufficient access to the Terraform S3 bucket and DynamoDB table to use those resources as a Terraform backend. |
 | provisionaccount_role | The IAM role that allows sufficient permissions to provision all AWS resources in the Terraform account. |
