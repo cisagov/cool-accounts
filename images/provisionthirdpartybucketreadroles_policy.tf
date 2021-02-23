@@ -16,6 +16,7 @@ data "aws_iam_policy_document" "provisionthirdpartybucketreadroles" {
       "iam:GetRolePolicy",
       "iam:ListAttachedRolePolicies",
       "iam:ListInstanceProfilesForRole",
+      "iam:ListRolePolicies",
       "iam:PutRolePolicy",
       "iam:TagRole",
       "iam:UpdateAssumeRolePolicy",
