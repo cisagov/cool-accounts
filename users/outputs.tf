@@ -17,3 +17,13 @@ output "provisionaccount_role" {
   value       = module.provisionaccount.provisionaccount_role
   description = "The IAM role that allows sufficient permissions to provision all AWS resources in this account."
 }
+
+output "selfmanagedcredswithmfa_policy" {
+  value       = aws_iam_policy.self_managed_creds_with_mfa
+  description = "The IAM policy that allows users to administer their own user accounts, requiring multi-factor authentication (MFA)."
+}
+
+output "selfmanagedcredswithoutmfa_policy" {
+  value       = aws_iam_policy.self_managed_creds_without_mfa
+  description = "The IAM policy that allows users to administer their own user accounts, without requiring multi-factor authentication (MFA)."
+}
