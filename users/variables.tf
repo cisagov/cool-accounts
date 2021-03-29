@@ -51,6 +51,30 @@ variable "provisionaccount_role_name" {
   default     = "ProvisionAccount"
 }
 
+variable "self_managed_creds_with_mfa_policy_description" {
+  type        = string
+  description = "The description to associate with the IAM policy that allows users to administer their own user accounts, requiring multi-factor authentication (MFA)."
+  default     = "Allows sufficient access for users to administer their own user accounts, requiring multi-factor authentication (MFA)."
+}
+
+variable "self_managed_creds_with_mfa_policy_name" {
+  type        = string
+  description = "The name to assign the IAM policy that allows users to administer their own user accounts, requiring multi-factor authentication (MFA)."
+  default     = "SelfManagedCredsWithMFA"
+}
+
+variable "self_managed_creds_without_mfa_policy_description" {
+  type        = string
+  description = "The description to associate with the IAM policy that allows users to administer their own user accounts, without requiring multi-factor authentication (MFA)."
+  default     = "Allows sufficient access for users to administer their own user accounts, without requiring multi-factor authentication (MFA)."
+}
+
+variable "self_managed_creds_without_mfa_policy_name" {
+  type        = string
+  description = "The name to assign the IAM policy that allows users to administer their own user accounts, without requiring multi-factor authentication (MFA)."
+  default     = "SelfManagedCredsWithoutMFA"
+}
+
 variable "tags" {
   type        = map(string)
   description = "Tags to apply to all AWS resources provisioned."

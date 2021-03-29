@@ -84,6 +84,10 @@ future changes by simply running `terraform apply
 | gods_group_name | The name of the group to be created for the god-like users that are allowed to access the terraform backend, are IAM administrators for the Users account, and are allowed to assume any role that has a trust relationship with the Users account. | `string` | `gods` | no |
 | provisionaccount_role_description | The description to associate with the IAM role that allows access to provision all AWS resources in the Users account. | `string` | `Allows sufficient access to provision all AWS resources in the Users account.` | no |
 | provisionaccount_role_name | The name to assign the IAM role that allows sufficient permissions to provision all AWS resources in the Users account. | `string` | `ProvisionAccount` | no |
+| self_managed_creds_with_mfa_policy_description | The description to associate with the IAM policy that allows users to administer their own user accounts, requiring multi-factor authentication (MFA). | `string` | `Allows sufficient access for users to administer their own user accounts, requiring multi-factor authentication (MFA).` | no |
+| self_managed_creds_with_mfa_policy_name | The name to assign the IAM policy that allows users to administer their own user accounts, requiring multi-factor authentication (MFA). | `string` | `SelfManagedCredsWithMFA` | no |
+| self_managed_creds_without_mfa_policy_description | The description to associate with the IAM policy that allows users to administer their own user accounts, without requiring multi-factor authentication (MFA). | `string` | `Allows sufficient access for users to administer their own user accounts, without requiring multi-factor authentication (MFA).` | no |
+| self_managed_creds_without_mfa_policy_name | The name to assign the IAM policy that allows users to administer their own user accounts, without requiring multi-factor authentication (MFA). | `string` | `SelfManagedCredsWithoutMFA` | no |
 | tags | Tags to apply to all AWS resources provisioned. | `map(string)` | `{}` | no |
 
 ## Outputs ##
@@ -94,6 +98,8 @@ future changes by simply running `terraform apply
 | godlike_users | The IAM users that are allowed to access the terraform backend, are IAM administrators for the Users account, and are allowed to assume any role that has a trust relationship with the Users account. |
 | gods_group | The IAM group containing the god-like users that are allowed to access the terraform backend, are IAM administrators for the Users account, and are allowed to assume any role that has a trust relationship with the Users account. |
 | provisionaccount_role | The IAM role that allows sufficient permissions to provision all AWS resources in this account. |
+| selfmanagedcredswithmfa_policy | The IAM policy that allows users to administer their own user accounts, requiring multi-factor authentication (MFA). |
+| selfmanagedcredswithoutmfa_policy | The IAM policy that allows users to administer their own user accounts, without requiring multi-factor authentication (MFA). |
 
 ## Contributing ##
 
