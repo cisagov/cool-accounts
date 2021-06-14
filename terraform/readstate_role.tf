@@ -8,7 +8,6 @@ resource "aws_iam_role" "read_terraform_state_role" {
   assume_role_policy = data.aws_iam_policy_document.assume_role_doc.json
   description        = var.read_terraform_state_role_description
   name               = var.read_terraform_state_role_name
-  tags               = var.tags
 }
 
 # Attach the IAM policy to the role

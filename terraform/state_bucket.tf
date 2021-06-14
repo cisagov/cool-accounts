@@ -16,7 +16,6 @@ resource "aws_s3_bucket" "state_bucket" {
       }
     }
   }
-  tags = var.tags
   versioning {
     enabled = true
   }
