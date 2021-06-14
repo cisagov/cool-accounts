@@ -3,7 +3,6 @@ resource "aws_iam_user" "gods" {
   for_each = toset(var.godlike_usernames)
 
   name = each.key
-  tags = var.tags
 }
 
 # Attach the self-administration (no MFA required) policy to each godlike user

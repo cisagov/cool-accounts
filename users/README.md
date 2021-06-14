@@ -65,41 +65,64 @@ future changes by simply running `terraform apply
 | Name | Version |
 |------|---------|
 | terraform | ~> 0.12.0 |
-| aws | ~> 3.0 |
+| aws | ~> 3.38 |
 
 ## Providers ##
 
 | Name | Version |
 |------|---------|
-| aws | ~> 3.0 |
+| aws | ~> 3.38 |
+
+## Modules ##
+
+| Name | Source | Version |
+|------|--------|---------|
+| provisionaccount | github.com/cisagov/provisionaccount-role-tf-module |  |
+
+## Resources ##
+
+| Name | Type |
+|------|------|
+| [aws_iam_group.gods](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_group) | resource |
+| [aws_iam_group_policy_attachment.assume_any_role_anywhere](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_group_policy_attachment) | resource |
+| [aws_iam_policy.assume_any_role_anywhere](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) | resource |
+| [aws_iam_policy.self_managed_creds_with_mfa](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) | resource |
+| [aws_iam_policy.self_managed_creds_without_mfa](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) | resource |
+| [aws_iam_user.gods](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_user) | resource |
+| [aws_iam_user_group_membership.gods](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_user_group_membership) | resource |
+| [aws_iam_user_policy_attachment.self_managed_creds_without_mfa](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_user_policy_attachment) | resource |
+| [aws_caller_identity.users](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/caller_identity) | data source |
+| [aws_iam_policy_document.assume_any_role_anywhere_doc](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
+| [aws_iam_policy_document.self_managed_creds_with_mfa](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
+| [aws_iam_policy_document.self_managed_creds_without_mfa](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
 
 ## Inputs ##
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| assume_any_role_anywhere_policy_description | The description to associate with the IAM policy that allows assumption of any role in any account, so long as it has a trust relationship with the Users account. | `string` | `Allow assumption of any role in any account, so long as it has a trust relationship with the Users account.` | no |
-| assume_any_role_anywhere_policy_name | The name to assign the IAM policy that allows assumption of any role in any account, so long as it has a trust relationship with the Users account. | `string` | `AssumeAnyRoleAnywhere` | no |
-| aws_region | The AWS region where the non-global resources for this account are to be provisioned (e.g. "us-east-1"). | `string` | `us-east-1` | no |
-| godlike_usernames | The usernames associated with the god-like accounts to be created, which are allowed to access the terraform backend, are IAM administrators for the Users account, and are allowed to assume any role that has a trust relationship with the Users account.  The format first.last is recommended.  Example: ["firstname1.lastname1",  "firstname2.lastname2"] | `list(string)` | n/a | yes |
-| gods_group_name | The name of the group to be created for the god-like users that are allowed to access the terraform backend, are IAM administrators for the Users account, and are allowed to assume any role that has a trust relationship with the Users account. | `string` | `gods` | no |
-| provisionaccount_role_description | The description to associate with the IAM role that allows access to provision all AWS resources in the Users account. | `string` | `Allows sufficient access to provision all AWS resources in the Users account.` | no |
-| provisionaccount_role_name | The name to assign the IAM role that allows sufficient permissions to provision all AWS resources in the Users account. | `string` | `ProvisionAccount` | no |
-| self_managed_creds_with_mfa_policy_description | The description to associate with the IAM policy that allows users to administer their own user accounts, requiring multi-factor authentication (MFA). | `string` | `Allows sufficient access for users to administer their own user accounts, requiring multi-factor authentication (MFA).` | no |
-| self_managed_creds_with_mfa_policy_name | The name to assign the IAM policy that allows users to administer their own user accounts, requiring multi-factor authentication (MFA). | `string` | `SelfManagedCredsWithMFA` | no |
-| self_managed_creds_without_mfa_policy_description | The description to associate with the IAM policy that allows users to administer their own user accounts, without requiring multi-factor authentication (MFA). | `string` | `Allows sufficient access for users to administer their own user accounts, without requiring multi-factor authentication (MFA).` | no |
-| self_managed_creds_without_mfa_policy_name | The name to assign the IAM policy that allows users to administer their own user accounts, without requiring multi-factor authentication (MFA). | `string` | `SelfManagedCredsWithoutMFA` | no |
+| assume\_any\_role\_anywhere\_policy\_description | The description to associate with the IAM policy that allows assumption of any role in any account, so long as it has a trust relationship with the Users account. | `string` | `"Allow assumption of any role in any account, so long as it has a trust relationship with the Users account."` | no |
+| assume\_any\_role\_anywhere\_policy\_name | The name to assign the IAM policy that allows assumption of any role in any account, so long as it has a trust relationship with the Users account. | `string` | `"AssumeAnyRoleAnywhere"` | no |
+| aws\_region | The AWS region where the non-global resources for this account are to be provisioned (e.g. "us-east-1"). | `string` | `"us-east-1"` | no |
+| godlike\_usernames | The usernames associated with the god-like accounts to be created, which are allowed to access the terraform backend, are IAM administrators for the Users account, and are allowed to assume any role that has a trust relationship with the Users account.  The format first.last is recommended.  Example: ["firstname1.lastname1",  "firstname2.lastname2"] | `list(string)` | n/a | yes |
+| gods\_group\_name | The name of the group to be created for the god-like users that are allowed to access the terraform backend, are IAM administrators for the Users account, and are allowed to assume any role that has a trust relationship with the Users account. | `string` | `"gods"` | no |
+| provisionaccount\_role\_description | The description to associate with the IAM role that allows access to provision all AWS resources in the Users account. | `string` | `"Allows sufficient access to provision all AWS resources in the Users account."` | no |
+| provisionaccount\_role\_name | The name to assign the IAM role that allows sufficient permissions to provision all AWS resources in the Users account. | `string` | `"ProvisionAccount"` | no |
+| self\_managed\_creds\_with\_mfa\_policy\_description | The description to associate with the IAM policy that allows users to administer their own user accounts, requiring multi-factor authentication (MFA). | `string` | `"Allows sufficient access for users to administer their own user accounts, requiring multi-factor authentication (MFA)."` | no |
+| self\_managed\_creds\_with\_mfa\_policy\_name | The name to assign the IAM policy that allows users to administer their own user accounts, requiring multi-factor authentication (MFA). | `string` | `"SelfManagedCredsWithMFA"` | no |
+| self\_managed\_creds\_without\_mfa\_policy\_description | The description to associate with the IAM policy that allows users to administer their own user accounts, without requiring multi-factor authentication (MFA). | `string` | `"Allows sufficient access for users to administer their own user accounts, without requiring multi-factor authentication (MFA)."` | no |
+| self\_managed\_creds\_without\_mfa\_policy\_name | The name to assign the IAM policy that allows users to administer their own user accounts, without requiring multi-factor authentication (MFA). | `string` | `"SelfManagedCredsWithoutMFA"` | no |
 | tags | Tags to apply to all AWS resources provisioned. | `map(string)` | `{}` | no |
 
 ## Outputs ##
 
 | Name | Description |
 |------|-------------|
-| assume_any_role_anywhere_policy | The IAM role that allows assumption of any role in any account, so long as it has a trust relationship with the Users account. |
-| godlike_users | The IAM users that are allowed to access the terraform backend, are IAM administrators for the Users account, and are allowed to assume any role that has a trust relationship with the Users account. |
-| gods_group | The IAM group containing the god-like users that are allowed to access the terraform backend, are IAM administrators for the Users account, and are allowed to assume any role that has a trust relationship with the Users account. |
-| provisionaccount_role | The IAM role that allows sufficient permissions to provision all AWS resources in this account. |
-| selfmanagedcredswithmfa_policy | The IAM policy that allows users to administer their own user accounts, requiring multi-factor authentication (MFA). |
-| selfmanagedcredswithoutmfa_policy | The IAM policy that allows users to administer their own user accounts, without requiring multi-factor authentication (MFA). |
+| assume\_any\_role\_anywhere\_policy | The IAM role that allows assumption of any role in any account, so long as it has a trust relationship with the Users account. |
+| godlike\_users | The IAM users that are allowed to access the terraform backend, are IAM administrators for the Users account, and are allowed to assume any role that has a trust relationship with the Users account. |
+| gods\_group | The IAM group containing the god-like users that are allowed to access the terraform backend, are IAM administrators for the Users account, and are allowed to assume any role that has a trust relationship with the Users account. |
+| provisionaccount\_role | The IAM role that allows sufficient permissions to provision all AWS resources in this account. |
+| selfmanagedcredswithmfa\_policy | The IAM policy that allows users to administer their own user accounts, requiring multi-factor authentication (MFA). |
+| selfmanagedcredswithoutmfa\_policy | The IAM policy that allows users to administer their own user accounts, without requiring multi-factor authentication (MFA). |
 
 ## Contributing ##
 
