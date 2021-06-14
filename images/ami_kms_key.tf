@@ -129,7 +129,6 @@ resource "aws_kms_key" "amis" {
   description         = var.ami_kms_key_description
   enable_key_rotation = true
   policy              = data.aws_iam_policy_document.ami_kms_doc.json
-  tags                = var.tags
 }
 
 resource "aws_kms_alias" "amis" {
