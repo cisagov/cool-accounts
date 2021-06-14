@@ -60,27 +60,37 @@ future changes by simply running `terraform apply
 | Name | Version |
 |------|---------|
 | terraform | ~> 0.12.0 |
-| aws | ~> 3.0 |
+| aws | ~> 3.38 |
 
 ## Providers ##
 
-No provider.
+No providers.
+
+## Modules ##
+
+| Name | Source | Version |
+|------|--------|---------|
+| provisionaccount | github.com/cisagov/provisionaccount-role-tf-module |  |
+
+## Resources ##
+
+No resources.
 
 ## Inputs ##
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| aws_region | The AWS region where the non-global resources for the Audit account are to be provisioned (e.g. "us-east-1"). | `string` | `us-east-1` | no |
-| provisionaccount_role_description | The description to associate with the IAM role that allows sufficient permissions to provision all AWS resources in the Audit account. | `string` | `Allows sufficient permissions to provision all AWS resources in the Audit account.` | no |
-| provisionaccount_role_name | The name to assign the IAM role that allows sufficient permissions to provision all AWS resources in the Audit account. | `string` | `ProvisionAccount` | no |
+| aws\_region | The AWS region where the non-global resources for the Audit account are to be provisioned (e.g. "us-east-1"). | `string` | `"us-east-1"` | no |
+| provisionaccount\_role\_description | The description to associate with the IAM role that allows sufficient permissions to provision all AWS resources in the Audit account. | `string` | `"Allows sufficient permissions to provision all AWS resources in the Audit account."` | no |
+| provisionaccount\_role\_name | The name to assign the IAM role that allows sufficient permissions to provision all AWS resources in the Audit account. | `string` | `"ProvisionAccount"` | no |
 | tags | Tags to apply to all AWS resources provisioned. | `map(string)` | `{}` | no |
-| users_account_id | The ID of the users account.  This account will be allowed to assume the role that allows sufficient permissions to provision all AWS resources in the Audit account. | `string` | n/a | yes |
+| users\_account\_id | The ID of the users account.  This account will be allowed to assume the role that allows sufficient permissions to provision all AWS resources in the Audit account. | `string` | n/a | yes |
 
 ## Outputs ##
 
 | Name | Description |
 |------|-------------|
-| provisionaccount_role | The IAM role that allows sufficient permissions to provision all AWS resources in the Audit account. |
+| provisionaccount\_role | The IAM role that allows sufficient permissions to provision all AWS resources in the Audit account. |
 
 ## Contributing ##
 
