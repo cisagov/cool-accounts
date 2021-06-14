@@ -60,32 +60,47 @@ future changes by simply running `terraform apply
 | Name | Version |
 |------|---------|
 | terraform | ~> 0.12.0 |
-| aws | ~> 3.0 |
+| aws | ~> 3.38 |
 
 ## Providers ##
 
 | Name | Version |
 |------|---------|
-| aws | ~> 3.0 |
+| aws | ~> 3.38 |
+
+## Modules ##
+
+| Name | Source | Version |
+|------|--------|---------|
+| provisionaccount | github.com/cisagov/provisionaccount-role-tf-module |  |
+
+## Resources ##
+
+| Name | Type |
+|------|------|
+| [aws_iam_policy.provisionroute53_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) | resource |
+| [aws_iam_role_policy_attachment.provisionroute53_policy_attachment](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) | resource |
+| [aws_route53_delegation_set.primary](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_delegation_set) | resource |
+| [aws_iam_policy_document.provisionroute53_doc](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
 
 ## Inputs ##
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| aws_region | The AWS region where the non-global resources for the DNS account are to be provisioned (e.g. "us-east-1"). | `string` | `us-east-1` | no |
-| provisionaccount_role_description | The description to associate with the IAM role that allows sufficient permissions to provision all AWS resources in the DNS account. | `string` | `Allows sufficient permissions to provision all AWS resources in the DNS account.` | no |
-| provisionaccount_role_name | The name to assign the IAM role that allows sufficient permissions to provision all AWS resources in the DNS account. | `string` | `ProvisionAccount` | no |
-| provisionroute53_role_description | The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient permissions to provision Route 53 in the DNS account. | `string` | `Allows sufficient permissions to provision Route 53 in the DNS account.` | no |
-| provisionroute53_role_name | The name to assign the IAM role (as well as the corresponding policy) that allows sufficient permissions to provision Route 53 in the DNS account. | `string` | `ProvisionRoute53` | no |
+| aws\_region | The AWS region where the non-global resources for the DNS account are to be provisioned (e.g. "us-east-1"). | `string` | `"us-east-1"` | no |
+| provisionaccount\_role\_description | The description to associate with the IAM role that allows sufficient permissions to provision all AWS resources in the DNS account. | `string` | `"Allows sufficient permissions to provision all AWS resources in the DNS account."` | no |
+| provisionaccount\_role\_name | The name to assign the IAM role that allows sufficient permissions to provision all AWS resources in the DNS account. | `string` | `"ProvisionAccount"` | no |
+| provisionroute53\_role\_description | The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient permissions to provision Route 53 in the DNS account. | `string` | `"Allows sufficient permissions to provision Route 53 in the DNS account."` | no |
+| provisionroute53\_role\_name | The name to assign the IAM role (as well as the corresponding policy) that allows sufficient permissions to provision Route 53 in the DNS account. | `string` | `"ProvisionRoute53"` | no |
 | tags | Tags to apply to all AWS resources provisioned. | `map(string)` | `{}` | no |
-| users_account_id | The ID of the users account.  This account will be allowed to assume the role that allows sufficient permissions to provision all AWS resources in the DNS account. | `string` | n/a | yes |
+| users\_account\_id | The ID of the users account.  This account will be allowed to assume the role that allows sufficient permissions to provision all AWS resources in the DNS account. | `string` | n/a | yes |
 
 ## Outputs ##
 
 | Name | Description |
 |------|-------------|
-| primary_delegation_set | The primary reusable delegation set that contains the authoritative name servers for all public DNS zones. |
-| provisionaccount_role | The IAM role that allows sufficient permissions to provision all AWS resources in the DNS account. |
+| primary\_delegation\_set | The primary reusable delegation set that contains the authoritative name servers for all public DNS zones. |
+| provisionaccount\_role | The IAM role that allows sufficient permissions to provision all AWS resources in the DNS account. |
 
 ## Contributing ##
 
