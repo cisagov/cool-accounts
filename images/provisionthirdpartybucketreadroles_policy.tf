@@ -36,7 +36,8 @@ data "aws_iam_policy_document" "provisionthirdpartybucketreadroles" {
       "iam:DeletePolicyVersion",
       "iam:GetPolicy",
       "iam:GetPolicyVersion",
-      "iam:ListPolicyVersions"
+      "iam:ListPolicyVersions",
+      "iam:TagPolicy",
     ]
     resources = [
       "arn:aws:iam::${data.aws_caller_identity.images.account_id}:policy/ThirdPartyBucketRead-*"
