@@ -19,6 +19,7 @@ data "aws_iam_policy_document" "provisionthirdpartybucketreadroles" {
       "iam:ListRolePolicies",
       "iam:PutRolePolicy",
       "iam:TagRole",
+      "iam:UntagRole",
       "iam:UpdateAssumeRolePolicy",
       "iam:UpdateRole",
       "iam:UpdateRoleDescription",
@@ -38,6 +39,7 @@ data "aws_iam_policy_document" "provisionthirdpartybucketreadroles" {
       "iam:GetPolicyVersion",
       "iam:ListPolicyVersions",
       "iam:TagPolicy",
+      "iam:UntagPolicy",
     ]
     resources = [
       "arn:aws:iam::${data.aws_caller_identity.images.account_id}:policy/ThirdPartyBucketRead-*"
