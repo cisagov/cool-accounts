@@ -101,7 +101,7 @@ future changes by simply running `terraform apply
 | provisionssmdocument\_policy\_name | The name to assign the IAM policy that allows sufficient permissions to provision the SSM Document resource in the Shared Services account. | `string` | `"ProvisionSSMDocument"` | no |
 | ssmsession\_role\_description | The description to associate with the IAM role (and policy) that allows creation of SSM SessionManager sessions to any EC2 instance in this account. | `string` | `"Allows creation of SSM SessionManager sessions to any EC2 instance in this account."` | no |
 | ssmsession\_role\_name | The name to assign the IAM role (and policy) that allows creation of SSM SessionManager sessions to any EC2 instance in this account. | `string` | `"StartStopSSMSession"` | no |
-| tags | Tags to apply to all AWS resources provisioned. | `map(string)` | `{}` | no |
+| tags | Tags to apply to all AWS resources created. | `map(string)` | `{}` | no |
 | users\_account\_id | The ID of the users account.  This account will be allowed to assume the role that allows sufficient permissions to provision all AWS resources in the Shared Services account. | `string` | n/a | yes |
 
 ## Outputs ##

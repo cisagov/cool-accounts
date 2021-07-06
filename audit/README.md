@@ -83,7 +83,7 @@ No resources.
 | aws\_region | The AWS region where the non-global resources for the Audit account are to be provisioned (e.g. "us-east-1"). | `string` | `"us-east-1"` | no |
 | provisionaccount\_role\_description | The description to associate with the IAM role that allows sufficient permissions to provision all AWS resources in the Audit account. | `string` | `"Allows sufficient permissions to provision all AWS resources in the Audit account."` | no |
 | provisionaccount\_role\_name | The name to assign the IAM role that allows sufficient permissions to provision all AWS resources in the Audit account. | `string` | `"ProvisionAccount"` | no |
-| tags | Tags to apply to all AWS resources provisioned. | `map(string)` | `{}` | no |
+| tags | Tags to apply to all AWS resources created. | `map(string)` | `{}` | no |
 | users\_account\_id | The ID of the users account.  This account will be allowed to assume the role that allows sufficient permissions to provision all AWS resources in the Audit account. | `string` | n/a | yes |
 
 ## Outputs ##

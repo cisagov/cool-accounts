@@ -151,7 +151,7 @@ future changes by simply running `terraform apply
 | provisionthirdpartybucketreadroles\_role\_name | The name to assign the IAM role (as well as the corresponding policy) with the ability to create IAM roles that can read objects in the third-party file storage S3 bucket in the Images account. | `string` | `"ProvisionThirdPartyBucketReadRoles"` | no |
 | provisionvpcs\_policy\_description | The description to associate with the IAM policy that allows sufficient permissions to provision VPCs (and related resources) in the Images account. | `string` | `"Allows sufficient permissions to provision VPCs (and related resources) in the Images account."` | no |
 | provisionvpcs\_policy\_name | The name to assign the IAM policy that allows sufficient permissions to provision VPCs (and related resources) in the Images account. | `string` | `"ProvisionVPCs"` | no |
-| tags | Tags to apply to all AWS resources provisioned. | `map(string)` | `{}` | no |
+| tags | Tags to apply to all AWS resources created. | `map(string)` | `{}` | no |
 | third\_party\_bucket\_name\_prefix | The prefix to use to name the S3 bucket for storing third-party files.  The bucket will be named with this prefix plus the account type (e.g. production or staging). | `string` | `"cisa-cool-third-party"` | no |
 | users\_account\_id | The ID of the users account.  This account will be allowed to assume the role that allows sufficient permissions to provision all AWS resources in the Images account. | `string` | n/a | yes |
 

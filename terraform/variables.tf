@@ -130,6 +130,6 @@ variable "state_table_write_capacity" {
 
 variable "tags" {
   type        = map(string)
-  description = "Tags to apply to all AWS resources provisioned."
+  description = "Tags to apply to all AWS resources created."
   default     = {}
 }

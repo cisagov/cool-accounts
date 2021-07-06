@@ -137,7 +137,7 @@ variable "provisionvpcs_policy_name" {
 
 variable "tags" {
   type        = map(string)
-  description = "Tags to apply to all AWS resources provisioned."
+  description = "Tags to apply to all AWS resources created."
   default     = {}
 }
 
