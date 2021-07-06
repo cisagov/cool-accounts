@@ -7,7 +7,6 @@ resource "aws_iam_role" "organizationsreadonly_role" {
   assume_role_policy = data.aws_iam_policy_document.assume_role_doc.json
   description        = var.organizationsreadonly_role_description
   name               = var.organizationsreadonly_role_name
-  tags               = var.tags
 }
 
 # Attach the IAM policy to the role

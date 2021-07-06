@@ -15,12 +15,10 @@ resource "aws_s3_bucket" "third_party" {
     }
   }
 
-  tags = merge(var.tags,
-    {
-      "GitHub_Secret_Name"             = "THIRD_PARTY_BUCKET_${upper(local.this_account_type)}",
-      "GitHub_Secret_Terraform_Lookup" = "id"
-    }
-  )
+  tags = {
+    "GitHub_Secret_Name"             = "THIRD_PARTY_BUCKET_${upper(local.this_account_type)}",
+    "GitHub_Secret_Terraform_Lookup" = "id"
+  }
 
   versioning {
     enabled = true

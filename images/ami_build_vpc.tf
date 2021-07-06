@@ -7,12 +7,9 @@ resource "aws_vpc" "ami_build" {
 
   cidr_block = var.ami_build_cidr
 
-  tags = merge(
-    var.tags,
-    {
-      Name = "AMI Build"
-    },
-  )
+  tags = {
+    Name = "AMI Build"
+  }
 }
 
 # Public (only) subnet of the AMI build VPC
@@ -24,24 +21,18 @@ resource "aws_subnet" "ami_build_public" {
   cidr_block = var.ami_build_cidr
   vpc_id     = aws_vpc.ami_build.id
 
-  tags = merge(
-    var.tags,
-    {
-      Name = "AMI Build"
-    },
-  )
+  tags = {
+    Name = "AMI Build"
+  }
 }
 
 # The internet gateway for the AMI build VPC
 resource "aws_internet_gateway" "ami_build" {
   vpc_id = aws_vpc.ami_build.id
 
-  tags = merge(
-    var.tags,
-    {
-      Name = "AMI Build"
-    },
-  )
+  tags = {
+    Name = "AMI Build"
+  }
 }
 
 # Default route table for AMI build VPC, which routes all
@@ -49,12 +40,9 @@ resource "aws_internet_gateway" "ami_build" {
 resource "aws_default_route_table" "ami_build" {
   default_route_table_id = aws_vpc.ami_build.default_route_table_id
 
-  tags = merge(
-    var.tags,
-    {
-      Name = "AMI Build"
-    },
-  )
+  tags = {
+    Name = "AMI Build"
+  }
 }
 
 # Default route: Route all external traffic through the internet gateway
@@ -71,12 +59,9 @@ resource "aws_network_acl" "ami_build_public" {
     aws_subnet.ami_build_public.id,
   ]
 
-  tags = merge(
-    var.tags,
-    {
-      Name = "AMI Build"
-    },
-  )
+  tags = {
+    Name = "AMI Build"
+  }
 }
 
 # NOTE: No security group is needed for the AMI build instance, since

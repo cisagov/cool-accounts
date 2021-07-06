@@ -1,5 +1,7 @@
 provider "aws" {
-  region = var.aws_region
+  default_tags {
+    tags = var.tags
+  }
   # Use this profile once the account has been bootstrapped.
   profile = "cool-users-provisionaccount"
   # Use the profile below, defined using programmatic credentials for
@@ -7,4 +9,5 @@ provider "aws" {
   # from the AWS SSO page, to bootstrap the account.
   # Comment out the profile below after this account has been bootstrapped.
   # profile = "cool-users-account-admin"
+  region = var.aws_region
 }
