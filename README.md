@@ -8,10 +8,10 @@ the initial configuration of the COOL accounts, such as the
 code creates and configures the most basic resources needed to build
 out services and environments in the COOL organization, such as:
 
-* An S3 bucket and a DynamoDB table for Terraform remote shared state.
-* Roles that can be assumed by IAM user accounts to Terraform further
+- An S3 bucket and a DynamoDB table for Terraform remote shared state.
+- Roles that can be assumed by IAM user accounts to Terraform further
   environments and services.
-* An initial set of user accounts so that developers can get started.
+- An initial set of user accounts so that developers can get started.
 
 ## Bootstrapping accounts ##
 
@@ -20,7 +20,7 @@ initially there is no IAM role that can be assumed to build out these
 resources.  Therefore for each account you must first apply the
 Terraform code in the corresponding directory with:
 
-* Using programmatic credentials for AWSAdministratorAccess as
+- Using programmatic credentials for AWSAdministratorAccess as
   obtained for the COOL account from the AWS SSO page.
 
 After this initial apply your desired IAM role will exist, and it will

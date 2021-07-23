@@ -3,12 +3,12 @@
 This subdirectory contains Terraform code to provision the COOL
 "terraform" account.  It creates:
 
-* The S3 bucket used to store Terraform state.
-* The DynamoDB table used for Terraform state locking.
-* An IAM role that allows sufficient access to the Terraform S3 bucket
+- The S3 bucket used to store Terraform state.
+- The DynamoDB table used for Terraform state locking.
+- An IAM role that allows sufficient access to the Terraform S3 bucket
   and DynamoDB table to use those resources as a Terraform backend.
   This role also has a trust relationship with the users account.
-* An IAM role that allows sufficient permissions to provision all AWS
+- An IAM role that allows sufficient permissions to provision all AWS
   resources in this account.  This role has a trust relationship with
   the users account.
 
@@ -20,8 +20,8 @@ host remote shared Terrafrom state, and also because there is no IAM
 role that can be assumed to build out these resources.  Therefore you
 must first apply this Terraform code with:
 
-* No backend configuration, so that the state is created locally.
-* Using programmatic credentials for AWSAdministratorAccess as
+- No backend configuration, so that the state is created locally.
+- Using programmatic credentials for AWSAdministratorAccess as
   obtained for the COOL terraform and users accounts from the AWS SSO
   page.
 
