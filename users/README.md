@@ -3,9 +3,9 @@
 This subdirectory contains Terraform code to provision the COOL
 "users" account.  It creates:
 
-* IAM user(s) with the ability to administer their own credentials (including
+- IAM user(s) with the ability to administer their own credentials (including
   multi-factor authentication).
-* An IAM group containing the user(s) above.  This group is allowed to
+- An IAM group containing the user(s) above.  This group is allowed to
   access the terraform backend, be an IAM administrator for the Users
   account, and is allowed to assume any role that has a trust
   relationship with the Users account.

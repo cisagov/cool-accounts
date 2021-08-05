@@ -3,10 +3,10 @@
 This subdirectory contains Terraform code to provision the COOL
 "images" account.  It creates:
 
-* An IAM role that allows sufficient permissions to provision all AWS
+- An IAM role that allows sufficient permissions to provision all AWS
   resources in this account.  This role has a trust relationship with
   the users account.
-* An IAM role that allows sufficient permissions to create AWS EC2
+- An IAM role that allows sufficient permissions to create AWS EC2
   AMIs in this account.  This role has a trust relationship with the
   users account.
 
