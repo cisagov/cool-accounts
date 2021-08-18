@@ -80,7 +80,9 @@ future changes by simply running `terraform apply
 |------|------|
 | [aws_iam_role.organizationsreadonly_role](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role) | resource |
 | [aws_iam_role_policy_attachment.organizationsreadonly_policy_attachment](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) | resource |
+| [aws_iam_role_policy_attachment.read_organization](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_iam_policy_document.assume_role_doc](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
+| [aws_organizations_organization.cool](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/organizations_organization) | data source |
 
 ## Inputs ##
 
@@ -92,7 +94,6 @@ future changes by simply running `terraform apply
 | provisionaccount\_role\_description | The description to associate with the IAM role that allows sufficient permissions to provision all AWS resources in the Master account. | `string` | `"Allows sufficient permissions to provision all AWS resources in the Master account."` | no |
 | provisionaccount\_role\_name | The name to assign the IAM role that allows sufficient permissions to provision all AWS resources in the Master account. | `string` | `"ProvisionAccount"` | no |
 | tags | Tags to apply to all AWS resources created. | `map(string)` | `{}` | no |
-| users\_account\_id | The ID of the users account.  This account will be allowed to assume the role that allows sufficient permissions to provision all AWS resources in the Master account. | `string` | n/a | yes |
 
 ## Outputs ##
 
