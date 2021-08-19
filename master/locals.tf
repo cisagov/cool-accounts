@@ -9,7 +9,13 @@ data "aws_organizations_organization" "cool" {
 # Evaluate expressions for use throughout this configuration.
 # ------------------------------------------------------------------------------
 locals {
-  # Look up all assessment account IDs from AWS organizations provider
+  # Look up all assessment account IDs via the AWS organizations
+  # provider.
+  #
+  # Note that this code works in our current "both staging and
+  # production in the same organization" arrangement, and it will also
+  # work in the future "staging, production, dev, etc. in separate
+  # organizations" arrangement.
   assessment_account_ids = [
     for account in data.aws_organizations_organization.cool.accounts :
     account.id
