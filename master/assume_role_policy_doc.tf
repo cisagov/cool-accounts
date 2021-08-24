@@ -11,9 +11,9 @@ data "aws_iam_policy_document" "assume_role_doc" {
 
     principals {
       type = "AWS"
-      identifiers = [
-        "arn:aws:iam::${var.users_account_id}:root",
-      ]
+      # Delegate access to this role to the Users account and all
+      # assessment accounts.
+      identifiers = concat([local.users_account_id], local.assessment_account_ids)
     }
   }
 }

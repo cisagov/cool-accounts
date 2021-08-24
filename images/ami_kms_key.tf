@@ -113,14 +113,20 @@ data "aws_iam_policy_document" "ami_kms_doc" {
       test     = "StringLike"
       variable = "aws:PrincipalArn"
       # The ProvisionAccount role ARNs for the env* accounts, the
-      # playground, and the Shared Services account.  Any accounts
-      # that need to launch EC2 instances from AMIs encrypted using
-      # our key should be listed here.
-      values = [
+      # playground, and the Shared Services account, as well as the
+      # Terraformer role ARNs for the env* accounts.
+      #
+      # Any other accounts that need to launch EC2 instances from AMIs
+      # encrypted using our key should also be listed here.
+      values = concat([
         for account in data.aws_organizations_organization.cool.accounts :
         "arn:aws:iam::${account.id}:role/ProvisionAccount"
         if length(regexall("^env[0-9]* \\(${local.this_account_type}\\)$|^Playground Legacy \\(${local.this_account_type}\\)$|^Shared Services \\(${local.this_account_type}\\)$", account.name)) > 0
-      ]
+        ], [
+        for account in data.aws_organizations_organization.cool.accounts :
+        "arn:aws:iam::${account.id}:role/Terraformer"
+        if length(regexall("^env[0-9]* \\(${local.this_account_type}\\)$", account.name)) > 0
+      ])
     }
   }
 }
