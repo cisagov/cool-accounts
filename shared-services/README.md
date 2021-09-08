@@ -74,7 +74,7 @@ future changes by simply running `terraform apply
 | Name | Source | Version |
 |------|--------|---------|
 | provisionaccount | github.com/cisagov/provisionaccount-role-tf-module | n/a |
-| run\_shell\_ssm\_document | gazoakley/session-manager-settings/aws |  |
+| run\_shell\_ssm\_document | gazoakley/session-manager-settings/aws | n/a |
 
 ## Resources ##
 
