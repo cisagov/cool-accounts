@@ -2,13 +2,6 @@
 # Create the KMS key for encrypting AMIs in the Images account
 # ------------------------------------------------------------------------------
 
-# We can extract the IDs of all organization accounts from this data
-# resource.  It is used toward the end of the aws_iam_policy_document
-# data resource that follows.
-data "aws_organizations_organization" "cool" {
-  provider = aws.organizationsreadonly
-}
-
 data "aws_iam_policy_document" "ami_kms_doc" {
   statement {
     sid = "Enable IAM User Permissions"

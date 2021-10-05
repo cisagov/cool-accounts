@@ -1,3 +1,12 @@
+# ------------------------------------------------------------------------------
+# Retrieve the information for all accounts in the organization.  This
+# is used, for instance, to lookup the account IDs for the user
+# account.
+# ------------------------------------------------------------------------------
+data "aws_organizations_organization" "cool" {
+  provider = aws.organizationsreadonly
+}
+
 locals {
   # These help to minimize repetition in ACL rules
   tcp_and_udp = [
@@ -22,4 +31,10 @@ locals {
   # Account name format:  "ACCOUNT_NAME (ACCOUNT_TYPE)"
   #         For example:  "Images (Production)"
   this_account_type = length(regexall("\\(([^()]*)\\)", local.this_account_name)) == 1 ? regex("\\(([^()]*)\\)", local.this_account_name)[0] : "Unknown"
+
+  # Find the Users account by name and email
+  users_account_id = [
+    for account in data.aws_organizations_organization.cool.accounts :
+    account.id if account.name == "Users" && length(regexall("2020", account.email)) > 0
+  ][0]
 }
