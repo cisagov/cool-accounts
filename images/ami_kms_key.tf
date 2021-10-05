@@ -119,6 +119,9 @@ data "aws_iam_policy_document" "ami_kms_doc" {
         for account in data.aws_organizations_organization.cool.accounts :
         "arn:aws:iam::${account.id}:role/Terraformer"
         if length(regexall("^env[0-9]* \\(${local.this_account_type}\\)$", account.name)) > 0
+        ], [
+        for account_id in var.extraorg_account_ids :
+        "arn:aws:iam::${account_id}:role/ProvisionAccount"
       ])
     }
   }
