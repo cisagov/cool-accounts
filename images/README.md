@@ -139,6 +139,7 @@ future changes by simply running `terraform apply
 | aws\_region | The AWS region where the non-global resources for the Images account are to be provisioned (e.g. "us-east-1"). | `string` | `"us-east-1"` | no |
 | ec2amicreate\_role\_description | The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient permissions to create AMIs in the Images account. | `string` | `"Allows sufficient permissions to create AMIs in the Images account."` | no |
 | ec2amicreate\_role\_name | The name to assign the IAM role (as well as the corresponding policy) that allows sufficient permissions to create AMIs in the Images account. | `string` | `"EC2AMICreate"` | no |
+| extraorg\_account\_ids | A list of AWS account IDs corresponding to "extra" accounts that you want to allow to launch EC2 instances using one or more AMIs in this account (e.g. ["123456789012"]).  The ProvisionAccount role in these accounts will be allowed sufficient permissions to use the AMI encryption KMS key to launch instances.  Normally this variable is used to allow accounts that are not a member of the same AWS Organization as this account to use one or more AMIs from this account. | `list(string)` | `[]` | no |
 | provisionaccount\_role\_description | The description to associate with the IAM role that allows sufficient permissions to provision all AWS resources in the Images account. | `string` | `"Allows sufficient permissions to provision all AWS resources in the Images account."` | no |
 | provisionaccount\_role\_name | The name to assign the IAM role that allows sufficient permissions to provision all AWS resources in the Images account. | `string` | `"ProvisionAccount"` | no |
 | provisionec2amicreateroles\_role\_description | The description to associate with the IAM role (as well as the corresponding policy) with the ability to create IAM roles that can create AMIs in the Images account. | `string` | `"Allows creation of IAM roles that can create AMIs in the Images account."` | no |
@@ -153,7 +154,6 @@ future changes by simply running `terraform apply
 | provisionvpcs\_policy\_name | The name to assign the IAM policy that allows sufficient permissions to provision VPCs (and related resources) in the Images account. | `string` | `"ProvisionVPCs"` | no |
 | tags | Tags to apply to all AWS resources created. | `map(string)` | `{}` | no |
 | third\_party\_bucket\_name\_prefix | The prefix to use to name the S3 bucket for storing third-party files.  The bucket will be named with this prefix plus the account type (e.g. production or staging). | `string` | `"cisa-cool-third-party"` | no |
-| users\_account\_id | The ID of the users account.  This account will be allowed to assume the role that allows sufficient permissions to provision all AWS resources in the Images account. | `string` | n/a | yes |
 
 ## Outputs ##
 

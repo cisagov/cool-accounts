@@ -1,15 +1,4 @@
 # ------------------------------------------------------------------------------
-# REQUIRED PARAMETERS
-#
-# You must provide a value for each of these parameters.
-# ------------------------------------------------------------------------------
-
-variable "users_account_id" {
-  type        = string
-  description = "The ID of the users account.  This account will be allowed to assume the role that allows sufficient permissions to provision all AWS resources in the Images account."
-}
-
-# ------------------------------------------------------------------------------
 # OPTIONAL PARAMETERS
 #
 # These parameters have reasonable defaults.
@@ -61,6 +50,12 @@ variable "ec2amicreate_role_name" {
   type        = string
   description = "The name to assign the IAM role (as well as the corresponding policy) that allows sufficient permissions to create AMIs in the Images account."
   default     = "EC2AMICreate"
+}
+
+variable "extraorg_account_ids" {
+  type        = list(string)
+  description = "A list of AWS account IDs corresponding to \"extra\" accounts that you want to allow to launch EC2 instances using one or more AMIs in this account (e.g. [\"123456789012\"]).  The ProvisionAccount role in these accounts will be allowed sufficient permissions to use the AMI encryption KMS key to launch instances.  Normally this variable is used to allow accounts that are not a member of the same AWS Organization as this account to use one or more AMIs from this account."
+  default     = []
 }
 
 variable "provisionaccount_role_description" {

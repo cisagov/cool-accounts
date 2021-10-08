@@ -2,13 +2,6 @@
 # Create the KMS key for encrypting AMIs in the Images account
 # ------------------------------------------------------------------------------
 
-# We can extract the IDs of all organization accounts from this data
-# resource.  It is used toward the end of the aws_iam_policy_document
-# data resource that follows.
-data "aws_organizations_organization" "cool" {
-  provider = aws.organizationsreadonly
-}
-
 data "aws_iam_policy_document" "ami_kms_doc" {
   statement {
     sid = "Enable IAM User Permissions"
@@ -113,8 +106,9 @@ data "aws_iam_policy_document" "ami_kms_doc" {
       test     = "StringLike"
       variable = "aws:PrincipalArn"
       # The ProvisionAccount role ARNs for the env* accounts, the
-      # playground, and the Shared Services account, as well as the
-      # Terraformer role ARNs for the env* accounts.
+      # playground, the Shared Services account, and the
+      # extra-organizational accounts, as well as the Terraformer role
+      # ARNs for the env* accounts.
       #
       # Any other accounts that need to launch EC2 instances from AMIs
       # encrypted using our key should also be listed here.
@@ -126,6 +120,9 @@ data "aws_iam_policy_document" "ami_kms_doc" {
         for account in data.aws_organizations_organization.cool.accounts :
         "arn:aws:iam::${account.id}:role/Terraformer"
         if length(regexall("^env[0-9]* \\(${local.this_account_type}\\)$", account.name)) > 0
+        ], [
+        for account_id in var.extraorg_account_ids :
+        "arn:aws:iam::${account_id}:role/ProvisionAccount"
       ])
     }
   }

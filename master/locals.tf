@@ -1,6 +1,7 @@
 # ------------------------------------------------------------------------------
-# Retrieve the information for all accouts in the organization.  This is used
-# to lookup the account IDs for all assessment accounts.
+# Retrieve the information for all accounts in the organization.  This
+# is used, for instance, to lookup the account IDs for all assessment
+# accounts.
 # ------------------------------------------------------------------------------
 data "aws_organizations_organization" "cool" {
 }
