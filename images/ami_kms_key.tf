@@ -106,8 +106,9 @@ data "aws_iam_policy_document" "ami_kms_doc" {
       test     = "StringLike"
       variable = "aws:PrincipalArn"
       # The ProvisionAccount role ARNs for the env* accounts, the
-      # playground, and the Shared Services account, as well as the
-      # Terraformer role ARNs for the env* accounts.
+      # playground, the Shared Services account, and the
+      # extra-organizational accounts, as well as the Terraformer role
+      # ARNs for the env* accounts.
       #
       # Any other accounts that need to launch EC2 instances from AMIs
       # encrypted using our key should also be listed here.

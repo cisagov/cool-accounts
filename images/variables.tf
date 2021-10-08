@@ -54,7 +54,7 @@ variable "ec2amicreate_role_name" {
 
 variable "extraorg_account_ids" {
   type        = list(string)
-  description = "A list of AWS account IDs corresponding to \"extra\" accounts that you want to allow to launch EC2 instances using one or more AMIs in this account (e.g. [\"123456789012\"]).  The accounts will be allowed sufficient permissions to use the AMI encryption KMS key to launch instances.  Normally this variable is used to allow accounts that are not a member of the same AWS Organization as this account to use one or more AMIs from this account."
+  description = "A list of AWS account IDs corresponding to \"extra\" accounts that you want to allow to launch EC2 instances using one or more AMIs in this account (e.g. [\"123456789012\"]).  The ProvisionAccount role in these accounts will be allowed sufficient permissions to use the AMI encryption KMS key to launch instances.  Normally this variable is used to allow accounts that are not a member of the same AWS Organization as this account to use one or more AMIs from this account."
   default     = []
 }
 
