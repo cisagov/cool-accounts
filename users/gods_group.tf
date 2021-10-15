@@ -10,7 +10,10 @@ data "aws_iam_policy_document" "assume_any_role_anywhere_doc" {
   statement {
     effect = "Allow"
 
-    actions = ["sts:AssumeRole"]
+    actions = [
+      "sts:AssumeRole",
+      "sts:TagSession",
+    ]
 
     resources = [
       "arn:aws:iam::*:role/*"
