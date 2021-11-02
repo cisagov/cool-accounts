@@ -10,6 +10,18 @@ variable "aws_region" {
   default     = "us-east-1"
 }
 
+variable "controltoweradmin_role_description" {
+  type        = string
+  description = "The description to associate with IAM role that allows all necessary permissions to provision AWS accounts via Control Tower in the Master account."
+  default     = "Allows all necessary permissions to provision AWS accounts via Control Tower in the Master account."
+}
+
+variable "controltoweradmin_role_name" {
+  type        = string
+  description = "The name to assign the IAM role that allows all necessary permissions to provision AWS accounts via Control Tower in the Master account."
+  default     = "ControlTowerAdmin"
+}
+
 variable "organizationsreadonly_role_description" {
   type        = string
   description = "The description to associate with the IAM role that allows read-only access to all AWS Organizations information in the Master account."
