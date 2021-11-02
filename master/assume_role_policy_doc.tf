@@ -1,6 +1,6 @@
 # ------------------------------------------------------------------------------
-# Create an IAM policy document that allows the users account to
-# assume this role.
+# Create an IAM policy document that allows the Users account and all
+# assessment accounts to assume this role.
 # ------------------------------------------------------------------------------
 
 data "aws_iam_policy_document" "assume_role_doc" {
