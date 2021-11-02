@@ -13,3 +13,11 @@ resource "aws_iam_role_policy_attachment" "read_organization" {
   policy_arn = "arn:aws:iam::aws:policy/AWSOrganizationsReadOnlyAccess"
   role       = module.provisionaccount.provisionaccount_role.name
 }
+
+# Attach a policy allowing this role to administer the Service Catalog.
+# This is needed to create the Service Catalog portfolio or import one
+# created by Control Tower.
+resource "aws_iam_role_policy_attachment" "admin_servicecatalog" {
+  policy_arn = "arn:aws:iam::aws:policy/AWSServiceCatalogAdminFullAccess"
+  role       = module.provisionaccount.provisionaccount_role.name
+}
