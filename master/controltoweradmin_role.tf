@@ -5,9 +5,8 @@
 
 # These are additional permissions needed besides those found in the managed
 # AWS policies attached below.  These permissions are documented in the
-# Control Tower User Guide in the "Automated Account Provisioning With
-# IAM Roles" section:
-# https://docs.aws.amazon.com/controltower/latest/userguide/controltower-ug.pdf
+# Control Tower User Guide:
+# https://docs.aws.amazon.com/controltower/latest/userguide/roles-how.html#automated-provisioning
 data "aws_iam_policy_document" "additionalpermissions_policy" {
   statement {
     actions = [
