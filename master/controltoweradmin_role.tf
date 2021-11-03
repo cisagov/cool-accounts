@@ -49,7 +49,7 @@ data "aws_iam_policy_document" "additionalpermissions_policy" {
 }
 
 resource "aws_iam_role" "controltoweradmin_role" {
-  assume_role_policy = data.aws_iam_policy_document.assume_role_users_only_doc.json
+  assume_role_policy = data.aws_iam_policy_document.assume_role_users_control_tower_doc.json
   description        = var.controltoweradmin_role_description
   # This role requires the permissions below in addition to the standard
   # AWS policies (attached further below) to function as intended.
