@@ -141,3 +141,9 @@ variable "third_party_bucket_name_prefix" {
   description = "The prefix to use to name the S3 bucket for storing third-party files.  The bucket will be named with this prefix plus the account type (e.g. production or staging)."
   default     = "cisa-cool-third-party"
 }
+
+variable "windows_ami_sg_name" {
+  type        = string
+  description = "The name to associate with the Security Group that allows access for finalizing Windows AMI configuration."
+  default     = "WindowsAMIBuild"
+}

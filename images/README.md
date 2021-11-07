@@ -113,6 +113,9 @@ future changes by simply running `terraform apply
 | [aws_route.external_traffic_through_internet_gateway](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route) | resource |
 | [aws_s3_bucket.third_party](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket) | resource |
 | [aws_s3_bucket_public_access_block.third_party](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_public_access_block) | resource |
+| [aws_security_group.windows_ami](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group) | resource |
+| [aws_security_group_rule.windows_ami_ingress_via_rdp_over_tcp](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.windows_ami_ingress_via_rdp_over_udp](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) | resource |
 | [aws_subnet.ami_build_public](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/subnet) | resource |
 | [aws_vpc.ami_build](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/vpc) | resource |
 | [aws_caller_identity.images](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/caller_identity) | data source |
@@ -154,6 +157,7 @@ future changes by simply running `terraform apply
 | provisionvpcs\_policy\_name | The name to assign the IAM policy that allows sufficient permissions to provision VPCs (and related resources) in the Images account. | `string` | `"ProvisionVPCs"` | no |
 | tags | Tags to apply to all AWS resources created. | `map(string)` | `{}` | no |
 | third\_party\_bucket\_name\_prefix | The prefix to use to name the S3 bucket for storing third-party files.  The bucket will be named with this prefix plus the account type (e.g. production or staging). | `string` | `"cisa-cool-third-party"` | no |
+| windows\_ami\_sg\_name | The name to associate with the Security Group that allows access for finalizing Windows AMI configuration. | `string` | `"WindowsAMIBuild"` | no |
 
 ## Outputs ##
 
