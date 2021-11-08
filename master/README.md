@@ -97,7 +97,7 @@ future changes by simply running `terraform apply
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | aws\_region | The AWS region where the non-global resources for the Master account are to be provisioned (e.g. "us-east-1"). | `string` | `"us-east-1"` | no |
-| controltoweradmin\_role\_description | The description to associate with IAM role that allows all necessary permissions to provision AWS accounts via Control Tower in the Master account. | `string` | `"Allows all necessary permissions to provision AWS accounts via Control Tower in the Master account."` | no |
+| controltoweradmin\_role\_description | The description to associate with the IAM role that allows all necessary permissions to provision AWS accounts via Control Tower in the Master account. | `string` | `"Allows all necessary permissions to provision AWS accounts via Control Tower in the Master account."` | no |
 | controltoweradmin\_role\_name | The name to assign the IAM role that allows all necessary permissions to provision AWS accounts via Control Tower in the Master account. | `string` | `"ControlTowerAdmin"` | no |
 | organizationsreadonly\_role\_description | The description to associate with the IAM role that allows read-only access to all AWS Organizations information in the Master account. | `string` | `"Allows read-only access to all AWS Organizations information in the Master account."` | no |
 | organizationsreadonly\_role\_name | The name to assign the IAM role that allows read-only access to all AWS Organizations information in the Master account. | `string` | `"OrganizationsReadOnly"` | no |

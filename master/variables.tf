@@ -12,7 +12,7 @@ variable "aws_region" {
 
 variable "controltoweradmin_role_description" {
   type        = string
-  description = "The description to associate with IAM role that allows all necessary permissions to provision AWS accounts via Control Tower in the Master account."
+  description = "The description to associate with the IAM role that allows all necessary permissions to provision AWS accounts via Control Tower in the Master account."
   default     = "Allows all necessary permissions to provision AWS accounts via Control Tower in the Master account."
 }
 
