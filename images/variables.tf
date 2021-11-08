@@ -144,6 +144,6 @@ variable "third_party_bucket_name_prefix" {
 
 variable "windows_ami_sg_name" {
   type        = string
-  description = "The name to associate with the Security Group that allows access for finalizing Windows AMI configuration."
+  description = "The name to associate with the security group that allows access for finalizing Windows AMI configuration."
   default     = "WindowsAMIBuild"
 }

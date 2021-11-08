@@ -1,6 +1,6 @@
 # Security group for manually finishing AMI setup for imported Windows AMIs
 resource "aws_security_group" "windows_ami" {
-  # We include a name for convenience because this Security Group will be
+  # We include a name for convenience because this security group will be
   # manually selected in the AWS console (for now).
   name = var.windows_ami_sg_name
 
