@@ -1,3 +1,8 @@
+output "controltoweradmin_role" {
+  value       = aws_iam_role.controltoweradmin_role
+  description = "The IAM role that allows all necessary permissions to provision AWS accounts via Control Tower in the Master account."
+}
+
 output "organizationsreadonly_role" {
   value       = aws_iam_role.organizationsreadonly_role
   description = "The IAM role that allows read-only access to all AWS Organizations information in the Master account."
