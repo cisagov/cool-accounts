@@ -22,3 +22,13 @@ resource "aws_security_group_rule" "windows_ami_ingress_via_rdp" {
   from_port         = 3389
   to_port           = 3389
 }
+
+# Allow unfettered egress from instances
+resource "aws_security_group_rule" "windows_ami_egress_to_anywhere" {
+  security_group_id = aws_security_group.windows_ami.id
+  type              = "egress"
+  protocol          = "all"
+  cidr_blocks       = ["0.0.0.0/0"]
+  from_port         = 0
+  to_port           = 65535
+}
