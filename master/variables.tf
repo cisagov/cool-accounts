@@ -4,6 +4,18 @@
 # These parameters have reasonable defaults.
 # ------------------------------------------------------------------------------
 
+variable "administersso_role_description" {
+  type        = string
+  description = "The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient permissions to administer the Single Sign-On resources in the Master account."
+  default     = "Allows sufficient permissions to administer the Single Sign-On resources in the Master account."
+}
+
+variable "administersso_role_name" {
+  type        = string
+  description = "The name to assign the IAM role (as well as the corresponding policy) that allows sufficient permissions to administer the Single Sign-On resources in the Master account."
+  default     = "AdministerSSO"
+}
+
 variable "aws_region" {
   type        = string
   description = "The AWS region where the non-global resources for the Master account are to be provisioned (e.g. \"us-east-1\")."
