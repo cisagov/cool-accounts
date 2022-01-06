@@ -1,3 +1,8 @@
+output "administersso_role" {
+  value       = aws_iam_role.administersso_role
+  description = "The IAM role that allows sufficient permissions to administer the Single Sign-On resources required in the Master account."
+}
+
 output "controltoweradmin_role" {
   value       = aws_iam_role.controltoweradmin_role
   description = "The IAM role that allows all necessary permissions to provision AWS accounts via Control Tower in the Master account."
