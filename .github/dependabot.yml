@@ -21,68 +21,68 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
-    # ignore:
-    #   - dependency-name: "hashicorp/aws"
+    ignore:
+      - dependency-name: "hashicorp/aws"
 
   - package-ecosystem: "terraform"
     directory: "/audit"
     schedule:
       interval: "weekly"
-    # ignore:
-    #   - dependency-name: "hashicorp/aws"
+    ignore:
+      - dependency-name: "hashicorp/aws"
 
   - package-ecosystem: "terraform"
     directory: "/dns"
     schedule:
       interval: "weekly"
-    # ignore:
-    #   - dependency-name: "hashicorp/aws"
+    ignore:
+      - dependency-name: "hashicorp/aws"
 
   - package-ecosystem: "terraform"
     directory: "/dynamic"
     schedule:
       interval: "weekly"
-    # ignore:
-    #   - dependency-name: "hashicorp/aws"
+    ignore:
+      - dependency-name: "hashicorp/aws"
 
   - package-ecosystem: "terraform"
     directory: "/images"
     schedule:
       interval: "weekly"
-    # ignore:
-    #   - dependency-name: "hashicorp/aws"
+    ignore:
+      - dependency-name: "hashicorp/aws"
 
   - package-ecosystem: "terraform"
     directory: "/log-archive"
     schedule:
       interval: "weekly"
-    # ignore:
-    #   - dependency-name: "hashicorp/aws"
+    ignore:
+      - dependency-name: "hashicorp/aws"
 
   - package-ecosystem: "terraform"
     directory: "/master"
     schedule:
       interval: "weekly"
-    # ignore:
-    #   - dependency-name: "hashicorp/aws"
+    ignore:
+      - dependency-name: "hashicorp/aws"
 
   - package-ecosystem: "terraform"
     directory: "/shared-services"
     schedule:
       interval: "weekly"
-    # ignore:
-    #   - dependency-name: "hashicorp/aws"
+    ignore:
+      - dependency-name: "hashicorp/aws"
 
   - package-ecosystem: "terraform"
     directory: "/terraform"
     schedule:
       interval: "weekly"
-    # ignore:
-    #   - dependency-name: "hashicorp/aws"
+    ignore:
+      - dependency-name: "hashicorp/aws"
 
   - package-ecosystem: "terraform"
     directory: "/users"
     schedule:
       interval: "weekly"
-    # ignore:
-    #   - dependency-name: "hashicorp/aws"
+    ignore:
+      - dependency-name: "hashicorp/aws"
