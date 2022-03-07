@@ -68,11 +68,13 @@ future changes by simply running `terraform apply
 | Name | Version |
 |------|---------|
 | aws | ~> 3.38 |
+| aws.organizationsreadonly | ~> 3.38 |
 
 ## Modules ##
 
 | Name | Source | Version |
 |------|--------|---------|
+| cw\_alarm\_sns | github.com/cisagov/cw-alarm-sns-tf-module | first-commits |
 | provisionaccount | github.com/cisagov/provisionaccount-role-tf-module | n/a |
 | run\_shell\_ssm\_document | gazoakley/session-manager-settings/aws | n/a |
 
@@ -89,6 +91,7 @@ future changes by simply running `terraform apply
 | [aws_iam_policy_document.assume_role_doc](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
 | [aws_iam_policy_document.provisionssmdocument_policy_doc](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
 | [aws_iam_policy_document.ssmsession_doc](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
+| [aws_organizations_organization.cool](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/organizations_organization) | data source |
 
 ## Inputs ##
 
@@ -107,6 +110,7 @@ future changes by simply running `terraform apply
 
 | Name | Description |
 |------|-------------|
+| cw\_alarm\_sns\_topic | The SNS topic to which a message is sent when a CloudWatch alarm is triggered. |
 | provisionaccount\_role | The IAM role that allows sufficient permissions to provision all AWS resources in the Shared Services account. |
 | ssmsession\_role | The IAM role that allows creation of SSM SessionManager sessions to any EC2 instance in this account. |
 
