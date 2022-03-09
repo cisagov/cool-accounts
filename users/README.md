@@ -38,15 +38,19 @@ To do this, follow these steps:
 1. Create a Terraform workspace (if you haven't already done so) by running
    `terraform workspace new <workspace_name>`
 1. Create a `<workspace_name>.tfvars` file with all of the required
-   variables (see [Inputs](#Inputs) below for details).  Note that
-   `access_backend_terraform_role_arn` is the `backend_role_arn` output
-   from the bootstrapping the terraform subdirectory:
+   variables and any optional variables that you want to override (see
+   [Inputs](#Inputs) below for details):
 
    ```console
-   admin_usernames = [
-     "user.one",
-     "user.two"
+   godlike_usernames = [
+     "lemmy.kilmister",
    ]
+
+   tags = {
+     Team        = "VM Fusion - Development"
+     Application = "COOL - Users Account"
+     Workspace   = "production"
+   }
    ```
 
 1. Run the command `terraform init`.
@@ -77,6 +81,7 @@ future changes by simply running `terraform apply
 
 | Name | Source | Version |
 |------|--------|---------|
+| cw\_alarm\_sns | github.com/cisagov/cw-alarm-sns-tf-module | n/a |
 | provisionaccount | github.com/cisagov/provisionaccount-role-tf-module | n/a |
 
 ## Resources ##
@@ -118,6 +123,7 @@ future changes by simply running `terraform apply
 | Name | Description |
 |------|-------------|
 | assume\_any\_role\_anywhere\_policy | The IAM role that allows assumption of any role in any account, so long as it has a trust relationship with the Users account. |
+| cw\_alarm\_sns\_topic | The SNS topic to which a message is sent when a CloudWatch alarm is triggered. |
 | godlike\_users | The IAM users that are allowed to access the terraform backend, are IAM administrators for the Users account, and are allowed to assume any role that has a trust relationship with the Users account. |
 | gods\_group | The IAM group containing the god-like users that are allowed to access the terraform backend, are IAM administrators for the Users account, and are allowed to assume any role that has a trust relationship with the Users account. |
 | provisionaccount\_role | The IAM role that allows sufficient permissions to provision all AWS resources in this account. |

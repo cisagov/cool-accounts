@@ -3,6 +3,11 @@ output "assume_any_role_anywhere_policy" {
   description = "The IAM role that allows assumption of any role in any account, so long as it has a trust relationship with the Users account."
 }
 
+output "cw_alarm_sns_topic" {
+  value       = module.cw_alarm_sns.sns_topic
+  description = "The SNS topic to which a message is sent when a CloudWatch alarm is triggered."
+}
+
 output "godlike_users" {
   value       = aws_iam_user.gods
   description = "The IAM users that are allowed to access the terraform backend, are IAM administrators for the Users account, and are allowed to assume any role that has a trust relationship with the Users account."
