@@ -43,7 +43,13 @@ To do this, follow these steps:
 
    ```console
    dynamic_account_name = "env0"
-   users_account_id     = "222222222222"
+
+   tags = {
+     Application       = "COOL - env0 Staging Account"
+     AssessmentAccount = "true"
+     Team              = "VM Fusion - Development"
+     Workspace         = "env0-staging"
+   }
    ```
 
 1. Run the command `terraform init -upgrade=true`.
@@ -66,7 +72,9 @@ future changes by simply running `terraform apply
 
 ## Providers ##
 
-No providers.
+| Name | Version |
+|------|---------|
+| aws.organizationsreadonly | ~> 3.38 |
 
 ## Modules ##
 
@@ -76,7 +84,9 @@ No providers.
 
 ## Resources ##
 
-No resources.
+| Name | Type |
+|------|------|
+| [aws_organizations_organization.cool](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/organizations_organization) | data source |
 
 ## Inputs ##
 
@@ -87,7 +97,6 @@ No resources.
 | provisionaccount\_role\_description | The description to associate with the IAM role that allows sufficient permissions to provision all AWS resources in the dynamic account. | `string` | `"Allows sufficient permissions to provision all AWS resources in the dynamic account."` | no |
 | provisionaccount\_role\_name | The name to assign the IAM role that allows sufficient permissions to provision all AWS resources in the dynamic account. | `string` | `"ProvisionAccount"` | no |
 | tags | Tags to apply to all AWS resources created. | `map(string)` | `{}` | no |
-| users\_account\_id | The ID of the users account.  This account will be allowed to assume the role that allows sufficient permissions to provision all AWS resources in the dynamic account. | `string` | n/a | yes |
 
 ## Outputs ##
 
