@@ -104,6 +104,7 @@ future changes by simply running `terraform apply
 
 | Name | Source | Version |
 |------|--------|---------|
+| cw\_alarm\_sns | github.com/cisagov/cw-alarm-sns-tf-module | n/a |
 | provisionaccount | github.com/cisagov/provisionaccount-role-tf-module | n/a |
 
 ## Resources ##
@@ -168,6 +169,7 @@ future changes by simply running `terraform apply
 | access\_domainmanager\_terraform\_backend\_role | The IAM role that allows sufficient access to the the Domain Manager-related items in the Terraform S3 bucket and DynamoDB table to use those resources as a Terraform backend. |
 | access\_pca\_terraform\_backend\_role | The IAM role that allows sufficient access to the the PCA-related items in the Terraform S3 bucket and DynamoDB table to use those resources as a Terraform backend. |
 | access\_terraform\_backend\_role | The IAM role that allows sufficient access to the Terraform S3 bucket and DynamoDB table to use those resources as a Terraform backend. |
+| cw\_alarm\_sns\_topic | The SNS topic to which a message is sent when a CloudWatch alarm is triggered. |
 | provisionaccount\_role | The IAM role that allows sufficient permissions to provision all AWS resources in the Terraform account. |
 | read\_terraform\_state\_role | The IAM role that allows read-only access to the S3 bucket where Terraform state is stored. |
 | state\_bucket | The S3 bucket where Terraform state information will be stored. |

@@ -13,6 +13,11 @@ output "access_terraform_backend_role" {
   description = "The IAM role that allows sufficient access to the Terraform S3 bucket and DynamoDB table to use those resources as a Terraform backend."
 }
 
+output "cw_alarm_sns_topic" {
+  value       = module.cw_alarm_sns.sns_topic
+  description = "The SNS topic to which a message is sent when a CloudWatch alarm is triggered."
+}
+
 output "provisionaccount_role" {
   value       = module.provisionaccount.provisionaccount_role
   description = "The IAM role that allows sufficient permissions to provision all AWS resources in the Terraform account."
