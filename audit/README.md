@@ -64,17 +64,22 @@ future changes by simply running `terraform apply
 
 ## Providers ##
 
-No providers.
+| Name | Version |
+|------|---------|
+| aws.organizationsreadonly | ~> 3.38 |
 
 ## Modules ##
 
 | Name | Source | Version |
 |------|--------|---------|
+| cw\_alarm\_sns | github.com/cisagov/cw-alarm-sns-tf-module | n/a |
 | provisionaccount | github.com/cisagov/provisionaccount-role-tf-module | n/a |
 
 ## Resources ##
 
-No resources.
+| Name | Type |
+|------|------|
+| [aws_organizations_organization.cool](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/organizations_organization) | data source |
 
 ## Inputs ##
 
@@ -89,6 +94,7 @@ No resources.
 
 | Name | Description |
 |------|-------------|
+| cw\_alarm\_sns\_topic | The SNS topic to which a message is sent when a CloudWatch alarm is triggered. |
 | provisionaccount\_role | The IAM role that allows sufficient permissions to provision all AWS resources in the Audit account. |
 
 ## Contributing ##
