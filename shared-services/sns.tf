@@ -8,5 +8,5 @@ module "cw_alarm_sns" {
     aws                         = aws
     aws.organizations_read_only = aws.organizationsreadonly
   }
-  source = "github.com/cisagov/cw-alarm-sns-tf-module?ref=first-commits"
+  source = "github.com/cisagov/cw-alarm-sns-tf-module"
 }
