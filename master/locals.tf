@@ -26,6 +26,6 @@ locals {
   # Find the Users account by name and email
   users_account_id = [
     for account in data.aws_organizations_organization.cool.accounts :
-    account.id if account.name == "Users" && length(regexall("2020", account.email)) > 0
+    account.id if account.name == "Users"
   ][0]
 }
