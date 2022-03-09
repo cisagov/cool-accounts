@@ -1,5 +1,5 @@
 # Retrieve the information for all accounts in the organization.  This
-# is used, for instance, to lookup the account IDs for the user
+# is used, for instance, to lookup the account ID for the Users
 # account.
 data "aws_organizations_organization" "cool" {
   provider = aws.organizationsreadonly
