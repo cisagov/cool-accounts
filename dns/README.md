@@ -67,11 +67,13 @@ future changes by simply running `terraform apply
 | Name | Version |
 |------|---------|
 | aws | ~> 3.38 |
+| aws.organizationsreadonly | ~> 3.38 |
 
 ## Modules ##
 
 | Name | Source | Version |
 |------|--------|---------|
+| cw\_alarm\_sns | github.com/cisagov/cw-alarm-sns-tf-module | n/a |
 | provisionaccount | github.com/cisagov/provisionaccount-role-tf-module | n/a |
 
 ## Resources ##
@@ -82,6 +84,7 @@ future changes by simply running `terraform apply
 | [aws_iam_role_policy_attachment.provisionroute53_policy_attachment](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_route53_delegation_set.primary](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_delegation_set) | resource |
 | [aws_iam_policy_document.provisionroute53_doc](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
+| [aws_organizations_organization.cool](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/organizations_organization) | data source |
 
 ## Inputs ##
 
@@ -98,6 +101,7 @@ future changes by simply running `terraform apply
 
 | Name | Description |
 |------|-------------|
+| cw\_alarm\_sns\_topic | The SNS topic to which a message is sent when a CloudWatch alarm is triggered. |
 | primary\_delegation\_set | The primary reusable delegation set that contains the authoritative name servers for all public DNS zones. |
 | provisionaccount\_role | The IAM role that allows sufficient permissions to provision all AWS resources in the DNS account. |
 
