@@ -61,11 +61,16 @@ To do this, follow these steps:
 1. Create a Terraform workspace (if you haven't already done so) by running
    `terraform workspace new <workspace_name>`
 1. Create a `<workspace_name>.tfvars` file with all of the required
-   variables (see [Inputs](#Inputs) below for details):
+   variables and any optional variables that you want to override (see
+   [Inputs](#Inputs) below for details):
 
    ```hcl
    state_bucket_name = "my-terraform-state-bucket"
-   users_account_id = "222222222222"
+   tags = {
+     Team        = "VM Fusion - Development"
+     Application = "COOL - Terraform Account"
+     Workspace   = "production"
+   }
    ```
 
 1. Run the command `terraform init`.
@@ -93,6 +98,7 @@ future changes by simply running `terraform apply
 | Name | Version |
 |------|---------|
 | aws | ~> 3.38 |
+| aws.organizationsreadonly | ~> 3.38 |
 
 ## Modules ##
 
@@ -128,6 +134,7 @@ future changes by simply running `terraform apply
 | [aws_iam_policy_document.assume_role_doc](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
 | [aws_iam_policy_document.provisionbackend_doc](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
 | [aws_iam_policy_document.read_terraform_state_doc](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
+| [aws_organizations_organization.cool](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/organizations_organization) | data source |
 
 ## Inputs ##
 
@@ -153,7 +160,6 @@ future changes by simply running `terraform apply
 | state\_table\_read\_capacity | The number of read units for the DynamoDB table that will be used for Terraform state locking. | `number` | `20` | no |
 | state\_table\_write\_capacity | The number of write units for the DynamoDB table that will be used for Terraform state locking. | `number` | `20` | no |
 | tags | Tags to apply to all AWS resources created. | `map(string)` | `{}` | no |
-| users\_account\_id | The ID of the users account.  This account will be allowed to assume the role that allows sufficient access to the Terraform S3 bucket and DynamoDB table to use those resources as a Terraform backend, as well as the role that allows sufficient permissions to provision all AWS resources in the Terraform account. | `string` | n/a | yes |
 
 ## Outputs ##
 
