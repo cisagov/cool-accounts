@@ -13,6 +13,7 @@ provider "aws" {
   region = var.aws_region
 }
 
+# Read-only AWS Organizations provider
 provider "aws" {
   alias = "organizationsreadonly"
   default_tags {
