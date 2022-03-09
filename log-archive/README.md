@@ -33,16 +33,16 @@ To do this, follow these steps:
 
 1. Create a Terraform workspace (if you haven't already done so) by running
    `terraform workspace new <workspace_name>`
-1. Create a `<workspace_name>.tfvars` file with all of the required
-   variables (see [Inputs](#Inputs) below for details):
+1. Create a `<workspace_name>.tfvars` file with any optional variables
+   that you wish to override (see [Inputs](#Inputs) below for
+   details):
 
    ```console
-   users_account_id = "222222222222"
-
-   admin_usernames = [
-     "first.last",
-     "first2.last2"
-   ]
+   tags = {
+     Team        = "VM Fusion - Development"
+     Application = "COOL - Log Archive Account"
+     Workspace   = "production"
+   }
    ```
 
 1. Run the command `terraform init`.
@@ -65,7 +65,9 @@ future changes by simply running `terraform apply
 
 ## Providers ##
 
-No providers.
+| Name | Version |
+|------|---------|
+| aws.organizationsreadonly | ~> 3.38 |
 
 ## Modules ##
 
@@ -75,7 +77,9 @@ No providers.
 
 ## Resources ##
 
-No resources.
+| Name | Type |
+|------|------|
+| [aws_organizations_organization.cool](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/organizations_organization) | data source |
 
 ## Inputs ##
 
@@ -85,7 +89,6 @@ No resources.
 | provisionaccount\_role\_description | The description to associate with the IAM role that allows sufficient permissions to provision all AWS resources in the Log Archive account. | `string` | `"Allows sufficient permissions to provision all AWS resources in the Log Archive account."` | no |
 | provisionaccount\_role\_name | The name to assign the IAM role that allows sufficient permissions to provision all AWS resources in the Log Archive account. | `string` | `"ProvisionAccount"` | no |
 | tags | Tags to apply to all AWS resources created. | `map(string)` | `{}` | no |
-| users\_account\_id | The ID of the users account.  This account will be allowed to assume the role that allows sufficient permissions to provision all AWS resources in the Log Archive account. | `string` | n/a | yes |
 
 ## Outputs ##
 
