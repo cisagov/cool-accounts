@@ -12,3 +12,13 @@ provider "aws" {
   # profile = "cool-audit-account-admin"
   region = var.aws_region
 }
+
+# Read-only AWS Organizations provider
+provider "aws" {
+  alias = "organizationsreadonly"
+  default_tags {
+    tags = var.tags
+  }
+  profile = "cool-master-organizationsreadonly"
+  region  = var.aws_region
+}

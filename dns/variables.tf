@@ -1,15 +1,4 @@
 # ------------------------------------------------------------------------------
-# REQUIRED PARAMETERS
-#
-# You must provide a value for each of these parameters.
-# ------------------------------------------------------------------------------
-
-variable "users_account_id" {
-  type        = string
-  description = "The ID of the users account.  This account will be allowed to assume the role that allows sufficient permissions to provision all AWS resources in the DNS account."
-}
-
-# ------------------------------------------------------------------------------
 # OPTIONAL PARAMETERS
 #
 # These parameters have reasonable defaults.

@@ -13,7 +13,7 @@ data "aws_iam_policy_document" "assume_role_doc" {
     principals {
       type = "AWS"
       identifiers = [
-        var.users_account_id,
+        local.users_account_id,
       ]
     }
   }

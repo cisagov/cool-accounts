@@ -8,6 +8,11 @@ output "ami_kms_key" {
   description = "The KMS key for encrypting AMIs in the Images account."
 }
 
+output "cw_alarm_sns_topic" {
+  value       = module.cw_alarm_sns.sns_topic
+  description = "The SNS topic to which a message is sent when a CloudWatch alarm is triggered."
+}
+
 output "ec2amicreate_role" {
   value       = aws_iam_role.ec2amicreate_role
   description = "The IAM role that allows sufficient permissions to create AMIs in the Images account."

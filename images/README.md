@@ -37,16 +37,16 @@ To do this, follow these steps:
 
 1. Create a Terraform workspace (if you haven't already done so) by running
    `terraform workspace new <workspace_name>`
-1. Create a `<workspace_name>.tfvars` file with all of the required
-   variables (see [Inputs](#Inputs) below for details):
+1. Create a `<workspace_name>.tfvars` file with any optional variables
+   that you wish to override (see [Inputs](#Inputs) below for
+   details):
 
    ```console
-   users_account_id = "222222222222"
-
-   admin_usernames = [
-     "first.last",
-     "first2.last2"
-   ]
+   tags = {
+     Team        = "VM Fusion - Development"
+     Application = "COOL - Images Account"
+     Workspace   = "production"
+   }
    ```
 
 1. Run the command `terraform init`.
@@ -78,6 +78,7 @@ future changes by simply running `terraform apply
 
 | Name | Source | Version |
 |------|--------|---------|
+| cw\_alarm\_sns | github.com/cisagov/cw-alarm-sns-tf-module | n/a |
 | provisionaccount | github.com/cisagov/provisionaccount-role-tf-module | n/a |
 
 ## Resources ##
@@ -165,6 +166,7 @@ future changes by simply running `terraform apply
 |------|-------------|
 | administerkmskeys\_role | The IAM role that allows sufficient permissions to administer KMS keys in the Images account. |
 | ami\_kms\_key | The KMS key for encrypting AMIs in the Images account. |
+| cw\_alarm\_sns\_topic | The SNS topic to which a message is sent when a CloudWatch alarm is triggered. |
 | ec2amicreate\_role | The IAM role that allows sufficient permissions to create AMIs in the Images account. |
 | provisionaccount\_role | The IAM role that allows sufficient permissions to provision all AWS resources in the Images account. |
 | provisionec2amicreateroles\_role | The IAM role that allows sufficient permissions to provision IAM roles that can create AMIs in the Images account. |

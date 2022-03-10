@@ -9,11 +9,6 @@ variable "dynamic_account_name" {
   description = "The name of the dynamic account to be provisioned."
 }
 
-variable "users_account_id" {
-  type        = string
-  description = "The ID of the users account.  This account will be allowed to assume the role that allows sufficient permissions to provision all AWS resources in the dynamic account."
-}
-
 # ------------------------------------------------------------------------------
 # OPTIONAL PARAMETERS
 #
