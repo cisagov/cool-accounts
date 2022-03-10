@@ -39,7 +39,7 @@ To do this, follow these steps:
    ```console
    tags = {
      Team        = "VM Fusion - Development"
-     Application = "COOL - Shared Services Account"
+     Application = "COOL - Audit Account"
      Workspace   = "staging"
    }
    ```
