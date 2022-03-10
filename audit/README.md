@@ -40,7 +40,7 @@ To do this, follow these steps:
    tags = {
      Team        = "VM Fusion - Development"
      Application = "COOL - Audit Account"
-     Workspace   = "staging"
+     Workspace   = "production"
    }
    ```
 

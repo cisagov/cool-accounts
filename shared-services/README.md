@@ -41,7 +41,7 @@ To do this, follow these steps:
    tags = {
      Team        = "VM Fusion - Development"
      Application = "COOL - Shared Services Account"
-     Workspace   = "staging"
+     Workspace   = "production"
    }
    ```
 

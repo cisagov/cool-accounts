@@ -48,7 +48,7 @@ To do this, follow these steps:
      Application       = "COOL - env0 Staging Account"
      AssessmentAccount = "true"
      Team              = "VM Fusion - Development"
-     Workspace         = "env0-staging"
+     Workspace         = "env0-production"
    }
    ```
 
