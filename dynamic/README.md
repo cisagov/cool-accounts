@@ -45,7 +45,7 @@ To do this, follow these steps:
    dynamic_account_name = "env0"
 
    tags = {
-     Application       = "COOL - env0 Staging Account"
+     Application       = "COOL - env0 Production Account"
      AssessmentAccount = "true"
      Team              = "VM Fusion - Development"
      Workspace         = "env0-production"
