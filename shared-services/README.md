@@ -106,7 +106,7 @@ future changes by simply running `terraform apply
 |------|-------------|
 | cw\_alarm\_sns\_topic | The SNS topic to which a message is sent when a CloudWatch alarm is triggered. |
 | provisionaccount\_role | The IAM role that allows sufficient permissions to provision all AWS resources in the Shared Services account. |
-| ssmsession\_role | The IAM role that allows creation of SSM SessionManager sessions to any EC2 instance in this account. |
+| ssm\_session\_role | The IAM role that allows creation of SSM Session Manager sessions to any EC2 instance in this account. |
 
 ## Contributing ##
 

@@ -8,7 +8,7 @@ output "provisionaccount_role" {
   description = "The IAM role that allows sufficient permissions to provision all AWS resources in the Shared Services account."
 }
 
-output "ssmsession_role" {
+output "ssm_session_role" {
   value       = module.session_manager.ssm_session_role
-  description = "The IAM role that allows creation of SSM SessionManager sessions to any EC2 instance in this account."
+  description = "The IAM role that allows creation of SSM Session Manager sessions to any EC2 instance in this account."
 }
