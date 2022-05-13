@@ -76,7 +76,7 @@ future changes by simply running `terraform apply
 |------|--------|---------|
 | cw\_alarm\_sns | github.com/cisagov/cw-alarm-sns-tf-module | n/a |
 | provisionaccount | github.com/cisagov/provisionaccount-role-tf-module | n/a |
-| session\_manager | github.com/cisagov/session-manager-tf-module | first-commits |
+| session\_manager | github.com/cisagov/session-manager-tf-module | n/a |
 
 ## Resources ##
 
