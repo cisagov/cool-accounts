@@ -22,28 +22,16 @@ variable "provisionaccount_role_name" {
   default     = "ProvisionAccount"
 }
 
-variable "provisionssmdocument_policy_description" {
+variable "provisionssmsessionmanager_policy_description" {
   type        = string
-  description = "The description to associate with the IAM policy that allows sufficient permissions to provision the SSM Document resource in the Shared Services account."
-  default     = "Allows sufficient permissions to provision the SSM Document resource in the Shared Services account."
+  description = "The description to associate with the IAM policy that allows sufficient permissions to provision the SSM Document resource and set up SSM session logging in the Shared Services account."
+  default     = "Allows sufficient permissions to provision the SSM Document resource and set up SSM session logging in the Shared Services account."
 }
 
-variable "provisionssmdocument_policy_name" {
+variable "provisionssmsessionmanager_policy_name" {
   type        = string
-  description = "The name to assign the IAM policy that allows sufficient permissions to provision the SSM Document resource in the Shared Services account."
-  default     = "ProvisionSSMDocument"
-}
-
-variable "ssmsession_role_description" {
-  type        = string
-  description = "The description to associate with the IAM role (and policy) that allows creation of SSM SessionManager sessions to any EC2 instance in this account."
-  default     = "Allows creation of SSM SessionManager sessions to any EC2 instance in this account."
-}
-
-variable "ssmsession_role_name" {
-  type        = string
-  description = "The name to assign the IAM role (and policy) that allows creation of SSM SessionManager sessions to any EC2 instance in this account."
-  default     = "StartStopSSMSession"
+  description = "The name to assign the IAM policy that allows sufficient permissions to provision the SSM Document resource and set up SSM session logging in the Shared Services account."
+  default     = "ProvisionSSMSessionManager"
 }
 
 variable "tags" {
