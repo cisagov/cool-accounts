@@ -102,7 +102,7 @@ future changes by simply running `terraform apply
 | aws\_region | The AWS region where the non-global resources for the dynamic account are to be provisioned (e.g. "us-east-1"). | `string` | `"us-east-1"` | no |
 | dynamic\_account\_name | The name of the dynamic account to be provisioned. | `string` | n/a | yes |
 | ec2readonly\_role\_description | The description to associate with the IAM role (as well as the corresponding policy) that allows read access to some EC2 attributes in the dynamic account. | `string` | `"Allows read access to some EC2 attributes in the dynamic account."` | no |
-| ec2readonly\_role\_name | The name to assign the IAM role (as well as the corresponding policy) that read access to some EC2 attributes in the dynamic account. | `string` | `"EC2ReadOnly"` | no |
+| ec2readonly\_role\_name | The name to assign the IAM role (as well as the corresponding policy) that allows read access to some EC2 attributes in the dynamic account. | `string` | `"EC2ReadOnly"` | no |
 | provisionaccount\_role\_description | The description to associate with the IAM role that allows sufficient permissions to provision all AWS resources in the dynamic account. | `string` | `"Allows sufficient permissions to provision all AWS resources in the dynamic account."` | no |
 | provisionaccount\_role\_name | The name to assign the IAM role that allows sufficient permissions to provision all AWS resources in the dynamic account. | `string` | `"ProvisionAccount"` | no |
 | tags | Tags to apply to all AWS resources created. | `map(string)` | `{}` | no |

@@ -29,7 +29,7 @@ variable "ec2readonly_role_description" {
 
 variable "ec2readonly_role_name" {
   type        = string
-  description = "The name to assign the IAM role (as well as the corresponding policy) that read access to some EC2 attributes in the dynamic account."
+  description = "The name to assign the IAM role (as well as the corresponding policy) that allows read access to some EC2 attributes in the dynamic account."
   default     = "EC2ReadOnly"
 }
 
