@@ -21,6 +21,18 @@ variable "aws_region" {
   default     = "us-east-1"
 }
 
+variable "ec2readonly_role_description" {
+  type        = string
+  description = "The description to associate with the IAM role (as well as the corresponding policy) that allows read access to some EC2 attributes in the dynamic account."
+  default     = "Allows read access to some EC2 attributes in the dynamic account."
+}
+
+variable "ec2readonly_role_name" {
+  type        = string
+  description = "The name to assign the IAM role (as well as the corresponding policy) that allows read access to some EC2 attributes in the dynamic account."
+  default     = "EC2ReadOnly"
+}
+
 variable "provisionaccount_role_description" {
   type        = string
   description = "The description to associate with the IAM role that allows sufficient permissions to provision all AWS resources in the dynamic account."
