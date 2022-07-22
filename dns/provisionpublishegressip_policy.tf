@@ -1,6 +1,7 @@
 # ------------------------------------------------------------------------------
-# Create the IAM policy that allows provisioning all resources related to
-# the publish-egress-ip Lambda in the DNS account.
+# Create the IAM policy that allows all of the permissions necessary to
+# provision all resources related to the publish-egress-ip Lambda in
+# the DNS account.
 # ------------------------------------------------------------------------------
 
 data "aws_iam_policy_document" "provisionpublishegressip_doc" {

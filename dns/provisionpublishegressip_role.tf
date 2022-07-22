@@ -1,6 +1,7 @@
 # ------------------------------------------------------------------------------
-# Create the IAM role that allows provisioning all resources related to
-# the publish-egress-ip Lambda in the DNS account.
+# Create the IAM role that allows all of the permissions necessary to
+# provision all resources related to the publish-egress-ip Lambda in
+# the DNS account.
 # ------------------------------------------------------------------------------
 
 resource "aws_iam_role" "provisionpublishegressip_role" {

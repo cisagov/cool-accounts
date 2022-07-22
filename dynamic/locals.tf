@@ -6,6 +6,13 @@ data "aws_organizations_organization" "cool" {
 }
 
 locals {
+  # Find the DNS account
+  dns_account_id = [
+    for account in data.aws_organizations_organization.cool.accounts :
+    account.id
+    if account.name == "DNS"
+  ][0]
+
   # Find the Users account
   users_account_id = [
     for account in data.aws_organizations_organization.cool.accounts :
