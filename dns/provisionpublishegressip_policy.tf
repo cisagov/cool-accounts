@@ -156,6 +156,7 @@ data "aws_iam_policy_document" "provisionpublishegressip_doc" {
       "s3:DeleteBucket",
       "s3:DeleteBucketWebsite",
       "s3:DeleteObject",
+      "s3:DeleteObjectVersion",
       "s3:Get*",
       "s3:ListBucket",
       "s3:ListBucketVersions",
