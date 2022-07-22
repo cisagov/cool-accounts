@@ -80,9 +80,15 @@ future changes by simply running `terraform apply
 
 | Name | Type |
 |------|------|
+| [aws_iam_policy.provisionpublishegressip_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) | resource |
 | [aws_iam_policy.provisionroute53_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) | resource |
+| [aws_iam_role.provisionpublishegressip_role](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role) | resource |
+| [aws_iam_role_policy_attachment.provisionpublishegressip_policy_attachment](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_iam_role_policy_attachment.provisionroute53_policy_attachment](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_route53_delegation_set.primary](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_delegation_set) | resource |
+| [aws_caller_identity.dns](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/caller_identity) | data source |
+| [aws_iam_policy_document.assume_role_doc](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
+| [aws_iam_policy_document.provisionpublishegressip_doc](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
 | [aws_iam_policy_document.provisionroute53_doc](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
 | [aws_organizations_organization.cool](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/organizations_organization) | data source |
 
@@ -93,8 +99,12 @@ future changes by simply running `terraform apply
 | aws\_region | The AWS region where the non-global resources for the DNS account are to be provisioned (e.g. "us-east-1"). | `string` | `"us-east-1"` | no |
 | provisionaccount\_role\_description | The description to associate with the IAM role that allows sufficient permissions to provision all AWS resources in the DNS account. | `string` | `"Allows sufficient permissions to provision all AWS resources in the DNS account."` | no |
 | provisionaccount\_role\_name | The name to assign the IAM role that allows sufficient permissions to provision all AWS resources in the DNS account. | `string` | `"ProvisionAccount"` | no |
+| provisionpublishegressip\_role\_description | The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient permissions to provision all resources related to the publish-egress-ip Lambda in the DNS account. | `string` | `"Allows sufficient permissions to provision all resources related to the publish-egress-ip Lambda in the DNS account."` | no |
+| provisionpublishegressip\_role\_name | The name to assign the IAM role (as well as the corresponding policy) that allows sufficient permissions to provision all resources related to the publish-egress-ip Lambda in the DNS account. | `string` | `"ProvisionPublishEgressIP"` | no |
 | provisionroute53\_role\_description | The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient permissions to provision Route 53 in the DNS account. | `string` | `"Allows sufficient permissions to provision Route 53 in the DNS account."` | no |
 | provisionroute53\_role\_name | The name to assign the IAM role (as well as the corresponding policy) that allows sufficient permissions to provision Route 53 in the DNS account. | `string` | `"ProvisionRoute53"` | no |
+| publishegressip\_lambda\_name | The name of the Lambda function used in cisagov/publish-egress-ip-terraform.  This name is used to specify resource constraints in the role/policy specified in var.provisionpublishegressip\_role\_name. | `string` | `"publish-egress-ip"` | no |
+| publishegressip\_role\_name | The name of the IAM role (meant to be used in cisagov/publish-egress-ip-terraform) that is allowed to be created by the role/policy specified in var.provisionpublishegressip\_role\_name. | `string` | `"PublishEgressIPLambda"` | no |
 | tags | Tags to apply to all AWS resources created. | `map(string)` | `{}` | no |
 
 ## Outputs ##
@@ -104,6 +114,7 @@ future changes by simply running `terraform apply
 | cw\_alarm\_sns\_topic | The SNS topic to which a message is sent when a CloudWatch alarm is triggered. |
 | primary\_delegation\_set | The primary reusable delegation set that contains the authoritative name servers for all public DNS zones. |
 | provisionaccount\_role | The IAM role that allows sufficient permissions to provision all AWS resources in the DNS account. |
+| provisionpublishegressip\_role | The IAM role that allows sufficient permissions to provision all resources related to the publish-egress-ip Lambda in the DNS account. |
 
 ## Contributing ##
 
