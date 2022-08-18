@@ -1,7 +1,7 @@
 # cool-accounts - audit subdirectory #
 
 This subdirectory contains Terraform code to provision the COOL
-"Audit" account.  It creates an IAM role that allows sufficient
+Audit account.  It creates an IAM role that allows sufficient
 permissions to provision all AWS resources in this account.  This role
 has a trust relationship with the Users account.
 

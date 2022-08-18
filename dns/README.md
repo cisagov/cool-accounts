@@ -1,6 +1,6 @@
 # cool-accounts - dns subdirectory #
 
-This subdirectory contains Terraform code to provision the COOL "DNS"
+This subdirectory contains Terraform code to provision the COOL DNS
 account.  It creates an IAM role that allows sufficient permissions to
 provision all AWS resources in this account.  This role has a trust
 relationship with the Users account.

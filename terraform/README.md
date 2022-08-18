@@ -1,7 +1,7 @@
 # cool-accounts - terraform subdirectory #
 
 This subdirectory contains Terraform code to provision the COOL
-"Terraform" account.  It creates:
+Terraform account.  It creates:
 
 - The S3 bucket used to store Terraform state.
 - The DynamoDB table used for Terraform state locking.

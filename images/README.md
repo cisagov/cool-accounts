@@ -1,7 +1,7 @@
 # cool-accounts - images subdirectory #
 
 This subdirectory contains Terraform code to provision the COOL
-"Images" account.  It creates:
+Images account.  It creates:
 
 - An IAM role that allows sufficient permissions to provision all AWS
   resources in this account.  This role has a trust relationship with
