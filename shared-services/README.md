@@ -1,9 +1,9 @@
 # cool-accounts - shared-services subdirectory #
 
 This subdirectory contains Terraform code to provision the COOL
-"shared services" account.  It creates an IAM role that allows
+Shared Services account.  It creates an IAM role that allows
 sufficient permissions to provision all AWS resources in this account.
-This role has a trust relationship with the users account.
+This role has a trust relationship with the Users account.
 
 ## Bootstrapping this account ##
 
@@ -31,6 +31,12 @@ To do this, follow these steps:
    aws_session_token = <MY_SESSION_TOKEN>
    ```
 
+1. Ensure that the bucket name in `backend.tf` is correct.  It should match
+   the `state_bucket_name` specified in the `tfvars` file that you used to
+   bootstrap the [`cool-accounts/terraform`](../terraform) directory.
+1. Run the command `terraform init -upgrade`.  Note that if you have previously
+   used a different Terraform backend (e.g. for a different environment), you
+   will need to run `terraform init -reconfigure -upgrade`.
 1. Create a Terraform workspace (if you haven't already done so) by running
    `terraform workspace new <workspace_name>`
 1. Create a `<workspace_name>.tfvars` file with any optional variables
@@ -45,12 +51,9 @@ To do this, follow these steps:
    }
    ```
 
-1. Run the command `terraform init`.
-1. Run the command `terraform apply
-   -var-file=<workspace_name>.tfvars`.
+1. Run the command `terraform apply -var-file=<workspace_name>.tfvars`.
 1. Revert the changes you made to `providers.tf` in step 1.
-1. Run the command `terraform apply
-    -var-file=<workspace_name>.tfvars`.
+1. Run the command `terraform apply -var-file=<workspace_name>.tfvars`.
 
 At this point the account has been bootstrapped, and you can apply
 future changes by simply running `terraform apply

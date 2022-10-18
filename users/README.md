@@ -1,7 +1,7 @@
 # cool-accounts - users subdirectory #
 
 This subdirectory contains Terraform code to provision the COOL
-"users" account.  It creates:
+Users account.  It creates:
 
 - IAM user(s) with the ability to administer their own credentials (including
   multi-factor authentication).
@@ -16,17 +16,20 @@ Note that this account must be bootstrapped.  This is because because
 there is no IAM role that can be assumed to build out these resources.
 Therefore you must first apply this Terraform code with programmatic
 credentials for AWSAdministratorAccess as obtained for the COOL
-"users" account from the AWS SSO page.
+Users account from the AWS SSO page.
 
 To do this, follow these steps:
 
 1. Comment out the `profile = "cool-users-provisionaccount"` line for
    the "default" provider in `providers.tf` and directly below that
    uncomment the line `profile = "cool-users-account-admin"`.
+1. Comment out the `profile = "cool-master-organizationsreadonly"` line
+   for the "organizationsreadonly" provider in `providers.tf` and directly
+   below that uncomment the line `profile = "cool-master-account-admin"`.
 1. Create a new AWS profile called `cool-users-account-admin` in
    your Boto3 configuration using the "AWSAdministratorAccess"
    credentials (access key ID, secret access key, and session token)
-   as obtained from the COOL "users" account:
+   as obtained from the COOL Users account:
 
    ```console
    [cool-users-account-admin]
@@ -35,6 +38,39 @@ To do this, follow these steps:
    aws_session_token = <MY_SESSION_TOKEN>
    ```
 
+1. Create a new AWS profile called `cool-master-account-admin` in
+   your Boto3 configuration using the "AWSAdministratorAccess"
+   credentials (access key ID, secret access key, and session token)
+   as obtained from the COOL Master account:
+
+   ```console
+   [cool-master-account-admin]
+   aws_access_key_id = <MY_ACCESS_KEY_ID>
+   aws_secret_access_key = <MY_SECRET_ACCESS_KEY>
+   aws_session_token = <MY_SESSION_TOKEN>
+   ```
+
+1. Create a new AWS profile called `cool-terraform-account-admin` in
+   your Boto3 configuration using the "AWSAdministratorAccess"
+   credentials (access key ID, secret access key, and session token)
+   as obtained from the COOL Terraform account:
+
+   ```console
+   [cool-master-account-admin]
+   aws_access_key_id = <MY_ACCESS_KEY_ID>
+   aws_secret_access_key = <MY_SECRET_ACCESS_KEY>
+   aws_session_token = <MY_SESSION_TOKEN>
+   ```
+
+1. Ensure that the bucket name in `backend.tf` is correct.  It should match
+   the `state_bucket_name` specified in the `tfvars` file that you used to
+   bootstrap the [`cool-accounts/terraform`](../terraform) directory.
+1. Comment out the `profile = "cool-terraform-backend"` line
+   in `backend.tf` and directly below that uncomment the line
+   `profile = "cool-terraform-account-admin"`.
+1. Run the command `terraform init -upgrade`.  Note that if you have previously
+   used a different Terraform backend (e.g. for a different environment), you
+   will need to run `terraform init -reconfigure -upgrade`.
 1. Create a Terraform workspace (if you haven't already done so) by running
    `terraform workspace new <workspace_name>`
 1. Create a `<workspace_name>.tfvars` file with all of the required
@@ -53,12 +89,19 @@ To do this, follow these steps:
    }
    ```
 
-1. Run the command `terraform init`.
-1. Run the command `terraform apply
-   -var-file=<workspace_name>.tfvars`.
-1. Revert the changes you made to `provider.tf` in step 1.
-1. Run the command `terraform apply
-    -var-file=<workspace_name>.tfvars`.
+1. Run the command `terraform apply -var-file=<workspace_name>.tfvars`.
+1. Login (using the AWS web console) to the Users account via SSO with
+   AWSAdministratorAccess.
+1. Locate your newly-created IAM user account and create an access key.
+1. Copy your new access key ID and secret access key into your AWS credentials
+   file.
+1. Revert the changes you made to `provider.tf` in step 1.  Give yourself
+   a reminder to revert the changes you made to `provider.tf` in step 2 after
+   you bootstrap the Master account.
+1. Revert the changes you made to `backend.tf` in step 7.
+1. Run the command `terraform init -migrate-state`.  When Terraform asks 'Do
+   you want to migrate all workspaces to "s3"?', enter "yes".
+1. Run the command `terraform apply -var-file=<workspace_name>.tfvars`.
 
 At this point the account has been bootstrapped, and you can apply
 future changes by simply running `terraform apply
