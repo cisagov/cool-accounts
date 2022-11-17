@@ -44,7 +44,7 @@ To do this, follow these steps:
 1. Create a Terraform workspace (if you haven't already done so) by running
    `terraform workspace new <workspace_name>`
 1. Create a `<workspace_name>.tfvars` file with any optional variables
-   that you wish to override (see [Inputs](#Inputs) below for
+   that you wish to override (see [Inputs](#inputs) below for
    details):
 
    ```console

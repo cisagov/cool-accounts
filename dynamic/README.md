@@ -44,7 +44,7 @@ To do this, follow these steps:
    running `terraform workspace new <workspace_name>`
 1. Create a `<workspace_name>.tfvars` file in
    [cisagov/cool-tf-vars](https://github.com/cisagov/cool-tf-vars)
-   with all of the required variables (see [Inputs](#Inputs) below for
+   with all of the required variables (see [Inputs](#inputs) below for
    details):
 
    ```console
