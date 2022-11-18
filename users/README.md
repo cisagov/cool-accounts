@@ -75,7 +75,7 @@ To do this, follow these steps:
    `terraform workspace new <workspace_name>`
 1. Create a `<workspace_name>.tfvars` file with all of the required
    variables and any optional variables that you want to override (see
-   [Inputs](#Inputs) below for details):
+   [Inputs](#inputs) below for details):
 
    ```console
    godlike_usernames = [
