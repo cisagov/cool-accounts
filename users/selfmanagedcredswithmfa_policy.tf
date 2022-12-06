@@ -115,7 +115,7 @@ data "aws_iam_policy_document" "self_managed_creds_with_mfa" {
     ]
 
     resources = [
-      "arn:aws:iam::*:mfa/&{aws:username}",
+      "arn:aws:iam::*:mfa/*",
     ]
   }
 
