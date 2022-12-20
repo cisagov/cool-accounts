@@ -1,3 +1,8 @@
+output "assessment_findings_write_role" {
+  value       = aws_iam_role.assessment_findings_bucket_write
+  description = "The IAM role that allows write access to the assessment findings S3 bucket."
+}
+
 output "cw_alarm_sns_topic" {
   value       = module.cw_alarm_sns.sns_topic
   description = "The SNS topic to which a message is sent when a CloudWatch alarm is triggered."
