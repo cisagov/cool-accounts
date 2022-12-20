@@ -85,9 +85,14 @@ future changes by simply running `terraform apply
 
 | Name | Type |
 |------|------|
+| [aws_iam_policy.assessment_findings_bucket_write](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) | resource |
 | [aws_iam_policy.provisionssmsessionmanager_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) | resource |
+| [aws_iam_role.assessment_findings_bucket_write](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role) | resource |
+| [aws_iam_role_policy_attachment.assessment_findings_bucket_write](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_iam_role_policy_attachment.provisionssmsessionmanager_policy_attachment](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_caller_identity.sharedservices](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/caller_identity) | data source |
+| [aws_iam_policy_document.asseessment_account_assume_role_doc](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
+| [aws_iam_policy_document.assessment_findings_bucket_write](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
 | [aws_iam_policy_document.assume_role_doc](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
 | [aws_iam_policy_document.provisionssmsessionmanager_policy_doc](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
 | [aws_organizations_organization.cool](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/organizations_organization) | data source |
@@ -96,6 +101,10 @@ future changes by simply running `terraform apply
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| assessment\_findings\_bucket\_arn | The ARN of the assessment findings S3 bucket. | `string` | n/a | yes |
+| assessment\_findings\_bucket\_object\_name\_pattern | The name pattern specifying which objects are allowed to be written to the assessment findings data S3 bucket. | `string` | `"*-data.json"` | no |
+| assessment\_findings\_bucket\_write\_role\_description | The description to associate with the IAM role that allows write access to the assessment findings S3 bucket. | `string` | `"Allows write permissions to the assessment findings S3 bucket."` | no |
+| assessment\_findings\_bucket\_write\_role\_name | The name to assign the IAM role that allows write access to the assessment findings S3 bucket. | `string` | `"AssessmentFindingsBucketWrite"` | no |
 | aws\_region | The AWS region where the non-global resources for the Shared Services account are to be provisioned (e.g. "us-east-1"). | `string` | `"us-east-1"` | no |
 | provisionaccount\_role\_description | The description to associate with the IAM role that allows sufficient permissions to provision all AWS resources in the Shared Services account. | `string` | `"Allows sufficient permissions to provision all AWS resources in the Shared Services account."` | no |
 | provisionaccount\_role\_name | The name to assign the IAM role that allows sufficient permissions to provision all AWS resources in the Shared Services account. | `string` | `"ProvisionAccount"` | no |
@@ -107,6 +116,7 @@ future changes by simply running `terraform apply
 
 | Name | Description |
 |------|-------------|
+| assessment\_findings\_write\_role | The IAM role that allows write access to the assessment findings S3 bucket. |
 | cw\_alarm\_sns\_topic | The SNS topic to which a message is sent when a CloudWatch alarm is triggered. |
 | provisionaccount\_role | The IAM role that allows sufficient permissions to provision all AWS resources in the Shared Services account. |
 | ssm\_session\_role | The IAM role that allows creation of SSM Session Manager sessions to any EC2 instance in this account. |
