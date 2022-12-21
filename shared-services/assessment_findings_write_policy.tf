@@ -9,7 +9,7 @@ data "aws_iam_policy_document" "assessment_findings_bucket_write" {
       "s3:PutObject",
     ]
     resources = [
-      "arn:aws:s3:::${var.assessment_findings_bucket_name}/${var.assessment_findings_bucket_object_name_pattern}",
+      "arn:aws:s3:::${var.assessment_findings_bucket_name}/${var.assessment_findings_bucket_object_key_pattern}",
     ]
   }
 }

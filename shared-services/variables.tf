@@ -16,9 +16,9 @@ variable "assessment_findings_bucket_name" {
 # These parameters have reasonable defaults.
 # ------------------------------------------------------------------------------
 
-variable "assessment_findings_bucket_object_name_pattern" {
+variable "assessment_findings_bucket_object_key_pattern" {
   type        = string
-  description = "The name pattern specifying which objects are allowed to be written to the assessment findings data S3 bucket."
+  description = "The key pattern specifying which objects are allowed to be written to the assessment findings data S3 bucket."
   default     = "*-data.json"
 }
 
