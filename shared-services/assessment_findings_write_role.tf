@@ -1,6 +1,6 @@
 # ------------------------------------------------------------------------------
 # Create the IAM role that allows write access to the assessment findings S3
-# bucket (specified by var.assessment_findings_bucket_arn).
+# bucket (specified by var.assessment_findings_bucket_name).
 # ------------------------------------------------------------------------------
 
 resource "aws_iam_role" "assessment_findings_bucket_write" {

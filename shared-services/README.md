@@ -101,7 +101,7 @@ future changes by simply running `terraform apply
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| assessment\_findings\_bucket\_arn | The ARN of the assessment findings S3 bucket. | `string` | n/a | yes |
+| assessment\_findings\_bucket\_name | The name of the assessment findings S3 bucket. | `string` | n/a | yes |
 | assessment\_findings\_bucket\_object\_name\_pattern | The name pattern specifying which objects are allowed to be written to the assessment findings data S3 bucket. | `string` | `"*-data.json"` | no |
 | assessment\_findings\_bucket\_write\_role\_description | The description to associate with the IAM role that allows write access to the assessment findings S3 bucket. | `string` | `"Allows write permissions to the assessment findings S3 bucket."` | no |
 | assessment\_findings\_bucket\_write\_role\_name | The name to assign the IAM role that allows write access to the assessment findings S3 bucket. | `string` | `"AssessmentFindingsBucketWrite"` | no |

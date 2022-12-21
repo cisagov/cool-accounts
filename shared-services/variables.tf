@@ -5,9 +5,9 @@
 # ------------------------------------------------------------------------------
 
 # This bucket is created by cisagov/findings-data-import-terraform.
-variable "assessment_findings_bucket_arn" {
+variable "assessment_findings_bucket_name" {
   type        = string
-  description = "The ARN of the assessment findings S3 bucket."
+  description = "The name of the assessment findings S3 bucket."
 }
 
 # ------------------------------------------------------------------------------
