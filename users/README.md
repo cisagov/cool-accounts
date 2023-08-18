@@ -131,6 +131,7 @@ future changes by simply running `terraform apply
 
 | Name | Type |
 |------|------|
+| [aws_iam_account_password_policy.users](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_account_password_policy) | resource |
 | [aws_iam_group.gods](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_group) | resource |
 | [aws_iam_group_policy_attachment.assume_any_role_anywhere](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_group_policy_attachment) | resource |
 | [aws_iam_policy.assume_any_role_anywhere](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) | resource |
