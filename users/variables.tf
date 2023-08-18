@@ -39,6 +39,42 @@ variable "gods_group_name" {
   default     = "gods"
 }
 
+variable "password_policy_allow_users_to_change_password" {
+  type        = bool
+  description = "Whether to allow users to change their own passwords."
+  default     = true
+}
+
+variable "password_policy_minimum_password_length" {
+  type        = number
+  description = "The minimum required length for IAM user passwords."
+  default     = 12
+}
+
+variable "password_policy_require_lowercase_characters" {
+  type        = bool
+  description = "Whether IAM user passwords are required to contain at least one lowercase letter from the Latin alphabet (a-z)."
+  default     = true
+}
+
+variable "password_policy_require_numbers" {
+  type        = bool
+  description = "Whether IAM user passwords are required to contain at least one number."
+  default     = true
+}
+
+variable "password_policy_require_symbols" {
+  type        = bool
+  description = "Whether IAM user passwords are required to contain at least one non-alphanumeric character (! @ # $ % ^ & * ( ) _ + - = [ ] { } | ')."
+  default     = true
+}
+
+variable "password_policy_require_uppercase_characters" {
+  type        = bool
+  description = "Whether IAM user passwords are required to contain at least one uppercase letter from the Latin alphabet (A-Z)."
+  default     = true
+}
+
 variable "provisionaccount_role_description" {
   type        = string
   description = "The description to associate with the IAM role that allows access to provision all AWS resources in the Users account."
