@@ -1,7 +1,7 @@
-# cool-accounts - master subdirectory #
+# cool-accounts - root subdirectory #
 
 This subdirectory contains Terraform code to provision the COOL
-Master account.  It creates an IAM role that allows sufficient
+Root account.  It creates an IAM role that allows sufficient
 permissions to provision all AWS resources in this account.  This role
 has a trust relationship with the Users account.
 
@@ -10,21 +10,21 @@ has a trust relationship with the Users account.
 Note that this account must be bootstrapped.  This is because there is
 no IAM role that can be assumed to build out these resources.
 Therefore you must first apply this Terraform code with programmatic
-credentials for AWSAdministratorAccess as obtained for the COOL Master
+credentials for AWSAdministratorAccess as obtained for the COOL Root
 account from the AWS SSO page.
 
 To do this, follow these steps:
 
-1. Comment out the `profile = "cool-master-provisionaccount"` line for
+1. Comment out the `profile = "cool-root-provisionaccount"` line for
    the "default" provider in `providers.tf` and directly below that
-   uncomment the line `profile = "cool-master-account-admin"`.
-1. Create a new AWS profile called `cool-master-account-admin`
+   uncomment the line `profile = "cool-root-account-admin"`.
+1. Create a new AWS profile called `cool-root-account-admin`
    in your Boto3 configuration using the "AWSAdministratorAccess"
    credentials (access key ID, secret access key, and session token)
-   as obtained from the COOL Master account:
+   as obtained from the COOL Root account:
 
    ```console
-   [cool-master-account-admin]
+   [cool-root-account-admin]
    aws_access_key_id = <MY_ACCESS_KEY_ID>
    aws_secret_access_key = <MY_SECRET_ACCESS_KEY>
    aws_session_token = <MY_SESSION_TOKEN>
@@ -45,7 +45,7 @@ To do this, follow these steps:
    ```console
    tags = {
      Team        = "VM Fusion - Development"
-     Application = "COOL - Master Account"
+     Application = "COOL - Root Account"
      Workspace   = "production"
    }
    ```
@@ -105,26 +105,26 @@ future changes by simply running `terraform apply
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| administersso\_role\_description | The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient permissions to administer the Single Sign-On resources in the Master account. | `string` | `"Allows sufficient permissions to administer the Single Sign-On resources in the Master account."` | no |
-| administersso\_role\_name | The name to assign the IAM role (as well as the corresponding policy) that allows sufficient permissions to administer the Single Sign-On resources in the Master account. | `string` | `"AdministerSSO"` | no |
-| aws\_region | The AWS region where the non-global resources for the Master account are to be provisioned (e.g. "us-east-1"). | `string` | `"us-east-1"` | no |
-| controltoweradmin\_role\_description | The description to associate with the IAM role that allows all necessary permissions to provision AWS accounts via Control Tower in the Master account. | `string` | `"Allows all necessary permissions to provision AWS accounts via Control Tower in the Master account."` | no |
-| controltoweradmin\_role\_name | The name to assign the IAM role that allows all necessary permissions to provision AWS accounts via Control Tower in the Master account. | `string` | `"ControlTowerAdmin"` | no |
-| organizationsreadonly\_role\_description | The description to associate with the IAM role that allows read-only access to all AWS Organizations information in the Master account. | `string` | `"Allows read-only access to all AWS Organizations information in the Master account."` | no |
-| organizationsreadonly\_role\_name | The name to assign the IAM role that allows read-only access to all AWS Organizations information in the Master account. | `string` | `"OrganizationsReadOnly"` | no |
-| provisionaccount\_role\_description | The description to associate with the IAM role that allows sufficient permissions to provision all AWS resources in the Master account. | `string` | `"Allows sufficient permissions to provision all AWS resources in the Master account."` | no |
-| provisionaccount\_role\_name | The name to assign the IAM role that allows sufficient permissions to provision all AWS resources in the Master account. | `string` | `"ProvisionAccount"` | no |
+| administersso\_role\_description | The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient permissions to administer the Single Sign-On resources in the Root account. | `string` | `"Allows sufficient permissions to administer the Single Sign-On resources in the Root account."` | no |
+| administersso\_role\_name | The name to assign the IAM role (as well as the corresponding policy) that allows sufficient permissions to administer the Single Sign-On resources in the Root account. | `string` | `"AdministerSSO"` | no |
+| aws\_region | The AWS region where the non-global resources for the Root account are to be provisioned (e.g. "us-east-1"). | `string` | `"us-east-1"` | no |
+| controltoweradmin\_role\_description | The description to associate with the IAM role that allows all necessary permissions to provision AWS accounts via Control Tower in the Root account. | `string` | `"Allows all necessary permissions to provision AWS accounts via Control Tower in the Root account."` | no |
+| controltoweradmin\_role\_name | The name to assign the IAM role that allows all necessary permissions to provision AWS accounts via Control Tower in the Root account. | `string` | `"ControlTowerAdmin"` | no |
+| organizationsreadonly\_role\_description | The description to associate with the IAM role that allows read-only access to all AWS Organizations information in the Root account. | `string` | `"Allows read-only access to all AWS Organizations information in the Root account."` | no |
+| organizationsreadonly\_role\_name | The name to assign the IAM role that allows read-only access to all AWS Organizations information in the Root account. | `string` | `"OrganizationsReadOnly"` | no |
+| provisionaccount\_role\_description | The description to associate with the IAM role that allows sufficient permissions to provision all AWS resources in the Root account. | `string` | `"Allows sufficient permissions to provision all AWS resources in the Root account."` | no |
+| provisionaccount\_role\_name | The name to assign the IAM role that allows sufficient permissions to provision all AWS resources in the Root account. | `string` | `"ProvisionAccount"` | no |
 | tags | Tags to apply to all AWS resources created. | `map(string)` | `{}` | no |
 
 ## Outputs ##
 
 | Name | Description |
 |------|-------------|
-| administersso\_role | The IAM role that allows sufficient permissions to administer the Single Sign-On resources required in the Master account. |
-| controltoweradmin\_role | The IAM role that allows all necessary permissions to provision AWS accounts via Control Tower in the Master account. |
+| administersso\_role | The IAM role that allows sufficient permissions to administer the Single Sign-On resources required in the Root account. |
+| controltoweradmin\_role | The IAM role that allows all necessary permissions to provision AWS accounts via Control Tower in the Root account. |
 | cw\_alarm\_sns\_topic | The SNS topic to which a message is sent when a CloudWatch alarm is triggered. |
-| organizationsreadonly\_role | The IAM role that allows read-only access to all AWS Organizations information in the Master account. |
-| provisionaccount\_role | The IAM role that allows sufficient permissions to provision all AWS resources in the Master account. |
+| organizationsreadonly\_role | The IAM role that allows read-only access to all AWS Organizations information in the Root account. |
+| provisionaccount\_role | The IAM role that allows sufficient permissions to provision all AWS resources in the Root account. |
 
 ## Contributing ##
 
