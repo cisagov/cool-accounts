@@ -124,7 +124,7 @@ future changes by simply running `terraform apply
 
 | Name | Source | Version |
 |------|--------|---------|
-| cw\_alarm\_sns | github.com/cisagov/cw-alarm-sns-tf-module | n/a |
+| cw\_alarm\_sns | github.com/cisagov/sns-send-to-account-email-tf-module | n/a |
 | provisionaccount | github.com/cisagov/provisionaccount-role-tf-module | n/a |
 
 ## Resources ##
