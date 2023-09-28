@@ -10,6 +10,6 @@ module "cw_alarm_sns" {
   }
   source = "github.com/cisagov/sns-send-to-account-email-tf-module"
 
-  topic_name         = "cloudwatch-alarms"
   topic_display_name = "cloudwatch_alarms"
+  topic_name         = "cloudwatch-alarms"
 }
