@@ -1,4 +1,11 @@
 # ------------------------------------------------------------------------------
+# We can get the account ID of this account from the provider's caller
+# identity.
+# ------------------------------------------------------------------------------
+data "aws_caller_identity" "this" {
+}
+
+# ------------------------------------------------------------------------------
 # Retrieve the information for all accounts in the organization.  This
 # is used, for instance, to lookup the account IDs for all assessment
 # accounts.

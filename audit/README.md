@@ -69,6 +69,7 @@ future changes by simply running `terraform apply
 
 | Name | Version |
 |------|---------|
+| aws | ~> 3.38 |
 | aws.organizationsreadonly | ~> 3.38 |
 
 ## Modules ##
@@ -76,12 +77,16 @@ future changes by simply running `terraform apply
 | Name | Source | Version |
 |------|--------|---------|
 | cw\_alarm\_sns | github.com/cisagov/sns-send-to-account-email-tf-module | n/a |
+| new\_user\_event | github.com/cisagov/new-user-alert-tf-module | n/a |
+| new\_user\_sns | github.com/cisagov/sns-send-to-account-email-tf-module | n/a |
 | provisionaccount | github.com/cisagov/provisionaccount-role-tf-module | n/a |
 
 ## Resources ##
 
 | Name | Type |
 |------|------|
+| [aws_caller_identity.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/caller_identity) | data source |
+| [aws_iam_policy_document.sns_topic_access_policy_doc](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
 | [aws_organizations_organization.cool](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/organizations_organization) | data source |
 
 ## Inputs ##
