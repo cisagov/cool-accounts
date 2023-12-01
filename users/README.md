@@ -107,18 +107,19 @@ At this point the account has been bootstrapped, and you can apply
 future changes by simply running `terraform apply
 -var-file=<workspace_name>.tfvars`.
 
+<!-- BEGIN_TF_DOCS -->
 ## Requirements ##
 
 | Name | Version |
 |------|---------|
 | terraform | ~> 1.0 |
-| aws | ~> 3.38 |
+| aws | ~> 4.9 |
 
 ## Providers ##
 
 | Name | Version |
 |------|---------|
-| aws | ~> 3.38 |
+| aws | ~> 4.9 |
 
 ## Modules ##
 
@@ -183,6 +184,7 @@ future changes by simply running `terraform apply
 | provisionaccount\_role | The IAM role that allows sufficient permissions to provision all AWS resources in this account. |
 | selfmanagedcredswithmfa\_policy | The IAM policy that allows users to administer their own user accounts, requiring multi-factor authentication (MFA). |
 | selfmanagedcredswithoutmfa\_policy | The IAM policy that allows users to administer their own user accounts, without requiring multi-factor authentication (MFA). |
+<!-- END_TF_DOCS -->
 
 ## Contributing ##
 

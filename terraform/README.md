@@ -97,19 +97,20 @@ future changes by simply running `terraform apply
 yourself a reminder to revert the changes you made to `backend.tf` in step 12
 after you bootstrap the Users account.
 
+<!-- BEGIN_TF_DOCS -->
 ## Requirements ##
 
 | Name | Version |
 |------|---------|
 | terraform | ~> 1.0 |
-| aws | ~> 3.38 |
+| aws | ~> 4.9 |
 
 ## Providers ##
 
 | Name | Version |
 |------|---------|
-| aws | ~> 3.38 |
-| aws.organizationsreadonly | ~> 3.38 |
+| aws | ~> 4.9 |
+| aws.organizationsreadonly | ~> 4.9 |
 
 ## Modules ##
 
@@ -189,6 +190,7 @@ after you bootstrap the Users account.
 | read\_terraform\_state\_role | The IAM role that allows read-only access to the S3 bucket where Terraform state is stored. |
 | state\_bucket | The S3 bucket where Terraform state information will be stored. |
 | state\_lock\_table | The DynamoDB table that to be used for Terraform state locking. |
+<!-- END_TF_DOCS -->
 
 ## Contributing ##
 
