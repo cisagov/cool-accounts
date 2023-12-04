@@ -5,102 +5,98 @@
 # these updates when the pull request(s) in the appropriate skeleton are merged
 # and Lineage processes these changes.
 
-version: 2
 updates:
-  - package-ecosystem: "github-actions"
-    directory: "/"
-    schedule:
-      interval: "weekly"
+  - directory: /
     ignore:
       # Managed by cisagov/skeleton-generic
       - dependency-name: actions/cache
       - dependency-name: actions/checkout
       - dependency-name: actions/setup-go
       - dependency-name: actions/setup-python
+      - dependency-name: crazy-max/ghaction-dump-context
+      - dependency-name: crazy-max/ghaction-github-labeler
+      - dependency-name: crazy-max/ghaction-github-status
       - dependency-name: hashicorp/setup-terraform
       - dependency-name: mxschmitt/action-tmate
-
-  - package-ecosystem: "pip"
-    directory: "/"
+      - dependency-name: step-security/harden-runner
+    package-ecosystem: github-actions
     schedule:
-      interval: "weekly"
+      interval: weekly
 
-  - package-ecosystem: "terraform"
-    directory: "/"
+  - directory: /
+    package-ecosystem: pip
     schedule:
-      interval: "weekly"
-    # Managed by cisagov/skeleton-tf-module
+      interval: weekly
+
+  - directory: /audit
     ignore:
-      - dependency-name: "hashicorp/aws"
-
-  - package-ecosystem: "terraform"
-    directory: "/audit"
+      # Managed by cisagov/skeleton-tf-module
+      - dependency-name: hashicorp/aws
+    package-ecosystem: terraform
     schedule:
-      interval: "weekly"
-    # Managed by cisagov/skeleton-tf-module
-    ignore:
-      - dependency-name: "hashicorp/aws"
+      interval: weekly
 
-  - package-ecosystem: "terraform"
-    directory: "/dns"
-    schedule:
-      interval: "weekly"
-    # Managed by cisagov/skeleton-tf-module
+  - directory: /dns
     ignore:
-      - dependency-name: "hashicorp/aws"
+      # Managed by cisagov/skeleton-tf-module
+      - dependency-name: hashicorp/aws
+    package-ecosystem: terraform
+    schedule:
+      interval: weekly
 
-  - package-ecosystem: "terraform"
-    directory: "/dynamic"
-    schedule:
-      interval: "weekly"
-    # Managed by cisagov/skeleton-tf-module
+  - directory: /dynamic
     ignore:
-      - dependency-name: "hashicorp/aws"
+      # Managed by cisagov/skeleton-tf-module
+      - dependency-name: hashicorp/aws
+    package-ecosystem: terraform
+    schedule:
+      interval: weekly
 
-  - package-ecosystem: "terraform"
-    directory: "/images"
-    schedule:
-      interval: "weekly"
-    # Managed by cisagov/skeleton-tf-module
+  - directory: /images
     ignore:
-      - dependency-name: "hashicorp/aws"
+      # Managed by cisagov/skeleton-tf-module
+      - dependency-name: hashicorp/aws
+    package-ecosystem: terraform
+    schedule:
+      interval: weekly
 
-  - package-ecosystem: "terraform"
-    directory: "/log-archive"
-    schedule:
-      interval: "weekly"
-    # Managed by cisagov/skeleton-tf-module
+  - directory: /log-archive
     ignore:
-      - dependency-name: "hashicorp/aws"
+      # Managed by cisagov/skeleton-tf-module
+      - dependency-name: hashicorp/aws
+    package-ecosystem: terraform
+    schedule:
+      interval: weekly
 
-  - package-ecosystem: "terraform"
-    directory: "/master"
-    schedule:
-      interval: "weekly"
-    # Managed by cisagov/skeleton-tf-module
+  - directory: /master
     ignore:
-      - dependency-name: "hashicorp/aws"
+      # Managed by cisagov/skeleton-tf-module
+      - dependency-name: hashicorp/aws
+    package-ecosystem: terraform
+    schedule:
+      interval: weekly
 
-  - package-ecosystem: "terraform"
-    directory: "/shared-services"
-    schedule:
-      interval: "weekly"
-    # Managed by cisagov/skeleton-tf-module
+  - directory: /shared-services
     ignore:
-      - dependency-name: "hashicorp/aws"
+      # Managed by cisagov/skeleton-tf-module
+      - dependency-name: hashicorp/aws
+    package-ecosystem: terraform
+    schedule:
+      interval: weekly
 
-  - package-ecosystem: "terraform"
-    directory: "/terraform"
-    schedule:
-      interval: "weekly"
-    # Managed by cisagov/skeleton-tf-module
+  - directory: /terraform
     ignore:
-      - dependency-name: "hashicorp/aws"
+      # Managed by cisagov/skeleton-tf-module
+      - dependency-name: hashicorp/aws
+    package-ecosystem: terraform
+    schedule:
+      interval: weekly
 
-  - package-ecosystem: "terraform"
-    directory: "/users"
-    schedule:
-      interval: "weekly"
-    # Managed by cisagov/skeleton-tf-module
+  - directory: /users
     ignore:
-      - dependency-name: "hashicorp/aws"
+      # Managed by cisagov/skeleton-tf-module
+      - dependency-name: hashicorp/aws
+    package-ecosystem: terraform
+    schedule:
+      interval: weekly
+version: 2

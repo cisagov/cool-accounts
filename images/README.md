@@ -63,19 +63,20 @@ At this point the account has been bootstrapped, and you can apply
 future changes by simply running `terraform apply
 -var-file=<workspace_name>.tfvars`.
 
+<!-- BEGIN_TF_DOCS -->
 ## Requirements ##
 
 | Name | Version |
 |------|---------|
 | terraform | ~> 1.0 |
-| aws | ~> 3.38 |
+| aws | ~> 4.9 |
 
 ## Providers ##
 
 | Name | Version |
 |------|---------|
-| aws | ~> 3.38 |
-| aws.organizationsreadonly | ~> 3.38 |
+| aws | ~> 4.9 |
+| aws.organizationsreadonly | ~> 4.9 |
 
 ## Modules ##
 
@@ -179,6 +180,7 @@ future changes by simply running `terraform apply
 | provisionec2amicreateroles\_role | The IAM role that allows sufficient permissions to provision IAM roles that can create AMIs in the Images account. |
 | provisionthirdpartybucketreadroles\_role | The IAM role that allows sufficient permissions to provision IAM roles that can read objects in the third-party file storage S3 bucket in the Images account. |
 | third\_party\_bucket | The S3 bucket for storing third-party files. |
+<!-- END_TF_DOCS -->
 
 ## Contributing ##
 

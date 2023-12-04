@@ -58,19 +58,20 @@ At this point the account has been bootstrapped, and you can apply
 future changes by simply running `terraform apply
 -var-file=<workspace_name>.tfvars`.
 
+<!-- BEGIN_TF_DOCS -->
 ## Requirements ##
 
 | Name | Version |
 |------|---------|
 | terraform | ~> 1.0 |
-| aws | ~> 3.38 |
+| aws | ~> 4.9 |
 
 ## Providers ##
 
 | Name | Version |
 |------|---------|
-| aws | ~> 3.38 |
-| aws.organizationsreadonly | ~> 3.38 |
+| aws | ~> 4.9 |
+| aws.organizationsreadonly | ~> 4.9 |
 
 ## Modules ##
 
@@ -122,6 +123,7 @@ future changes by simply running `terraform apply
 | primary\_delegation\_set | The primary reusable delegation set that contains the authoritative name servers for all public DNS zones. |
 | provisionaccount\_role | The IAM role that allows sufficient permissions to provision all AWS resources in the DNS account. |
 | provisionpublishegressip\_role | The IAM role that allows sufficient permissions to provision all resources related to the publish-egress-ip Lambda in the DNS account. |
+<!-- END_TF_DOCS -->
 
 ## Contributing ##
 

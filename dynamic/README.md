@@ -66,19 +66,20 @@ At this point the account has been bootstrapped, and you can apply
 future changes by simply running `terraform apply
 -var-file=<workspace_name>.tfvars`.
 
+<!-- BEGIN_TF_DOCS -->
 ## Requirements ##
 
 | Name | Version |
 |------|---------|
 | terraform | ~> 1.0 |
-| aws | ~> 3.38 |
+| aws | ~> 4.9 |
 
 ## Providers ##
 
 | Name | Version |
 |------|---------|
-| aws | ~> 3.38 |
-| aws.organizationsreadonly | ~> 3.38 |
+| aws | ~> 4.9 |
+| aws.organizationsreadonly | ~> 4.9 |
 
 ## Modules ##
 
@@ -121,6 +122,7 @@ future changes by simply running `terraform apply
 | cw\_alarm\_sns\_topic | The SNS topic to which a message is sent when a CloudWatch alarm is triggered. |
 | ec2readonly\_role | The IAM role that allows read access to some EC2 attributes in the dynamic account. |
 | provisionaccount\_role | The IAM role that allows sufficient permissions to provision all AWS resources in the dynamic account. |
+<!-- END_TF_DOCS -->
 
 ## Contributing ##
 
