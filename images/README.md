@@ -83,9 +83,9 @@ future changes by simply running `terraform apply
 | Name | Source | Version |
 |------|--------|---------|
 | cw\_alarm\_sns | github.com/cisagov/sns-send-to-account-email-tf-module | n/a |
-| new\_user\_event | github.com/cisagov/new-user-alert-tf-module | n/a |
-| new\_user\_sns | github.com/cisagov/sns-send-to-account-email-tf-module | n/a |
 | provisionaccount | github.com/cisagov/provisionaccount-role-tf-module | n/a |
+| user\_group\_mod\_event | github.com/cisagov/user-group-mod-alert-tf-module | n/a |
+| user\_group\_mod\_sns | github.com/cisagov/sns-send-to-account-email-tf-module | n/a |
 
 ## Resources ##
 

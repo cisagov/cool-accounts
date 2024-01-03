@@ -37,6 +37,7 @@ data "aws_iam_policy_document" "provisionvpcs_doc" {
       "ec2:DescribeNetworkInterfaces",
       "ec2:DescribeRouteTables",
       "ec2:DescribeSecurityGroupReferences",
+      "ec2:DescribeSecurityGroupRules",
       "ec2:DescribeSecurityGroups",
       "ec2:DescribeSubnets",
       "ec2:DescribeTags",
