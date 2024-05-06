@@ -9,6 +9,7 @@ data "aws_iam_policy_document" "provisionpublishegressip_doc" {
   statement {
     actions = [
       "acm:DescribeCertificate",
+      "acm:GetCertificate",
       "acm:ListCertificates",
       "acm:ListTagsForCertificate",
     ]
