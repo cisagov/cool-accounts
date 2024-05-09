@@ -8,13 +8,11 @@ resource "aws_iam_group" "gods" {
 
 data "aws_iam_policy_document" "assume_any_role_anywhere_doc" {
   statement {
-    effect = "Allow"
-
     actions = [
       "sts:AssumeRole",
       "sts:TagSession",
     ]
-
+    effect = "Allow"
     resources = [
       "arn:aws:iam::*:role/*"
     ]

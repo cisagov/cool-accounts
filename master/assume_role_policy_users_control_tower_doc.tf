@@ -11,15 +11,15 @@ data "aws_iam_policy_document" "assume_role_users_control_tower_doc" {
     ]
 
     principals {
-      type = "AWS"
       # Delegate access to this role to the Users account.
       identifiers = [local.users_account_id]
+      type        = "AWS"
     }
 
     principals {
-      type = "Service"
       # Delegate access to this role to the Control Tower service.
       identifiers = ["controltower.amazonaws.com"]
+      type        = "Service"
     }
   }
 }

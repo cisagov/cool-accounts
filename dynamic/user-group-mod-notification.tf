@@ -13,8 +13,8 @@ data "aws_iam_policy_document" "sns_topic_access_policy_doc" {
     ]
 
     principals {
-      type        = "Service"
       identifiers = ["events.amazonaws.com"]
+      type        = "Service"
     }
 
     resources = [

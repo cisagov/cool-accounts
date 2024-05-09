@@ -11,8 +11,8 @@ data "aws_iam_policy_document" "asseessment_account_assume_role_doc" {
     ]
     effect = "Allow"
     principals {
-      type        = "AWS"
       identifiers = local.assessment_account_ids
+      type        = "AWS"
     }
   }
 }
