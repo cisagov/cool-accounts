@@ -5,25 +5,25 @@
 # ------------------------------------------------------------------------------
 
 variable "aws_region" {
-  type        = string
-  description = "The AWS region where the non-global resources for the Log Archive account are to be provisioned (e.g. \"us-east-1\")."
   default     = "us-east-1"
+  description = "The AWS region where the non-global resources for the Log Archive account are to be provisioned (e.g. \"us-east-1\")."
+  type        = string
 }
 
 variable "provisionaccount_role_description" {
-  type        = string
-  description = "The description to associate with the IAM role that allows sufficient permissions to provision all AWS resources in the Log Archive account."
   default     = "Allows sufficient permissions to provision all AWS resources in the Log Archive account."
+  description = "The description to associate with the IAM role that allows sufficient permissions to provision all AWS resources in the Log Archive account."
+  type        = string
 }
 
 variable "provisionaccount_role_name" {
-  type        = string
-  description = "The name to assign the IAM role that allows sufficient permissions to provision all AWS resources in the Log Archive account."
   default     = "ProvisionAccount"
+  description = "The name to assign the IAM role that allows sufficient permissions to provision all AWS resources in the Log Archive account."
+  type        = string
 }
 
 variable "tags" {
-  type        = map(string)
-  description = "Tags to apply to all AWS resources created."
   default     = {}
+  description = "Tags to apply to all AWS resources created."
+  type        = map(string)
 }

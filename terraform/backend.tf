@@ -2,9 +2,10 @@
 # account.
 terraform {
   backend "s3" {
-    encrypt        = true
     bucket         = "cisa-cool-terraform-state"
     dynamodb_table = "terraform-state-lock"
+    encrypt        = true
+    key            = "cool-accounts/terraform.tfstate"
     # Use this profile once both the Terraform and Users accounts have been
     # bootstrapped.
     profile = "cool-terraform-backend"
@@ -13,6 +14,5 @@ terraform {
     # from the AWS SSO page, to bootstrap the Terraform account.
     # profile = "cool-terraform-account-admin"
     region = "us-east-1"
-    key    = "cool-accounts/terraform.tfstate"
   }
 }

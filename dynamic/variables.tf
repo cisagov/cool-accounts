@@ -5,8 +5,8 @@
 # ------------------------------------------------------------------------------
 
 variable "dynamic_account_name" {
-  type        = string
   description = "The name of the dynamic account to be provisioned."
+  type        = string
 }
 
 # ------------------------------------------------------------------------------
@@ -16,37 +16,37 @@ variable "dynamic_account_name" {
 # ------------------------------------------------------------------------------
 
 variable "aws_region" {
-  type        = string
-  description = "The AWS region where the non-global resources for the dynamic account are to be provisioned (e.g. \"us-east-1\")."
   default     = "us-east-1"
+  description = "The AWS region where the non-global resources for the dynamic account are to be provisioned (e.g. \"us-east-1\")."
+  type        = string
 }
 
 variable "ec2readonly_role_description" {
-  type        = string
-  description = "The description to associate with the IAM role (as well as the corresponding policy) that allows read access to some EC2 attributes in the dynamic account."
   default     = "Allows read access to some EC2 attributes in the dynamic account."
+  description = "The description to associate with the IAM role (as well as the corresponding policy) that allows read access to some EC2 attributes in the dynamic account."
+  type        = string
 }
 
 variable "ec2readonly_role_name" {
-  type        = string
-  description = "The name to assign the IAM role (as well as the corresponding policy) that allows read access to some EC2 attributes in the dynamic account."
   default     = "EC2ReadOnly"
+  description = "The name to assign the IAM role (as well as the corresponding policy) that allows read access to some EC2 attributes in the dynamic account."
+  type        = string
 }
 
 variable "provisionaccount_role_description" {
-  type        = string
-  description = "The description to associate with the IAM role that allows sufficient permissions to provision all AWS resources in the dynamic account."
   default     = "Allows sufficient permissions to provision all AWS resources in the dynamic account."
+  description = "The description to associate with the IAM role that allows sufficient permissions to provision all AWS resources in the dynamic account."
+  type        = string
 }
 
 variable "provisionaccount_role_name" {
-  type        = string
-  description = "The name to assign the IAM role that allows sufficient permissions to provision all AWS resources in the dynamic account."
   default     = "ProvisionAccount"
+  description = "The name to assign the IAM role that allows sufficient permissions to provision all AWS resources in the dynamic account."
+  type        = string
 }
 
 variable "tags" {
-  type        = map(string)
-  description = "Tags to apply to all AWS resources created."
   default     = {}
+  description = "Tags to apply to all AWS resources created."
+  type        = map(string)
 }

@@ -17,14 +17,12 @@
 data "aws_iam_policy_document" "self_managed_creds_without_mfa" {
   # Allow users to view their own account information
   statement {
-    effect = "Allow"
-
     actions = [
       "iam:GetAccountPasswordPolicy",
       "iam:GetAccountSummary",
       "iam:ListVirtualMFADevices",
     ]
-
+    effect = "Allow"
     resources = [
       "*",
     ]
@@ -32,13 +30,11 @@ data "aws_iam_policy_document" "self_managed_creds_without_mfa" {
 
   # Allow users to administer their own passwords
   statement {
-    effect = "Allow"
-
     actions = [
       "iam:ChangePassword",
       "iam:GetUser",
     ]
-
+    effect = "Allow"
     resources = [
       "arn:aws:iam::*:user/&{aws:username}",
     ]
@@ -46,15 +42,13 @@ data "aws_iam_policy_document" "self_managed_creds_without_mfa" {
 
   # Allow users to administer their own access keys
   statement {
-    effect = "Allow"
-
     actions = [
       "iam:CreateAccessKey",
       "iam:DeleteAccessKey",
       "iam:ListAccessKeys",
       "iam:UpdateAccessKey",
     ]
-
+    effect = "Allow"
     resources = [
       "arn:aws:iam::*:user/&{aws:username}",
     ]
@@ -62,15 +56,13 @@ data "aws_iam_policy_document" "self_managed_creds_without_mfa" {
 
   # Allow users to administer their own signing certificates
   statement {
-    effect = "Allow"
-
     actions = [
       "iam:DeleteSigningCertificate",
       "iam:ListSigningCertificates",
       "iam:UpdateSigningCertificate",
       "iam:UploadSigningCertificate",
     ]
-
+    effect = "Allow"
     resources = [
       "arn:aws:iam::*:user/&{aws:username}",
     ]
@@ -78,8 +70,6 @@ data "aws_iam_policy_document" "self_managed_creds_without_mfa" {
 
   # Allow users to administer their own ssh public keys
   statement {
-    effect = "Allow"
-
     actions = [
       "iam:DeleteSSHPublicKey",
       "iam:GetSSHPublicKey",
@@ -87,7 +77,7 @@ data "aws_iam_policy_document" "self_managed_creds_without_mfa" {
       "iam:UpdateSSHPublicKey",
       "iam:UploadSSHPublicKey",
     ]
-
+    effect = "Allow"
     resources = [
       "arn:aws:iam::*:user/&{aws:username}",
     ]
@@ -95,8 +85,6 @@ data "aws_iam_policy_document" "self_managed_creds_without_mfa" {
 
   # Allow users to administer their own git credentials
   statement {
-    effect = "Allow"
-
     actions = [
       "iam:CreateServiceSpecificCredential",
       "iam:DeleteServiceSpecificCredential",
@@ -104,7 +92,7 @@ data "aws_iam_policy_document" "self_managed_creds_without_mfa" {
       "iam:ResetServiceSpecificCredential",
       "iam:UpdateServiceSpecificCredential",
     ]
-
+    effect = "Allow"
     resources = [
       "arn:aws:iam::*:user/&{aws:username}",
     ]
@@ -112,13 +100,11 @@ data "aws_iam_policy_document" "self_managed_creds_without_mfa" {
 
   # Allow users to administer their own virtual MFA device
   statement {
-    effect = "Allow"
-
     actions = [
       "iam:CreateVirtualMFADevice",
       "iam:DeleteVirtualMFADevice",
     ]
-
+    effect = "Allow"
     resources = [
       "arn:aws:iam::*:mfa/*",
     ]
@@ -126,15 +112,13 @@ data "aws_iam_policy_document" "self_managed_creds_without_mfa" {
 
   # Allow users to administer their own (non-virtual) MFA device
   statement {
-    effect = "Allow"
-
     actions = [
       "iam:DeactivateMFADevice",
       "iam:EnableMFADevice",
       "iam:ListMFADevices",
       "iam:ResyncMFADevice",
     ]
-
+    effect = "Allow"
     resources = [
       "arn:aws:iam::*:user/&{aws:username}",
     ]

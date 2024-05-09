@@ -5,61 +5,61 @@
 # ------------------------------------------------------------------------------
 
 variable "aws_region" {
-  type        = string
-  description = "The AWS region where the non-global resources for the DNS account are to be provisioned (e.g. \"us-east-1\")."
   default     = "us-east-1"
+  description = "The AWS region where the non-global resources for the DNS account are to be provisioned (e.g. \"us-east-1\")."
+  type        = string
 }
 
 variable "provisionaccount_role_description" {
-  type        = string
-  description = "The description to associate with the IAM role that allows sufficient permissions to provision all AWS resources in the DNS account."
   default     = "Allows sufficient permissions to provision all AWS resources in the DNS account."
+  description = "The description to associate with the IAM role that allows sufficient permissions to provision all AWS resources in the DNS account."
+  type        = string
 }
 
 variable "provisionaccount_role_name" {
-  type        = string
-  description = "The name to assign the IAM role that allows sufficient permissions to provision all AWS resources in the DNS account."
   default     = "ProvisionAccount"
+  description = "The name to assign the IAM role that allows sufficient permissions to provision all AWS resources in the DNS account."
+  type        = string
 }
 
 variable "provisionpublishegressip_role_description" {
-  type        = string
-  description = "The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient permissions to provision all resources related to the publish-egress-ip Lambda in the DNS account."
   default     = "Allows sufficient permissions to provision all resources related to the publish-egress-ip Lambda in the DNS account."
+  description = "The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient permissions to provision all resources related to the publish-egress-ip Lambda in the DNS account."
+  type        = string
 }
 
 variable "provisionpublishegressip_role_name" {
-  type        = string
-  description = "The name to assign the IAM role (as well as the corresponding policy) that allows sufficient permissions to provision all resources related to the publish-egress-ip Lambda in the DNS account."
   default     = "ProvisionPublishEgressIP"
+  description = "The name to assign the IAM role (as well as the corresponding policy) that allows sufficient permissions to provision all resources related to the publish-egress-ip Lambda in the DNS account."
+  type        = string
 }
 
 variable "provisionroute53_role_description" {
-  type        = string
-  description = "The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient permissions to provision Route 53 in the DNS account."
   default     = "Allows sufficient permissions to provision Route 53 in the DNS account."
+  description = "The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient permissions to provision Route 53 in the DNS account."
+  type        = string
 }
 
 variable "provisionroute53_role_name" {
-  type        = string
-  description = "The name to assign the IAM role (as well as the corresponding policy) that allows sufficient permissions to provision Route 53 in the DNS account."
   default     = "ProvisionRoute53"
+  description = "The name to assign the IAM role (as well as the corresponding policy) that allows sufficient permissions to provision Route 53 in the DNS account."
+  type        = string
 }
 
 variable "publishegressip_lambda_name" {
-  type        = string
-  description = "The name of the Lambda function used in cisagov/publish-egress-ip-terraform.  This name is used to specify resource constraints in the role/policy specified in var.provisionpublishegressip_role_name."
   default     = "publish-egress-ip"
+  description = "The name of the Lambda function used in cisagov/publish-egress-ip-terraform.  This name is used to specify resource constraints in the role/policy specified in var.provisionpublishegressip_role_name."
+  type        = string
 }
 
 variable "publishegressip_role_name" {
-  type        = string
-  description = "The name of the IAM role (meant to be used in cisagov/publish-egress-ip-terraform) that is allowed to be created by the role/policy specified in var.provisionpublishegressip_role_name."
   default     = "PublishEgressIPLambda"
+  description = "The name of the IAM role (meant to be used in cisagov/publish-egress-ip-terraform) that is allowed to be created by the role/policy specified in var.provisionpublishegressip_role_name."
+  type        = string
 }
 
 variable "tags" {
-  type        = map(string)
-  description = "Tags to apply to all AWS resources created."
   default     = {}
+  description = "Tags to apply to all AWS resources created."
+  type        = map(string)
 }

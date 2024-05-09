@@ -4,34 +4,21 @@
 
 data "aws_iam_policy_document" "ami_kms_doc" {
   statement {
-    sid = "Enable IAM User Permissions"
-
-    principals {
-      type = "AWS"
-      identifiers = [
-        "arn:aws:iam::${data.aws_caller_identity.images.account_id}:root",
-      ]
-    }
-
     actions = [
       "kms:*",
     ]
-
     resources = ["*"]
+    sid       = "Enable IAM User Permissions"
+
+    principals {
+      identifiers = [
+        "arn:aws:iam::${data.aws_caller_identity.images.account_id}:root",
+      ]
+      type = "AWS"
+    }
   }
 
   statement {
-    sid = "Allow access for Key Administrators"
-
-    principals {
-      type = "AWS"
-      # This role needs to be created before the key is provisioned,
-      # so we can't use aws_iam_role.administerkmskeys_role.arn here.
-      identifiers = [
-        "arn:aws:iam::${data.aws_caller_identity.images.account_id}:role/${var.administerkmskeys_role_name}",
-      ]
-    }
-
     actions = [
       "kms:CancelKeyDeletion",
       "kms:Create*",
@@ -48,13 +35,39 @@ data "aws_iam_policy_document" "ami_kms_doc" {
       "kms:UntagResource",
       "kms:Update*",
     ]
-
     resources = ["*"]
+    sid       = "Allow access for Key Administrators"
+
+    principals {
+      type = "AWS"
+      # This role needs to be created before the key is provisioned,
+      # so we can't use aws_iam_role.administerkmskeys_role.arn here.
+      identifiers = [
+        "arn:aws:iam::${data.aws_caller_identity.images.account_id}:role/${var.administerkmskeys_role_name}",
+      ]
+    }
   }
 
   statement {
-    sid = "Allow use of the key"
+    actions = [
+      "kms:CreateGrant",
+      "kms:Decrypt",
+      "kms:DescribeKey",
+      "kms:Encrypt",
+      "kms:GenerateDataKey*",
+      "kms:ReEncrypt*",
+      "kms:RetireGrant",
+    ]
+    resources = ["*"]
+    sid       = "Allow use of the key"
 
+    condition {
+      test = "StringLike"
+      values = [
+        "${aws_iam_role.ec2amicreate_role.arn}*",
+      ]
+      variable = "aws:PrincipalArn"
+    }
     # Wildcards (other than the global "*") are not allowed when
     # specifying a principal
     # (e.g. "${aws_iam_role.ec2amicreate_role.arn}*"), so instead we
@@ -65,46 +78,18 @@ data "aws_iam_policy_document" "ami_kms_doc" {
       type        = "AWS"
       identifiers = ["*"]
     }
-
-    actions = [
-      "kms:CreateGrant",
-      "kms:Decrypt",
-      "kms:DescribeKey",
-      "kms:Encrypt",
-      "kms:GenerateDataKey*",
-      "kms:ReEncrypt*",
-      "kms:RetireGrant",
-    ]
-
-    resources = ["*"]
-
-    condition {
-      test     = "StringLike"
-      variable = "aws:PrincipalArn"
-      values = [
-        "${aws_iam_role.ec2amicreate_role.arn}*",
-      ]
-    }
   }
 
   statement {
-    sid = "Allow use of the key for launching EC2 instances"
-
-    principals {
-      type        = "AWS"
-      identifiers = ["*"]
-    }
-
     actions = [
       "kms:Decrypt",
       "kms:ReEncryptFrom",
     ]
-
     resources = ["*"]
+    sid       = "Allow use of the key for launching EC2 instances"
 
     condition {
-      test     = "StringLike"
-      variable = "aws:PrincipalArn"
+      test = "StringLike"
       # The ProvisionAccount role ARNs for the env* accounts, the
       # playground, the Shared Services account, and the
       # extra-organizational accounts, as well as the Terraformer role
@@ -124,6 +109,11 @@ data "aws_iam_policy_document" "ami_kms_doc" {
         for account_id in var.extraorg_account_ids :
         "arn:aws:iam::${account_id}:role/ProvisionAccount"
       ])
+      variable = "aws:PrincipalArn"
+    }
+    principals {
+      identifiers = ["*"]
+      type        = "AWS"
     }
   }
 }

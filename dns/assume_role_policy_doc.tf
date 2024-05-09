@@ -11,10 +11,10 @@ data "aws_iam_policy_document" "assume_role_doc" {
     ]
 
     principals {
-      type = "AWS"
       identifiers = [
         "arn:aws:iam::${local.users_account_id}:root",
       ]
+      type = "AWS"
     }
   }
 }
