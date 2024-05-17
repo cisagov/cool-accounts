@@ -163,6 +163,8 @@ data "aws_iam_policy_document" "provisionpublishegressip_doc" {
       "s3:ListBucket",
       "s3:ListBucketVersions",
       "s3:PutBucketAcl",
+      "s3:PutBucketOwnershipControls",
+      "s3:PutBucketPolicy",
       "s3:PutBucketPublicAccessBlock",
       "s3:PutBucketTagging",
       "s3:PutBucketVersioning",
