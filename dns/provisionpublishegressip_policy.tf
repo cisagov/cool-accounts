@@ -20,8 +20,11 @@ data "aws_iam_policy_document" "provisionpublishegressip_doc" {
   statement {
     actions = [
       "cloudfront:CreateDistribution",
+      "cloudfront:CreateOriginAccessControl",
       "cloudfront:DeleteDistribution",
+      "cloudfront:DeleteOriginAccessControl",
       "cloudfront:GetDistribution",
+      "cloudfront:GetOriginAccessControl",
       "cloudfront:ListTagsForResource",
       "cloudfront:TagResource",
       "cloudfront:UpdateDistribution",
@@ -156,6 +159,7 @@ data "aws_iam_policy_document" "provisionpublishegressip_doc" {
     actions = [
       "s3:CreateBucket",
       "s3:DeleteBucket",
+      "s3:DeleteBucketPolicy",
       "s3:DeleteBucketWebsite",
       "s3:DeleteObject",
       "s3:DeleteObjectVersion",
