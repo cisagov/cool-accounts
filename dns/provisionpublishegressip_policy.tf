@@ -28,6 +28,7 @@ data "aws_iam_policy_document" "provisionpublishegressip_doc" {
       "cloudfront:ListTagsForResource",
       "cloudfront:TagResource",
       "cloudfront:UpdateDistribution",
+      "cloudfront:UpdateOriginAccessControl",
     ]
 
     resources = ["*"]
