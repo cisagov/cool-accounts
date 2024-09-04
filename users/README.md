@@ -127,7 +127,7 @@ future changes by simply running `terraform apply
 |------|--------|---------|
 | cw\_alarm\_sns | github.com/cisagov/sns-send-to-account-email-tf-module | n/a |
 | disable-inactive-iam-users | github.com/cisagov/disable-inactive-iam-users-tf-module | first-commits |
-| provisionaccount | github.com/cisagov/provisionaccount-role-tf-module | feature%2Fadd-permissions-for-disable-inactive-iam-users-tf-module |
+| provisionaccount | github.com/cisagov/provisionaccount-role-tf-module | n/a |
 | user\_group\_mod\_event | github.com/cisagov/user-group-mod-alert-tf-module | n/a |
 | user\_group\_mod\_sns | github.com/cisagov/sns-send-to-account-email-tf-module | n/a |
 
