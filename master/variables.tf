@@ -1,4 +1,15 @@
 # ------------------------------------------------------------------------------
+# REQUIRED PARAMETERS
+#
+# You must provide a value for each of these parameters.
+# ------------------------------------------------------------------------------
+
+variable "lambda_bucket_name" {
+  description = "The name of the bucket where Lambda zip files are to be stored."
+  type        = string
+}
+
+# ------------------------------------------------------------------------------
 # OPTIONAL PARAMETERS
 #
 # These parameters have reasonable defaults.
