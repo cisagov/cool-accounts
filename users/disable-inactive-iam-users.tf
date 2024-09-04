@@ -8,4 +8,7 @@ module "disable-inactive-iam-users" {
   }
 
   source = "github.com/cisagov/disable-inactive-iam-users-tf-module?ref=first-commits"
+
+  lambda_bucket_name = var.lambda_bucket_name
+  lambda_key         = var.lambda_key
 }

@@ -160,6 +160,8 @@ future changes by simply running `terraform apply
 | aws\_region | The AWS region where the non-global resources for this account are to be provisioned (e.g. "us-east-1"). | `string` | `"us-east-1"` | no |
 | godlike\_usernames | The usernames associated with the god-like accounts to be created, which are allowed to access the terraform backend, are IAM administrators for the Users account, and are allowed to assume any role that has a trust relationship with the Users account.  The format first.last is recommended.  Example: ["firstname1.lastname1",  "firstname2.lastname2"]. | `list(string)` | n/a | yes |
 | gods\_group\_name | The name of the group to be created for the god-like users that are allowed to access the terraform backend, are IAM administrators for the Users account, and are allowed to assume any role that has a trust relationship with the Users account. | `string` | `"gods"` | no |
+| lambda\_bucket\_name | The name of the S3 bucket containing the Lambda function deployment package to disable inactive IAM users. | `string` | n/a | yes |
+| lambda\_key | The S3 key associated with the Lambda function deployment package to disable inactive IAM users. | `string` | n/a | yes |
 | password\_policy\_allow\_users\_to\_change\_password | Whether to allow users to change their own passwords. | `bool` | `true` | no |
 | password\_policy\_minimum\_password\_length | The minimum required length for IAM user passwords. | `number` | `12` | no |
 | password\_policy\_require\_lowercase\_characters | Whether IAM user passwords are required to contain at least one lowercase letter from the Latin alphabet (a-z). | `bool` | `true` | no |
