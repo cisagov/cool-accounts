@@ -23,7 +23,7 @@ resource "aws_iam_role_policy_attachment" "admin_servicecatalog" {
 }
 
 # Attach a policy allowing this role to create the S3 bucket where
-# Lambda zip files are to be stored.
+# Lambda deployment packages are to be stored.
 resource "aws_iam_role_policy_attachment" "s3_full_access" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonS3FullAccess"
   role       = module.provisionaccount.provisionaccount_role.name

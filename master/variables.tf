@@ -5,7 +5,7 @@
 # ------------------------------------------------------------------------------
 
 variable "lambda_bucket_name" {
-  description = "The name of the bucket where Lambda zip files are to be stored."
+  description = "The name of the bucket where Lambda deployment packages are to be stored."
   type        = string
 }
 
@@ -76,13 +76,13 @@ variable "tags" {
 }
 
 variable "write_lambda_bucket_role_description" {
-  default     = "Allows sufficient permissions to write to the bucket that contains Lambda zip files in the Master account."
-  description = "The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient permissions to write to the bucket that contains Lambda zip files in the Master account."
+  default     = "Allows sufficient permissions to write to the bucket that contains Lambda deployment packages] in the Master account."
+  description = "The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient permissions to write to the bucket that contains Lambda deployment packages in the Master account."
   type        = string
 }
 
 variable "write_lambda_bucket_role_name" {
   default     = "WriteLambdaBucket"
-  description = "The name to assign the IAM role (as well as the corresponding policy) that allows sufficient permissions to write to the bucket that contains Lambda zip files in the Master account."
+  description = "The name to assign the IAM role (as well as the corresponding policy) that allows sufficient permissions to write to the bucket that contains Lambda deployment packages in the Master account."
   type        = string
 }

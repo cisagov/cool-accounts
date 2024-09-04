@@ -1,5 +1,6 @@
 # ------------------------------------------------------------------------------
-# Provision the S3 bucket where Lambda zip files will be stored.
+# Provision the S3 bucket where Lambda deployment packages will be
+# stored.
 # ------------------------------------------------------------------------------
 
 resource "aws_s3_bucket" "lambda_bucket" {

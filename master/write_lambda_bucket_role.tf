@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------
 # Create the IAM role that allows write access to the S3 bucket where
-# Lambda zip files are stored.  This is useful when a user wants to
-# upload a new Lambda zip from the CLI.
+# Lambda deployment packages are stored.  This is useful when a user
+# wants to upload a new Lambda deployment package from the CLI.
 # ------------------------------------------------------------------------------
 
 resource "aws_iam_role" "write_lambda_bucket_role" {
