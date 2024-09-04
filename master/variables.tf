@@ -74,3 +74,15 @@ variable "tags" {
   description = "Tags to apply to all AWS resources created."
   type        = map(string)
 }
+
+variable "write_lambda_bucket_role_description" {
+  default     = "Allows sufficient permissions to write to the bucket that contains Lambda zip files in the Master account."
+  description = "The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient permissions to write to the bucket that contains Lambda zip files in the Master account."
+  type        = string
+}
+
+variable "write_lambda_bucket_role_name" {
+  default     = "WriteLambdaBucket"
+  description = "The name to assign the IAM role (as well as the corresponding policy) that allows sufficient permissions to write to the bucket that contains Lambda zip files in the Master account."
+  type        = string
+}
