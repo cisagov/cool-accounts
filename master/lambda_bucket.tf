@@ -52,7 +52,7 @@ data "aws_iam_policy_document" "allow_bucket_read_access_within_org" {
     }
 
     principals {
-      type        = "AWS"
+      type        = "*"
       identifiers = ["*"]
     }
 
