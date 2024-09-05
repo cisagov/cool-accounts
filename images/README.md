@@ -83,6 +83,7 @@ future changes by simply running `terraform apply
 | Name | Source | Version |
 |------|--------|---------|
 | cw\_alarm\_sns | github.com/cisagov/sns-send-to-account-email-tf-module | n/a |
+| disable-inactive-iam-users | github.com/cisagov/disable-inactive-iam-users-tf-module | n/a |
 | provisionaccount | github.com/cisagov/provisionaccount-role-tf-module | n/a |
 | user\_group\_mod\_event | github.com/cisagov/user-group-mod-alert-tf-module | n/a |
 | user\_group\_mod\_sns | github.com/cisagov/sns-send-to-account-email-tf-module | n/a |
@@ -152,6 +153,8 @@ future changes by simply running `terraform apply
 | ec2amicreate\_role\_description | The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient permissions to create AMIs in the Images account. | `string` | `"Allows sufficient permissions to create AMIs in the Images account."` | no |
 | ec2amicreate\_role\_name | The name to assign the IAM role (as well as the corresponding policy) that allows sufficient permissions to create AMIs in the Images account. | `string` | `"EC2AMICreate"` | no |
 | extraorg\_account\_ids | A list of AWS account IDs corresponding to "extra" accounts that you want to allow to launch EC2 instances using one or more AMIs in this account (e.g. ["123456789012"]).  The ProvisionAccount role in these accounts will be allowed sufficient permissions to use the AMI encryption KMS key to launch instances.  Normally this variable is used to allow accounts that are not a member of the same AWS Organization as this account to use one or more AMIs from this account. | `list(string)` | `[]` | no |
+| lambda\_bucket\_name | The name of the S3 bucket containing the Lambda function deployment package to disable inactive IAM users. | `string` | n/a | yes |
+| lambda\_key | The S3 key associated with the Lambda function deployment package to disable inactive IAM users. | `string` | n/a | yes |
 | provisionaccount\_role\_description | The description to associate with the IAM role that allows sufficient permissions to provision all AWS resources in the Images account. | `string` | `"Allows sufficient permissions to provision all AWS resources in the Images account."` | no |
 | provisionaccount\_role\_name | The name to assign the IAM role that allows sufficient permissions to provision all AWS resources in the Images account. | `string` | `"ProvisionAccount"` | no |
 | provisionec2amicreateroles\_role\_description | The description to associate with the IAM role (as well as the corresponding policy) with the ability to create IAM roles that can create AMIs in the Images account. | `string` | `"Allows creation of IAM roles that can create AMIs in the Images account."` | no |
