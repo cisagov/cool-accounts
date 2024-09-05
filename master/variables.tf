@@ -9,6 +9,11 @@ variable "lambda_bucket_name" {
   type        = string
 }
 
+variable "lambda_key" {
+  description = "The S3 key associated with the Lambda function deployment package to disable inactive IAM users."
+  type        = string
+}
+
 # ------------------------------------------------------------------------------
 # OPTIONAL PARAMETERS
 #
