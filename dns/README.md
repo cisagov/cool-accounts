@@ -78,6 +78,7 @@ future changes by simply running `terraform apply
 | Name | Source | Version |
 |------|--------|---------|
 | cw\_alarm\_sns | github.com/cisagov/sns-send-to-account-email-tf-module | n/a |
+| disable-inactive-iam-users | github.com/cisagov/disable-inactive-iam-users-tf-module | n/a |
 | provisionaccount | github.com/cisagov/provisionaccount-role-tf-module | n/a |
 | user\_group\_mod\_event | github.com/cisagov/user-group-mod-alert-tf-module | n/a |
 | user\_group\_mod\_sns | github.com/cisagov/sns-send-to-account-email-tf-module | n/a |
@@ -105,6 +106,8 @@ future changes by simply running `terraform apply
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | aws\_region | The AWS region where the non-global resources for the DNS account are to be provisioned (e.g. "us-east-1"). | `string` | `"us-east-1"` | no |
+| lambda\_bucket\_name | The name of the S3 bucket containing the Lambda function deployment package to disable inactive IAM users. | `string` | n/a | yes |
+| lambda\_key | The S3 key associated with the Lambda function deployment package to disable inactive IAM users. | `string` | n/a | yes |
 | provisionaccount\_role\_description | The description to associate with the IAM role that allows sufficient permissions to provision all AWS resources in the DNS account. | `string` | `"Allows sufficient permissions to provision all AWS resources in the DNS account."` | no |
 | provisionaccount\_role\_name | The name to assign the IAM role that allows sufficient permissions to provision all AWS resources in the DNS account. | `string` | `"ProvisionAccount"` | no |
 | provisionpublishegressip\_role\_description | The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient permissions to provision all resources related to the publish-egress-ip Lambda in the DNS account. | `string` | `"Allows sufficient permissions to provision all resources related to the publish-egress-ip Lambda in the DNS account."` | no |
