@@ -7,7 +7,7 @@ module "disable-inactive-iam-users" {
     aws = aws
   }
 
-  source = "github.com/cisagov/disable-inactive-iam-users-tf-module?ref=first-commits"
+  source = "github.com/cisagov/disable-inactive-iam-users-tf-module"
 
   lambda_bucket_name = var.lambda_bucket_name
   lambda_key         = var.lambda_key
