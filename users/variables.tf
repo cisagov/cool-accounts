@@ -97,6 +97,18 @@ variable "provisionaccount_role_name" {
   type        = string
 }
 
+variable "read_lambda_bucket_policy_description" {
+  default     = "Allows read-only access read-only access to the bucket in the Terraform account containing Lambda deployments."
+  description = "The description to associate with the IAM role that allows read-only access read-only access to the bucket in the Terraform account containing Lambda deployments."
+  type        = string
+}
+
+variable "read_lambda_bucket_policy_name" {
+  default     = "LambdaBucketReadOnly"
+  description = "The name to assign the IAM policy that allows read-only access to the bucket in the Terraform account containing Lambda deployments."
+  type        = string
+}
+
 variable "self_managed_creds_with_mfa_policy_description" {
   default     = "Allows sufficient access for users to administer their own user accounts, requiring multi-factor authentication (MFA)."
   description = "The description to associate with the IAM policy that allows users to administer their own user accounts, requiring multi-factor authentication (MFA)."

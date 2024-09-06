@@ -3,6 +3,9 @@
 # kicking off a Lambda function that disables inactive IAM users.
 # ------------------------------------------------------------------------------
 module "disable-inactive-iam-users" {
+  depends_on = [
+    aws_iam_role_policy_attachment.read_lambda_bucket,
+  ]
   providers = {
     aws = aws
   }
