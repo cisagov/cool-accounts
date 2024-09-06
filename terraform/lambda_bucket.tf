@@ -10,10 +10,6 @@ resource "aws_s3_bucket" "lambda_bucket" {
   ]
 
   bucket = var.lambda_bucket_name
-
-  versioning {
-    enabled = true
-  }
 }
 
 resource "aws_s3_bucket_server_side_encryption_configuration" "lambda_bucket" {
@@ -36,12 +32,24 @@ resource "aws_s3_bucket_public_access_block" "lambda_bucket" {
   restrict_public_buckets = true
 }
 
+resource "aws_s3_bucket_versioning" "lambda_bucket" {
+  bucket = aws_s3_bucket.lambda_bucket.id
+
+  versioning_configuration {
+    status = "Enabled"
+  }
+}
+
 # A bucket policy that allows the organization to read the bucket.
 data "aws_iam_policy_document" "allow_bucket_read_access_within_org" {
   statement {
     actions = [
       "s3:GetObject",
       "s3:ListBucket",
+    ]
+    resources = [
+      aws_s3_bucket.lambda_bucket.arn,
+      "${aws_s3_bucket.lambda_bucket.arn}/*",
     ]
 
     condition {
@@ -56,11 +64,6 @@ data "aws_iam_policy_document" "allow_bucket_read_access_within_org" {
       type        = "*"
       identifiers = ["*"]
     }
-
-    resources = [
-      aws_s3_bucket.lambda_bucket.arn,
-      "${aws_s3_bucket.lambda_bucket.arn}/*",
-    ]
   }
 }
 
