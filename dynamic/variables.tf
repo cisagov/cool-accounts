@@ -9,6 +9,16 @@ variable "dynamic_account_name" {
   type        = string
 }
 
+variable "lambda_bucket_name" {
+  description = "The name of the S3 bucket containing the Lambda function deployment package to disable inactive IAM users."
+  type        = string
+}
+
+variable "lambda_key" {
+  description = "The S3 key associated with the Lambda function deployment package to disable inactive IAM users."
+  type        = string
+}
+
 # ------------------------------------------------------------------------------
 # OPTIONAL PARAMETERS
 #
@@ -42,6 +52,18 @@ variable "provisionaccount_role_description" {
 variable "provisionaccount_role_name" {
   default     = "ProvisionAccount"
   description = "The name to assign the IAM role that allows sufficient permissions to provision all AWS resources in the dynamic account."
+  type        = string
+}
+
+variable "read_lambda_bucket_policy_description" {
+  default     = "Allows read-only access to the bucket in the Terraform account containing Lambda deployments."
+  description = "The description to associate with the IAM role that allows read-only access to the bucket in the Terraform account containing Lambda deployments."
+  type        = string
+}
+
+variable "read_lambda_bucket_policy_name" {
+  default     = "LambdaBucketReadOnly"
+  description = "The name to assign the IAM policy that allows read-only access to the bucket in the Terraform account containing Lambda deployments."
   type        = string
 }
 

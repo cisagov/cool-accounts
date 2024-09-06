@@ -4,6 +4,16 @@
 # You must provide a value for each of these parameters.
 # ------------------------------------------------------------------------------
 
+variable "lambda_bucket_name" {
+  description = "The name of the S3 bucket containing the Lambda function deployment package to disable inactive IAM users."
+  type        = string
+}
+
+variable "lambda_key" {
+  description = "The S3 key associated with the Lambda function deployment package to disable inactive IAM users."
+  type        = string
+}
+
 variable "state_bucket_name" {
   description = "The name to use for the S3 bucket that will store the Terraform state."
   type        = string
@@ -127,4 +137,16 @@ variable "tags" {
   default     = {}
   description = "Tags to apply to all AWS resources created."
   type        = map(string)
+}
+
+variable "write_lambda_bucket_role_description" {
+  default     = "Allows sufficient permissions to write to the bucket that contains Lambda deployment packages in the Terraform account."
+  description = "The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient permissions to write to the bucket that contains Lambda deployment packages in the Terraform account."
+  type        = string
+}
+
+variable "write_lambda_bucket_role_name" {
+  default     = "WriteLambdaBucket"
+  description = "The name to assign the IAM role (as well as the corresponding policy) that allows sufficient permissions to write to the bucket that contains Lambda deployment packages in the Terraform account."
+  type        = string
 }
