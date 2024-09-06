@@ -125,7 +125,7 @@ future changes by simply running `terraform apply
 | organizationsreadonly\_role\_name | The name to assign the IAM role that allows read-only access to all AWS Organizations information in the Master account. | `string` | `"OrganizationsReadOnly"` | no |
 | provisionaccount\_role\_description | The description to associate with the IAM role that allows sufficient permissions to provision all AWS resources in the Master account. | `string` | `"Allows sufficient permissions to provision all AWS resources in the Master account."` | no |
 | provisionaccount\_role\_name | The name to assign the IAM role that allows sufficient permissions to provision all AWS resources in the Master account. | `string` | `"ProvisionAccount"` | no |
-| read\_lambda\_bucket\_policy\_description | The description to associate with the IAM role that allows read-only access read-only access to the bucket in the Terraform account containing Lambda deployments. | `string` | `"Allows read-only access read-only access to the bucket in the Terraform account containing Lambda deployments."` | no |
+| read\_lambda\_bucket\_policy\_description | The description to associate with the IAM role that allows read-only access to the bucket in the Terraform account containing Lambda deployments. | `string` | `"Allows read-only access to the bucket in the Terraform account containing Lambda deployments."` | no |
 | read\_lambda\_bucket\_policy\_name | The name to assign the IAM policy that allows read-only access to the bucket in the Terraform account containing Lambda deployments. | `string` | `"LambdaBucketReadOnly"` | no |
 | tags | Tags to apply to all AWS resources created. | `map(string)` | `{}` | no |
 

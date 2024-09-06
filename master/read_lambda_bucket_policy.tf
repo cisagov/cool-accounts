@@ -1,6 +1,6 @@
 # ------------------------------------------------------------------------------
 # Create the IAM policy that allows all of the permissions necessary
-# to read from the bucket containing the COOL lambda deployments.
+# to read from the bucket containing the COOL Lambda deployments.
 # ------------------------------------------------------------------------------
 
 data "aws_iam_policy_document" "read_lambda_bucket_policy_doc" {

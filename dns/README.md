@@ -119,7 +119,7 @@ future changes by simply running `terraform apply
 | provisionroute53\_role\_name | The name to assign the IAM role (as well as the corresponding policy) that allows sufficient permissions to provision Route 53 in the DNS account. | `string` | `"ProvisionRoute53"` | no |
 | publishegressip\_lambda\_name | The name of the Lambda function used in cisagov/publish-egress-ip-terraform.  This name is used to specify resource constraints in the role/policy specified in var.provisionpublishegressip\_role\_name. | `string` | `"publish-egress-ip"` | no |
 | publishegressip\_role\_name | The name of the IAM role (meant to be used in cisagov/publish-egress-ip-terraform) that is allowed to be created by the role/policy specified in var.provisionpublishegressip\_role\_name. | `string` | `"PublishEgressIPLambda"` | no |
-| read\_lambda\_bucket\_policy\_description | The description to associate with the IAM role that allows read-only access read-only access to the bucket in the Terraform account containing Lambda deployments. | `string` | `"Allows read-only access read-only access to the bucket in the Terraform account containing Lambda deployments."` | no |
+| read\_lambda\_bucket\_policy\_description | The description to associate with the IAM role that allows read-only access to the bucket in the Terraform account containing Lambda deployments. | `string` | `"Allows read-only access to the bucket in the Terraform account containing Lambda deployments."` | no |
 | read\_lambda\_bucket\_policy\_name | The name to assign the IAM policy that allows read-only access to the bucket in the Terraform account containing Lambda deployments. | `string` | `"LambdaBucketReadOnly"` | no |
 | tags | Tags to apply to all AWS resources created. | `map(string)` | `{}` | no |
 

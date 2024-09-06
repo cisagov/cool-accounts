@@ -103,7 +103,7 @@ future changes by simply running `terraform apply
 | lambda\_key | The S3 key associated with the Lambda function deployment package to disable inactive IAM users. | `string` | n/a | yes |
 | provisionaccount\_role\_description | The description to associate with the IAM role that allows sufficient permissions to provision all AWS resources in the Audit account. | `string` | `"Allows sufficient permissions to provision all AWS resources in the Audit account."` | no |
 | provisionaccount\_role\_name | The name to assign the IAM role that allows sufficient permissions to provision all AWS resources in the Audit account. | `string` | `"ProvisionAccount"` | no |
-| read\_lambda\_bucket\_policy\_description | The description to associate with the IAM role that allows read-only access read-only access to the bucket in the Terraform account containing Lambda deployments. | `string` | `"Allows read-only access read-only access to the bucket in the Terraform account containing Lambda deployments."` | no |
+| read\_lambda\_bucket\_policy\_description | The description to associate with the IAM role that allows read-only access to the bucket in the Terraform account containing Lambda deployments. | `string` | `"Allows read-only access to the bucket in the Terraform account containing Lambda deployments."` | no |
 | read\_lambda\_bucket\_policy\_name | The name to assign the IAM policy that allows read-only access to the bucket in the Terraform account containing Lambda deployments. | `string` | `"LambdaBucketReadOnly"` | no |
 | tags | Tags to apply to all AWS resources created. | `map(string)` | `{}` | no |
 

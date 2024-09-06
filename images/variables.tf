@@ -147,8 +147,8 @@ variable "provisionvpcs_policy_name" {
 }
 
 variable "read_lambda_bucket_policy_description" {
-  default     = "Allows read-only access read-only access to the bucket in the Terraform account containing Lambda deployments."
-  description = "The description to associate with the IAM role that allows read-only access read-only access to the bucket in the Terraform account containing Lambda deployments."
+  default     = "Allows read-only access to the bucket in the Terraform account containing Lambda deployments."
+  description = "The description to associate with the IAM role that allows read-only access to the bucket in the Terraform account containing Lambda deployments."
   type        = string
 }
 
