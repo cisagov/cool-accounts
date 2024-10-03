@@ -118,6 +118,7 @@ data "aws_iam_policy_document" "provisionpublishegressip_doc" {
       "lambda:GetFunction",
       "lambda:GetFunctionCodeSigningConfig",
       "lambda:GetPolicy",
+      "lambda:ListTags",
       "lambda:ListVersionsByFunction",
       "lambda:RemovePermission",
       "lambda:TagResource",
