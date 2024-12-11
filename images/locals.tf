@@ -45,7 +45,7 @@ locals {
   # workspace name as the account type.
   this_account_type = length(regexall("\\(([^()]*)\\)", local.this_account_name)) == 1 ? regex("\\(([^()]*)\\)", local.this_account_name)[0] : terraform.workspace
 
-  # Find the Users account by name and email
+  # Find the Users account by name
   users_account_id = [
     for account in data.aws_organizations_organization.cool.accounts :
     account.id if account.name == "Users"
