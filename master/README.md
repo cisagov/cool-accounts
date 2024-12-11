@@ -18,6 +18,9 @@ To do this, follow these steps:
 1. Comment out the `profile = "cool-master-provisionaccount"` line for
    the "default" provider in `providers.tf` and directly below that
    uncomment the line `profile = "cool-master-account-admin"`.
+1. Comment out the `profile = "cool-master-organizationsreadonly"` line for
+   the "organizationsreadonly" provider in `providers.tf` and directly below
+   that uncomment the line `profile = "cool-master-account-admin"`.
 1. Create a new AWS profile called `cool-master-account-admin`
    in your Boto3 configuration using the "AWSAdministratorAccess"
    credentials (access key ID, secret access key, and session token)
@@ -51,7 +54,7 @@ To do this, follow these steps:
    ```
 
 1. Run the command `terraform apply -var-file=<workspace_name>.tfvars`.
-1. Revert the changes you made to `providers.tf` in step 1.
+1. Revert the changes you made to `providers.tf` in steps 1 and 2.
 1. Run the command `terraform apply -var-file=<workspace_name>.tfvars`.
 
 At this point the account has been bootstrapped, and you can apply
