@@ -71,7 +71,7 @@ To do this, follow these steps:
    lambda_bucket_name = "my-lambda-bucket"
    lambda_key         = "disable_inactive_iam_users.zip"
    state_bucket_name  = "my-terraform-state-bucket"
-   
+
    tags = {
      Team        = "VM Fusion - Development"
      Application = "COOL - Terraform Account"
