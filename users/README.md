@@ -56,7 +56,7 @@ To do this, follow these steps:
    as obtained from the COOL Terraform account:
 
    ```console
-   [cool-master-account-admin]
+   [cool-terraform-account-admin]
    aws_access_key_id = <MY_ACCESS_KEY_ID>
    aws_secret_access_key = <MY_SECRET_ACCESS_KEY>
    aws_session_token = <MY_SESSION_TOKEN>
