@@ -68,7 +68,10 @@ To do this, follow these steps:
    [Inputs](#inputs) below for details):
 
    ```hcl
-   state_bucket_name = "my-terraform-state-bucket"
+   lambda_bucket_name = "my-lambda-bucket"
+   lambda_key         = "disable_inactive_iam_users.zip"
+   state_bucket_name  = "my-terraform-state-bucket"
+   
    tags = {
      Team        = "VM Fusion - Development"
      Application = "COOL - Terraform Account"
@@ -88,6 +91,13 @@ To do this, follow these steps:
    you bootstrap the Master account.
 1. Run the command `terraform init`.  When Terraform asks 'Do you want to
    migrate all workspaces to "s3"?', enter "yes".
+1. Run the command `terraform apply -var-file=<workspace_name>.tfvars`, but
+   note that it will fail because the "disable inactive IAM users" Lambda is
+   not yet present in your newly-created Lambda bucket.
+1. To correct this, follow the instructions in the
+   [`cisagov/disable-inactive-iam-users-lambda` README](https://github.com/cisagov/disable-inactive-iam-users-lambda)
+   to build a Lambda deployment file (e.g. "disable_inactive_iam_users.zip").
+1. Upload your newly-created Lambda deployment file to your Lambda bucket.
 1. Run the command `terraform apply -var-file=<workspace_name>.tfvars`.
 
 At this point the account has been bootstrapped, and you can apply
