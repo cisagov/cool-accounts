@@ -4,24 +4,26 @@
 # ------------------------------------------------------------------------------
 
 resource "aws_s3_bucket" "third_party" {
-  acl    = "private"
   bucket = local.third_party_bucket_name
-
-  server_side_encryption_configuration {
-    rule {
-      apply_server_side_encryption_by_default {
-        sse_algorithm = "AES256"
-      }
-    }
-  }
 
   tags = {
     "GitHub_Secret_Name"             = "THIRD_PARTY_BUCKET_${upper(local.this_account_type)}",
     "GitHub_Secret_Terraform_Lookup" = "id"
   }
 
-  versioning {
-    enabled = true
+  lifecycle {
+    prevent_destroy = true
+  }
+}
+
+# Ensure the S3 bucket is encrypted
+resource "aws_s3_bucket_server_side_encryption_configuration" "third_party" {
+  bucket = aws_s3_bucket.third_party.id
+
+  rule {
+    apply_server_side_encryption_by_default {
+      sse_algorithm = "AES256"
+    }
   }
 }
 
@@ -33,4 +35,24 @@ resource "aws_s3_bucket_public_access_block" "third_party" {
   bucket                  = aws_s3_bucket.third_party.id
   ignore_public_acls      = true
   restrict_public_buckets = true
+}
+
+# Enable versioning on the bucket.
+resource "aws_s3_bucket_versioning" "third_party" {
+  bucket = aws_s3_bucket.third_party.id
+  versioning_configuration {
+    status = "Enabled"
+  }
+}
+
+# Any objects placed into this bucket should be owned by the bucket
+# owner. This ensures that even if objects are added by a different
+# account, the bucket-owning account retains full control over the
+# objects stored in this bucket.
+resource "aws_s3_bucket_ownership_controls" "third_party" {
+  bucket = aws_s3_bucket.third_party.id
+
+  rule {
+    object_ownership = "BucketOwnerEnforced"
+  }
 }
