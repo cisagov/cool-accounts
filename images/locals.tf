@@ -37,9 +37,15 @@ locals {
   # Determine Images account type based on AWS account name
   # Account name format:  "ACCOUNT_NAME (ACCOUNT_TYPE)"
   #         For example:  "Images (Production)"
-  this_account_type = length(regexall("\\(([^()]*)\\)", local.this_account_name)) == 1 ? regex("\\(([^()]*)\\)", local.this_account_name)[0] : "Unknown"
+  # NOTE: Originally, Images account names followed the "Images (ACCOUNT_TYPE)"
+  # format above, but our thinking has changed and in newer environments the
+  # account is simply called "Images".  However, until all legacy environments
+  # have been migrated to this new naming scheme, we must check the account name
+  # via the regex below and if there is no match, then we use the Terraform
+  # workspace name as the account type.
+  this_account_type = length(regexall("\\(([^()]*)\\)", local.this_account_name)) == 1 ? regex("\\(([^()]*)\\)", local.this_account_name)[0] : terraform.workspace
 
-  # Find the Users account by name and email
+  # Find the Users account by name
   users_account_id = [
     for account in data.aws_organizations_organization.cool.accounts :
     account.id if account.name == "Users"
