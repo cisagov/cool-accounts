@@ -21,10 +21,21 @@ locals {
 
   # Determine the dynamic assessment account ("env*") IDs that are the same
   # type (production, staging, etc.) as the Shared Services account.
-  sharedservices_account_type = trim(split("(", local.sharedservices_account_name)[1], ")")
+  # Account name format:  "ACCOUNT_NAME (ACCOUNT_TYPE)"
+  #         For example:  "Shared Services (Production)"
+  # NOTE: Originally, Shared Services (and dynamic) account names followed the
+  # "ACCOUNT_NAME (ACCOUNT_TYPE)" format above, but our thinking has changed and
+  # in newer environments the accounts are simply called "Shared Services" and
+  # "env0" (for example).  However, until all legacy environments have been
+  # migrated to this new naming scheme, we must check the Shared Services
+  # account name via the regex below to determine whether we are using the
+  # legacy naming scheme or not.
+  sharedservices_account_name_type = length(regexall("\\(([^()]*)\\)", local.sharedservices_account_name)) == 1 ? "legacy" : "current"
 
-  assessment_account_name_regex = format("^env[[:digit:]]+ \\(%s\\)$", local.sharedservices_account_type)
+  assessment_account_name_regex = local.sharedservices_account_name_type == "legacy" ? format("^env[[:digit:]]+ \\(%s\\)$", trim(split("(", local.sharedservices_account_name)[1], ")")) : "^env[[:digit:]]+$"
 
+  # Build a list of dynamic assessment account IDs whose account names match our
+  # regex.
   assessment_account_ids = [
     for account in data.aws_organizations_organization.cool.non_master_accounts :
     account.id
