@@ -1,6 +1,6 @@
 output "assessment_findings_write_role" {
-  description = "The IAM role that allows write access to the assessment findings S3 bucket."
-  value       = aws_iam_role.assessment_findings_bucket_write
+  description = "The IAM role that allows write access to the assessment findings S3 bucket.  Note that this output will be null if there are no dynamic assessment accounts."
+  value       = aws_iam_role.assessment_findings_bucket_write == [] ? null : aws_iam_role.assessment_findings_bucket_write[0]
 }
 
 output "cw_alarm_sns_topic" {
