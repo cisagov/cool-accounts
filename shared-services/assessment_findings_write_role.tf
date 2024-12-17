@@ -4,7 +4,7 @@
 # ------------------------------------------------------------------------------
 
 resource "aws_iam_role" "assessment_findings_bucket_write" {
-  assume_role_policy = data.aws_iam_policy_document.asseessment_account_assume_role_doc.json
+  assume_role_policy = data.aws_iam_policy_document.assessment_account_assume_role_doc.json
   description        = var.assessment_findings_bucket_write_role_description
   name               = var.assessment_findings_bucket_write_role_name
 }

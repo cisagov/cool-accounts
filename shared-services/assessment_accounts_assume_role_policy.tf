@@ -3,7 +3,7 @@
 # assume a role.
 # ------------------------------------------------------------------------------
 
-data "aws_iam_policy_document" "asseessment_account_assume_role_doc" {
+data "aws_iam_policy_document" "assessment_account_assume_role_doc" {
   statement {
     actions = [
       "sts:AssumeRole",
