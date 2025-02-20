@@ -97,14 +97,27 @@ data "aws_iam_policy_document" "ami_kms_doc" {
       #
       # Any other accounts that need to launch EC2 instances from AMIs
       # encrypted using our key should also be listed here.
+      #
+      # Regex guide:
+      # - "^env[0-9]*$": Dynamic assessment accounts, current naming scheme -
+      #   example: "env123"
+      # - "^env[0-9]* \(${local.this_account_type}\)$": Dynamic assessment
+      #   accounts, legacy naming scheme - example: "env123 (Production)"
+      # - "^Playground Legacy \(${local.this_account_type}\)$": Legacy
+      #   playground account - example: "Playground Legacy (Staging)"
+      # - "^Shared Services$": Shared Services account, current naming scheme -
+      #   example: "Shared Services"
+      # - "^Shared Services \(${local.this_account_type}\)$": Shared Services
+      #   account, legacy naming scheme - example: "Shared Services
+      #   (Production)"
       values = concat([
         for account in data.aws_organizations_organization.cool.accounts :
         "arn:aws:iam::${account.id}:role/ProvisionAccount"
-        if length(regexall("^env[0-9]* \\(${local.this_account_type}\\)$|^Playground Legacy \\(${local.this_account_type}\\)$|^Shared Services \\(${local.this_account_type}\\)$", account.name)) > 0
+        if length(regexall("^env[0-9]*$|^env[0-9]* \\(${local.this_account_type}\\)$|^Playground Legacy \\(${local.this_account_type}\\)$|^Shared Services$|^Shared Services \\(${local.this_account_type}\\)$", account.name)) > 0
         ], [
         for account in data.aws_organizations_organization.cool.accounts :
         "arn:aws:iam::${account.id}:role/Terraformer"
-        if length(regexall("^env[0-9]* \\(${local.this_account_type}\\)$", account.name)) > 0
+        if length(regexall("^env[0-9]*$|^env[0-9]* \\(${local.this_account_type}\\)$", account.name)) > 0
         ], [
         for account_id in var.extraorg_account_ids :
         "arn:aws:iam::${account_id}:role/ProvisionAccount"
