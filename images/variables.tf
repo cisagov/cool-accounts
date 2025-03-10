@@ -198,10 +198,15 @@ variable "third_party_bucket_name_prefix" {
 }
 
 variable "third_party_bucket_parameter_name" {
-  default     = "third_party_bucket_name"
-  description = "The name of the SSM Parameter Store parameter that will contain the name of the third-party S3 bucket."
+  default     = "/third_party_bucket_name"
+  description = "The name of the SSM Parameter Store parameter that will contain the name of the third-party S3 bucket, including the leading forward slash."
   nullable    = false
   type        = string
+
+  validation {
+    condition     = length(var.third_party_bucket_parameter_name) > 0 && substr(var.third_party_bucket_parameter_name, 0, 1) == "/"
+    error_message = "The name of the SSM Parameter Store parameter must begin with a forward slash."
+  }
 }
 
 variable "windows_ami_sg_name" {
