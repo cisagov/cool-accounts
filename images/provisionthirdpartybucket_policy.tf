@@ -43,7 +43,7 @@ data "aws_iam_policy_document" "provisionthirdpartybucket" {
     ]
 
     resources = [
-      "arn:aws:ssm:${var.aws_region}:${data.aws_caller_identity.images.account_id}:parameter/${local.third_party_bucket_parameter_name}",
+      "arn:aws:ssm:${var.aws_region}:${data.aws_caller_identity.images.account_id}:parameter/${var.third_party_bucket_parameter_name}",
     ]
   }
   statement {

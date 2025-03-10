@@ -56,7 +56,7 @@ resource "aws_s3_bucket_ownership_controls" "third_party" {
 # third-party bucket.
 resource "aws_ssm_parameter" "third_party_bucket_name" {
   description = "The name of the S3 bucket where third-party files are stored."
-  name        = "/${local.third_party_bucket_parameter_name}"
+  name        = "/${var.third_party_bucket_parameter_name}"
   type        = "SecureString"
   value       = aws_s3_bucket.third_party.bucket
 }

@@ -197,6 +197,13 @@ variable "third_party_bucket_name_prefix" {
   type        = string
 }
 
+variable "third_party_bucket_parameter_name" {
+  default     = "third_party_bucket_name"
+  description = "The name of the SSM Parameter Store parameter that will contain the name of the third-party S3 bucket."
+  nullable    = false
+  type        = string
+}
+
 variable "windows_ami_sg_name" {
   default     = "WindowsAMIBuild"
   description = "The name to associate with the security group that allows access for finalizing Windows AMI configuration."
