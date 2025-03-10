@@ -37,3 +37,9 @@ output "third_party_bucket" {
   description = "The S3 bucket for storing third-party files."
   value       = aws_s3_bucket.third_party
 }
+
+output "third_party_bucket_ssm_parameter" {
+  description = "An SSM Parameter Store parameter containing the name of the third-party bucket."
+  sensitive   = true
+  value       = aws_ssm_parameter.third_party_bucket_name
+}

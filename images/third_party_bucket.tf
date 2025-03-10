@@ -6,11 +6,6 @@
 resource "aws_s3_bucket" "third_party" {
   bucket = local.third_party_bucket_name
 
-  tags = {
-    "GitHub_Secret_Name"             = "THIRD_PARTY_BUCKET_${upper(local.this_account_type)}",
-    "GitHub_Secret_Terraform_Lookup" = "id"
-  }
-
   lifecycle {
     prevent_destroy = true
   }
@@ -55,4 +50,13 @@ resource "aws_s3_bucket_ownership_controls" "third_party" {
   rule {
     object_ownership = "BucketOwnerEnforced"
   }
+}
+
+# Create an SSM Parameter Store parameter containing the name of the
+# third-party bucket.
+resource "aws_ssm_parameter" "third_party_bucket_name" {
+  description = "The name of the S3 bucket where third-party files are stored."
+  name        = "/${local.third_party_bucket_parameter_name}"
+  type        = "SecureString"
+  value       = aws_s3_bucket.third_party.bucket
 }
