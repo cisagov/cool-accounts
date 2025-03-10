@@ -193,7 +193,6 @@ future changes by simply running `terraform apply
 | provisionec2amicreateroles\_role | The IAM role that allows sufficient permissions to provision IAM roles that can create AMIs in the Images account. |
 | provisionthirdpartybucketreadroles\_role | The IAM role that allows sufficient permissions to provision IAM roles that can read objects in the third-party file storage S3 bucket in the Images account. |
 | third\_party\_bucket | The S3 bucket for storing third-party files. |
-| third\_party\_bucket\_ssm\_parameter | An SSM Parameter Store parameter containing the name of the third-party bucket. |
 <!-- END_TF_DOCS -->
 
 ## Contributing ##
