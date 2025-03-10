@@ -204,7 +204,7 @@ variable "third_party_bucket_parameter_name" {
   type        = string
 
   validation {
-    condition     = length(var.third_party_bucket_parameter_name) > 0 && substr(var.third_party_bucket_parameter_name, 0, 1) == "/"
+    condition     = length(var.third_party_bucket_parameter_name) > 1 && substr(var.third_party_bucket_parameter_name, 0, 1) == "/"
     error_message = "The name of the SSM Parameter Store parameter must begin with a forward slash."
   }
 }
