@@ -129,6 +129,7 @@ future changes by simply running `terraform apply
 | [aws_security_group.windows_ami](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group) | resource |
 | [aws_security_group_rule.windows_ami_egress_to_anywhere](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) | resource |
 | [aws_security_group_rule.windows_ami_ingress_via_rdp](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) | resource |
+| [aws_ssm_parameter.third_party_bucket_name](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ssm_parameter) | resource |
 | [aws_subnet.ami_build_public](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/subnet) | resource |
 | [aws_vpc.ami_build](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/vpc) | resource |
 | [aws_caller_identity.images](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/caller_identity) | data source |
@@ -177,6 +178,7 @@ future changes by simply running `terraform apply
 | read\_lambda\_bucket\_policy\_name | The name to assign the IAM policy that allows read-only access to the bucket in the Terraform account containing Lambda deployments. | `string` | `"LambdaBucketReadOnly"` | no |
 | tags | Tags to apply to all AWS resources created. | `map(string)` | `{}` | no |
 | third\_party\_bucket\_name\_prefix | The prefix to use to name the S3 bucket for storing third-party files.  The bucket will be named with this prefix plus the account type (e.g. production or staging). | `string` | `"cisa-cool-third-party"` | no |
+| third\_party\_bucket\_parameter\_name | The name of the SSM Parameter Store parameter that will contain the name of the third-party S3 bucket, including the leading forward slash. | `string` | `"/third_party_bucket_name"` | no |
 | windows\_ami\_sg\_name | The name to associate with the security group that allows access for finalizing Windows AMI configuration. | `string` | `"WindowsAMIBuild"` | no |
 
 ## Outputs ##

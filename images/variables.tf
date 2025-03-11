@@ -197,6 +197,28 @@ variable "third_party_bucket_name_prefix" {
   type        = string
 }
 
+variable "third_party_bucket_parameter_name" {
+  default     = "/third_party_bucket_name"
+  description = "The name of the SSM Parameter Store parameter that will contain the name of the third-party S3 bucket.  Note that the name must contain at least two characters, must contain a leading forward slash, and may only contain characters from [[:word:]./-]"
+  nullable    = false
+  type        = string
+
+  validation {
+    condition     = length(var.third_party_bucket_parameter_name) > 1
+    error_message = format("The value %s is invalid for third_party_bucket_parameter_name since it does not contain at least two characters.", var.third_party_bucket_parameter_name)
+  }
+
+  validation {
+    condition     = substr(var.third_party_bucket_parameter_name, 0, 1) == "/"
+    error_message = format("The value %s is invalid for third_party_bucket_parameter_name since it does not begin with a forward slash.", var.third_party_bucket_parameter_name)
+  }
+
+  validation {
+    condition     = length(regexall("[^[:word:]./-]+", var.third_party_bucket_parameter_name)) == 0
+    error_message = format("The value %s is invalid for third_party_bucket_parameter_name since it contains characters from outside [[:word:]./-].", var.third_party_bucket_parameter_name)
+  }
+}
+
 variable "windows_ami_sg_name" {
   default     = "WindowsAMIBuild"
   description = "The name to associate with the security group that allows access for finalizing Windows AMI configuration."
