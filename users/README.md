@@ -64,17 +64,6 @@ your environment name if needed):
    aws_session_token = <MY_SESSION_TOKEN>
    ```
 
-1. Create a backend configuration file named `dev.tfconfig` containing the name
-   of the bucket where Terraform state is stored for that environment.  It
-   should match the `state_bucket_name` specified in the `tfvars` file that you
-   used to bootstrap the [`cool-accounts/terraform`](../terraform) directory.
-   This file is required to initialize the Terraform backend in each
-   environment:
-
-    ```hcl
-    bucket = "my-dev-terraform-state-bucket"
-    ```
-
 1. Comment out the `profile = "cool-terraform-backend"` line in `backend.tf` and
    directly below that uncomment the line `profile =
    "cool-terraform-account-admin"`.
