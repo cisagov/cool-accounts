@@ -1,28 +1,29 @@
 # cool-accounts - shared-services subdirectory #
 
-This subdirectory contains Terraform code to provision the COOL
-Shared Services account.  It creates an IAM role that allows
-sufficient permissions to provision all AWS resources in this account.
-This role has a trust relationship with the Users account.
+This subdirectory contains Terraform code to provision the COOL Shared Services
+account.  It creates an IAM role that allows sufficient permissions to provision
+all AWS resources in this account. This role has a trust relationship with the
+Users account.
 
 ## Bootstrapping this account ##
 
-Note that this account must be bootstrapped.  This is because there is
-no IAM role that can be assumed to build out these resources.
-Therefore you must first apply this Terraform code with programmatic
-credentials for AWSAdministratorAccess as obtained for the COOL Shared
-Services account from the AWS SSO page.
+Note that this account must be bootstrapped.  This is because there is no IAM
+role that can be assumed to build out these resources. Therefore you must first
+apply this Terraform code with programmatic credentials for
+AWSAdministratorAccess as obtained for the COOL Shared Services account from the
+AWS SSO page.
 
-To do this, follow these steps:
+To do this, follow these steps (for the purposes of these instructions, assume
+the environment is named "dev"; replace "dev" in the instructions below with
+your environment name if needed):
 
-1. Comment out the `profile = "cool-sharedservices-provisionaccount"`
-   line for the "default" provider in `providers.tf` and directly
-   below that uncomment the line `profile =
-   "cool-sharedservices-account-admin"`.
-1. Create a new AWS profile called `cool-sharedservices-account-admin`
-   in your Boto3 configuration using the "AWSAdministratorAccess"
-   credentials (access key ID, secret access key, and session token)
-   as obtained from the COOL Shared Services account:
+1. Comment out the `profile = "cool-sharedservices-provisionaccount"` line for
+   the "default" provider in `providers.tf` and directly below that uncomment
+   the line `profile = "cool-sharedservices-account-admin"`.
+1. Create a new AWS profile called `cool-sharedservices-account-admin` in your
+   Boto3 configuration using the "AWSAdministratorAccess" credentials (access
+   key ID, secret access key, and session token) as obtained from the COOL
+   Shared Services account:
 
    ```console
    [cool-sharedservices-account-admin]
@@ -31,33 +32,62 @@ To do this, follow these steps:
    aws_session_token = <MY_SESSION_TOKEN>
    ```
 
-1. Ensure that the bucket name in `backend.tf` is correct.  It should match
-   the `state_bucket_name` specified in the `tfvars` file that you used to
-   bootstrap the [`cool-accounts/terraform`](../terraform) directory.
-1. Run the command `terraform init -upgrade`.  Note that if you have previously
-   used a different Terraform backend (e.g. for a different environment), you
-   will need to run `terraform init -reconfigure -upgrade`.
+1. Create a backend configuration file named `dev.tfconfig` containing the name
+   of the bucket where Terraform state is stored for that environment.  The
+   bucket name should match the `state_bucket_name` specified in the `tfvars`
+   file that you used to bootstrap the [`cool-accounts/terraform`](../terraform)
+   directory.  This file is required to initialize the Terraform backend in each
+   environment:
+
+    ```hcl
+    bucket = "my-dev-terraform-state-bucket"
+    ```
+
+1. Initialize the Terraform backend for the "dev" environment using your backend
+   configuration file:
+
+    ```console
+    terraform init -upgrade -backend-config=dev.tfconfig
+    ```
+
+    > [!NOTE] When performing this step for additional environments (i.e. not
+    > your first environment), use the `-reconfigure` flag:
+    >
+    > ```console
+    > terraform init -upgrade -backend-config=other-env.tfconfig -reconfigure
+    > ```
+
 1. Create a Terraform workspace (if you haven't already done so) by running
-   `terraform workspace new <workspace_name>`
-1. Create a `<workspace_name>.tfvars` file with any optional variables
-   that you wish to override (see [Inputs](#inputs) below for
-   details):
+   `terraform workspace new dev`
+1. Create a `dev.tfvars` file with any optional variables that you wish to
+   override (see [Inputs](#inputs) below for details):
 
    ```console
    tags = {
      Team        = "VM Fusion - Development"
      Application = "COOL - Shared Services Account"
-     Workspace   = "production"
+     Workspace   = "dev"
    }
    ```
 
-1. Run the command `terraform apply -var-file=<workspace_name>.tfvars`.
+1. Run the command `terraform apply -var-file=dev.tfvars`.
 1. Revert the changes you made to `providers.tf` in step 1.
-1. Run the command `terraform apply -var-file=<workspace_name>.tfvars`.
+1. If you haven't already done so, create a new AWS profile called
+   `cool-sharedservices-provisionaccount` in your local configuration that
+   includes the `provisionaccount_role` ARN output from the previous step, for
+   example:
 
-At this point the account has been bootstrapped, and you can apply
-future changes by simply running `terraform apply
--var-file=<workspace_name>.tfvars`.
+   ```ini
+   [cool-sharedservices-provisionaccount]
+   role_arn = arn:aws:iam::111111111111:role/ProvisionAccount
+   role_session_name = your.session.name
+   source_profile = cool-user-base-profile
+   ```
+
+1. Run the command `terraform apply -var-file=dev.tfvars`.
+
+At this point the account has been bootstrapped, and you can apply future
+changes by simply running `terraform apply -var-file=dev.tfvars`.
 
 <!-- BEGIN_TF_DOCS -->
 ## Requirements ##

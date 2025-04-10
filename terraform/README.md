@@ -1,31 +1,31 @@
 # cool-accounts - terraform subdirectory #
 
-This subdirectory contains Terraform code to provision the COOL
-Terraform account.  It creates:
+This subdirectory contains Terraform code to provision the COOL Terraform
+account.  It creates:
 
 - The S3 bucket used to store Terraform state.
 - The DynamoDB table used for Terraform state locking.
-- An IAM role that allows sufficient access to the Terraform S3 bucket
-  and DynamoDB table to use those resources as a Terraform backend.
-  This role also has a trust relationship with the Users account.
-- An IAM role that allows sufficient permissions to provision all AWS
-  resources in this account.  This role has a trust relationship with
-  the Users account.
+- An IAM role that allows sufficient access to the Terraform S3 bucket and
+  DynamoDB table to use those resources as a Terraform backend. This role also
+  has a trust relationship with the Users account.
+- An IAM role that allows sufficient permissions to provision all AWS resources
+  in this account.  This role has a trust relationship with the Users account.
 
 ## Bootstrapping this account ##
 
-Note that this account must be bootstrapped.  This is because
-initially there are no resources in this account that can be used to
-host remote shared Terraform state, and also because there is no IAM
-role that can be assumed to build out these resources.  Therefore you
-must first apply this Terraform code with:
+Note that this account must be bootstrapped.  This is because initially there
+are no resources in this account that can be used to host remote shared
+Terraform state, and also because there is no IAM role that can be assumed to
+build out these resources.  Therefore you must first apply this Terraform code
+with:
 
 - No backend configuration, so that the state is created locally.
-- Using programmatic credentials for AWSAdministratorAccess as
-  obtained for the COOL Terraform and Users accounts from the AWS SSO
-  page.
+- Using programmatic credentials for AWSAdministratorAccess as obtained for the
+  COOL Terraform and Users accounts from the AWS SSO page.
 
-To do this, follow these steps:
+To do this, follow these steps (for the purposes of these instructions, assume
+the environment is named "dev"; replace "dev" in the instructions below with
+your environment name if needed):
 
 1. Comment out all the content in the `backend.tf` file.
 1. Comment out the `profile = "cool-terraform-provisionaccount"` line
@@ -62,50 +62,71 @@ To do this, follow these steps:
    used a different Terraform backend (e.g. for a different environment), you
    will need to run `terraform init -reconfigure -upgrade`.
 1. Create a Terraform workspace (if you haven't already done so) by running
-   `terraform workspace new <workspace_name>`
-1. Create a `<workspace_name>.tfvars` file with all of the required
+   `terraform workspace new dev`
+1. Create a `dev.tfvars` file with all of the required
    variables and any optional variables that you want to override (see
    [Inputs](#inputs) below for details):
 
    ```hcl
    lambda_bucket_name = "my-lambda-bucket"
    lambda_key         = "disable_inactive_iam_users.zip"
-   state_bucket_name  = "my-terraform-state-bucket"
+   state_bucket_name  = "my-dev-terraform-state-bucket"
 
    tags = {
      Team        = "VM Fusion - Development"
      Application = "COOL - Terraform Account"
-     Workspace   = "production"
+     Workspace   = "dev"
    }
    ```
 
-1. Run the command `terraform apply -var-file=<workspace_name>.tfvars`.
+1. Run the command `terraform apply -var-file=dev.tfvars`.
 1. Revert the changes you made to `backend.tf` in step 1.
-1. Edit the bucket name in `backend.tf` to match the `state_bucket_name`
-   variable in your `<workspace_name>.tfvars` file.
-1. Comment out the `profile = "cool-terraform-backend"` line
-   in `backend.tf` and directly below that uncomment the line
-   `profile = "cool-terraform-account-admin"`.
+1. Comment out the `profile = "cool-terraform-backend"` line in `backend.tf` and
+   directly below that uncomment the line `profile =
+   "cool-terraform-account-admin"`.
 1. Revert the changes you made to `provider.tf` in step 2.  Give yourself
    a reminder to revert the changes you made to `provider.tf` in step 3 after
    you bootstrap the Master account.
-1. Run the command `terraform init`.  When Terraform asks 'Do you want to
-   migrate all workspaces to "s3"?', enter "yes".
-1. Run the command `terraform apply -var-file=<workspace_name>.tfvars`, but
-   note that it will fail because the "disable inactive IAM users" Lambda is
-   not yet present in your newly-created Lambda bucket.
+1. Create a backend configuration file named `dev.tfconfig` containing the name
+   of the bucket where Terraform state is stored for that environment.  The
+   bucket name should match the `state_bucket_name` specified in the
+   `dev.tfvars` file that you created earlier.  This file is required to
+   initialize the Terraform backend in each environment:
+
+    ```hcl
+    bucket = "my-dev-terraform-state-bucket"
+    ```
+
+1. Initialize the Terraform backend for the "dev" environment using your backend
+   configuration file - when Terraform asks 'Do you want to migrate all
+   workspaces to "s3"?', enter "yes":
+
+    ```console
+    terraform init -upgrade -backend-config=dev.tfconfig
+    ```
+
+    > [!NOTE]
+    > When performing this step for additional environments (i.e. not your first
+    > environment), use the `-reconfigure` flag:
+    >
+    > ```console
+    > terraform init -upgrade -backend-config=other-env.tfconfig -reconfigure
+    > ```
+
+1. Run the command `terraform apply -var-file=dev.tfvars`, but note that it will
+   fail because the "disable inactive IAM users" Lambda is not yet present in
+   your newly-created Lambda bucket.
 1. To correct this, follow the instructions in the
    [`cisagov/disable-inactive-iam-users-lambda` README](https://github.com/cisagov/disable-inactive-iam-users-lambda)
    to build a Lambda deployment file (e.g. "disable_inactive_iam_users.zip").
 1. Upload your newly-created Lambda deployment file to your Lambda bucket.
-1. Run the command `terraform apply -var-file=<workspace_name>.tfvars`.
+1. Run the command `terraform apply -var-file=dev.tfvars`.
 
-At this point the account has been bootstrapped, and you can apply
-future changes by simply running `terraform apply
--var-file=<workspace_name>.tfvars`.  You can also now delete the
-`cool-terraform-account-admin` AWS profile that you created in step 4.  Give
-yourself a reminder to revert the changes you made to `backend.tf` in step 12
-after you bootstrap the Users account.
+At this point the account has been bootstrapped, and you can apply future
+changes by simply running `terraform apply -var-file=dev.tfvars`.  You can also
+now delete the `cool-terraform-account-admin` AWS profile that you created in
+step 4.  Give yourself a reminder to revert the changes you made to `backend.tf`
+in step 11 after you bootstrap the Users account.
 
 <!-- BEGIN_TF_DOCS -->
 ## Requirements ##
