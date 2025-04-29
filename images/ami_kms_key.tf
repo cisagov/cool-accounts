@@ -121,6 +121,9 @@ data "aws_iam_policy_document" "ami_kms_doc" {
         ], [
         for account_id in var.extraorg_account_ids :
         "arn:aws:iam::${account_id}:role/ProvisionAccount"
+        ], [
+        for account_id in var.extraorg_account_ids :
+        "arn:aws:iam::${account_id}:role/Terraformer"
       ])
       variable = "aws:PrincipalArn"
     }
