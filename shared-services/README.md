@@ -95,14 +95,14 @@ changes by simply running `terraform apply -var-file=dev.tfvars`.
 | Name | Version |
 |------|---------|
 | terraform | ~> 1.1 |
-| aws | ~> 4.9 |
+| aws | ~> 6.7 |
 
 ## Providers ##
 
 | Name | Version |
 |------|---------|
-| aws | ~> 4.9 |
-| aws.organizationsreadonly | ~> 4.9 |
+| aws | ~> 6.7 |
+| aws.organizationsreadonly | ~> 6.7 |
 
 ## Modules ##
 
@@ -159,7 +159,7 @@ changes by simply running `terraform apply -var-file=dev.tfvars`.
 
 | Name | Description |
 |------|-------------|
-| assessment\_findings\_write\_role | The IAM role that allows write access to the assessment findings S3 bucket. |
+| assessment\_findings\_write\_role | The IAM role that allows write access to the assessment findings S3 bucket.  Note that this output will be null if there are no dynamic assessment accounts. |
 | cw\_alarm\_sns\_topic | The SNS topic to which a message is sent when a CloudWatch alarm is triggered. |
 | provisionaccount\_role | The IAM role that allows sufficient permissions to provision all AWS resources in the Shared Services account. |
 | ssm\_session\_role | The IAM role that allows creation of SSM Session Manager sessions to any EC2 instance in this account. |
