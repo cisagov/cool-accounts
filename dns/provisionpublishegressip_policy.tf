@@ -120,6 +120,7 @@ data "aws_iam_policy_document" "provisionpublishegressip_doc" {
       "lambda:GetPolicy",
       "lambda:ListTags",
       "lambda:ListVersionsByFunction",
+      "lambda:PublishVersion",
       "lambda:RemovePermission",
       "lambda:TagResource",
       "lambda:UntagResource",
@@ -146,6 +147,7 @@ data "aws_iam_policy_document" "provisionpublishegressip_doc" {
       "logs:DescribeLogGroups",
       "logs:ListTagsLogGroup",
       "logs:PutRetentionPolicy",
+      "logs:TagResource",
     ]
 
     resources = [
