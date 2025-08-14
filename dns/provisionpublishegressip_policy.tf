@@ -117,6 +117,7 @@ data "aws_iam_policy_document" "provisionpublishegressip_doc" {
       "lambda:EnableReplication",
       "lambda:GetFunction",
       "lambda:GetFunctionCodeSigningConfig",
+      "lambda:GetFunctionConfiguration",
       "lambda:GetPolicy",
       "lambda:ListTags",
       "lambda:ListVersionsByFunction",
@@ -145,6 +146,7 @@ data "aws_iam_policy_document" "provisionpublishegressip_doc" {
       "logs:CreateLogGroup",
       "logs:DeleteLogGroup",
       "logs:DescribeLogGroups",
+      "logs:ListTagsForResource",
       "logs:ListTagsLogGroup",
       "logs:PutRetentionPolicy",
       "logs:TagResource",
@@ -152,10 +154,14 @@ data "aws_iam_policy_document" "provisionpublishegressip_doc" {
 
     resources = [
       format("arn:aws:logs:*:%s:log-group::log-stream:*", local.dns_account_id),
+      format("arn:aws:logs:*:%s:log-group:/aws/lambda/%s:log-stream:*",
+      local.dns_account_id, var.publishegressip_lambda_name),
+      format("arn:aws:logs:*:%s:log-group:/aws/lambda/%s", local.dns_account_id,
+      var.publishegressip_lambda_name),
       format("arn:aws:logs:*:%s:log-group:/aws/lambda/add_security_headers:log-stream:*",
       local.dns_account_id),
-      format("arn:aws:logs:*:%s:log-group:/aws/lambda/%s:log-stream:*",
-      local.dns_account_id, var.publishegressip_lambda_name)
+      format("arn:aws:logs:*:%s:log-group:/aws/lambda/add_security_headers",
+      local.dns_account_id),
     ]
   }
 
