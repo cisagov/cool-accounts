@@ -117,6 +117,7 @@ data "aws_iam_policy_document" "provisionpublishegressip_doc" {
       "lambda:EnableReplication",
       "lambda:GetFunction",
       "lambda:GetFunctionCodeSigningConfig",
+      "lambda:GetFunctionConfiguration",
       "lambda:GetPolicy",
       "lambda:ListTags",
       "lambda:ListVersionsByFunction",
