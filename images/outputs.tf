@@ -37,3 +37,8 @@ output "third_party_bucket" {
   description = "The S3 bucket for storing third-party files."
   value       = aws_s3_bucket.third_party
 }
+
+output "wiz_connector_arn" {
+  description = "The ARN of the IAM role created for the Wiz AWS connector."
+  value       = module.wiz.role_arn
+}

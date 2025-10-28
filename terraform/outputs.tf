@@ -27,3 +27,8 @@ output "state_lock_table" {
   description = "The DynamoDB table that to be used for Terraform state locking."
   value       = aws_dynamodb_table.state_lock_table
 }
+
+output "wiz_connector_arn" {
+  description = "The ARN of the IAM role created for the Wiz AWS connector."
+  value       = module.wiz.role_arn
+}
