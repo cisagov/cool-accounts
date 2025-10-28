@@ -152,6 +152,7 @@ in step 11 after you bootstrap the Users account.
 | provisionaccount | github.com/cisagov/provisionaccount-role-tf-module | n/a |
 | user\_group\_mod\_event | github.com/cisagov/user-group-mod-alert-tf-module | n/a |
 | user\_group\_mod\_sns | github.com/cisagov/sns-send-to-account-email-tf-module | n/a |
+| wiz | `https://wizio-public-fedramp.s3-us-gov-west-1.amazonaws.com/deployment-v3/aws/terraform/2209/wiz-aws-native-terraform-terraform-module.zip` | n/a |
 
 ## Resources ##
 
@@ -211,6 +212,8 @@ in step 11 after you bootstrap the Users account.
 | state\_table\_read\_capacity | The number of read units for the DynamoDB table that will be used for Terraform state locking. | `number` | `20` | no |
 | state\_table\_write\_capacity | The number of write units for the DynamoDB table that will be used for Terraform state locking. | `number` | `20` | no |
 | tags | Tags to apply to all AWS resources created. | `map(string)` | `{}` | no |
+| wiz\_external\_id | The external ID of the Wiz AWS Connector.  This value must be retrieved from the Wiz portal when creating the AWS Connector. | `string` | n/a | yes |
+| wiz\_remote\_arn | The AWS Trust Policy Role ARN for your Wiz data center.  It can be retrieved from the Wiz portal (User Settings, Tenant). | `string` | n/a | yes |
 | write\_lambda\_bucket\_role\_description | The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient permissions to write to the bucket that contains Lambda deployment packages in the Terraform account. | `string` | `"Allows sufficient permissions to write to the bucket that contains Lambda deployment packages in the Terraform account."` | no |
 | write\_lambda\_bucket\_role\_name | The name to assign the IAM role (as well as the corresponding policy) that allows sufficient permissions to write to the bucket that contains Lambda deployment packages in the Terraform account. | `string` | `"WriteLambdaBucket"` | no |
 
@@ -224,6 +227,7 @@ in step 11 after you bootstrap the Users account.
 | read\_terraform\_state\_role | The IAM role that allows read-only access to the S3 bucket where Terraform state is stored. |
 | state\_bucket | The S3 bucket where Terraform state information will be stored. |
 | state\_lock\_table | The DynamoDB table that to be used for Terraform state locking. |
+| wiz\_connector\_arn | The ARN of the IAM role created for the Wiz AWS connector. |
 <!-- END_TF_DOCS -->
 
 ## Contributing ##
