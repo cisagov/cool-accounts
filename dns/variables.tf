@@ -30,6 +30,10 @@ variable "wiz_remote_arn" {
   description = "The AWS Trust Policy Role ARN for your Wiz data center.  It can be retrieved from the Wiz portal (User Settings, Tenant)."
   nullable    = false
   type        = string
+  validation {
+    condition     = can(regex("^arn:aws:iam::[0-9]{12}:role/.*$", var.wiz_remote_arn))
+    error_message = "The wiz_remote_arn must be a valid AWS IAM Role ARN (e.g., arn:aws:iam::123456789012:role/RoleName)."
+  }
 }
 
 # ------------------------------------------------------------------------------
