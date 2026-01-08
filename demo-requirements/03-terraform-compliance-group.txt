@@ -1,0 +1,87 @@
+COMPLIANCE AUDITOR GROUP REQUIREMENTS
+=====================================
+Document Type: Manual Build Specification
+Target Environment: AWS GovCloud
+Compliance: FedRAMP Moderate
+
+OVERVIEW
+--------
+We need to create a new IAM group for compliance auditors who need 
+read-only access to review our AWS configurations for FedRAMP audits.
+This group should follow the same patterns as our existing "gods" group
+but with restricted, audit-focused permissions.
+
+REQUIRED COMPONENTS
+-------------------
+
+1. IAM GROUP
+   - Group name: "compliance-auditors"
+   - Description: "Group for compliance auditors with read-only access 
+     for FedRAMP audit activities"
+
+2. ASSUME AUDIT ROLE POLICY
+   - Policy name: "AssumeAuditRoleAnywhere"
+   - Description: "Allow assumption of audit roles in any account that 
+     has a trust relationship with the Users account"
+   - Allowed actions:
+     * sts:AssumeRole
+     * sts:TagSession
+   - Resource pattern: arn:aws:iam::*:role/Audit*
+   - This restricts auditors to only assume roles prefixed with "Audit"
+
+3. IAM READ-ONLY POLICY
+   - Policy name: "IAMReadOnlyForAudit"
+   - Description: "Read-only access to IAM for compliance review"
+   - Allowed actions:
+     * iam:Get*
+     * iam:List*
+     * iam:GenerateCredentialReport
+     * iam:GetCredentialReport
+   - Resource: "*"
+
+4. CONFIG READ-ONLY POLICY
+   - Policy name: "ConfigReadOnlyForAudit"
+   - Description: "Read-only access to AWS Config for compliance review"
+   - Allowed actions:
+     * config:Describe*
+     * config:Get*
+     * config:List*
+     * config:SelectResourceConfig
+   - Resource: "*"
+
+5. SECURITY HUB READ-ONLY POLICY
+   - Policy name: "SecurityHubReadOnlyForAudit"
+   - Description: "Read-only access to Security Hub for compliance review"
+   - Allowed actions:
+     * securityhub:Get*
+     * securityhub:List*
+     * securityhub:Describe*
+   - Resource: "*"
+
+6. GROUP POLICY ATTACHMENTS
+   - Attach all four policies to the compliance-auditors group
+
+7. GROUP MEMBERSHIP (VARIABLE)
+   - Variable: auditor_usernames
+   - Type: list(string)
+   - Description: "Usernames of compliance auditors to add to the group"
+   - Example: ["auditor1.lastname", "auditor2.lastname"]
+
+VARIABLES NEEDED
+----------------
+- auditor_usernames: List of usernames for the compliance auditors
+- aws_region: us-east-1
+
+TAGGING REQUIREMENTS
+--------------------
+All resources must be tagged with:
+- Project: COOL
+- Environment: Production
+- ManagedBy: Terraform
+- Purpose: ComplianceAudit
+
+---
+INSTRUCTIONS FOR WINDSURF:
+Convert this manual specification into Terraform code following the 
+patterns in users/gods_group.tf and users/gods_group_membership.tf.
+Create a compliance_auditors_group.tf and compliance_auditors_membership.tf.

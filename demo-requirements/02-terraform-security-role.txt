@@ -1,0 +1,84 @@
+CROSS-ACCOUNT SECURITY ROLE REQUIREMENTS
+=========================================
+Document Type: Manual Build Specification
+Target Environment: AWS GovCloud
+Compliance: FedRAMP Moderate
+
+OVERVIEW
+--------
+The Security Operations Center (SOC) needs read-only access to EC2 
+resources across multiple accounts for threat hunting and incident 
+response. We need to create a cross-account role that can be assumed 
+from the security-operations account.
+
+REQUIRED COMPONENTS
+-------------------
+
+1. IAM POLICY FOR EC2 READ ACCESS
+   - Policy name: "SecurityEC2ReadOnly"
+   - Description: "Allows read-only access to EC2 resources for security monitoring"
+   - Allowed actions:
+     * ec2:DescribeInstances
+     * ec2:DescribeSecurityGroups
+     * ec2:DescribeNetworkInterfaces
+     * ec2:DescribeVpcs
+     * ec2:DescribeSubnets
+     * ec2:DescribeRouteTables
+     * ec2:DescribeAddresses
+     * ec2:DescribeTags
+     * ec2:DescribeVolumes
+     * ec2:DescribeSnapshots
+   - Resource: "*" (read-only operations)
+
+2. IAM POLICY FOR CLOUDTRAIL READ ACCESS
+   - Policy name: "SecurityCloudTrailReadOnly"
+   - Description: "Allows read-only access to CloudTrail for security investigations"
+   - Allowed actions:
+     * cloudtrail:LookupEvents
+     * cloudtrail:GetTrailStatus
+     * cloudtrail:DescribeTrails
+     * cloudtrail:ListTags
+   - Resource: "*"
+
+3. IAM POLICY FOR GUARDDUTY READ ACCESS
+   - Policy name: "SecurityGuardDutyReadOnly"
+   - Description: "Allows read-only access to GuardDuty findings"
+   - Allowed actions:
+     * guardduty:GetFindings
+     * guardduty:ListFindings
+     * guardduty:GetDetector
+     * guardduty:ListDetectors
+   - Resource: "*"
+
+4. ASSUME ROLE POLICY
+   - Create a policy document that allows the security-operations 
+     account to assume this role
+   - Principal: arn:aws:iam::SECURITY_ACCOUNT_ID:root
+   - Actions: sts:AssumeRole, sts:TagSession
+   - Condition: Require MFA
+
+5. IAM ROLE
+   - Role name: "SecurityReadOnly"
+   - Description: "Cross-account role for SOC read-only access"
+   - Attach all three policies above
+   - Use the assume role policy document
+
+VARIABLES NEEDED
+----------------
+- security_account_id: AWS account ID of the security-operations account
+- require_mfa: true (boolean)
+- aws_region: us-east-1
+
+TAGGING REQUIREMENTS
+--------------------
+All resources must be tagged with:
+- Project: COOL
+- Environment: Production
+- ManagedBy: Terraform
+- Purpose: SecurityMonitoring
+
+---
+INSTRUCTIONS FOR WINDSURF:
+Convert this manual specification into Terraform code following the 
+patterns in dynamic/ec2readonly_role.tf and dynamic/ec2readonly_policy.tf.
+Create separate .tf files for each policy and the role.

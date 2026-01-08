@@ -1,0 +1,122 @@
+IAM COMPLIANCE AUDIT RUNBOOK
+============================
+Document Type: Manual Compliance Check Runbook
+Target Environment: AWS GovCloud
+Compliance: FedRAMP Moderate
+Frequency: Weekly
+Estimated Time: 2-3 hours (manual)
+
+OVERVIEW
+--------
+This runbook documents the manual steps to verify IAM compliance 
+across our AWS accounts. Currently performed through console click-offs
+and manual documentation in spreadsheets.
+
+PRE-REQUISITES
+--------------
+- Read access to all accounts in the organization
+- Access to the compliance tracking spreadsheet
+- Previous week's compliance report for comparison
+
+MANUAL STEPS (CURRENT PROCESS)
+------------------------------
+
+CHECK 1: PASSWORD POLICY COMPLIANCE
+   1. Log into AWS Console for Users account
+   2. Navigate to IAM > Account settings
+   3. Verify password policy settings:
+      - Minimum length: 12 characters (REQUIRED)
+      - Require uppercase: Yes (REQUIRED)
+      - Require lowercase: Yes (REQUIRED)
+      - Require numbers: Yes (REQUIRED)
+      - Require symbols: Yes (REQUIRED)
+      - Allow users to change password: Yes (REQUIRED)
+   4. Document any deviations in spreadsheet
+   5. Screenshot settings for audit evidence
+
+CHECK 2: MFA ENFORCEMENT
+   1. Navigate to IAM > Users
+   2. For each user, check:
+      a. Click on username
+      b. Go to Security credentials tab
+      c. Verify MFA device is assigned
+   3. List all users without MFA in spreadsheet
+   4. Flag as HIGH priority finding
+
+CHECK 3: ACCESS KEY AGE
+   1. For each user in IAM > Users:
+      a. Go to Security credentials tab
+      b. Check "Access key age" for each key
+      c. Flag keys older than 90 days
+   2. Document all aged keys in spreadsheet
+   3. Include: username, key ID, age in days
+
+CHECK 4: INACTIVE USERS
+   1. For each user in IAM > Users:
+      a. Check "Last activity" column
+      b. Flag users with no activity > 90 days
+   2. Cross-reference with HR active employee list
+   3. Document inactive users for review
+
+CHECK 5: ROOT ACCOUNT USAGE
+   1. Navigate to CloudTrail > Event history
+   2. Filter by User name = "root"
+   3. Review any root account activity
+   4. Document all root usage (should be zero)
+   5. Flag any root activity as CRITICAL
+
+CHECK 6: UNUSED CREDENTIALS
+   1. Generate IAM Credential Report:
+      a. IAM > Credential report
+      b. Click "Download Report"
+   2. Open CSV and check:
+      - password_last_used (flag if never used)
+      - access_key_1_last_used_date (flag if > 90 days)
+      - access_key_2_last_used_date (flag if > 90 days)
+   3. Document all unused credentials
+
+CHECK 7: OVERLY PERMISSIVE POLICIES
+   1. Navigate to IAM > Policies
+   2. Filter by "Customer managed"
+   3. For each policy:
+      a. Review policy document
+      b. Flag any with "Resource": "*" and broad actions
+      c. Flag any with "Action": "*"
+   4. Document findings with policy names
+
+CHECK 8: CROSS-ACCOUNT ROLE TRUST
+   1. Navigate to IAM > Roles
+   2. For each role with cross-account trust:
+      a. Review trust policy
+      b. Verify trusted account is known/approved
+      c. Flag any unknown external accounts
+   3. Document all cross-account trusts
+
+COMPLIANCE THRESHOLDS
+---------------------
+- Password policy: 100% compliant (no exceptions)
+- MFA enabled: 100% of human users
+- Access key age: < 90 days
+- User activity: Activity within 90 days
+- Root usage: Zero events
+- Unused credentials: None > 90 days
+
+OUTPUT REQUIREMENTS
+-------------------
+Generate a compliance report with:
+1. Summary statistics (pass/fail counts)
+2. Detailed findings by check
+3. Comparison to previous week
+4. Remediation recommendations
+5. Evidence screenshots/exports
+
+---
+INSTRUCTIONS FOR WINDSURF:
+Convert this manual runbook into an Ansible playbook that automates 
+all compliance checks. Use the AWS collection (amazon.aws) and 
+community.aws for AWS operations. Generate a JSON report that can 
+be imported into our compliance tracking system. Include:
+- Automated credential report generation and parsing
+- CloudTrail query for root usage
+- Policy analysis for overly permissive policies
+- Summary statistics and findings

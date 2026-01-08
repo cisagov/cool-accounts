@@ -1,0 +1,123 @@
+SERVICENOW IAM SYNC PROCEDURE
+=============================
+Document Type: Manual Integration Procedure
+Target Environment: AWS GovCloud + ServiceNow
+Compliance: FedRAMP Moderate
+Frequency: Daily
+Estimated Time: 1 hour (manual)
+
+OVERVIEW
+--------
+This procedure documents the manual steps to synchronize IAM user 
+information from AWS to ServiceNow for asset management and change 
+tracking. Currently performed through manual data entry.
+
+PRE-REQUISITES
+--------------
+- AWS Console access to Users account
+- ServiceNow admin access
+- Export permissions for IAM credential report
+
+MANUAL STEPS (CURRENT PROCESS)
+------------------------------
+
+STEP 1: EXPORT IAM USER DATA
+   1. Log into AWS Console for Users account
+   2. Navigate to IAM > Credential report
+   3. Click "Download Report"
+   4. Save CSV to local machine
+   5. Open in Excel for formatting
+
+STEP 2: EXTRACT RELEVANT FIELDS
+   1. From the credential report, extract:
+      - user (username)
+      - arn (user ARN)
+      - user_creation_time
+      - password_enabled
+      - password_last_used
+      - mfa_active
+      - access_key_1_active
+      - access_key_1_last_used_date
+      - access_key_2_active
+      - access_key_2_last_used_date
+   2. Format dates to ServiceNow format (YYYY-MM-DD)
+
+STEP 3: GET GROUP MEMBERSHIPS
+   1. For each user in the report:
+      a. Navigate to IAM > Users > [username]
+      b. Go to Groups tab
+      c. Note all group memberships
+      d. Add to spreadsheet as comma-separated list
+   2. This step takes the longest (manual lookup)
+
+STEP 4: LOG INTO SERVICENOW
+   1. Open ServiceNow instance
+   2. Navigate to Configuration Items > AWS IAM Users
+   3. Prepare for bulk update
+
+STEP 5: UPDATE SERVICENOW RECORDS
+   1. For each user in the spreadsheet:
+      a. Search for existing CI by username
+      b. If exists: Update all fields
+      c. If new: Create new CI record
+      d. Set fields:
+         - Name: username
+         - ARN: user ARN
+         - Created: user_creation_time
+         - Password Enabled: yes/no
+         - Last Login: password_last_used
+         - MFA Enabled: yes/no
+         - Access Keys: count of active keys
+         - Groups: comma-separated list
+         - Last Sync: current timestamp
+   2. Mark any users in ServiceNow not in AWS as "Deleted"
+
+STEP 6: GENERATE CHANGE REPORT
+   1. Compare today's sync with yesterday's
+   2. Document:
+      - New users added
+      - Users removed
+      - Group membership changes
+      - MFA status changes
+   3. Create change ticket if significant changes
+
+STEP 7: SEND SUMMARY EMAIL
+   1. Compose email to iam-admins@agency.gov
+   2. Include:
+      - Total users synced
+      - New users count
+      - Deleted users count
+      - Any anomalies detected
+   3. Attach change report
+
+VARIABLES FOR AUTOMATION
+------------------------
+- aws_region: us-east-1
+- servicenow_instance: agency.service-now.com
+- servicenow_table: cmdb_ci_aws_iam_user
+- notification_email: iam-admins@agency.gov
+- sync_frequency: daily
+
+DATA MAPPING
+------------
+AWS Field                    -> ServiceNow Field
+-------------------------------------------------
+user                         -> name
+arn                          -> u_arn
+user_creation_time           -> install_date
+password_enabled             -> u_password_enabled
+password_last_used           -> u_last_login
+mfa_active                   -> u_mfa_enabled
+access_key_1_active          -> u_access_key_1
+access_key_2_active          -> u_access_key_2
+[group memberships]          -> u_groups
+
+---
+INSTRUCTIONS FOR WINDSURF:
+Convert this manual procedure into a PowerShell script that:
+1. Uses AWS Tools for PowerShell to export IAM data
+2. Queries group memberships via AWS API
+3. Connects to ServiceNow REST API to update CIs
+4. Generates a change report comparing to previous sync
+5. Sends email notification with summary
+Include proper error handling, logging, and credential management.

@@ -1,0 +1,97 @@
+USER OFFBOARDING RUNBOOK
+========================
+Document Type: Manual Operations Runbook
+Target Environment: AWS GovCloud
+Compliance: FedRAMP Moderate
+Estimated Time: 45 minutes per user (manual)
+
+OVERVIEW
+--------
+This runbook documents the manual steps required to offboard a user 
+from our AWS environment. Currently performed as click-offs through 
+the AWS Console and requires logging into multiple accounts.
+
+PRE-REQUISITES
+--------------
+- Admin access to the Users account
+- List of all accounts where user may have assumed roles
+- User's username (format: firstname.lastname)
+- ServiceNow ticket number for audit trail
+
+MANUAL STEPS (CURRENT PROCESS)
+------------------------------
+
+STEP 1: DISABLE IAM USER
+   1. Log into AWS Console for Users account
+   2. Navigate to IAM > Users
+   3. Search for the user by username
+   4. Click on the user
+   5. Go to Security credentials tab
+   6. Under "Console password", click Manage
+   7. Select "Disable" and save
+   8. Document completion in ServiceNow
+
+STEP 2: DEACTIVATE ACCESS KEYS
+   1. Still on the user's Security credentials tab
+   2. For each access key listed:
+      a. Click "Make inactive"
+      b. Confirm the action
+   3. Document each key deactivated in ServiceNow
+
+STEP 3: REMOVE FROM ALL GROUPS
+   1. Go to the Groups tab for the user
+   2. Note all group memberships for audit
+   3. For each group:
+      a. Select the group
+      b. Click "Remove from group"
+      c. Confirm removal
+   4. Document all group removals in ServiceNow
+
+STEP 4: DELETE MFA DEVICES
+   1. Go to Security credentials tab
+   2. Under "Assigned MFA device"
+   3. Click "Manage"
+   4. Select "Remove" for each MFA device
+   5. Confirm removal
+   6. Document in ServiceNow
+
+STEP 5: REVOKE ACTIVE SESSIONS
+   1. Go to Security credentials tab
+   2. Click "Invalidate active sessions"
+   3. Confirm the action
+   4. This immediately revokes all temporary credentials
+
+STEP 6: ARCHIVE USER (DO NOT DELETE)
+   1. Add tag to user: "Status=Offboarded"
+   2. Add tag: "OffboardDate=YYYY-MM-DD"
+   3. Add tag: "ServiceNowTicket=TICKET_NUMBER"
+   4. User is retained for 90 days per retention policy
+
+STEP 7: NOTIFY SECURITY TEAM
+   1. Send email to security-ops@agency.gov
+   2. Include: username, offboard date, ticket number
+   3. Request confirmation of session termination
+
+VARIABLES FOR AUTOMATION
+------------------------
+- username: The IAM username to offboard (firstname.lastname)
+- ticket_number: ServiceNow ticket for audit trail
+- offboard_date: Date of offboarding (YYYY-MM-DD)
+- notify_email: security-ops@agency.gov
+
+EXPECTED OUTPUT
+---------------
+- User console access disabled
+- All access keys deactivated
+- User removed from all groups
+- MFA devices deleted
+- Active sessions revoked
+- User tagged for retention tracking
+- Security team notified
+
+---
+INSTRUCTIONS FOR WINDSURF:
+Convert this manual runbook into an Ansible playbook that automates 
+all steps. Use the AWS collection (amazon.aws) for AWS operations.
+Include proper error handling, idempotency, and logging.
+Generate a summary report at the end for ServiceNow documentation.
