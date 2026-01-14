@@ -1,6 +1,8 @@
 # cool-accounts #
 
 [![GitHub Build Status](https://github.com/cisagov/cool-accounts/workflows/build/badge.svg)](https://github.com/cisagov/cool-accounts/actions)
+[![License](https://img.shields.io/github/license/cisagov/cool-accounts)](https://spdx.org/licenses/)
+[![CodeQL](https://github.com/cisagov/cool-accounts/workflows/CodeQL/badge.svg)](https://github.com/cisagov/cool-accounts/actions/workflows/codeql-analysis.yml)
 
 This project contains several directories of Terraform code to perform
 the initial configuration of the COOL accounts, such as the
