@@ -57,6 +57,20 @@ variable "controltoweradmin_role_name" {
   type        = string
 }
 
+variable "cur_export_policy_description" {
+  default     = "Allows sufficient permissions to create the resources needed for cost and usage report (CUR) data export."
+  description = "The description to associate with the IAM policy that allows sufficient permissions to manage the resources needed for cost and usage report (CUR) data export."
+  nullable    = false
+  type        = string
+}
+
+variable "cur_export_policy_name" {
+  default     = "CostAndUsageReportExportPolicy"
+  description = "The name to assign the IAM policy that allows sufficient permissions to manage the resources needed for cost and usage report (CUR) data export."
+  nullable    = false
+  type        = string
+}
+
 variable "organizationsreadonly_role_description" {
   default     = "Allows read-only access to all AWS Organizations information in the Master account."
   description = "The description to associate with the IAM role that allows read-only access to all AWS Organizations information in the Master account."
