@@ -149,6 +149,7 @@ changes by simply running `terraform apply -var-file=dev.tfvars`.
 | provisionaccount | github.com/cisagov/provisionaccount-role-tf-module | n/a |
 | user\_group\_mod\_event | github.com/cisagov/user-group-mod-alert-tf-module | n/a |
 | user\_group\_mod\_sns | github.com/cisagov/sns-send-to-account-email-tf-module | n/a |
+| wiz | `https://wizio-public-fedramp.s3-us-gov-west-1.amazonaws.com/deployment-v3/aws/terraform/2209/wiz-aws-native-terraform-terraform-module.zip` | n/a |
 
 ## Resources ##
 
@@ -199,6 +200,8 @@ changes by simply running `terraform apply -var-file=dev.tfvars`.
 | self\_managed\_creds\_without\_mfa\_policy\_description | The description to associate with the IAM policy that allows users to administer their own user accounts, without requiring multi-factor authentication (MFA). | `string` | `"Allows sufficient access for users to administer their own user accounts, without requiring multi-factor authentication (MFA)."` | no |
 | self\_managed\_creds\_without\_mfa\_policy\_name | The name to assign the IAM policy that allows users to administer their own user accounts, without requiring multi-factor authentication (MFA). | `string` | `"SelfManagedCredsWithoutMFA"` | no |
 | tags | Tags to apply to all AWS resources created. | `map(string)` | `{}` | no |
+| wiz\_external\_id | The external ID of the Wiz AWS Connector.  This value must be retrieved from the Wiz portal when creating the AWS Connector. | `string` | n/a | yes |
+| wiz\_remote\_arn | The AWS Trust Policy Role ARN for your Wiz data center.  It can be retrieved from the Wiz portal (User Settings, Tenant). | `string` | n/a | yes |
 
 ## Outputs ##
 
@@ -211,6 +214,7 @@ changes by simply running `terraform apply -var-file=dev.tfvars`.
 | provisionaccount\_role | The IAM role that allows sufficient permissions to provision all AWS resources in this account. |
 | selfmanagedcredswithmfa\_policy | The IAM policy that allows users to administer their own user accounts, requiring multi-factor authentication (MFA). |
 | selfmanagedcredswithoutmfa\_policy | The IAM policy that allows users to administer their own user accounts, without requiring multi-factor authentication (MFA). |
+| wiz\_connector\_arn | The ARN of the IAM role created for the Wiz AWS connector. |
 <!-- END_TF_DOCS -->
 
 ## Contributing ##

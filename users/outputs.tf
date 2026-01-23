@@ -32,3 +32,8 @@ output "selfmanagedcredswithoutmfa_policy" {
   description = "The IAM policy that allows users to administer their own user accounts, without requiring multi-factor authentication (MFA)."
   value       = aws_iam_policy.self_managed_creds_without_mfa
 }
+
+output "wiz_connector_arn" {
+  description = "The ARN of the IAM role created for the Wiz AWS connector."
+  value       = module.wiz.role_arn
+}

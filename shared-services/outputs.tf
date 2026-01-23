@@ -17,3 +17,8 @@ output "ssm_session_role" {
   description = "The IAM role that allows creation of SSM Session Manager sessions to any EC2 instance in this account."
   value       = module.session_manager.ssm_session_role
 }
+
+output "wiz_connector_arn" {
+  description = "The ARN of the IAM role created for the Wiz AWS connector."
+  value       = module.wiz.role_arn
+}

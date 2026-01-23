@@ -115,6 +115,7 @@ changes by simply running `terraform apply -var-file=dev.tfvars`.
 | provisionaccount | github.com/cisagov/provisionaccount-role-tf-module | n/a |
 | user\_group\_mod\_event | github.com/cisagov/user-group-mod-alert-tf-module | n/a |
 | user\_group\_mod\_sns | github.com/cisagov/sns-send-to-account-email-tf-module | n/a |
+| wiz | `https://wizio-public-fedramp.s3-us-gov-west-1.amazonaws.com/deployment-v3/aws/terraform/2209/wiz-aws-native-terraform-terraform-module.zip` | n/a |
 
 ## Resources ##
 
@@ -208,6 +209,8 @@ changes by simply running `terraform apply -var-file=dev.tfvars`.
 | third\_party\_bucket\_name\_prefix | The prefix to use to name the S3 bucket for storing third-party files.  The bucket will be named with this prefix plus the account type (e.g. production or staging). | `string` | `"cisa-cool-third-party"` | no |
 | third\_party\_bucket\_parameter\_name | The name of the SSM Parameter Store parameter that will contain the name of the third-party S3 bucket.  Note that the name must contain at least two characters, must contain a leading forward slash, and may only contain characters from [[:word:]./-] | `string` | `"/third_party_bucket_name"` | no |
 | windows\_ami\_sg\_name | The name to associate with the security group that allows access for finalizing Windows AMI configuration. | `string` | `"WindowsAMIBuild"` | no |
+| wiz\_external\_id | The external ID of the Wiz AWS Connector.  This value must be retrieved from the Wiz portal when creating the AWS Connector. | `string` | n/a | yes |
+| wiz\_remote\_arn | The AWS Trust Policy Role ARN for your Wiz data center.  It can be retrieved from the Wiz portal (User Settings, Tenant). | `string` | n/a | yes |
 
 ## Outputs ##
 
@@ -221,6 +224,7 @@ changes by simply running `terraform apply -var-file=dev.tfvars`.
 | provisionec2amicreateroles\_role | The IAM role that allows sufficient permissions to provision IAM roles that can create AMIs in the Images account. |
 | provisionthirdpartybucketreadroles\_role | The IAM role that allows sufficient permissions to provision IAM roles that can read objects in the third-party file storage S3 bucket in the Images account. |
 | third\_party\_bucket | The S3 bucket for storing third-party files. |
+| wiz\_connector\_arn | The ARN of the IAM role created for the Wiz AWS connector. |
 <!-- END_TF_DOCS -->
 
 ## Contributing ##
