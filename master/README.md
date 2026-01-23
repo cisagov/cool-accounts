@@ -119,12 +119,14 @@ changes by simply running `terraform apply -var-file=dev.tfvars`.
 | Name | Type |
 |------|------|
 | [aws_iam_policy.administersso_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) | resource |
+| [aws_iam_policy.cur_export_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) | resource |
 | [aws_iam_policy.read_lambda_bucket_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) | resource |
 | [aws_iam_role.administersso_role](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role) | resource |
 | [aws_iam_role.controltoweradmin_role](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role) | resource |
 | [aws_iam_role.organizationsreadonly_role](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role) | resource |
 | [aws_iam_role_policy_attachment.admin_servicecatalog](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_iam_role_policy_attachment.administersso_policy_attachment](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) | resource |
+| [aws_iam_role_policy_attachment.cur_export_policy_attachment](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_iam_role_policy_attachment.organizationsfullaccess_policy_attachment](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_iam_role_policy_attachment.organizationsreadonly_policy_attachment](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_iam_role_policy_attachment.read_lambda_bucket](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) | resource |
@@ -138,6 +140,7 @@ changes by simply running `terraform apply -var-file=dev.tfvars`.
 | [aws_iam_policy_document.assume_role_doc](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
 | [aws_iam_policy_document.assume_role_users_control_tower_doc](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
 | [aws_iam_policy_document.assume_role_users_doc](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
+| [aws_iam_policy_document.cur_export_doc](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
 | [aws_iam_policy_document.read_lambda_bucket_policy_doc](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
 | [aws_iam_policy_document.sns_topic_access_policy_doc](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
 | [aws_organizations_organization.cool](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/organizations_organization) | data source |
@@ -151,6 +154,8 @@ changes by simply running `terraform apply -var-file=dev.tfvars`.
 | aws\_region | The AWS region where the non-global resources for the Master account are to be provisioned (e.g. "us-east-1"). | `string` | `"us-east-1"` | no |
 | controltoweradmin\_role\_description | The description to associate with the IAM role that allows all necessary permissions to provision AWS accounts via Control Tower in the Master account. | `string` | `"Allows all necessary permissions to provision AWS accounts via Control Tower in the Master account."` | no |
 | controltoweradmin\_role\_name | The name to assign the IAM role that allows all necessary permissions to provision AWS accounts via Control Tower in the Master account. | `string` | `"ControlTowerAdmin"` | no |
+| cur\_export\_policy\_description | The description to associate with the IAM policy that allows sufficient permissions to manage the resources needed for cost and usage report (CUR) data export. | `string` | `"Allows sufficient permissions to create the resources needed for cost and usage report (CUR) data export."` | no |
+| cur\_export\_policy\_name | The name to assign the IAM policy that allows sufficient permissions to manage the resources needed for cost and usage report (CUR) data export. | `string` | `"CostAndUsageReportExportPolicy"` | no |
 | lambda\_bucket\_name | The name of the bucket where Lambda deployment packages are to be stored. | `string` | n/a | yes |
 | lambda\_key | The S3 key associated with the Lambda function deployment package to disable inactive IAM users. | `string` | n/a | yes |
 | organizationsreadonly\_role\_description | The description to associate with the IAM role that allows read-only access to all AWS Organizations information in the Master account. | `string` | `"Allows read-only access to all AWS Organizations information in the Master account."` | no |
