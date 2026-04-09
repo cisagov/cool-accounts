@@ -94,20 +94,20 @@ changes by simply running `terraform apply -var-file=dev.tfvars`.
 ## Requirements ##
 
 | Name | Version |
-|------|---------|
+| ---- | ------- |
 | terraform | ~> 1.1 |
 | aws | ~> 6.7 |
 
 ## Providers ##
 
 | Name | Version |
-|------|---------|
+| ---- | ------- |
 | aws | ~> 6.7 |
 
 ## Modules ##
 
 | Name | Source | Version |
-|------|--------|---------|
+| ---- | ------ | ------- |
 | cw\_alarm\_sns | github.com/cisagov/sns-send-to-account-email-tf-module | n/a |
 | disable-inactive-iam-users | github.com/cisagov/disable-inactive-iam-users-tf-module | n/a |
 | provisionaccount | github.com/cisagov/provisionaccount-role-tf-module | n/a |
@@ -117,7 +117,7 @@ changes by simply running `terraform apply -var-file=dev.tfvars`.
 ## Resources ##
 
 | Name | Type |
-|------|------|
+| ---- | ---- |
 | [aws_iam_policy.administersso_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) | resource |
 | [aws_iam_policy.cur_export_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) | resource |
 | [aws_iam_policy.read_lambda_bucket_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) | resource |
@@ -148,7 +148,7 @@ changes by simply running `terraform apply -var-file=dev.tfvars`.
 ## Inputs ##
 
 | Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:--------:|
+| ---- | ----------- | ---- | ------- | :------: |
 | administersso\_role\_description | The description to associate with the IAM role (as well as the corresponding policy) that allows sufficient permissions to administer the Single Sign-On resources in the Master account. | `string` | `"Allows sufficient permissions to administer the Single Sign-On resources in the Master account."` | no |
 | administersso\_role\_name | The name to assign the IAM role (as well as the corresponding policy) that allows sufficient permissions to administer the Single Sign-On resources in the Master account. | `string` | `"AdministerSSO"` | no |
 | aws\_region | The AWS region where the non-global resources for the Master account are to be provisioned (e.g. "us-east-1"). | `string` | `"us-east-1"` | no |
@@ -169,7 +169,7 @@ changes by simply running `terraform apply -var-file=dev.tfvars`.
 ## Outputs ##
 
 | Name | Description |
-|------|-------------|
+| ---- | ----------- |
 | administersso\_role | The IAM role that allows sufficient permissions to administer the Single Sign-On resources required in the Master account. |
 | controltoweradmin\_role | The IAM role that allows all necessary permissions to provision AWS accounts via Control Tower in the Master account. |
 | cw\_alarm\_sns\_topic | The SNS topic to which a message is sent when a CloudWatch alarm is triggered. |

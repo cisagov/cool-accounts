@@ -93,21 +93,21 @@ changes by simply running `terraform apply -var-file=dev.tfvars`.
 ## Requirements ##
 
 | Name | Version |
-|------|---------|
+| ---- | ------- |
 | terraform | ~> 1.1 |
 | aws | ~> 6.7 |
 
 ## Providers ##
 
 | Name | Version |
-|------|---------|
+| ---- | ------- |
 | aws | ~> 6.7 |
 | aws.organizationsreadonly | ~> 6.7 |
 
 ## Modules ##
 
 | Name | Source | Version |
-|------|--------|---------|
+| ---- | ------ | ------- |
 | cw\_alarm\_sns | github.com/cisagov/sns-send-to-account-email-tf-module | n/a |
 | disable-inactive-iam-users | github.com/cisagov/disable-inactive-iam-users-tf-module | n/a |
 | provisionaccount | github.com/cisagov/provisionaccount-role-tf-module | n/a |
@@ -118,7 +118,7 @@ changes by simply running `terraform apply -var-file=dev.tfvars`.
 ## Resources ##
 
 | Name | Type |
-|------|------|
+| ---- | ---- |
 | [aws_iam_policy.assessment_findings_bucket_write](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) | resource |
 | [aws_iam_policy.provisionssmsessionmanager_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) | resource |
 | [aws_iam_policy.read_lambda_bucket_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) | resource |
@@ -139,7 +139,7 @@ changes by simply running `terraform apply -var-file=dev.tfvars`.
 ## Inputs ##
 
 | Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:--------:|
+| ---- | ----------- | ---- | ------- | :------: |
 | assessment\_findings\_bucket\_name | The name of the assessment findings S3 bucket. | `string` | n/a | yes |
 | assessment\_findings\_bucket\_object\_key\_pattern | The key pattern specifying which objects are allowed to be written to the assessment findings data S3 bucket. | `string` | `"*-data.json"` | no |
 | assessment\_findings\_bucket\_write\_role\_description | The description to associate with the IAM role that allows write access to the assessment findings S3 bucket. | `string` | `"Allows write permissions to the assessment findings S3 bucket."` | no |
@@ -158,7 +158,7 @@ changes by simply running `terraform apply -var-file=dev.tfvars`.
 ## Outputs ##
 
 | Name | Description |
-|------|-------------|
+| ---- | ----------- |
 | assessment\_findings\_write\_role | The IAM role that allows write access to the assessment findings S3 bucket.  Note that this output will be null if there are no dynamic assessment accounts. |
 | cw\_alarm\_sns\_topic | The SNS topic to which a message is sent when a CloudWatch alarm is triggered. |
 | provisionaccount\_role | The IAM role that allows sufficient permissions to provision all AWS resources in the Shared Services account. |
