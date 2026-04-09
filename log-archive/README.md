@@ -75,8 +75,9 @@ your environment name if needed):
 1. Run the command `terraform apply -var-file=dev.tfvars`.
 1. Revert the changes you made to `providers.tf` in step 1.
 1. If you haven't already done so, create a new AWS profile called
-   `cool-logarchive-provisionaccount` in your local configuration that includes the
-   `provisionaccount_role` ARN output from the previous step, for example:
+   `cool-logarchive-provisionaccount` in your local configuration that
+   includes the `provisionaccount_role` ARN output from the previous
+   step, for example:
 
    ```ini
    [cool-logarchive-provisionaccount]
