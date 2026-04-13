@@ -75,8 +75,9 @@ your environment name if needed):
 1. Run the command `terraform apply -var-file=dev.tfvars`.
 1. Revert the changes you made to `providers.tf` in step 1.
 1. If you haven't already done so, create a new AWS profile called
-   `cool-logarchive-provisionaccount` in your local configuration that includes the
-   `provisionaccount_role` ARN output from the previous step, for example:
+   `cool-logarchive-provisionaccount` in your local configuration that
+   includes the `provisionaccount_role` ARN output from the previous
+   step, for example:
 
    ```ini
    [cool-logarchive-provisionaccount]
@@ -94,21 +95,21 @@ changes by simply running `terraform apply -var-file=dev.tfvars`.
 ## Requirements ##
 
 | Name | Version |
-|------|---------|
+| ---- | ------- |
 | terraform | ~> 1.1 |
 | aws | ~> 6.7 |
 
 ## Providers ##
 
 | Name | Version |
-|------|---------|
+| ---- | ------- |
 | aws | ~> 6.7 |
 | aws.organizationsreadonly | ~> 6.7 |
 
 ## Modules ##
 
 | Name | Source | Version |
-|------|--------|---------|
+| ---- | ------ | ------- |
 | cw\_alarm\_sns | github.com/cisagov/sns-send-to-account-email-tf-module | n/a |
 | disable-inactive-iam-users | github.com/cisagov/disable-inactive-iam-users-tf-module | n/a |
 | provisionaccount | github.com/cisagov/provisionaccount-role-tf-module | n/a |
@@ -118,7 +119,7 @@ changes by simply running `terraform apply -var-file=dev.tfvars`.
 ## Resources ##
 
 | Name | Type |
-|------|------|
+| ---- | ---- |
 | [aws_iam_policy.read_lambda_bucket_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) | resource |
 | [aws_iam_role_policy_attachment.read_lambda_bucket](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_caller_identity.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/caller_identity) | data source |
@@ -129,7 +130,7 @@ changes by simply running `terraform apply -var-file=dev.tfvars`.
 ## Inputs ##
 
 | Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:--------:|
+| ---- | ----------- | ---- | ------- | :------: |
 | aws\_region | The AWS region where the non-global resources for the Log Archive account are to be provisioned (e.g. "us-east-1"). | `string` | `"us-east-1"` | no |
 | lambda\_bucket\_name | The name of the S3 bucket containing the Lambda function deployment package to disable inactive IAM users. | `string` | n/a | yes |
 | lambda\_key | The S3 key associated with the Lambda function deployment package to disable inactive IAM users. | `string` | n/a | yes |
@@ -142,7 +143,7 @@ changes by simply running `terraform apply -var-file=dev.tfvars`.
 ## Outputs ##
 
 | Name | Description |
-|------|-------------|
+| ---- | ----------- |
 | cw\_alarm\_sns\_topic | The SNS topic to which a message is sent when a CloudWatch alarm is triggered. |
 | provisionaccount\_role | The IAM role that allows sufficient permissions to provision all AWS resources in the Log Archive account. |
 <!-- END_TF_DOCS -->

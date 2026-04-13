@@ -102,21 +102,21 @@ changes by simply running `terraform apply
 ## Requirements ##
 
 | Name | Version |
-|------|---------|
+| ---- | ------- |
 | terraform | ~> 1.1 |
 | aws | ~> 6.7 |
 
 ## Providers ##
 
 | Name | Version |
-|------|---------|
+| ---- | ------- |
 | aws | ~> 6.7 |
 | aws.organizationsreadonly | ~> 6.7 |
 
 ## Modules ##
 
 | Name | Source | Version |
-|------|--------|---------|
+| ---- | ------ | ------- |
 | cw\_alarm\_sns | github.com/cisagov/sns-send-to-account-email-tf-module | n/a |
 | disable-inactive-iam-users | github.com/cisagov/disable-inactive-iam-users-tf-module | n/a |
 | provisionaccount | github.com/cisagov/provisionaccount-role-tf-module | n/a |
@@ -126,7 +126,7 @@ changes by simply running `terraform apply
 ## Resources ##
 
 | Name | Type |
-|------|------|
+| ---- | ---- |
 | [aws_iam_policy.ec2readonly_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) | resource |
 | [aws_iam_policy.read_lambda_bucket_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) | resource |
 | [aws_iam_role.ec2readonly_role](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role) | resource |
@@ -142,7 +142,7 @@ changes by simply running `terraform apply
 ## Inputs ##
 
 | Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:--------:|
+| ---- | ----------- | ---- | ------- | :------: |
 | aws\_region | The AWS region where the non-global resources for the dynamic account are to be provisioned (e.g. "us-east-1"). | `string` | `"us-east-1"` | no |
 | dynamic\_account\_name | The name of the dynamic account to be provisioned. | `string` | n/a | yes |
 | ec2readonly\_role\_description | The description to associate with the IAM role (as well as the corresponding policy) that allows read access to some EC2 attributes in the dynamic account. | `string` | `"Allows read access to some EC2 attributes in the dynamic account."` | no |
@@ -158,7 +158,7 @@ changes by simply running `terraform apply
 ## Outputs ##
 
 | Name | Description |
-|------|-------------|
+| ---- | ----------- |
 | cw\_alarm\_sns\_topic | The SNS topic to which a message is sent when a CloudWatch alarm is triggered. |
 | ec2readonly\_role | The IAM role that allows read access to some EC2 attributes in the dynamic account. |
 | provisionaccount\_role | The IAM role that allows sufficient permissions to provision all AWS resources in the dynamic account. |

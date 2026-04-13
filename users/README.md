@@ -130,20 +130,20 @@ changes by simply running `terraform apply -var-file=dev.tfvars`.
 ## Requirements ##
 
 | Name | Version |
-|------|---------|
+| ---- | ------- |
 | terraform | ~> 1.1 |
 | aws | ~> 6.7 |
 
 ## Providers ##
 
 | Name | Version |
-|------|---------|
+| ---- | ------- |
 | aws | ~> 6.7 |
 
 ## Modules ##
 
 | Name | Source | Version |
-|------|--------|---------|
+| ---- | ------ | ------- |
 | cw\_alarm\_sns | github.com/cisagov/sns-send-to-account-email-tf-module | n/a |
 | disable-inactive-iam-users | github.com/cisagov/disable-inactive-iam-users-tf-module | n/a |
 | provisionaccount | github.com/cisagov/provisionaccount-role-tf-module | n/a |
@@ -153,7 +153,7 @@ changes by simply running `terraform apply -var-file=dev.tfvars`.
 ## Resources ##
 
 | Name | Type |
-|------|------|
+| ---- | ---- |
 | [aws_iam_account_password_policy.users](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_account_password_policy) | resource |
 | [aws_iam_group.gods](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_group) | resource |
 | [aws_iam_group_policy_attachment.assume_any_role_anywhere](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_group_policy_attachment) | resource |
@@ -176,7 +176,7 @@ changes by simply running `terraform apply -var-file=dev.tfvars`.
 ## Inputs ##
 
 | Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:--------:|
+| ---- | ----------- | ---- | ------- | :------: |
 | assume\_any\_role\_anywhere\_policy\_description | The description to associate with the IAM policy that allows assumption of any role in any account, so long as it has a trust relationship with the Users account. | `string` | `"Allow assumption of any role in any account, so long as it has a trust relationship with the Users account."` | no |
 | assume\_any\_role\_anywhere\_policy\_name | The name to assign the IAM policy that allows assumption of any role in any account, so long as it has a trust relationship with the Users account. | `string` | `"AssumeAnyRoleAnywhere"` | no |
 | aws\_region | The AWS region where the non-global resources for this account are to be provisioned (e.g. "us-east-1"). | `string` | `"us-east-1"` | no |
@@ -203,7 +203,7 @@ changes by simply running `terraform apply -var-file=dev.tfvars`.
 ## Outputs ##
 
 | Name | Description |
-|------|-------------|
+| ---- | ----------- |
 | assume\_any\_role\_anywhere\_policy | The IAM role that allows assumption of any role in any account, so long as it has a trust relationship with the Users account. |
 | cw\_alarm\_sns\_topic | The SNS topic to which a message is sent when a CloudWatch alarm is triggered. |
 | godlike\_users | The IAM users that are allowed to access the terraform backend, are IAM administrators for the Users account, and are allowed to assume any role that has a trust relationship with the Users account. |
