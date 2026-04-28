@@ -13,12 +13,6 @@ data "aws_organizations_organization" "cool" {
 }
 
 locals {
-  # Find the Shared Services account name by id.
-  sharedservices_account_name = [
-    for x in data.aws_organizations_organization.cool.accounts :
-    x.name if x.id == data.aws_caller_identity.sharedservices.account_id
-  ][0]
-
   # Regex to match dynamic assessment account names
   assessment_account_name_regex = "^env[[:digit:]]+$"
 
