@@ -99,17 +99,17 @@ data "aws_iam_policy_document" "ami_kms_doc" {
       # encrypted using our key should also be listed here.
       #
       # Regex guide:
-      # - "^env[0-9]*$": Dynamic assessment accounts
+      # - "^env[[:digit:]]+$": Dynamic assessment accounts
       # - "^Playground Legacy$": Legacy playground account
       # - "^Shared Services$": Shared Services account
       values = concat([
         for account in data.aws_organizations_organization.cool.accounts :
         "arn:aws:iam::${account.id}:role/ProvisionAccount"
-        if length(regexall("^env[0-9]*$|^Playground Legacy$|^Shared Services$", account.name)) > 0
+        if length(regexall("^env[[:digit:]]+$|^Playground Legacy$|^Shared Services$", account.name)) > 0
         ], [
         for account in data.aws_organizations_organization.cool.accounts :
         "arn:aws:iam::${account.id}:role/Terraformer"
-        if length(regexall("^env[0-9]*$", account.name)) > 0
+        if length(regexall("^env[[:digit:]]+$", account.name)) > 0
         ], [
         for account_id in var.extraorg_account_ids :
         "arn:aws:iam::${account_id}:role/ProvisionAccount"
