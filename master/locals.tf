@@ -19,15 +19,10 @@ data "aws_organizations_organization" "cool" {
 locals {
   # Look up all assessment account IDs via the AWS organizations
   # provider.
-  #
-  # Note that this code works in our current "both staging and
-  # production in the same organization" arrangement, and it will also
-  # work in the future "staging, production, dev, etc. in separate
-  # organizations" arrangement.
   assessment_account_ids = [
     for account in data.aws_organizations_organization.cool.accounts :
     account.id
-    if length(regexall("^env\\d+", account.name)) > 0
+    if length(regexall("^env[[:digit:]]+$", account.name)) > 0
   ]
 
   # Find the Users account by name and email
