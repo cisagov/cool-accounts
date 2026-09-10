@@ -119,11 +119,14 @@ changes by simply running `terraform apply -var-file=dev.tfvars`.
 
 | Name | Type |
 | ---- | ---- |
+| [aws_dlm_lifecycle_policy.default_ebs](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/dlm_lifecycle_policy) | resource |
 | [aws_iam_policy.assessment_findings_bucket_write](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) | resource |
 | [aws_iam_policy.provisionssmsessionmanager_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) | resource |
 | [aws_iam_policy.read_lambda_bucket_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) | resource |
 | [aws_iam_role.assessment_findings_bucket_write](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role) | resource |
+| [aws_iam_role.dlm_lifecycle_role](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role) | resource |
 | [aws_iam_role_policy_attachment.assessment_findings_bucket_write](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) | resource |
+| [aws_iam_role_policy_attachment.dlm_lifecycle_attachment](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_iam_role_policy_attachment.provisionssmsessionmanager_policy_attachment](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_iam_role_policy_attachment.read_lambda_bucket](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_caller_identity.sharedservices](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/caller_identity) | data source |
@@ -131,6 +134,7 @@ changes by simply running `terraform apply -var-file=dev.tfvars`.
 | [aws_iam_policy_document.assessment_account_assume_role_doc](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
 | [aws_iam_policy_document.assessment_findings_bucket_write](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
 | [aws_iam_policy_document.assume_role_doc](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
+| [aws_iam_policy_document.dlm_assume_role](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
 | [aws_iam_policy_document.provisionssmsessionmanager_policy_doc](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
 | [aws_iam_policy_document.read_lambda_bucket_policy_doc](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
 | [aws_iam_policy_document.sns_topic_access_policy_doc](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
@@ -145,6 +149,8 @@ changes by simply running `terraform apply -var-file=dev.tfvars`.
 | assessment\_findings\_bucket\_write\_role\_description | The description to associate with the IAM role that allows write access to the assessment findings S3 bucket. | `string` | `"Allows write permissions to the assessment findings S3 bucket."` | no |
 | assessment\_findings\_bucket\_write\_role\_name | The name to assign the IAM role that allows write access to the assessment findings S3 bucket. | `string` | `"AssessmentFindingsBucketWrite"` | no |
 | aws\_region | The AWS region where the non-global resources for the Shared Services account are to be provisioned (e.g. "us-east-1"). | `string` | `"us-east-1"` | no |
+| ebs\_volume\_snapshot\_create\_interval | A positive, non-zero integer denoting the interval in days at which new snapshots of EBS volumes are to be created (e.g., 5).  Valid values range from 1 to 7. | `number` | `1` | no |
+| ebs\_volume\_snapshot\_retain\_interval | A positive, non-zero integer denoting the number of days that new snapshots of EBS volumes are to be retained (e.g., 5).  Valid values range from 2 to 14. | `number` | `14` | no |
 | lambda\_bucket\_name | The name of the S3 bucket containing the Lambda function deployment package to disable inactive IAM users. | `string` | n/a | yes |
 | lambda\_key | The S3 key associated with the Lambda function deployment package to disable inactive IAM users. | `string` | n/a | yes |
 | provisionaccount\_role\_description | The description to associate with the IAM role that allows sufficient permissions to provision all AWS resources in the Shared Services account. | `string` | `"Allows sufficient permissions to provision all AWS resources in the Shared Services account."` | no |
