@@ -7,11 +7,11 @@ resource "aws_dlm_lifecycle_policy" "default_ebs" {
   }
 
   policy_details {
-    copy_tags       = true
+    copy_tags = true
     # Intervals below are in days
-    create_interval = 1
+    create_interval = var.ebs_volume_snapshot_create_interval
     policy_language = "SIMPLIFIED"
     resource_type   = "VOLUME"
-    retain_interval = 14
+    retain_interval = var.ebs_volume_snapshot_retain_interval
   }
 }

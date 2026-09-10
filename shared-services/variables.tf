@@ -57,6 +57,32 @@ variable "aws_region" {
   type        = string
 }
 
+variable "ebs_volume_snapshot_create_interval" {
+  default     = 1
+  description = "A positive, non-zero integer denoting the interval in days at which new snapshots of EBS volumes are to be created (e.g., 5).  Valid values range from 1 to 7."
+  nullable    = false
+  type        = number
+
+  validation {
+    # floor() verifies the number is an integer.
+    condition     = floor(var.ebs_volume_snapshot_create_interval) == var.ebs_volume_snapshot_create_interval && var.ebs_volume_snapshot_create_interval >= 1 && var.ebs_volume_snapshot_create_interval <= 7
+    error_message = "The creation interval must be a positive, non-zero integer in the range [1,7]."
+  }
+}
+
+variable "ebs_volume_snapshot_retain_interval" {
+  default     = 14
+  description = "A positive, non-zero integer denoting the number of days that new snapshots of EBS volumes are to be retained (e.g., 5).  Valid values range from 2 to 14."
+  nullable    = false
+  type        = number
+
+  validation {
+    # floor() verifies the number is an integer.
+    condition     = floor(var.ebs_volume_snapshot_retain_interval) == var.ebs_volume_snapshot_retain_interval && var.ebs_volume_snapshot_retain_interval >= 2 && var.ebs_volume_snapshot_retain_interval <= 14
+    error_message = "The retention interval must be a positive, non-zero integer in the range [2,14]."
+  }
+}
+
 variable "provisionaccount_role_description" {
   default     = "Allows sufficient permissions to provision all AWS resources in the Shared Services account."
   description = "The description to associate with the IAM role that allows sufficient permissions to provision all AWS resources in the Shared Services account."

@@ -149,6 +149,8 @@ changes by simply running `terraform apply -var-file=dev.tfvars`.
 | assessment\_findings\_bucket\_write\_role\_description | The description to associate with the IAM role that allows write access to the assessment findings S3 bucket. | `string` | `"Allows write permissions to the assessment findings S3 bucket."` | no |
 | assessment\_findings\_bucket\_write\_role\_name | The name to assign the IAM role that allows write access to the assessment findings S3 bucket. | `string` | `"AssessmentFindingsBucketWrite"` | no |
 | aws\_region | The AWS region where the non-global resources for the Shared Services account are to be provisioned (e.g. "us-east-1"). | `string` | `"us-east-1"` | no |
+| ebs\_volume\_snapshot\_create\_interval | A positive, non-zero integer denoting the interval in days at which new snapshots of EBS volumes are to be created (e.g., 5).  Valid values range from 1 to 7. | `number` | `1` | no |
+| ebs\_volume\_snapshot\_retain\_interval | A positive, non-zero integer denoting the number of days that new snapshots of EBS volumes are to be retained (e.g., 5).  Valid values range from 2 to 14. | `number` | `14` | no |
 | lambda\_bucket\_name | The name of the S3 bucket containing the Lambda function deployment package to disable inactive IAM users. | `string` | n/a | yes |
 | lambda\_key | The S3 key associated with the Lambda function deployment package to disable inactive IAM users. | `string` | n/a | yes |
 | provisionaccount\_role\_description | The description to associate with the IAM role that allows sufficient permissions to provision all AWS resources in the Shared Services account. | `string` | `"Allows sufficient permissions to provision all AWS resources in the Shared Services account."` | no |
