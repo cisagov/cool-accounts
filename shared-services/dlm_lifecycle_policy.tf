@@ -8,6 +8,7 @@ resource "aws_dlm_lifecycle_policy" "default_ebs" {
 
   policy_details {
     copy_tags       = true
+    # Intervals below are in days
     create_interval = 1
     policy_language = "SIMPLIFIED"
     resource_type   = "VOLUME"
