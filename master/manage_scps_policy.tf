@@ -25,15 +25,12 @@ data "aws_iam_policy_document" "manage_scps_doc" {
     sid       = "AllowCreatingTaggedSCPs"
   }
 
-  # Allow management of SCPs that already have the expected Application tag.
-  # Since TagResource also requires this tag, it cannot be added to other SCPs.
+  # Allow management of SCPs that already have the expected Application tag
   statement {
     actions = [
       "organizations:AttachPolicy",
       "organizations:DeletePolicy",
       "organizations:DetachPolicy",
-      "organizations:TagResource",
-      "organizations:UntagResource",
       "organizations:UpdatePolicy",
     ]
     condition {
@@ -45,6 +42,30 @@ data "aws_iam_policy_document" "manage_scps_doc" {
       "arn:aws:organizations::${data.aws_caller_identity.this.account_id}:policy/${data.aws_organizations_organization.cool.id}/service_control_policy/*",
     ]
     sid = "AllowManagingTaggedSCPs"
+  }
+
+  # Allow tagging of SCPs that already have the expected Application tag, so
+  # that tag cannot be added to other SCPs.  The Application tag itself cannot
+  # be changed or removed, since that would make the SCP unmanageable.
+  statement {
+    actions = [
+      "organizations:TagResource",
+      "organizations:UntagResource",
+    ]
+    condition {
+      test     = "StringEquals"
+      values   = [var.manage_scps_application_tag]
+      variable = "aws:ResourceTag/Application"
+    }
+    condition {
+      test     = "ForAllValues:StringNotEquals"
+      values   = ["Application"]
+      variable = "aws:TagKeys"
+    }
+    resources = [
+      "arn:aws:organizations::${data.aws_caller_identity.this.account_id}:policy/${data.aws_organizations_organization.cool.id}/service_control_policy/*",
+    ]
+    sid = "AllowTaggingTaggedSCPs"
   }
 
   # AttachPolicy and DetachPolicy are also authorized against the (untagged)
