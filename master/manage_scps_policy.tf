@@ -68,6 +68,29 @@ data "aws_iam_policy_document" "manage_scps_doc" {
     sid = "AllowTaggingTaggedSCPs"
   }
 
+  # CreatePolicy also requires TagResource when the request includes tags, and
+  # those always include the Application tag.  Allow setting that tag only to
+  # its expected value.
+  statement {
+    actions = [
+      "organizations:TagResource",
+    ]
+    condition {
+      test     = "StringEquals"
+      values   = [var.manage_scps_application_tag]
+      variable = "aws:RequestTag/Application"
+    }
+    condition {
+      test     = "StringEquals"
+      values   = [var.manage_scps_application_tag]
+      variable = "aws:ResourceTag/Application"
+    }
+    resources = [
+      "arn:aws:organizations::${data.aws_caller_identity.this.account_id}:policy/${data.aws_organizations_organization.cool.id}/service_control_policy/*",
+    ]
+    sid = "AllowSettingExpectedApplicationTag"
+  }
+
   # AttachPolicy and DetachPolicy are also authorized against the (untagged)
   # target, so the targets must be allowed separately.
   statement {
