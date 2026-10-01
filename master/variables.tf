@@ -71,6 +71,27 @@ variable "cur_export_policy_name" {
   type        = string
 }
 
+variable "manage_scps_application_tag" {
+  default     = "COOL - Master Org Policies"
+  description = "The value of the Application tag that a service control policy (SCP) must have in order to be managed via the IAM policy that allows sufficient permissions to manage SCPs.  This must match the Application tag used by cisagov/cool-master-org-policies."
+  nullable    = false
+  type        = string
+}
+
+variable "manage_scps_policy_description" {
+  default     = "Allows sufficient permissions to manage the service control policies (SCPs) created by cisagov/cool-master-org-policies."
+  description = "The description to associate with the IAM policy that allows sufficient permissions to manage service control policies (SCPs)."
+  nullable    = false
+  type        = string
+}
+
+variable "manage_scps_policy_name" {
+  default     = "ManageServiceControlPolicies"
+  description = "The name to assign the IAM policy that allows sufficient permissions to manage service control policies (SCPs)."
+  nullable    = false
+  type        = string
+}
+
 variable "organizationsreadonly_role_description" {
   default     = "Allows read-only access to all AWS Organizations information in the Master account."
   description = "The description to associate with the IAM role that allows read-only access to all AWS Organizations information in the Master account."
